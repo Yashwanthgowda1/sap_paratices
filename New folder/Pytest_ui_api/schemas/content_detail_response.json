@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": ["id", "title"],
+  "properties": {
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "type": {"type": "string"},
+    "description": {"type": "string"},
+    "thumbnail": {"type": "string"},
+    "duration": {"type": "integer"},
+    "genre": {"type": "array", "items": {"type": "string"}},
+    "language": {"type": "string"},
+    "is_premium": {"type": "boolean"}
+  }
+}

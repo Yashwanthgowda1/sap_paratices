@@ -1,0 +1,43 @@
+{
+  "name": "jiohotstar-playwright-automation",
+  "version": "1.0.0",
+  "description": "JioHotstar end-to-end test automation using Playwright with TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:auth": "playwright test tests/auth/",
+    "test:home": "playwright test tests/home/",
+    "test:search": "playwright test tests/search/",
+    "test:player": "playwright test tests/player/",
+    "test:subscription": "playwright test tests/subscription/",
+    "test:profile": "playwright test tests/profile/",
+    "test:api": "playwright test tests/api/ --project=api",
+    "test:api:smoke": "playwright test tests/api/ --project=api --grep @smoke",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "report": "playwright show-report playwright-report",
+    "report:allure": "allure generate allure-results --clean && allure open",
+    "codegen": "playwright codegen https://www.jiohotstar.com",
+    "clean": "rimraf test-results playwright-report allure-results",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "allure-playwright": "^3.0.0",
+    "typescript": "^5.6.3",
+    "rimraf": "^6.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0"
+  }
+}

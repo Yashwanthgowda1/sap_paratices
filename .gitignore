@@ -1,0 +1,36 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Node
+node_modules/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+
+# Secrets (never commit)
+.env
+.env.local
+.env.*.local
+.env.production
+*.key
+*.pem
+
+# Test/report artifacts
+allure-results/
+
+# Large archives (GitHub 100MB limit)
+New folder.zip
+bot_proxy.zip
+playwrite_cucumber.zip

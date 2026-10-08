@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: start specific number of multiple instances
+      amazon.aws.ec2_instance:
+        name: "{{ item.name }}"
+        instance_type: t3.micro
+        image_id: "{{ item.image_id }}"
+        count: 2  # aws decide the each instence how many cpu allocate based on tnstencetype soit is linite to 16 
+        region: us-east-1 
+        key_name: "new_demo1" 
+
+        aws_access_key: "{{ ec2_access_key }}"
+        aws_secret_key: "{{ ec2_secret_key }}"
+        network:
+          subnet_id: subnet-000d799fb284e5e8d
+          assign_public_ip: true
+        security_groups:
+          - sg-041e98166f99e4717
+        state: present
+        tags:
+          foo: start specific number of multiple instances
+          environment: "{{ item.name }}"
+      loop:
+      - { name: "ansible-ec2-instance1", image_id: "ami-0ecb62995f68bb549" }
+      - { name: "ansible-ec2-instance2", image_id: "ami-0ecb62995f68bb549" }
+      - { name: "ansible-ec2-instance3-linux", image_id: "ami-068c0051b15cdb816" }
+
+  

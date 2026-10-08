@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2026-08-08T10:02:53.390107" rpa="false" schemaversion="5">
+<suite id="s1" name="Robotscractch" source="C:\python_study\New folder\python-scratch\Riobotcode\robotscractch.robot">
+<test id="s1-t1" name="TC1: Printing all scenarios of the test cases" line="12">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-08-08T10:02:53.577188" level="INFO">valuue3</msg>
+<arg>${dict_akues}[value2]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-08-08T10:02:53.577017" elapsed="0.000222"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-08-08T10:02:53.577512" level="INFO">value1</msg>
+<arg>${dict_akues}[value]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-08-08T10:02:53.577413" elapsed="0.000131"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-08-08T10:02:53.577856" level="INFO">Opening browser 'chrome' to base url 'https://in.bookmyshow.com/explore/home'.</msg>
+<arg>${singlevalies}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-08-08T10:02:53.577716" elapsed="17.519622"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-08-08T10:03:11.097836" elapsed="0.041617"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>//*[text()='Movies']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-08-08T10:03:11.139944" elapsed="0.096698"/>
+</kw>
+<kw name="Log" owner="BuiltIn" type="TEARDOWN">
+<msg time="2026-08-08T10:03:11.237280" level="INFO">"test casess completed"</msg>
+<arg>"test casess completed"</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-08-08T10:03:11.237145" elapsed="0.000180"/>
+</kw>
+<tag>67788</tag>
+<status status="PASS" start="2026-08-08T10:02:53.576265" elapsed="17.661223"/>
+</test>
+<status status="PASS" start="2026-08-08T10:02:53.391957" elapsed="17.846092"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">67788</stat>
+</tag>
+<suite>
+<stat name="Robotscractch" id="s1" pass="1" fail="0" skip="0">Robotscractch</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

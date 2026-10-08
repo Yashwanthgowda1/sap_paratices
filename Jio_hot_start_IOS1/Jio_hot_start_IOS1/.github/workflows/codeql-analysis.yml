@@ -1,0 +1,41 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "QA_main" ]
+  schedule:
+    - cron: '03 00 * * 0'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: self-hosted
+
+    permissions:
+      actions: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: python
+          ram: 1024
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v4
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+<<<<<<< HEAD
+        with:
+          threads: 1
+=======
+
+  
+>>>>>>> 55eaf365ff14dad741aec9ccd648fce458f94cf1

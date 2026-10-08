@@ -1,0 +1,13 @@
+{
+  "valid_user": {
+    "username": "admin",
+    "password": "password123"
+  },
+  "invalid_users": [
+    { "username": "",      "password": "password123" },
+    { "username": "admin", "password": ""             },
+    { "username": "wrong", "password": "wrong"        }
+  ],
+  "search_titles": ["Avengers", "Hotstar", "Cricket"],
+  "plan_types": ["FREE", "PREMIUM", "SUPER"]
+}

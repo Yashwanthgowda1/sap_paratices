@@ -1,0 +1,95 @@
+in configuration management (ancible)
+
+there to :
+1) puppet
+2) cheff
+3)ansible--> more popular and symenticanlty upgrade of  by readhat team
+
+why ansible and what is the difference with puppet (most intervier asked question)
+	ex: in organization where 10 server every time make that comfigration of the 10 servers as per the compilince of the organization so in that:
+	-->  the ansible is the push model  here can write the script and push into 10 server 
+``--> ansible is agent less model , just put the name file , and  ip address and dns number
+	
+--->it is pull and  puppet is master-slave architecture  need to make the master and and all the 10 server as slave for configuration
+
+---> anisble is dynamic invertory (ansible is directly didect things and manage the configuration)
+
+ --> support windows and Linux (because it has good modules) write  the yml script
+---> but in puppet need to use the puppet script
+--> ansible basically developed in python and we can write own modules
+
+
+
+
+intrever question:  18most asked question is in youtube:
+---------------------------------------------------------------------
+	https://www.youtube.com/watch?v=j5PgN0J3d7M&t=4s
+	
+ansible support for both: windows and Linux  , windows use protocal (win rm)  Linux use the protocal called (ssh)
+
+2.  what is the difreence  cheff  or ansible and puppet : (above refer the answer)
+
+3) is ansible is which mechanism eighter push or pull and why
+4) what program lanugaue used in ansible(YML)
+5) ANSIBLE support all clouble provider or not (ans: yes) (ansible is does not matter the about the could , just it need the  enable the public ip and ssh and anible host(means local host)) 
+
+
+---------------------------------------------------------------------------
+
+install of ancibal
+
+in Linux:   give the commond:  
+		sudo apt install ansible
+			ansible --version
+as we know the ansible and what it will do : crete the two serevre so that config both  (ansible is password less authenticate)
+temp--->  use private ip
+
+**** ssh-keygen eneter create a public and private key
+
+connect the two srever using the copy the id_public (.ssh) and crete the target ec2 by pasting the public password keys and save
+ then  ancible server (Linux)  give the ssh private ip   so that both are connected
+
+in target ec2 place the authkey in authorication.key folder which present inside the ,ssh
+
+
+ancible playbook what is means
+------------------------------------
+playbook means script 
+no necessary to write the script multiple time just directly can we use the Linux commands (ansible adhoc commands)
+
+
+inventory file (last class above we have where store ip and ssh etc)
+
+if have 10 server just open inventory and add the ips
+
+
+
+--->  ansible -i inventory all -m  (module)  "shell" -a (what is cmd execute)  "touch devopsclass" (adhoc)
+
+----->  ansible adhoch for single two server but playbook for more serevre
+
+ansible modules (jsu open in google and check what module to use in docs)
+
+
+	shell after we are using the shell cmd lis df cat vim etc(just see the dic)
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+Introducton:
+
+https://github.com/iam-veeramalla/ansible-zero-to-hero.git
+
+
+
+
+
+
+
+
+
+
+
+ 

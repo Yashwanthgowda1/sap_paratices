@@ -1,0 +1,29 @@
+# ARTHA — AI Investment Intelligence
+# Core
+streamlit==1.40.2
+pandas==2.2.3
+numpy==2.1.3
+requests==2.32.3
+python-dotenv==1.0.1
+
+# Market data (real-time, no key required)
+yfinance==0.2.50
+
+# Screener.in fundamentals scraping
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# Charts
+plotly==5.24.1
+
+# LLM providers (installed; keys supplied at runtime from the dashboard)
+anthropic>=1.11.0
+openai==1.57.0
+google-generativeai==0.8.3
+
+# Scheduling (daily refresh jobs)
+APScheduler==3.11.0
+
+# Groww MCP bridge (live brokerage portfolio via Model Context Protocol).
+# Needs Node.js >= 22.17 on PATH so `npx @groww/mcp-server` can run.
+mcp>=1.2.0

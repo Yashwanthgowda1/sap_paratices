@@ -1,0 +1,278 @@
+
+TC10 : [People] DUT to be displayed with list of groups in people tab
+    [Tags]    244001    sanity_lcp    p1
+    [Setup]    run Keywords    Testcase Setup     count=1    AND    Create new group    device=device_1    group_name=list_of_groups
+    ${contact_button}   has hardkey contact button supported device    device=device_1
+    pass execution if   '${contact_button}'=='False'  device_1, device is not have contact button
+    press hardkeys   device=device_1    hardkey_intent=KEYCODE_CONTACTS
+    ${people_navigation_result}=     verify people navigation    device=device_1
+    should be true    ${people_navigation_result}
+    Click drop down menu and verify list of groups   device=device_1
+    Select group from drop down     device=device_1     group_name=All Contacts
+    [Teardown]    Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1
+
+presence.py
+
+TC9 : [Presence] DUT user can see the correct presence in Voice mail tab (in the form of presence icon only)
+    [Tags]    243342    p2
+    [Setup]    run Keywords    Testcase Setup     count=2    AND    Enable unanswered call to voicemail    from_device=device_1    contact_device=device_2
+    navigate to people tab    device=device_2
+    Make outgoing call using display name    from_device=device_2    to_device=device_1
+    verify incoming call    device=device_1    status=appear
+    Wait for Some Time    time=${wait_time_20s}
+    wait until call disconnected    device=device_1
+    Verify Call State    device_list=device_1     state=Disconnected
+    Verify Call State    device_list=device_2    state=Connected
+    Disconnect Call    device=device_2
+    Verify Call State    device_list=device_2,device_1    state=disconnected
+    Navigate to voicemail tab    device=device_1
+    verify first voicemail displayname    to_device=device_1    from_device=device_2
+    verify presence status in voicemail tab    from_device=device_1    to_device=device_2
+    [Teardown]    Run Keywords    Capture on Failure    AND    Come back to home screen    device_list=device_1,device_2
+
+lcp_call.py
+
+
+def verify_presence_status_in_voicemail_tab(from_device, to_device):
+    if not common.is_lcp(from_device):
+        voicemail_keywords.verify_user_contact_details_who_left_voice_mail(to_device, from_device)
+    user_name = common.device_displayname(to_device)
+    print("enter the model ")
+        # Fetch all paths in voicemail
+    all_profile_elements = common.wait_for_element(from_device, calendar_dict,
+                                                               "presence_status_in_voicemail_lcp",cond=EC.presence_of_all_elements_located)
+    print(f"the elements to be ",all_profile_elements)
+        # for elements in all_paths_in_voicemail:
+    element = [elements.get_attribute("content-desc") for elements in all_profile_elements]
+    print(f"the elements are: {element}")
+    msg = [ele.split(":")[-1].lstrip() for ele in element]
+    if len(msg) > 1 and msg[1] and msg[1].lower() in ["available", "busy", "dnd", "offline", "away"]:
+        print(f"Presence status for {user_name} is {msg[1]}")
+    else:
+        raise AssertionError(f"Presence status not found for {user_name}")
+
+calnder.json
+
+"presence_status_in_voicemail_lcp": {
+    "id": "com.microsoft.skype.teams.ipphone:id/user_profile_picture"
+  },
+
+"transfer_now_user_more_option": {
+    "xpath": "//*[@text='user_name']/parent::androidx.appcompat.widget.LinearLayoutCompat/following-sibling::android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/end_icon']"
+  },
+  "leave_voicemail": {
+    "xpath" : "//android.widget.Button[text()='Leave voicemail']",
+    "command": "new UiSelector().text(\"Leave voicemail\")"
+  }
+  
+  
+  
+
+_call.py
+
+
+call_keyword.py
+
+
+click back lcp
+    [Arguments]     ${device}
+    Device Setting Back    device=${device}
+
+
+Tc20 : [Calls] Verify Back button, tap to return to call and End button during P2P call.
+    [Tags]    380097    bvt_tp   sanity_tp
+    [Setup]    Testcase Setup    count=2
+    navigate to people tab    device=device_1
+    Make outgoing call using display name    from_device=device_1     to_device=device_2
+    Pick incoming call    device=device_2
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    click back lcp    device=device_1
+    tap to return to call   device=device_1
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    Disconnect call     device=device_1
+    Verify Call State    device_list=device_1,device_2     state=Disconnected
+    navigate to people tab   device=device_2
+    Make outgoing call using display name    from_device=device_2     to_device=device_1
+    Pick incoming call    device=device_1
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    click back lcp    device=device_1
+    tap to return to call   device=device_1
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    Disconnect call     device=device_1
+    Verify Call State    device_list=device_1,device_2     state=Disconnected
+    [Teardown]   Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1,device_2
+
+
+
+TC9 : [Call Transfer] User to test the transfer hard button
+    [Tags]    244111      P2
+    [Setup]    Testcase Setup   count=3
+    ${intents_support}   has hardkey call transfer button present   device=device_1
+    pass execution if   '${intents_support}'=='False'  device_1, device is not have call transfer button present
+    Reset Logcat Capture    device=device_1
+    Navigate To People Tab    device=device_2
+    Make outgoing call using display name    from_device=device_2      to_device=device_1
+    Pick incoming call    device=device_1
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    Blindtransfers the call   from_device=device_1      to_device=device_3      method=phone_number     option=hard_key
+    Pick incoming call    device=device_3
+    Verify presence of Intents     device=device_1      feature=KEYCODE_BUTTON_12      state=present
+    Wait for Some Time    time=${wait_time}
+    Verify Call State    device_list=device_3,device_2    state=Connected
+    Verify Call State     device_list=device_1    state=DisConnected
+    Disconnect call     device=device_2
+    Verify Call State    device_list=device_1,device_2,device_3     state=Disconnected
+    Wait for Some Time    time=${wait_time}
+    [Teardown]  Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1,device_2,device_3
+
+ esc_conf.robot
+
+
+TC6 : [Esc to Conf.] DUT user in P2P call with TDC, add another TDC and make an attendee
+    [Tags]    333190    P1
+    [Setup]    Testcase Setup     count=3
+    navigate to people tab    device=device_1
+    Make outgoing call using display name    from_device=device_1      to_device=device_2
+    Pick incoming call    device=device_2
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    Add participant to conversation using display name  from_device=device_1      to_device=device_3
+    Pick incoming call    device=device_3
+    Verify Call State    device_list=device_1,device_2,device_3    state=Connected
+    verify participant list     from_device=device_1      connected_device_list=device_1,device_2,device_3
+    Make an attendee    from_device=device_1       to_device=device_3
+    Verify you are an attendee now notification     device=device_3
+    Verify add participant button should not visible for attendee    device=device_3
+    Disconnect call     device=device_1,device_3
+    Verify Call State    device_list=device_1,device_2,device_3     state=Disconnected
+    [Teardown]   Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1,device_2,device_3
+
+
+call_keyword.py
+
+
+def verify_participant_list(from_device, connected_device_list):
+    print(f"Expected connected devices list: {connected_device_list}")
+    expected_connected_devices = connected_device_list.split(",")
+    expected_user_list = []
+    for devices in expected_connected_devices:
+        if ":" in devices:
+            user = devices.split(":")[1]
+            if user.lower() == "pstn_user":
+                expected_user_list.append(str(common.device_pstndisplay(devices)))
+                continue
+        expected_user_list.append(str(common.device_displayname(devices)))
+    print("Expected user list : ", expected_user_list)
+    common.wait_for_element(from_device, calls_dict, "Hang_up_button")
+    calendar_keywords.navigate_to_add_participant_page(from_device)
+    actual_user_list = get_participant_list(from_device)
+    print(f"Actual connected user list: {actual_user_list}")
+    if actual_user_list.sort() != expected_user_list.sort():
+        raise AssertionError(
+            f"{from_device}: Actual participants list: {actual_user_list} doesn't match the expected list: {expected_user_list}"
+        )
+    if common.is_norden(from_device):
+        common.wait_for_and_click(from_device, tr_calls_dict, "close_roaster_button")
+        return
+    if common.is_lcp(from_device):
+        common.wait_for_and_click(from_device, calendar_dict, "back")
+    else:
+        common.wait_for_and_click(from_device, calls_dict, "Call_Back_Button")
+    time.sleep(3)
+    if common.is_element_present(from_device, calls_dict, "Invite_new_user"):
+        common.wait_for_and_click(from_device, calls_dict, "Call_Back_Button")
+
+
+
+
+TC7 : [Esc to Conf.] DUT user in P2P call with TDC, add another TDC and make an Presenter
+    [Tags]    333191    P1
+    [Setup]    Testcase Setup     count=3
+    navigate to people tab    device=device_1
+    Make outgoing call using display name    from_device=device_1      to_device=device_2
+    Pick incoming call    device=device_2
+    Verify Call State    device_list=device_1,device_2    state=Connected
+    Add participant to conversation using display name  from_device=device_1      to_device=device_3
+    Pick incoming call    device=device_3
+    Wait for Some Time    time=${wait_time}
+    Verify Call State    device_list=device_1,device_2,device_3    state=Connected
+    verify participant list     from_device=device_1      connected_device_list=device_1,device_2,device_3
+    Make an attendee    from_device=device_1       to_device=device_3
+    Verify you are an attendee now notification     device=device_3
+    Verify add participant button should not visible for attendee    device=device_3
+    Make an presenter    from_device=device_1       to_device=device_3
+    Verify you are an presenter now notification     device=device_3
+    Verify add participant button should visible for presenter    device=device_3
+    Disconnect call     device=device_1,device_3
+    Verify Call State    device_list=device_1,device_2,device_3     state=Disconnected
+    [Teardown]   Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1,device_2,device_3
+	
+	
+people_tab.robot
+
+
+TC3 : [People] - Create new group
+    [Tags]  465938     bvt_tp  sanity_tp    p0
+    [Setup]  Testcase Setup    count=2
+    Create new group    device=device_1   group_name=new_group
+    [Teardown]  Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1    AND     Delete group    device=device_1   group_name=new_group
+
+
+people_keyword.py
+
+def create_new_group(device, group_name="test_group", group_creation_result="original"):
+    if group_creation_result.lower() not in ["original", "duplicate"]:
+        raise AssertionError(f"{device}: Illegal argument for 'group_creation_result': '{group_creation_result}'")
+    verify_plus_icon_on_people_tab(device)
+    click_on_plus_icon_on_people_tab(device)
+    verify_plus_icon_two_options(device)
+    select_people_app_option_and_verify(device, "Create new group")
+    group_name_field = common.wait_for_element(device, people_dict, "name_your_group")
+    group_name_field.send_keys(group_name)
+    if config["devices"][device]["model"].lower() == "gilbert":
+        common.hide_keyboard(device)
+    if common.is_lcp(device):
+        common.wait_for_and_click(device, people_dict, "ok_btn")
+        common.wait_for_and_click(device, people_dict, "cancel_btn")
+    common.wait_for_and_click(device, people_dict, "create_btn")
+    common.sleep_with_msg(device, 3, "Wait post creating the group")
+    if group_creation_result.lower() == "duplicate":
+        validate_duplicate_group_name(device, group_name)
+        return
+    # If there is an existing group with same name, ignore the error message and access the existing group
+    if common.is_element_present(device, people_dict, "error_msg", "xpath"):
+        common.wait_for_and_click(device, people_dict, "ok_btn")
+        common.wait_for_and_click(device, people_dict, "cancel_btn")
+    time.sleep(display_time)
+    click_drop_down_menu_and_verify_group_name(device, group_name)
+	
+	
+	
+	
+	
+	
+	
+def verify_merge_call_option(from_device, to_device, merge_option="present"):
+ if common.is_lcp(from_device):
+                settings_keywords.device_setting_back(from_device)
+            else:
+                dismiss_call_more_options(from_device)
+				
+Blind transefr call(
+
+
+
+def verify_call_merge_failure(device):
+time.sleep
+
+
+verify_and_change_toggle_status_for_call_forwarding_display_on_home_screen(device, status):
+    if (_model == "olympia" and account == "cap_search_enabled") or _model == "riverside_13" or _model == "riverside" or common.is_lcp(device):
+        call_keywords.come_back_to_home_screen(device)
+    else:
+(call forward)
+452191
+
+
+
+place_call
+obo related 

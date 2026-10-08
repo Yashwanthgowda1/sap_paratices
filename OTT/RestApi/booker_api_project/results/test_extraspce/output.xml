@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.13.7 on win32)" generated="20250923 23:28:56.074" rpa="false" schemaversion="4">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" library="common_api_key" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${alias}</arg>
+<arg>${Base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250923 23:28:56.997" level="INFO">Creating Session using : alias=new_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250923 23:28:56.997" endtime="20250923 23:28:56.997"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:56.997" endtime="20250923 23:28:56.997"/>
+</kw>
+<test id="s1-t1" name="Create Booking" line="9">
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:28:56.998" level="INFO">the random price genrate is  445 NKINIu kzczrtwm
+{'firstname': 'kzczrtwm', 'lastname': 'NKINIu', 'totalprice': 445, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:28:56.998" level="INFO">${data} = {'firstname': 'kzczrtwm', 'lastname': 'NKINIu', 'totalprice': 445, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:56.998" endtime="20250923 23:28:56.998"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:28:58.933" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "kzczrtwm", "lastname": "NKINIu", "totalprice": 445, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:28:58.933" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:58:58 GMT', 'Etag': 'W/"cc-DJz9ZgpbLvXjh39/0X8cvDQUUHE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=KFKOeLejSdfCfwkWbbFL1t%2BRR5ppoRerkmQD%2Bgd8jIM%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650338"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=KFKOeLejSdfCfwkWbbFL1t%2BRR5ppoRerkmQD%2Bgd8jIM%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650338"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4311,"booking":{"firstname":"kzczrtwm","lastname":"NKINIu","totalprice":445,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:28:58.933" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:28:58.934" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:56.998" endtime="20250923 23:28:58.934"/>
+</kw>
+<msg timestamp="20250923 23:28:58.935" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:28:58.935" level="INFO">${python_random_genrated} = {'firstname': 'kzczrtwm', 'lastname': 'NKINIu', 'totalprice': 445, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:56.998" endtime="20250923 23:28:58.935"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:28:58.937" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:58.935" endtime="20250923 23:28:58.937"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:28:58.938" endtime="20250923 23:28:58.938"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:58.937" endtime="20250923 23:28:58.938"/>
+</kw>
+<tag>132345</tag>
+<status status="PASS" starttime="20250923 23:28:56.997" endtime="20250923 23:28:58.939"/>
+</test>
+<test id="s1-t2" name="Verify response contains bookingid and booking object" line="16">
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:28:58.945" level="INFO">the random price genrate is  442 ojawfG gvqelyor
+{'firstname': 'gvqelyor', 'lastname': 'ojawfG', 'totalprice': 442, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:28:58.945" level="INFO">${data} = {'firstname': 'gvqelyor', 'lastname': 'ojawfG', 'totalprice': 442, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:58.944" endtime="20250923 23:28:58.945"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:28:59.206" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "gvqelyor", "lastname": "ojawfG", "totalprice": 442, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:28:59.207" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:58:58 GMT', 'Etag': 'W/"cc-uEUKHgCsSHd2dAEX5pswHPTf5aU"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=KFKOeLejSdfCfwkWbbFL1t%2BRR5ppoRerkmQD%2Bgd8jIM%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650338"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=KFKOeLejSdfCfwkWbbFL1t%2BRR5ppoRerkmQD%2Bgd8jIM%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650338"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4318,"booking":{"firstname":"gvqelyor","lastname":"ojawfG","totalprice":442,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:28:59.207" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:28:59.208" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:58.945" endtime="20250923 23:28:59.208"/>
+</kw>
+<msg timestamp="20250923 23:28:59.209" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:28:59.209" level="INFO">${python_random_genrated} = {'firstname': 'gvqelyor', 'lastname': 'ojawfG', 'totalprice': 442, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:58.944" endtime="20250923 23:28:59.209"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.211" level="INFO">${complete_data} = {'bookingid': 4318, 'booking': {'firstname': 'gvqelyor', 'lastname': 'ojawfG', 'totalprice': 442, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:28:59.210" endtime="20250923 23:28:59.211"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.212" endtime="20250923 23:28:59.213"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:28:59.215" level="INFO">4318</msg>
+<status status="PASS" starttime="20250923 23:28:59.214" endtime="20250923 23:28:59.215"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:28:59.215" endtime="20250923 23:28:59.217"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:28:59.217" endtime="20250923 23:28:59.218"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.220" level="INFO">${booking_object} = {'firstname': 'gvqelyor', 'lastname': 'ojawfG', 'totalprice': 442, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.218" endtime="20250923 23:28:59.220"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:28:59.220" endtime="20250923 23:28:59.222"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:28:59.223" level="INFO">gvqelyor</msg>
+<status status="PASS" starttime="20250923 23:28:59.222" endtime="20250923 23:28:59.223"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:28:59.224" endtime="20250923 23:28:59.224"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:59.224" endtime="20250923 23:28:59.224"/>
+</kw>
+<tag>134445</tag>
+<status status="PASS" starttime="20250923 23:28:58.943" endtime="20250923 23:28:59.224"/>
+</test>
+<test id="s1-t3" name="Validate of schema structure" line="32">
+<kw name="Schema validation" library="common_api_key">
+<arg>${complete_data}</arg>
+<msg timestamp="20250923 23:28:59.229" level="FAIL">Variable '${complete_data}' not found.</msg>
+<status status="FAIL" starttime="20250923 23:28:59.227" endtime="20250923 23:28:59.229"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:28:59.231" endtime="20250923 23:28:59.232"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:59.231" endtime="20250923 23:28:59.232"/>
+</kw>
+<tag>653461</tag>
+<status status="FAIL" starttime="20250923 23:28:59.226" endtime="20250923 23:28:59.232">Variable '${complete_data}' not found.</status>
+</test>
+<test id="s1-t4" name="Create booking with different price ranges (min, max)" line="37">
+<kw name="Create List" library="BuiltIn">
+<var>${list_value_prices}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20250923 23:28:59.235" level="INFO">${list_value_prices} = []</msg>
+<status status="PASS" starttime="20250923 23:28:59.234" endtime="20250923 23:28:59.235"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${LIST_NEW_BOOKING_IDS}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20250923 23:28:59.236" level="INFO">${LIST_NEW_BOOKING_IDS} = []</msg>
+<status status="PASS" starttime="20250923 23:28:59.235" endtime="20250923 23:28:59.236"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>5</value>
+<iter>
+<var name="${i}">0</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:28:59.237" level="INFO">the random price genrate is  422 YKXCDb ydsuclfc
+{'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:28:59.237" level="INFO">${data} = {'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.237" endtime="20250923 23:28:59.237"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:28:59.545" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "ydsuclfc", "lastname": "YKXCDb", "totalprice": 422, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:28:59.546" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:58:59 GMT', 'Etag': 'W/"cc-VfwI4zxtKJRynLSu8J6nvRZfB8Y"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650339"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650339"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4321,"booking":{"firstname":"ydsuclfc","lastname":"YKXCDb","totalprice":422,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:28:59.546" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:28:59.547" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:59.237" endtime="20250923 23:28:59.547"/>
+</kw>
+<msg timestamp="20250923 23:28:59.548" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:28:59.548" level="INFO">${python_random_genrated} = {'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.236" endtime="20250923 23:28:59.548"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.549" level="INFO">${complete_data} = {'bookingid': 4321, 'booking': {'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:28:59.548" endtime="20250923 23:28:59.549"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.549" endtime="20250923 23:28:59.550"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:28:59.550" endtime="20250923 23:28:59.551"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:28:59.551" level="INFO">{'bookingid': 4321, 'booking': {'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}}</msg>
+<status status="PASS" starttime="20250923 23:28:59.551" endtime="20250923 23:28:59.551"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.552" level="INFO">${booking_object} = {'firstname': 'ydsuclfc', 'lastname': 'YKXCDb', 'totalprice': 422, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.551" endtime="20250923 23:28:59.552"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:28:59.552" endtime="20250923 23:28:59.553"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:28:59.553" endtime="20250923 23:28:59.554"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.554" endtime="20250923 23:28:59.555"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:28:59.555" endtime="20250923 23:28:59.556"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.556" endtime="20250923 23:28:59.557"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:59.236" endtime="20250923 23:28:59.557"/>
+</iter>
+<iter>
+<var name="${i}">1</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:28:59.557" level="INFO">the random price genrate is  221 qCTDpu urauvvsp
+{'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:28:59.558" level="INFO">${data} = {'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.557" endtime="20250923 23:28:59.558"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:28:59.851" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "urauvvsp", "lastname": "qCTDpu", "totalprice": 221, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:28:59.851" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:58:59 GMT', 'Etag': 'W/"cc-Vs162D4oTozjj70EEIAOE7TL/H8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650339"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650339"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4325,"booking":{"firstname":"urauvvsp","lastname":"qCTDpu","totalprice":221,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:28:59.851" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:28:59.852" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:59.558" endtime="20250923 23:28:59.852"/>
+</kw>
+<msg timestamp="20250923 23:28:59.853" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:28:59.853" level="INFO">${python_random_genrated} = {'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.557" endtime="20250923 23:28:59.853"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.855" level="INFO">${complete_data} = {'bookingid': 4325, 'booking': {'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:28:59.853" endtime="20250923 23:28:59.855"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.855" endtime="20250923 23:28:59.855"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:28:59.855" endtime="20250923 23:28:59.856"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:28:59.857" level="INFO">{'bookingid': 4325, 'booking': {'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}}</msg>
+<status status="PASS" starttime="20250923 23:28:59.856" endtime="20250923 23:28:59.857"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:28:59.858" level="INFO">${booking_object} = {'firstname': 'urauvvsp', 'lastname': 'qCTDpu', 'totalprice': 221, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.857" endtime="20250923 23:28:59.858"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:28:59.858" endtime="20250923 23:28:59.859"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:28:59.859" endtime="20250923 23:28:59.860"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.860" endtime="20250923 23:28:59.861"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:28:59.861" endtime="20250923 23:28:59.862"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:28:59.862" endtime="20250923 23:28:59.863"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:59.557" endtime="20250923 23:28:59.863"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:28:59.864" level="INFO">the random price genrate is  145 JFNCrZ ofncfiox
+{'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:28:59.864" level="INFO">${data} = {'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.863" endtime="20250923 23:28:59.864"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:00.138" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "ofncfiox", "lastname": "JFNCrZ", "totalprice": 145, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:00.138" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:58:59 GMT', 'Etag': 'W/"cc-DV5aa94xywCvCt9iBcHbq0TlylE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650339"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=uM5YcQaAl1Ozwlkipxc7St%2F5L5ZYYhC4v5YRdISQkOo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650339"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4328,"booking":{"firstname":"ofncfiox","lastname":"JFNCrZ","totalprice":145,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:00.139" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:00.139" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:28:59.864" endtime="20250923 23:29:00.139"/>
+</kw>
+<msg timestamp="20250923 23:29:00.140" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:00.140" level="INFO">${python_random_genrated} = {'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:28:59.863" endtime="20250923 23:29:00.140"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.141" level="INFO">${complete_data} = {'bookingid': 4328, 'booking': {'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:29:00.140" endtime="20250923 23:29:00.142"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.142" endtime="20250923 23:29:00.142"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:00.142" endtime="20250923 23:29:00.143"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:00.144" level="INFO">{'bookingid': 4328, 'booking': {'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}}</msg>
+<status status="PASS" starttime="20250923 23:29:00.143" endtime="20250923 23:29:00.144"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.145" level="INFO">${booking_object} = {'firstname': 'ofncfiox', 'lastname': 'JFNCrZ', 'totalprice': 145, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.144" endtime="20250923 23:29:00.145"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:29:00.145" endtime="20250923 23:29:00.147"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.147" endtime="20250923 23:29:00.148"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.148" endtime="20250923 23:29:00.149"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.149" endtime="20250923 23:29:00.150"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.150" endtime="20250923 23:29:00.151"/>
+</kw>
+<status status="PASS" starttime="20250923 23:28:59.863" endtime="20250923 23:29:00.151"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:00.152" level="INFO">the random price genrate is  177 GXNnHM ixcjrpxv
+{'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:00.152" level="INFO">${data} = {'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.152" endtime="20250923 23:29:00.152"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:00.467" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "ixcjrpxv", "lastname": "GXNnHM", "totalprice": 177, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:00.467" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:00 GMT', 'Etag': 'W/"cc-RdbfjLt8jqrBJg3abgir893nBRI"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650340"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650340"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4331,"booking":{"firstname":"ixcjrpxv","lastname":"GXNnHM","totalprice":177,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:00.467" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:00.469" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:00.152" endtime="20250923 23:29:00.469"/>
+</kw>
+<msg timestamp="20250923 23:29:00.469" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:00.469" level="INFO">${python_random_genrated} = {'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.151" endtime="20250923 23:29:00.469"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.471" level="INFO">${complete_data} = {'bookingid': 4331, 'booking': {'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:29:00.470" endtime="20250923 23:29:00.471"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.471" endtime="20250923 23:29:00.471"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:00.471" endtime="20250923 23:29:00.472"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:00.473" level="INFO">{'bookingid': 4331, 'booking': {'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}}</msg>
+<status status="PASS" starttime="20250923 23:29:00.472" endtime="20250923 23:29:00.473"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.473" level="INFO">${booking_object} = {'firstname': 'ixcjrpxv', 'lastname': 'GXNnHM', 'totalprice': 177, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.473" endtime="20250923 23:29:00.473"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:29:00.474" endtime="20250923 23:29:00.475"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.475" endtime="20250923 23:29:00.476"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.476" endtime="20250923 23:29:00.476"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.476" endtime="20250923 23:29:00.477"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.477" endtime="20250923 23:29:00.478"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:00.151" endtime="20250923 23:29:00.478"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:00.479" level="INFO">the random price genrate is  359 pOptnO zfjkdeff
+{'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:00.479" level="INFO">${data} = {'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.479" endtime="20250923 23:29:00.479"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:00.878" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "zfjkdeff", "lastname": "pOptnO", "totalprice": 359, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:00.878" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:00 GMT', 'Etag': 'W/"cc-NhVNivvzKCoR0PQZCvgjTLvRH8k"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650340"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650340"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4335,"booking":{"firstname":"zfjkdeff","lastname":"pOptnO","totalprice":359,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:00.878" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:00.879" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:00.479" endtime="20250923 23:29:00.879"/>
+</kw>
+<msg timestamp="20250923 23:29:00.879" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:00.879" level="INFO">${python_random_genrated} = {'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.478" endtime="20250923 23:29:00.879"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.881" level="INFO">${complete_data} = {'bookingid': 4335, 'booking': {'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additional...</msg>
+<status status="PASS" starttime="20250923 23:29:00.880" endtime="20250923 23:29:00.881"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.881" endtime="20250923 23:29:00.881"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:00.881" endtime="20250923 23:29:00.882"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:00.882" level="INFO">{'bookingid': 4335, 'booking': {'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}}</msg>
+<status status="PASS" starttime="20250923 23:29:00.882" endtime="20250923 23:29:00.882"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:00.883" level="INFO">${booking_object} = {'firstname': 'zfjkdeff', 'lastname': 'pOptnO', 'totalprice': 359, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.883" endtime="20250923 23:29:00.883"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:29:00.884" endtime="20250923 23:29:00.885"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.885" endtime="20250923 23:29:00.885"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.886" endtime="20250923 23:29:00.886"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:00.886" endtime="20250923 23:29:00.887"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_value_prices}</arg>
+<arg>${booking_object["totalprice"]}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20250923 23:29:00.887" endtime="20250923 23:29:00.888"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:00.478" endtime="20250923 23:29:00.888"/>
+</iter>
+<status status="PASS" starttime="20250923 23:28:59.236" endtime="20250923 23:29:00.888"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${list_value_prices}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:00.889" level="INFO">[422, 221, 145, 177, 359]</msg>
+<status status="PASS" starttime="20250923 23:29:00.888" endtime="20250923 23:29:00.889"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${LIST_NEW_BOOKING_IDS}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:00.890" level="INFO">[4321, 4325, 4328, 4331, 4335]</msg>
+<status status="PASS" starttime="20250923 23:29:00.889" endtime="20250923 23:29:00.890"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:00.891" endtime="20250923 23:29:00.891"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:00.890" endtime="20250923 23:29:00.891"/>
+</kw>
+<tag>53633</tag>
+<status status="PASS" starttime="20250923 23:28:59.234" endtime="20250923 23:29:00.892"/>
+</test>
+<test id="s1-t5" name="get booking details valid user id" line="58">
+<kw name="post session so get the booking id">
+<var>${create_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:00.896" level="INFO">the random price genrate is  424 wtBknh twplywfi
+{'firstname': 'twplywfi', 'lastname': 'wtBknh', 'totalprice': 424, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:00.896" level="INFO">${data} = {'firstname': 'twplywfi', 'lastname': 'wtBknh', 'totalprice': 424, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.895" endtime="20250923 23:29:00.896"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:01.328" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "twplywfi", "lastname": "wtBknh", "totalprice": 424, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:01.328" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:00 GMT', 'Etag': 'W/"cc-7j3KuFQ/vnBexHwcGyWFTSZ7h74"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650340"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=xpSABeO3%2BwkLRIxhhM6%2BvRrWSK0zsygSN0Rs%2BlEr3qQ%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650340"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4338,"booking":{"firstname":"twplywfi","lastname":"wtBknh","totalprice":424,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:01.328" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:01.329" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:00.896" endtime="20250923 23:29:01.329"/>
+</kw>
+<msg timestamp="20250923 23:29:01.330" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:01.330" level="INFO">${python_random_genrated} = {'firstname': 'twplywfi', 'lastname': 'wtBknh', 'totalprice': 424, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.895" endtime="20250923 23:29:01.330"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.330" endtime="20250923 23:29:01.331"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.331" endtime="20250923 23:29:01.332"/>
+</kw>
+<msg timestamp="20250923 23:29:01.333" level="INFO">${create_id} = 4338</msg>
+<msg timestamp="20250923 23:29:01.333" level="INFO">${python_random_genrated} = {'firstname': 'twplywfi', 'lastname': 'wtBknh', 'totalprice': 424, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:00.895" endtime="20250923 23:29:01.333"/>
+</kw>
+<kw name="get the seesion" library="create_booking">
+<var>${response}</var>
+<arg>${create_id}</arg>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${responce}</var>
+<arg>${alias}</arg>
+<arg>/booking/${booking_id}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20250923 23:29:01.335" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20250923 23:29:01.900" level="INFO">GET Request : url=https://restful-booker.herokuapp.com/booking/4338 
+ path_url=/booking/4338 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250923 23:29:01.900" level="INFO">GET Response : url=https://restful-booker.herokuapp.com/booking/4338 
+ status=200, reason=OK 
+ headers={'Content-Length': '175', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:01 GMT', 'Etag': 'W/"af-AW8wK5kJzHHSmOkwqzymU3qlLqw"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=8UxwxY0syRsNJr6VqRBDgolA1N7UanW6lFfwxF2Pu7A%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650341"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=8UxwxY0syRsNJr6VqRBDgolA1N7UanW6lFfwxF2Pu7A%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650341"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"firstname":"twplywfi","lastname":"wtBknh","totalprice":424,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"} 
+ </msg>
+<msg timestamp="20250923 23:29:01.900" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:01.901" level="INFO">${responce} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:01.335" endtime="20250923 23:29:01.901"/>
+</kw>
+<msg timestamp="20250923 23:29:01.901" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:01.334" endtime="20250923 23:29:01.901"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>THE DETAILS AFTER GETTING FROM THE ID IS ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:01.903" level="INFO">THE DETAILS AFTER GETTING FROM THE ID IS &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:01.902" endtime="20250923 23:29:01.903"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:01.905" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:01.904" endtime="20250923 23:29:01.905"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{list_of_data}</var>
+<arg>firstname</arg>
+<arg>lastname</arg>
+<arg>totalprice</arg>
+<arg>depositpaid</arg>
+<arg>additionalneeds</arg>
+<arg>bookingdates</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20250923 23:29:01.907" level="INFO">@{list_of_data} = [ firstname | lastname | totalprice | depositpaid | additionalneeds | bookingdates ]</msg>
+<status status="PASS" starttime="20250923 23:29:01.906" endtime="20250923 23:29:01.907"/>
+</kw>
+<for flavor="IN">
+<var>${Each_value}</var>
+<value>@{list_of_data}</value>
+<iter>
+<var name="${Each_value}">firstname</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.908" endtime="20250923 23:29:01.909"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.910" level="INFO">${is_bookingdates} = False</msg>
+<status status="PASS" starttime="20250923 23:29:01.909" endtime="20250923 23:29:01.910"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.910" endtime="20250923 23:29:01.910"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.911" endtime="20250923 23:29:01.911"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.908" endtime="20250923 23:29:01.911"/>
+</iter>
+<iter>
+<var name="${Each_value}">lastname</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.911" endtime="20250923 23:29:01.912"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.912" level="INFO">${is_bookingdates} = False</msg>
+<status status="PASS" starttime="20250923 23:29:01.912" endtime="20250923 23:29:01.912"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.913" endtime="20250923 23:29:01.913"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.913" endtime="20250923 23:29:01.913"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.911" endtime="20250923 23:29:01.913"/>
+</iter>
+<iter>
+<var name="${Each_value}">totalprice</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.913" endtime="20250923 23:29:01.914"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.914" level="INFO">${is_bookingdates} = False</msg>
+<status status="PASS" starttime="20250923 23:29:01.914" endtime="20250923 23:29:01.914"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.915" endtime="20250923 23:29:01.915"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.915" endtime="20250923 23:29:01.915"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.913" endtime="20250923 23:29:01.916"/>
+</iter>
+<iter>
+<var name="${Each_value}">depositpaid</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.916" endtime="20250923 23:29:01.917"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.917" level="INFO">${is_bookingdates} = False</msg>
+<status status="PASS" starttime="20250923 23:29:01.917" endtime="20250923 23:29:01.917"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.917" endtime="20250923 23:29:01.918"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.918" endtime="20250923 23:29:01.918"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.916" endtime="20250923 23:29:01.918"/>
+</iter>
+<iter>
+<var name="${Each_value}">additionalneeds</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.918" endtime="20250923 23:29:01.919"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.919" level="INFO">${is_bookingdates} = False</msg>
+<status status="PASS" starttime="20250923 23:29:01.919" endtime="20250923 23:29:01.919"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.919" endtime="20250923 23:29:01.920"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:01.920" endtime="20250923 23:29:01.920"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.918" endtime="20250923 23:29:01.920"/>
+</iter>
+<iter>
+<var name="${Each_value}">bookingdates</var>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>${Each_value}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.920" endtime="20250923 23:29:01.921"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${is_bookingdates}</var>
+<arg>'${Each_value}' == 'bookingdates'</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250923 23:29:01.922" level="INFO">${is_bookingdates} = True</msg>
+<status status="PASS" starttime="20250923 23:29:01.921" endtime="20250923 23:29:01.922"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkin</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.922" endtime="20250923 23:29:01.923"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.922" endtime="20250923 23:29:01.923"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${is_bookingdates}</arg>
+<arg>Dictionary Should Contain Key</arg>
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()['bookingdates']}</arg>
+<arg>checkout</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:01.924" endtime="20250923 23:29:01.924"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.923" endtime="20250923 23:29:01.924"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.920" endtime="20250923 23:29:01.924"/>
+</iter>
+<status status="PASS" starttime="20250923 23:29:01.907" endtime="20250923 23:29:01.924"/>
+</for>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:01.925" endtime="20250923 23:29:01.925"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:01.925" endtime="20250923 23:29:01.925"/>
+</kw>
+<tag>43536</tag>
+<status status="PASS" starttime="20250923 23:29:00.894" endtime="20250923 23:29:01.926"/>
+</test>
+<test id="s1-t6" name="get booking details by invaild values" line="73">
+<kw name="post session so get the booking id">
+<var>${create_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:01.931" level="INFO">the random price genrate is  189 UlnBVt dtaggajk
+{'firstname': 'dtaggajk', 'lastname': 'UlnBVt', 'totalprice': 189, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:01.931" level="INFO">${data} = {'firstname': 'dtaggajk', 'lastname': 'UlnBVt', 'totalprice': 189, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:01.930" endtime="20250923 23:29:01.931"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:02.513" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "dtaggajk", "lastname": "UlnBVt", "totalprice": 189, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:02.514" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:01 GMT', 'Etag': 'W/"cc-o2T4xo25v8crMLVCQaQYhRMHTSc"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=8UxwxY0syRsNJr6VqRBDgolA1N7UanW6lFfwxF2Pu7A%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650341"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=8UxwxY0syRsNJr6VqRBDgolA1N7UanW6lFfwxF2Pu7A%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650341"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4346,"booking":{"firstname":"dtaggajk","lastname":"UlnBVt","totalprice":189,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:02.514" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:02.514" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:01.931" endtime="20250923 23:29:02.515"/>
+</kw>
+<msg timestamp="20250923 23:29:02.515" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:02.515" level="INFO">${python_random_genrated} = {'firstname': 'dtaggajk', 'lastname': 'UlnBVt', 'totalprice': 189, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:01.930" endtime="20250923 23:29:02.515"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:02.515" endtime="20250923 23:29:02.516"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:02.516" endtime="20250923 23:29:02.517"/>
+</kw>
+<msg timestamp="20250923 23:29:02.518" level="INFO">${create_id} = 4346</msg>
+<msg timestamp="20250923 23:29:02.518" level="INFO">${python_random_genrated} = {'firstname': 'dtaggajk', 'lastname': 'UlnBVt', 'totalprice': 189, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:01.929" endtime="20250923 23:29:02.518"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${invalid_id}</var>
+<arg>${create_id}+567</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20250923 23:29:02.519" level="INFO">${invalid_id} = 4913</msg>
+<status status="PASS" starttime="20250923 23:29:02.518" endtime="20250923 23:29:02.519"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${invalid_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:02.520" level="INFO">4913</msg>
+<status status="PASS" starttime="20250923 23:29:02.519" endtime="20250923 23:29:02.520"/>
+</kw>
+<kw name="get the seesion" library="create_booking">
+<var>${response}</var>
+<arg>${invalid_id}</arg>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${responce}</var>
+<arg>${alias}</arg>
+<arg>/booking/${booking_id}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20250923 23:29:02.520" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20250923 23:29:02.924" level="INFO">GET Request : url=https://restful-booker.herokuapp.com/booking/4913 
+ path_url=/booking/4913 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250923 23:29:02.924" level="INFO">GET Response : url=https://restful-booker.herokuapp.com/booking/4913 
+ status=404, reason=Not Found 
+ headers={'Content-Length': '9', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:02 GMT', 'Etag': 'W/"9-0gXL1ngzMqISxa6S1zx3F4wtLyg"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=r2NJpHGcBK%2BuETERevtyfea6TSJQzP3qPizuCYduWKE%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650342"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=r2NJpHGcBK%2BuETERevtyfea6TSJQzP3qPizuCYduWKE%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650342"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Not Found 
+ </msg>
+<msg timestamp="20250923 23:29:02.924" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:02.925" level="INFO">${responce} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:02.520" endtime="20250923 23:29:02.925"/>
+</kw>
+<msg timestamp="20250923 23:29:02.926" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:02.520" endtime="20250923 23:29:02.926"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${response.status_code} == 200</arg>
+<arg>Should Be Empty</arg>
+<arg>${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:02.927" endtime="20250923 23:29:02.929"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${response.status_code}' == '404'</arg>
+<arg>Log</arg>
+<arg>Booking ID not found (404)</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>Booking ID not found (404)</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:02.932" level="INFO">Booking ID not found (404)</msg>
+<status status="PASS" starttime="20250923 23:29:02.932" endtime="20250923 23:29:02.932"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:02.930" endtime="20250923 23:29:02.932"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:02.934" endtime="20250923 23:29:02.934"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:02.933" endtime="20250923 23:29:02.934"/>
+</kw>
+<tag>45362</tag>
+<status status="PASS" starttime="20250923 23:29:01.928" endtime="20250923 23:29:02.935"/>
+</test>
+<test id="s1-t7" name="get auth and token genartion" line="84">
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:02.939" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:02.939" endtime="20250923 23:29:02.939"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:03.200" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:03.200" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:02 GMT', 'Etag': 'W/"1b-+c0kFIv1ktuKwDOpfz4XnEJHkVQ"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=r2NJpHGcBK%2BuETERevtyfea6TSJQzP3qPizuCYduWKE%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650342"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=r2NJpHGcBK%2BuETERevtyfea6TSJQzP3qPizuCYduWKE%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650342"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"60dad3bad6efc8a"} 
+ </msg>
+<msg timestamp="20250923 23:29:03.200" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:03.201" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:02.940" endtime="20250923 23:29:03.201"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:03.202" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:03.201" endtime="20250923 23:29:03.203"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:03.203" endtime="20250923 23:29:03.204"/>
+</kw>
+<msg timestamp="20250923 23:29:03.204" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:03.204" level="INFO">${token} = 60dad3bad6efc8a</msg>
+<status status="PASS" starttime="20250923 23:29:03.203" endtime="20250923 23:29:03.204"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:03.204" endtime="20250923 23:29:03.205"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:03.205" level="INFO">60dad3bad6efc8a</msg>
+<status status="PASS" starttime="20250923 23:29:03.205" endtime="20250923 23:29:03.205"/>
+</kw>
+<msg timestamp="20250923 23:29:03.205" level="INFO">${token} = 60dad3bad6efc8a</msg>
+<status status="PASS" starttime="20250923 23:29:02.938" endtime="20250923 23:29:03.205"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Token genrate postive ${token}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:03.206" endtime="20250923 23:29:03.207"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:03.209" endtime="20250923 23:29:03.209"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:03.208" endtime="20250923 23:29:03.209"/>
+</kw>
+<tag>45342</tag>
+<status status="PASS" starttime="20250923 23:29:02.937" endtime="20250923 23:29:03.210"/>
+</test>
+<test id="s1-t8" name="verfiy auth and token Wrong username/password" line="90">
+<kw name="Set Variable" library="BuiltIn">
+<var>${invalid_username}</var>
+<arg>invalidusername</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:03.213" level="INFO">${invalid_username} = invalidusername</msg>
+<status status="PASS" starttime="20250923 23:29:03.213" endtime="20250923 23:29:03.213"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${invalid_username}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:03.214" level="INFO">invalidusername</msg>
+<status status="PASS" starttime="20250923 23:29:03.214" endtime="20250923 23:29:03.214"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${user_auth_details}</var>
+<arg>username=${invalid_username}</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:03.217" level="INFO">${user_auth_details} = {'username': 'invalidusername', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:03.216" endtime="20250923 23:29:03.217"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${responces}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${user_auth_details}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:03.544" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '58', 'Content-Type': 'application/json'} 
+ body=b'{"username": "invalidusername", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:03.544" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '28', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:03 GMT', 'Etag': 'W/"1c-J3EiwfZwVQjKTKvpvazUfTni8fI"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650343"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650343"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"reason":"Bad credentials"} 
+ </msg>
+<msg timestamp="20250923 23:29:03.544" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:03.545" level="INFO">${responces} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:03.217" endtime="20250923 23:29:03.545"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${responces.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${responces.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250923 23:29:03.548" level="FAIL">Dictionary does not contain key 'token'.</msg>
+<status status="FAIL" starttime="20250923 23:29:03.547" endtime="20250923 23:29:03.549"/>
+</kw>
+<msg timestamp="20250923 23:29:03.549" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20250923 23:29:03.549" level="INFO">${token} = Dictionary does not contain key 'token'.</msg>
+<status status="PASS" starttime="20250923 23:29:03.546" endtime="20250923 23:29:03.549"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:03.550" endtime="20250923 23:29:03.551"/>
+</kw>
+<kw name="Run Keywords" library="BuiltIn">
+<arg>Should Be Equal As Integers</arg>
+<arg>${responces.status_code}</arg>
+<arg>200</arg>
+<arg>AND</arg>
+<arg>should be equal</arg>
+<arg>${responces.json()["reason"]}</arg>
+<arg>Bad credentials</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${responces.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:03.553" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:03.552" endtime="20250923 23:29:03.553"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${responces.json()["reason"]}</arg>
+<arg>Bad credentials</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250923 23:29:03.553" endtime="20250923 23:29:03.554"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:03.551" endtime="20250923 23:29:03.554"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:03.555" endtime="20250923 23:29:03.556"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:03.555" endtime="20250923 23:29:03.556"/>
+</kw>
+<tag>34567</tag>
+<status status="PASS" starttime="20250923 23:29:03.212" endtime="20250923 23:29:03.556"/>
+</test>
+<test id="s1-t9" name="verify and check the Update Booking (PUT)" line="102">
+<kw name="post session so get the booking id">
+<var>${actaully_booking_exist_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:03.559" level="INFO">the random price genrate is  487 CPlVPv hgqkzjyb
+{'firstname': 'hgqkzjyb', 'lastname': 'CPlVPv', 'totalprice': 487, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:03.559" level="INFO">${data} = {'firstname': 'hgqkzjyb', 'lastname': 'CPlVPv', 'totalprice': 487, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:03.559" endtime="20250923 23:29:03.559"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:03.843" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '188', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "hgqkzjyb", "lastname": "CPlVPv", "totalprice": 487, "depositpaid": true, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:03.844" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '203', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:03 GMT', 'Etag': 'W/"cb-W1IVgMlmwV/b4BON3XS7CRO7R1E"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650343"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650343"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4358,"booking":{"firstname":"hgqkzjyb","lastname":"CPlVPv","totalprice":487,"depositpaid":true,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:03.844" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:03.844" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:03.559" endtime="20250923 23:29:03.844"/>
+</kw>
+<msg timestamp="20250923 23:29:03.845" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:03.845" level="INFO">${python_random_genrated} = {'firstname': 'hgqkzjyb', 'lastname': 'CPlVPv', 'totalprice': 487, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:03.558" endtime="20250923 23:29:03.845"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:03.845" endtime="20250923 23:29:03.846"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:03.846" endtime="20250923 23:29:03.847"/>
+</kw>
+<msg timestamp="20250923 23:29:03.848" level="INFO">${actaully_booking_exist_id} = 4358</msg>
+<msg timestamp="20250923 23:29:03.848" level="INFO">${python_random_genrated} = {'firstname': 'hgqkzjyb', 'lastname': 'CPlVPv', 'totalprice': 487, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:03.558" endtime="20250923 23:29:03.848"/>
+</kw>
+<kw name="Genarate the token and headers json type">
+<var>&amp;{headers}</var>
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:03.850" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:03.849" endtime="20250923 23:29:03.850"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:04.118" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:04.118" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:03 GMT', 'Etag': 'W/"1b-2Lft8B/Yz1CHHrj0hvS6C26cqpE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650343"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=lkC5ko%2F4cd1ekjznVqdSxELBtKgaAQQTeIFG7lZc56I%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650343"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"d64ed6d6b8e2f78"} 
+ </msg>
+<msg timestamp="20250923 23:29:04.118" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:04.119" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:03.850" endtime="20250923 23:29:04.119"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:04.120" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:04.119" endtime="20250923 23:29:04.120"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:04.121" endtime="20250923 23:29:04.121"/>
+</kw>
+<msg timestamp="20250923 23:29:04.121" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:04.122" level="INFO">${token} = d64ed6d6b8e2f78</msg>
+<status status="PASS" starttime="20250923 23:29:04.120" endtime="20250923 23:29:04.122"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:04.122" endtime="20250923 23:29:04.122"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:04.122" level="INFO">d64ed6d6b8e2f78</msg>
+<status status="PASS" starttime="20250923 23:29:04.122" endtime="20250923 23:29:04.122"/>
+</kw>
+<msg timestamp="20250923 23:29:04.122" level="INFO">${token} = d64ed6d6b8e2f78</msg>
+<status status="PASS" starttime="20250923 23:29:03.849" endtime="20250923 23:29:04.122"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Cookie=token=${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:04.123" level="INFO">&amp;{headers} = { Cookie=token=d64ed6d6b8e2f78 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:04.123" endtime="20250923 23:29:04.123"/>
+</kw>
+<msg timestamp="20250923 23:29:04.123" level="INFO">&amp;{headers} = { Cookie=token=d64ed6d6b8e2f78 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:03.849" endtime="20250923 23:29:04.123"/>
+</kw>
+<kw name="Modify the plyload">
+<var>${payload}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{bookingdates}</var>
+<arg>checkin=2018-01-01</arg>
+<arg>checkout=2019-01-01</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:04.125" level="INFO">&amp;{bookingdates} = { checkin=2018-01-01 | checkout=2019-01-01 }</msg>
+<status status="PASS" starttime="20250923 23:29:04.124" endtime="20250923 23:29:04.125"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>firstname=yashwanth</arg>
+<arg>lastname=gowdas</arg>
+<arg>totalprice=111</arg>
+<arg>depositpaid=${True}</arg>
+<arg>bookingdates=${bookingdates}</arg>
+<arg>additionalneeds=Breakfast</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:04.125" level="INFO">&amp;{payload} = { firstname=yashwanth | lastname=gowdas | totalprice=111 | depositpaid=True | bookingdates={'checkin': '2018-01-01', 'checkout': '2019-01-01'} | additionalneeds=Breakfast }</msg>
+<status status="PASS" starttime="20250923 23:29:04.125" endtime="20250923 23:29:04.125"/>
+</kw>
+<msg timestamp="20250923 23:29:04.126" level="INFO">${payload} = {'firstname': 'yashwanth', 'lastname': 'gowdas', 'totalprice': '111', 'depositpaid': True, 'bookingdates': {'checkin': '2018-01-01', 'checkout': '2019-01-01'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:04.124" endtime="20250923 23:29:04.126"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:04.418" level="INFO">PUT Request : url=https://restful-booker.herokuapp.com/booking/4358 
+ path_url=/booking/4358 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=d64ed6d6b8e2f78', 'Content-Type': 'application/json', 'Content-Length': '191'} 
+ body=b'{"firstname": "yashwanth", "lastname": "gowdas", "totalprice": "111", "depositpaid": true, "bookingdates": {"checkin": "2018-01-01", "checkout": "2019-01-01"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:04.418" level="INFO">PUT Response : url=https://restful-booker.herokuapp.com/booking/4358 
+ status=200, reason=OK 
+ headers={'Content-Length': '175', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:04 GMT', 'Etag': 'W/"af-7NYMCROAMe6579ks1U4Jytub63c"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650344"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650344"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"firstname":"yashwanth","lastname":"gowdas","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"} 
+ </msg>
+<msg timestamp="20250923 23:29:04.419" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:04.423" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:04.126" endtime="20250923 23:29:04.424"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:04.425" endtime="20250923 23:29:04.428"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:04.430" endtime="20250923 23:29:04.433"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.json()["firstname"]}</arg>
+<arg>${payload["firstname"]}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20250923 23:29:04.435" endtime="20250923 23:29:04.440"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.json()["lastname"]}</arg>
+<arg>${payload["lastname"]}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20250923 23:29:04.441" endtime="20250923 23:29:04.443"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=403</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:04.766" level="INFO">PUT Request : url=https://restful-booker.herokuapp.com/booking/4358 
+ path_url=/booking/4358 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '191', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "yashwanth", "lastname": "gowdas", "totalprice": "111", "depositpaid": true, "bookingdates": {"checkin": "2018-01-01", "checkout": "2019-01-01"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:04.766" level="INFO">PUT Response : url=https://restful-booker.herokuapp.com/booking/4358 
+ status=403, reason=Forbidden 
+ headers={'Content-Length': '9', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:04 GMT', 'Etag': 'W/"9-PatfYBLj4Um1qTm5zrukoLhNyPU"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650344"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650344"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Forbidden 
+ </msg>
+<msg timestamp="20250923 23:29:04.767" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:04.767" level="INFO">${response} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:04.444" endtime="20250923 23:29:04.767"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:04.769" endtime="20250923 23:29:04.770"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:04.771" endtime="20250923 23:29:04.771"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:04.770" endtime="20250923 23:29:04.771"/>
+</kw>
+<tag>455644</tag>
+<status status="PASS" starttime="20250923 23:29:03.557" endtime="20250923 23:29:04.772"/>
+</test>
+<test id="s1-t10" name="Verify particular text fileds get Partial Update (PATCH)" line="118">
+<kw name="post session so get the booking id">
+<var>${actaully_booking_exist_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:04.775" level="INFO">the random price genrate is  404 UvWhGI hnlmiabt
+{'firstname': 'hnlmiabt', 'lastname': 'UvWhGI', 'totalprice': 404, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:04.775" level="INFO">${data} = {'firstname': 'hnlmiabt', 'lastname': 'UvWhGI', 'totalprice': 404, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:04.774" endtime="20250923 23:29:04.775"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:05.075" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '189', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "hnlmiabt", "lastname": "UvWhGI", "totalprice": 404, "depositpaid": false, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:05.075" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '204', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:04 GMT', 'Etag': 'W/"cc-WYtk26dKkiFOv/8fKQJPBn+TD3A"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650344"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=YutWV2aFOhecBCRLRwQ9e1%2BDnKaxg%2Fy%2BerEDiZfPcvA%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650344"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4373,"booking":{"firstname":"hnlmiabt","lastname":"UvWhGI","totalprice":404,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:05.075" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:05.076" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:04.775" endtime="20250923 23:29:05.076"/>
+</kw>
+<msg timestamp="20250923 23:29:05.077" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:05.077" level="INFO">${python_random_genrated} = {'firstname': 'hnlmiabt', 'lastname': 'UvWhGI', 'totalprice': 404, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:04.774" endtime="20250923 23:29:05.077"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:05.077" endtime="20250923 23:29:05.078"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:05.078" endtime="20250923 23:29:05.079"/>
+</kw>
+<msg timestamp="20250923 23:29:05.080" level="INFO">${actaully_booking_exist_id} = 4373</msg>
+<msg timestamp="20250923 23:29:05.080" level="INFO">${python_random_genrated} = {'firstname': 'hnlmiabt', 'lastname': 'UvWhGI', 'totalprice': 404, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:04.774" endtime="20250923 23:29:05.080"/>
+</kw>
+<kw name="Genarate the token and headers json type">
+<var>&amp;{headers}</var>
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:05.082" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:05.082" endtime="20250923 23:29:05.082"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:05.586" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:05.587" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:05 GMT', 'Etag': 'W/"1b-hoQZPQXaLoT4i0DiV6oIa2gQNZE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650345"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650345"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"47d3202d2650064"} 
+ </msg>
+<msg timestamp="20250923 23:29:05.587" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:05.587" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:05.082" endtime="20250923 23:29:05.587"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:05.589" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:05.588" endtime="20250923 23:29:05.589"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:05.589" endtime="20250923 23:29:05.590"/>
+</kw>
+<msg timestamp="20250923 23:29:05.590" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:05.590" level="INFO">${token} = 47d3202d2650064</msg>
+<status status="PASS" starttime="20250923 23:29:05.589" endtime="20250923 23:29:05.590"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:05.590" endtime="20250923 23:29:05.591"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:05.591" level="INFO">47d3202d2650064</msg>
+<status status="PASS" starttime="20250923 23:29:05.591" endtime="20250923 23:29:05.591"/>
+</kw>
+<msg timestamp="20250923 23:29:05.591" level="INFO">${token} = 47d3202d2650064</msg>
+<status status="PASS" starttime="20250923 23:29:05.081" endtime="20250923 23:29:05.591"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Cookie=token=${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:05.592" level="INFO">&amp;{headers} = { Cookie=token=47d3202d2650064 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:05.591" endtime="20250923 23:29:05.592"/>
+</kw>
+<msg timestamp="20250923 23:29:05.592" level="INFO">&amp;{headers} = { Cookie=token=47d3202d2650064 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:05.081" endtime="20250923 23:29:05.592"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${playload}</var>
+<arg>firstname=yashaswini_yashwanth</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:05.593" level="INFO">${playload} = {'firstname': 'yashaswini_yashwanth'}</msg>
+<status status="PASS" starttime="20250923 23:29:05.593" endtime="20250923 23:29:05.593"/>
+</kw>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<var>${Responces_patch}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${playload}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:05.894" level="INFO">PATCH Request : url=https://restful-booker.herokuapp.com/booking/4373 
+ path_url=/booking/4373 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=47d3202d2650064', 'Content-Type': 'application/json', 'Content-Length': '37'} 
+ body=b'{"firstname": "yashaswini_yashwanth"}' 
+ </msg>
+<msg timestamp="20250923 23:29:05.894" level="INFO">PATCH Response : url=https://restful-booker.herokuapp.com/booking/4373 
+ status=200, reason=OK 
+ headers={'Content-Length': '187', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:05 GMT', 'Etag': 'W/"bb-bmyzwBqDEEodL1Bodz1hQZX8iH0"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650345"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650345"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"firstname":"yashaswini_yashwanth","lastname":"UvWhGI","totalprice":404,"depositpaid":false,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"} 
+ </msg>
+<msg timestamp="20250923 23:29:05.895" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:05.896" level="INFO">${Responces_patch} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:05.593" endtime="20250923 23:29:05.897"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Responces_patch.json()['firstname']}</arg>
+<arg>yashaswini_yashwanth</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250923 23:29:05.898" endtime="20250923 23:29:05.899"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:05.900" endtime="20250923 23:29:05.901"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:05.900" endtime="20250923 23:29:05.901"/>
+</kw>
+<tag>467548</tag>
+<status status="PASS" starttime="20250923 23:29:04.773" endtime="20250923 23:29:05.901"/>
+</test>
+<test id="s1-t11" name="Delete the user_by_id" line="127">
+<kw name="post session so get the booking id">
+<var>${actaully_booking_exist_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:05.905" level="INFO">the random price genrate is  295 hZysWW nnjnsklg
+{'firstname': 'nnjnsklg', 'lastname': 'hZysWW', 'totalprice': 295, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:05.906" level="INFO">${data} = {'firstname': 'nnjnsklg', 'lastname': 'hZysWW', 'totalprice': 295, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:05.905" endtime="20250923 23:29:05.906"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:06.187" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '188', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "nnjnsklg", "lastname": "hZysWW", "totalprice": 295, "depositpaid": true, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:06.187" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '203', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:05 GMT', 'Etag': 'W/"cb-nRvWR8gDsZIRo5hRmdbr9N3Vwvs"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650345"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=14HcMyqYOGKgGJ91tdPWjlRwYYkLavSFBdR0UqZ0dFo%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650345"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4384,"booking":{"firstname":"nnjnsklg","lastname":"hZysWW","totalprice":295,"depositpaid":true,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:06.188" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:06.188" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:05.906" endtime="20250923 23:29:06.189"/>
+</kw>
+<msg timestamp="20250923 23:29:06.189" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:06.189" level="INFO">${python_random_genrated} = {'firstname': 'nnjnsklg', 'lastname': 'hZysWW', 'totalprice': 295, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:05.905" endtime="20250923 23:29:06.189"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:06.189" endtime="20250923 23:29:06.191"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:06.191" endtime="20250923 23:29:06.191"/>
+</kw>
+<msg timestamp="20250923 23:29:06.192" level="INFO">${actaully_booking_exist_id} = 4384</msg>
+<msg timestamp="20250923 23:29:06.192" level="INFO">${python_random_genrated} = {'firstname': 'nnjnsklg', 'lastname': 'hZysWW', 'totalprice': 295, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:05.904" endtime="20250923 23:29:06.192"/>
+</kw>
+<kw name="Genarate the token and headers json type">
+<var>&amp;{headers}</var>
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:06.194" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:06.194" endtime="20250923 23:29:06.194"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:06.612" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:06.612" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:06 GMT', 'Etag': 'W/"1b-Jf0xDFbNIcXbii6ITDKKyy9Nw1Y"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650346"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650346"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"1dd967f67409ffd"} 
+ </msg>
+<msg timestamp="20250923 23:29:06.613" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:06.614" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:06.194" endtime="20250923 23:29:06.614"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:06.615" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:06.614" endtime="20250923 23:29:06.615"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:06.616" endtime="20250923 23:29:06.616"/>
+</kw>
+<msg timestamp="20250923 23:29:06.617" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:06.617" level="INFO">${token} = 1dd967f67409ffd</msg>
+<status status="PASS" starttime="20250923 23:29:06.615" endtime="20250923 23:29:06.617"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:06.617" endtime="20250923 23:29:06.617"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:06.617" level="INFO">1dd967f67409ffd</msg>
+<status status="PASS" starttime="20250923 23:29:06.617" endtime="20250923 23:29:06.618"/>
+</kw>
+<msg timestamp="20250923 23:29:06.618" level="INFO">${token} = 1dd967f67409ffd</msg>
+<status status="PASS" starttime="20250923 23:29:06.193" endtime="20250923 23:29:06.618"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Cookie=token=${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:06.618" level="INFO">&amp;{headers} = { Cookie=token=1dd967f67409ffd | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:06.618" endtime="20250923 23:29:06.618"/>
+</kw>
+<msg timestamp="20250923 23:29:06.619" level="INFO">&amp;{headers} = { Cookie=token=1dd967f67409ffd | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:06.193" endtime="20250923 23:29:06.619"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${responce}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:06.917" level="INFO">DELETE Request : url=https://restful-booker.herokuapp.com/booking/4384 
+ path_url=/booking/4384 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=1dd967f67409ffd', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250923 23:29:06.918" level="INFO">DELETE Response : url=https://restful-booker.herokuapp.com/booking/4384 
+ status=201, reason=Created 
+ headers={'Content-Length': '7', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:06 GMT', 'Etag': 'W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650346"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650346"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Created 
+ </msg>
+<msg timestamp="20250923 23:29:06.918" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:06.919" level="INFO">${responce} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:06.619" endtime="20250923 23:29:06.919"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>the status code after the delete the data ${responce.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:06.921" level="INFO">the status code after the delete the data 201</msg>
+<status status="PASS" starttime="20250923 23:29:06.920" endtime="20250923 23:29:06.921"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${responce.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:06.924" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:06.923" endtime="20250923 23:29:06.924"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=405</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:07.203" level="INFO">DELETE Request : url=https://restful-booker.herokuapp.com/booking/4384 
+ path_url=/booking/4384 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=1dd967f67409ffd', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250923 23:29:07.203" level="INFO">DELETE Response : url=https://restful-booker.herokuapp.com/booking/4384 
+ status=405, reason=Method Not Allowed 
+ headers={'Content-Length': '18', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:06 GMT', 'Etag': 'W/"12-UGJMK66P4abaBlq0vKHJaCKuGCA"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650346"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=N5PMgRt3uQlTyALH5%2FmNFUra3itigXzKC8LAUbxWMaM%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650346"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Method Not Allowed 
+ </msg>
+<msg timestamp="20250923 23:29:07.203" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:07.204" level="INFO">${response} = &lt;Response [405]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:06.925" endtime="20250923 23:29:07.204"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${response.status_code} == 404</arg>
+<arg>Log</arg>
+<arg>Booking already deleted</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:07.205" endtime="20250923 23:29:07.206"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${response.status_code} == 405</arg>
+<arg>Log</arg>
+<arg>Server does not allow second delete</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>Server does not allow second delete</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:07.208" level="INFO">Server does not allow second delete</msg>
+<status status="PASS" starttime="20250923 23:29:07.208" endtime="20250923 23:29:07.209"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:07.207" endtime="20250923 23:29:07.209"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:07.210" endtime="20250923 23:29:07.210"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:07.210" endtime="20250923 23:29:07.210"/>
+</kw>
+<tag>98761</tag>
+<status status="PASS" starttime="20250923 23:29:05.903" endtime="20250923 23:29:07.212"/>
+</test>
+<test id="s1-t12" name="delete the details invalid token" line="142">
+<kw name="Genrate invalid token">
+<var>${invalid_token_headers}</var>
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:07.217" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:07.216" endtime="20250923 23:29:07.217"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:07.481" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:07.481" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:07 GMT', 'Etag': 'W/"1b-sN+9IuKR4WBEEjzfvKAyJTBDeQU"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650347"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650347"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"e271daf937df889"} 
+ </msg>
+<msg timestamp="20250923 23:29:07.482" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:07.482" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:07.217" endtime="20250923 23:29:07.482"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:07.483" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:07.482" endtime="20250923 23:29:07.484"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:07.484" endtime="20250923 23:29:07.485"/>
+</kw>
+<msg timestamp="20250923 23:29:07.485" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:07.485" level="INFO">${token} = e271daf937df889</msg>
+<status status="PASS" starttime="20250923 23:29:07.484" endtime="20250923 23:29:07.485"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:07.485" endtime="20250923 23:29:07.485"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:07.486" level="INFO">e271daf937df889</msg>
+<status status="PASS" starttime="20250923 23:29:07.485" endtime="20250923 23:29:07.486"/>
+</kw>
+<msg timestamp="20250923 23:29:07.486" level="INFO">${token} = e271daf937df889</msg>
+<status status="PASS" starttime="20250923 23:29:07.216" endtime="20250923 23:29:07.486"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${invalid}</var>
+<arg>${token}invalid</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250923 23:29:07.486" level="INFO">${invalid} = e271daf937df889invalid</msg>
+<status status="PASS" starttime="20250923 23:29:07.486" endtime="20250923 23:29:07.486"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Cookie=token=${invalid}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:07.487" level="INFO">&amp;{headers} = { Cookie=token=e271daf937df889invalid | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:07.486" endtime="20250923 23:29:07.487"/>
+</kw>
+<msg timestamp="20250923 23:29:07.487" level="INFO">${invalid_token_headers} = {'Cookie': 'token=e271daf937df889invalid', 'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20250923 23:29:07.216" endtime="20250923 23:29:07.487"/>
+</kw>
+<kw name="post session so get the booking id">
+<var>${actaully_booking_exist_id}</var>
+<var>${python_random_genrated}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250923 23:29:07.488" level="INFO">the random price genrate is  135 SXhlRs pygjuchx
+{'firstname': 'pygjuchx', 'lastname': 'SXhlRs', 'totalprice': 135, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250923 23:29:07.488" level="INFO">${data} = {'firstname': 'pygjuchx', 'lastname': 'SXhlRs', 'totalprice': 135, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:07.488" endtime="20250923 23:29:07.488"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:07.775" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '188', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "pygjuchx", "lastname": "SXhlRs", "totalprice": 135, "depositpaid": true, "bookingdates": {"checkin": "2025-09-24", "checkout": "2025-09-26"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:07.775" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '203', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:07 GMT', 'Etag': 'W/"cb-dPATkVMm39IFdk4Fx0Kf4bi+y2M"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650347"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650347"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4398,"booking":{"firstname":"pygjuchx","lastname":"SXhlRs","totalprice":135,"depositpaid":true,"bookingdates":{"checkin":"2025-09-24","checkout":"2025-09-26"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:07.775" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:07.776" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:07.488" endtime="20250923 23:29:07.776"/>
+</kw>
+<msg timestamp="20250923 23:29:07.776" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250923 23:29:07.776" level="INFO">${python_random_genrated} = {'firstname': 'pygjuchx', 'lastname': 'SXhlRs', 'totalprice': 135, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:07.487" endtime="20250923 23:29:07.776"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:07.777" endtime="20250923 23:29:07.777"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250923 23:29:07.777" endtime="20250923 23:29:07.777"/>
+</kw>
+<msg timestamp="20250923 23:29:07.778" level="INFO">${actaully_booking_exist_id} = 4398</msg>
+<msg timestamp="20250923 23:29:07.778" level="INFO">${python_random_genrated} = {'firstname': 'pygjuchx', 'lastname': 'SXhlRs', 'totalprice': 135, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-24', 'checkout': '2025-09-26'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:07.487" endtime="20250923 23:29:07.778"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${responce}</var>
+<arg>${alias}</arg>
+<arg>/booking/${actaully_booking_exist_id}</arg>
+<arg>headers=${invalid_token_headers}</arg>
+<arg>expected_status=403</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:08.056" level="INFO">DELETE Request : url=https://restful-booker.herokuapp.com/booking/4398 
+ path_url=/booking/4398 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=e271daf937df889invalid', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250923 23:29:08.057" level="INFO">DELETE Response : url=https://restful-booker.herokuapp.com/booking/4398 
+ status=403, reason=Forbidden 
+ headers={'Content-Length': '9', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:07 GMT', 'Etag': 'W/"9-PatfYBLj4Um1qTm5zrukoLhNyPU"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650347"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=2vAZB7LPpBTVr3nYpZQvSQg1vV2oygaxZDrVDvgMKiI%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650347"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Forbidden 
+ </msg>
+<msg timestamp="20250923 23:29:08.057" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:08.057" level="INFO">${responce} = &lt;Response [403]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:07.778" endtime="20250923 23:29:08.057"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The responce from the invalid token is the ${responce.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:08.059" level="INFO">The responce from the invalid token is the 403</msg>
+<status status="PASS" starttime="20250923 23:29:08.058" endtime="20250923 23:29:08.059"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn" type="TEARDOWN">
+<arg>Session Exists</arg>
+<arg>${alias}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Session Exists" library="RequestsLibrary">
+<arg>${alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" starttime="20250923 23:29:08.060" endtime="20250923 23:29:08.060"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:08.059" endtime="20250923 23:29:08.060"/>
+</kw>
+<tag>56325</tag>
+<status status="PASS" starttime="20250923 23:29:07.215" endtime="20250923 23:29:08.061"/>
+</test>
+<test id="s1-t13" name="Negative &amp; Edge Cases for name and data type" line="158">
+<kw name="Modify the plyload">
+<var>${payload}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{bookingdates}</var>
+<arg>checkin=2018-01-01</arg>
+<arg>checkout=2019-01-01</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:08.062" level="INFO">&amp;{bookingdates} = { checkin=2018-01-01 | checkout=2019-01-01 }</msg>
+<status status="PASS" starttime="20250923 23:29:08.062" endtime="20250923 23:29:08.062"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>firstname=yashwanth</arg>
+<arg>lastname=gowdas</arg>
+<arg>totalprice=111</arg>
+<arg>depositpaid=${True}</arg>
+<arg>bookingdates=${bookingdates}</arg>
+<arg>additionalneeds=Breakfast</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:08.062" level="INFO">&amp;{payload} = { firstname=yashwanth | lastname=gowdas | totalprice=111 | depositpaid=True | bookingdates={'checkin': '2018-01-01', 'checkout': '2019-01-01'} | additionalneeds=Breakfast }</msg>
+<status status="PASS" starttime="20250923 23:29:08.062" endtime="20250923 23:29:08.062"/>
+</kw>
+<msg timestamp="20250923 23:29:08.062" level="INFO">${payload} = {'firstname': 'yashwanth', 'lastname': 'gowdas', 'totalprice': '111', 'depositpaid': True, 'bookingdates': {'checkin': '2018-01-01', 'checkout': '2019-01-01'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250923 23:29:08.062" endtime="20250923 23:29:08.063"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${payload}</arg>
+<arg>firstname=</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:08.063" endtime="20250923 23:29:08.064"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${payload}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:08.064" endtime="20250923 23:29:08.065"/>
+</kw>
+<kw name="Genarate the token and headers json type">
+<var>&amp;{headers}</var>
+<kw name="genarting basic token" library="common_api_key">
+<var>${token}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>username=admin</arg>
+<arg>password=password123</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:08.066" level="INFO">${payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<status status="PASS" starttime="20250923 23:29:08.065" endtime="20250923 23:29:08.066"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/auth</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:08.324" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/auth 
+ path_url=/auth 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"username": "admin", "password": "password123"}' 
+ </msg>
+<msg timestamp="20250923 23:29:08.324" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/auth 
+ status=200, reason=OK 
+ headers={'Content-Length': '27', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:08 GMT', 'Etag': 'W/"1b-m5s1mdihzlBIRmBbDCyLOThZV/w"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650348"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650348"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"token":"f789bd51b66b0f8"} 
+ </msg>
+<msg timestamp="20250923 23:29:08.325" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:08.325" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:08.066" endtime="20250923 23:29:08.325"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:08.327" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:08.326" endtime="20250923 23:29:08.327"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${token}</var>
+<arg>Get From Dictionary</arg>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get From Dictionary" library="Collections">
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20250923 23:29:08.327" endtime="20250923 23:29:08.328"/>
+</kw>
+<msg timestamp="20250923 23:29:08.328" level="INFO">${status} = PASS</msg>
+<msg timestamp="20250923 23:29:08.328" level="INFO">${token} = f789bd51b66b0f8</msg>
+<status status="PASS" starttime="20250923 23:29:08.327" endtime="20250923 23:29:08.328"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'FAIL'</arg>
+<arg>Fail</arg>
+<arg>Token not found in response. Got: ${response.text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20250923 23:29:08.328" endtime="20250923 23:29:08.328"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:08.329" level="INFO">f789bd51b66b0f8</msg>
+<status status="PASS" starttime="20250923 23:29:08.328" endtime="20250923 23:29:08.329"/>
+</kw>
+<msg timestamp="20250923 23:29:08.329" level="INFO">${token} = f789bd51b66b0f8</msg>
+<status status="PASS" starttime="20250923 23:29:08.065" endtime="20250923 23:29:08.329"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Cookie=token=${token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250923 23:29:08.329" level="INFO">&amp;{headers} = { Cookie=token=f789bd51b66b0f8 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:08.329" endtime="20250923 23:29:08.329"/>
+</kw>
+<msg timestamp="20250923 23:29:08.330" level="INFO">&amp;{headers} = { Cookie=token=f789bd51b66b0f8 | Content-Type=application/json }</msg>
+<status status="PASS" starttime="20250923 23:29:08.065" endtime="20250923 23:29:08.330"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${responces}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:08.761" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=f789bd51b66b0f8', 'Content-Type': 'application/json', 'Content-Length': '182'} 
+ body=b'{"firstname": "", "lastname": "gowdas", "totalprice": "111", "depositpaid": true, "bookingdates": {"checkin": "2018-01-01", "checkout": "2019-01-01"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:08.761" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '195', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:08 GMT', 'Etag': 'W/"c3-sl4V/JVT0JW0ezKXYtMjofvAtk4"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650348"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650348"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":4409,"booking":{"firstname":"","lastname":"gowdas","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250923 23:29:08.761" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:08.762" level="INFO">${responces} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:08.331" endtime="20250923 23:29:08.762"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${responces.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250923 23:29:08.763" endtime="20250923 23:29:08.764"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${responces.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250923 23:29:08.765" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250923 23:29:08.765" endtime="20250923 23:29:08.765"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${integer}</var>
+<arg>5</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20250923 23:29:08.767" level="INFO">${integer} = 5</msg>
+<status status="PASS" starttime="20250923 23:29:08.766" endtime="20250923 23:29:08.767"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${payload}</arg>
+<arg>firstname=${integer}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20250923 23:29:08.768" endtime="20250923 23:29:08.768"/>
+</kw>
+<kw name="Run Keyword And Warn On Failure" library="BuiltIn">
+<var>${status}</var>
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<doc>Runs the specified keyword logs a warning if the keyword fails.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250923 23:29:09.045" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'token=f789bd51b66b0f8', 'Content-Type': 'application/json', 'Content-Length': '181'} 
+ body=b'{"firstname": 5, "lastname": "gowdas", "totalprice": "111", "depositpaid": true, "bookingdates": {"checkin": "2018-01-01", "checkout": "2019-01-01"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250923 23:29:09.045" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=500, reason=Internal Server Error 
+ headers={'Content-Length': '21', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 23 Sep 2025 17:59:08 GMT', 'Etag': 'W/"15-/6VXivhc2MKdLfIkLcUE47K6aH0"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1758650348"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Aw%2FN2Cz%2Fo9qCsV9Zot2VuSOmw3TfyqHPCC5dpnsayJU%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1758650348"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Internal Server Error 
+ </msg>
+<msg timestamp="20250923 23:29:09.045" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250923 23:29:09.046" level="FAIL">HTTPError: 500 Server Error: Internal Server Error for url: https://restful-booker.herokuapp.com/booking</msg>
+<status status="FAIL" starttime="20250923 23:29:08.770" endtime="20250923 23:29:09.051"/>
+</kw>
+<msg timestamp="20250923 23:29:09.052" level="WARN">Executing keyword 'POST On Session' failed:
+HTTPError: 500 Server Error: Internal Server Error for url: https://restful-booker.herokuapp.com/booking</msg>
+<msg timestamp="20250923 23:29:09.054" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20250923 23:29:09.054" level="INFO">${response} = HTTPError: 500 Server Error: Internal Server Error for url: https://restful-booker.herokuapp.com/booking</msg>
+<status status="PASS" starttime="20250923 23:29:08.770" endtime="20250923 23:29:09.054"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Keyword status: ${status}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:09.055" level="INFO">Keyword status: FAIL</msg>
+<status status="PASS" starttime="20250923 23:29:09.055" endtime="20250923 23:29:09.055"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'PASS'</arg>
+<arg>Log</arg>
+<arg>HTTP Status Code: ${response.status_code}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>Response failed, returned string: ${response}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>Response failed, returned string: ${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250923 23:29:09.057" level="INFO">Response failed, returned string: HTTPError: 500 Server Error: Internal Server Error for url: https://restful-booker.herokuapp.com/booking</msg>
+<status status="PASS" starttime="20250923 23:29:09.057" endtime="20250923 23:29:09.057"/>
+</kw>
+<status status="PASS" starttime="20250923 23:29:09.056" endtime="20250923 23:29:09.057"/>
+</kw>
+<tag>64388</tag>
+<status status="PASS" starttime="20250923 23:29:08.061" endtime="20250923 23:29:09.058"/>
+</test>
+<status status="FAIL" starttime="20250923 23:28:56.079" endtime="20250923 23:29:09.061"/>
+</suite>
+<statistics>
+<total>
+<stat pass="12" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">132345</stat>
+<stat pass="1" fail="0" skip="0">134445</stat>
+<stat pass="1" fail="0" skip="0">34567</stat>
+<stat pass="1" fail="0" skip="0">43536</stat>
+<stat pass="1" fail="0" skip="0">45342</stat>
+<stat pass="1" fail="0" skip="0">45362</stat>
+<stat pass="1" fail="0" skip="0">455644</stat>
+<stat pass="1" fail="0" skip="0">467548</stat>
+<stat pass="1" fail="0" skip="0">53633</stat>
+<stat pass="1" fail="0" skip="0">56325</stat>
+<stat pass="1" fail="0" skip="0">64388</stat>
+<stat pass="0" fail="1" skip="0">653461</stat>
+<stat pass="1" fail="0" skip="0">98761</stat>
+</tag>
+<suite>
+<stat pass="12" fail="1" skip="0" id="s1" name="Restful-Booker API">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20250923 23:29:01.335" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20250923 23:29:02.520" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20250923 23:29:09.052" level="WARN">Executing keyword 'POST On Session' failed:
+HTTPError: 500 Server Error: Internal Server Error for url: https://restful-booker.herokuapp.com/booking</msg>
+</errors>
+</robot>

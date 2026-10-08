@@ -1,0 +1,40 @@
+{
+  "environments": {
+    "staging": {
+      "base_url": "https://www.hotstar.com",
+      "api_base_url": "https://api.hotstar.com"
+    },
+    "production": {
+      "base_url": "https://www.hotstar.com",
+      "api_base_url": "https://api.hotstar.com"
+    }
+  },
+  "browser": {
+    "default": "chrome"
+  },
+  "timeouts": {
+    "implicit_wait": 5,
+    "explicit_wait": 15,
+    "page_load": 30
+  },
+  "test_data": {
+    "valid_user": {
+      "email": "testuser@example.com",
+      "password": "Test@1234"
+    },
+    "premium_user": {
+      "email": "premiumuser@example.com",
+      "password": "Premium@1234"
+    },
+    "invalid_user": {
+      "email": "wrong@example.com",
+      "password": "WrongPass999"
+    }
+  },
+  "content": {
+    "movie_title": "Animal",
+    "series_title": "Aarya",
+    "live_channel": "Star Sports 1",
+    "search_keyword": "Avengers"
+  }
+}

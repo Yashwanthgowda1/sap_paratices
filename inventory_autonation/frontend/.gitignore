@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+build/
+.npm
+
+# Environment — never commit
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db

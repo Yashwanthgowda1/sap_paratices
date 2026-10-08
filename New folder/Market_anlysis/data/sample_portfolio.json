@@ -1,0 +1,17 @@
+{
+  "profile": {
+    "name": "Yashwanth",
+    "age": 26,
+    "income_per_year": 1800000,
+    "risk_appetite": "moderate",
+    "goal": "wealth_creation",
+    "time_horizon_years": 5,
+    "tax_regime": "new",
+    "slab_rate": 0.30,
+    "sec_80c_used": 85000,
+    "sec_80ccd1b_used": 0,
+    "preferred_sectors": ["IT", "BFSI", "Heath care", "Banking"],
+    "avoid_sectors": ["tobacco", "gambling"]
+  },
+  "holdings": []
+}

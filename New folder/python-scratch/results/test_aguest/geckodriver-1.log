@@ -1,0 +1,9 @@
+1786163521179	geckodriver	INFO	Listening on 127.0.0.1:51228
+1786163521787	mozrunner::runner	INFO	Running command: "C:\\Users\\C5403671\\.cache\\selenium\\firefox\\win64\\153.0.3\\firefox.exe" "--marionette" "--remote-debug ... "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\C5403671\\AppData\\Local\\Temp\\rust_mozprofileXaZV4a"
+Dynamically enable window occlusion 0
+1786163525918	Marionette	INFO	Marionette enabled
+1786163526076	Marionette	INFO	Listening on port 55609
+Read port: 55609
+WebDriver BiDi listening on ws://127.0.0.1:51229
+1786163526391	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.

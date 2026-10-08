@@ -1,0 +1,447 @@
+{
+  "time_date": {
+    "text": "Time & Date",
+    "xpath": "//android.widget.TextView[@text='Time & Date']",
+    "xpath1": "//android.widget.TextView[@text='Time and Date']"
+  },
+  "time_zone": {
+    "text": "Time Zone",
+    "xpath": "//android.widget.TextView[@text='Time Zone']"
+  },
+  "ind_time": {
+    "text": "+5:30",
+    "xpath": "//android.widget.TextView[@text='+5:30']"
+  },
+  "ok": {
+    "command": "new UiSelector().textContains(\"OK\")",
+    "id": "com.yealink.setting:id/yad_button1",
+    "id1": "com.solaborate.teamssetting:id/btnRebootOk",
+    "xpath": "//*[@text='OK' or @text='OKAY' or @text='ok']"
+  },
+  "california_ok": {
+    "text": "OK"
+  },
+  "back_to_devicesettings": {
+    "text": "\uE924",
+    "xpath": "//android.widget.TextView[@text='\uE924']"
+  },
+  "back_to_settings": {
+    "text": "\uE924",
+    "xpath": "//android.widget.TextView[@text='\uE924']"
+  },
+  "phone_lock": {
+    "text": "Phone Lock",
+    "xpath": "//android.widget.TextView[@text='Phone Lock' or @text='Security']",
+    "xpath1": "//android.widget.RelativeLayout[contains(@index,'11')]/android.widget.TextView[contains(@index,'0')]"
+  },
+  "sacramento_sign_out": {
+    "xpath": "//android.widget.TextView[@text='Admin Password']",
+    "xpath1": "//android.widget.TextView[@text='Sign out']",
+    "xpath2": "//android.widget.TextView[@text='Account sign out']"
+  },
+  "current_time_zone": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'2')]/android.widget.RelativeLayout/android.widget.TextView[contains(@index,'1')]",
+    "xpath1": "//android.widget.LinearLayout[contains(@index,'3')]/android.widget.RelativeLayout/android.widget.TextView[contains(@index,'1')]",
+    "xpath2": "//android.widget.FrameLayout[contains(@index,'1')]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout[contains(@index,'6')]/android.widget.TextView[contains(@index,'1')]",
+    "id": "com.yealink.setting:id/tv_choice"
+  },
+  "date_time": {
+    "text": "Date & Time",
+    "xpath": "//android.widget.TextView[@text='Date & Time']",
+    "xpath1": "//android.widget.TextView[@text='Date & time']"
+  },
+  "timezone_xpath": {
+    "xpath": "//android.widget.TextView[@text='timezone_replace']",
+    "xpath1": "//android.widget.CheckedTextView[@text='timezone_replace']"
+  },
+  "timeformat_toggle_btn": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'4')]/android.widget.LinearLayout/android.widget.Switch[contains(@index,'0')]",
+    "xpath1": "//android.widget.Switch[contains(@index,'0')",
+    "xpath2": "//android.widget.RelativeLayout[contains(@index,'8')]/android.widget.Switch[contains(@index,'2')]"
+  },
+  "timeformat_btn": {
+    "xpath": "//android.widget.TextView[@text='Time Format']"
+  },
+  "save_btn": {
+    "xpath": "//*[@text='SAVE' or @text='Save']"
+  },
+  "lock_enable_toggle": {
+    "xpath": "//android.widget.Switch"
+  },
+  "new_pin": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'1')]/android.widget.LinearLayout/android.widget.EditText[contains(@index,'1')]"
+  },
+  "confirm_pin": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'2')]/android.widget.LinearLayout/android.widget.EditText[contains(@index,'1')]"
+  },
+  "idle_time_set": {
+    "xpath": "//android.widget.TextView[@text='Idle time-out']"
+  },
+  "30s_idle_time": {
+    "xpath": "//android.widget.TextView[@text='30s']"
+  },
+  "pin_save_btn": {
+    "text": ".",
+    "xpath": "//android.widget.RelativeLayout[contains(@index,'0')]/android.widget.TextView[contains(@index,'2')]"
+  },
+  "phone_lock_icon": {
+    "id": "com.android.systemui:id/tv_lock_icon"
+  },
+  "phone_unlock_emergency_call": {
+    "id": "com.android.systemui:id/tv_unlock_emergency_call",
+    "id1": "com.android.systemui:id/emergency_call_button"
+  },
+  "emergency_call_head": {
+    "id": "com.microsoft.skype.teams.ipphone:id/dial_pad_emergency_calling_label"
+  },
+  "place_call_btn": {
+    "id": "com.microsoft.skype.teams.ipphone:id/place_call"
+  },
+  "passward_text_field": {
+    "xpath": "//android.widget.RelativeLayout[contains(@index,'0')]/android.widget.EditText[contains(@index,'2')]",
+    "xpath1": "//android.widget.EditText[@text='Enter Unlock PIN']",
+    "xpath2": "//android.widget.LinearLayout[contains(@index,'0')]/android.widget.EditText[contains(@index,'1')]",
+    "xpath3": "//android.widget.LinearLayout[contains(@index,'1')]/android.widget.EditText[contains(@index,'0')]"
+  },
+  "unlock_btn": {
+    "xpath": "//android.widget.TextView[@text='Unlock']"
+  },
+  "digital_clock": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'0')]/android.widget.TextView"
+  },
+  "swipe_up_to_unlock": {
+    "xpath": "//android.widget.TextView[@text='Swipe up to unlock']"
+  },
+  "security_btn": {
+    "xpath": "//android.widget.TextView[@text='Security']"
+  },
+  "Screen_lock": {
+    "xpath": "//android.widget.TextView[@text='Screen lock']"
+  },
+  "none_option": {
+    "xpath": "//android.widget.TextView[@text='None']"
+  },
+  "yes_remove_btn": {
+    "xpath": "//android.widget.Button[@text='YES, REMOVE']"
+  },
+  "Delete_screen_lock": {
+    "xpath": "//android.widget.TextView[@text='Delete screen lock?']"
+  },
+  "Delete_btn": {
+    "xpath": "//android.widget.Button[@text='DELETE']"
+  },
+  "Password_option": {
+    "xpath": "//android.widget.TextView[@text='Password']"
+  },
+  "Pin_option": {
+    "xpath": "//android.widget.TextView[@text='PIN']"
+  },
+  "setting_btn": {
+    "id": "com.android.settings:id/settings_button"
+  },
+  "Lock_after_screen_timeout": {
+    "xpath": "//android.widget.TextView[@text='Lock after screen timeout']"
+  },
+  "Automatic_lock_option": {
+    "xpath": "//android.widget.TextView[@text='Automatically lock']"
+  },
+  "Immediately_option": {
+    "xpath": "//android.widget.CheckedTextView[@text='Immediately']"
+  },
+  "Display_btn": {
+    "xpath": "//android.widget.TextView[@text='Display']"
+  },
+  "Screen_timeout": {
+    "xpath": "//android.widget.TextView[@text='Screen timeout']"
+  },
+  "sleep_option": {
+    "xpath": "//android.widget.TextView[@text='Sleep']"
+  },
+  "5s_timeout_time": {
+    "xpath": "//android.widget.CheckedTextView[@resource-id='com.android.settings:id/text1' and @text='5 seconds']"
+  },
+  "30s_sleep_time": {
+    "xpath": "//android.widget.CheckedTextView[@text='30 seconds']",
+    "xpath1": "//android.widget.TextView[@resource-id='android:id/title' and @text='30 seconds']"
+  },
+  "10m_sleep_time": {
+    "xpath": "//android.widget.CheckedTextView[@text='10 minutes'] | //android.widget.TextView[@text='10 minutes']"
+  },
+  "30m_sleep_time": {
+    "xpath": "//android.widget.TextView[@resource-id='android:id/title' and @text='30 minutes']"
+  },
+  "lock_icon": {
+    "id": "com.android.systemui:id/lock_icon"
+  },
+  "phn_lock_timeout": {
+    "xpath": "//android.widget.TextView[@text='Phone Lock Timeout']"
+  },
+  "phn_lock_pin": {
+    "xpath": "//android.widget.TextView[@text='Phone Lock PIN']"
+  },
+  "1m_sleep_time": {
+    "xpath": "//android.widget.CheckedTextView[@text='1 minute']"
+  },
+  "next_btn": {
+    "text": "NEXT",
+    "xpath": "//android.widget.Button[@text='NEXT']"
+  },
+  "time_format": {
+    "xpath": "//android.widget.LinearLayout[contains(@index,'11')]/android.widget.RelativeLayout/android.widget.TextView[contains(@index,'1')]"
+  },
+  "fre_partner_settings": {
+    "id": "com.microsoft.skype.teams.ipphone:id/fre_partner_settings"
+  },
+  "device_settings_text_view": {
+    "xpath": "//android.widget.TextView[@text='Device Settings']"
+  },
+  "sign_in_to_make_an_emergency_call": {
+    "id": "com.microsoft.skype.teams.ipphone:id/sign_in_required_label",
+    "xpath": "//android.widget.TextView[@text='Sign in to make an emergency call.']"
+  },
+  "edit_text_number_pin": {
+    "id": "com.logitech.collabos.lockscreen:id/editTextPassword",
+    "id1": "com.logitech.collabos.lockscreen:id/editTextNumberPin"
+  },
+  "system_settings": {
+    "xpath": "//android.widget.TextView[@text='System']",
+    "id": "com.logitech.videocollaboration.froggersettings:id/txt_tile_label",
+    "command": "new UiSelector().textContains(\"System Settings\")"
+  },
+  "sign_out_screen_title": {
+    "id": "com.logitech.videocollaboration.froggersettings:id/txt_screen_title"
+  },
+  "admin_sign_out": {
+    "id": "com.logitech.videocollaboration.froggersettings:id/btn_1",
+    "xpath": "//android.widget.Button[@text='Sign out' or @text='Sign Out']",
+    "xpath1": "//android.widget.TextView[@text='Admin Sign out']"
+    },
+  "time_zone_popup_title": {
+    "xpath": "//android.widget.TextView[@text='Use system time zone']"
+  },
+  "admin_settings": {
+    "id": "com.crestron.settings:id/activity_home_admin_button",
+    "xpath": "//android.widget.TextView[@text='Admin Settings']"
+  },
+  "michigan_admin_signin": {
+    "id": "com.neatframe.home:id/adminButton",
+    "xpath": "//android.widget.Button[@text='Admin sign in' or @text='Signed in as admin']"
+  },
+  "user_sign_out": {
+    "xpath": "//android.widget.TextView[@text='User Sign Out' or @text='Account Signout']",
+    "id": "com.crestron.settings:id/activity_admin_admin_sign_out"
+  },
+  "user_sign_out_btn": {
+    "id": "com.crestron.settings:id/fragment_admin_sign_out_button",
+    "id1": "com.crestron.settings:id/fragment_open_calling_button",
+    "xpath": "//android.widget.Button[@text='User Sign Out']"
+  },
+  "user_sign_out_yes": {
+    "id": "com.crestron.settings:id/view_dialog_popup_positive_button"
+  },
+  "calling_button": {
+    "id": "com.crestron.settings:id/fragment_calling_button",
+    "xpath": "//android.widget.Button[@text='Calling']"
+  },
+  "home_button": {
+    "xpath": "//android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/label' and @text='Home']"
+  },
+  "home_screen_title": {
+    "xpath": "//android.widget.TextView[@text='Home Screen']"
+  },
+  "default_home_screen_checked_icon": {
+    "xpath": "(//android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/checkedRadioIcon'])"
+  },
+  "admin_settings_yes": {
+    "xpath": "//android.widget.TextView[@text='YES']"
+  },
+  "submit_button": {
+    "id": "com.logitech.collabos.lockscreen:id/submit"
+  },
+  "dismiss_rate_my_call": {
+    "id": "com.microsoft.skype.teams.ipphone:id/settings_item_calling_toggle_dismiss_rate_my_call",
+    "id1": "com.microsoft.skype.teams.ipphone:id/dismiss_rate_my_call_option",
+    "xpath": "//android.widget.TextView[@text='Dismiss Rate My Call']"
+  },
+  "dismiss_rate_toggle_on": {
+    "xpath": "//android.widget.Switch[@text='ON']"
+  },
+  "dismiss_rate_toggle_off": {
+    "xpath": "//android.widget.Switch[@text='OFF']"
+  },
+  "dismiss_rate_toggle_btn": {
+    "id": "com.microsoft.skype.teams.ipphone:id/calling_toggle_dismiss_rate_my_call_switch"
+  },
+  "logged_out_of_admin_settings_yes" : {
+    "id":"com.crestron.settings:id/view_dialog_popup_positive_button"
+  },
+  "user_survey": {
+    "xpath": "//android.widget.TextView[@text='User survey']"
+  },
+  "teams_admin_settings": {
+    "text": "Teams Admin Settings",
+    "id": "com.crestron.settings:id/activity_admin_teams_settings_button",
+    "id1": "com.crestron.settings:id/activity_admin_teams_admin_settings",
+    "xpath": "//android.widget.RelativeLayout[contains(@index,'0')]/child::android.widget.TextView[@text='Teams Admin Settings']",
+    "xpath1": "//android.widget.LinearLayout[contains(@index,'0')]/child::android.widget.TextView[@text='Teams Admin Settings']"
+  },
+  "teams_admin_settings_btn": {
+    "id": "com.crestron.settings:id/fragment_open_teams_settings_button",
+    "xpath": "//android.widget.LinearLayout[contains(@index,'0')]/child::android.widget.TextView[@text='Teams Admin Settings']",
+    "xpath1": "//android.support.v7.widget.RecyclerView[@resource-id='com.android.settings:id/list']/android.widget.LinearLayout[contains(@index,'0')]"
+},
+  "e2ee_calls":{
+    "xpath": "//android.widget.TextView[@text='End-to-end encrypted calls']",
+    "id": "com.microsoft.skype.teams.ipphone:id/settings_item_calling_toggle_e2ee_calls",
+    "id1": "com.microsoft.skype.teams.ipphone:id/calling_toggle_e2ee_calls_switch"
+  },
+  "e2ee_icon": {
+    "id": "com.microsoft.skype.teams.ipphone:id/e2e_icon"
+  },
+  "e2ee_description": {
+    "id": "com.microsoft.skype.teams.ipphone:id/calling_e2ee_calls_description"
+  },
+  "e2ee_link": {
+    "id": "com.microsoft.skype.teams.ipphone:id/calling_e2ee_calls_description",
+    "xpath": "//*[@text=\"One-on-one Teams calls are end-to-end encrypted if both participants turn on this setting. Some features won't be available, including recording and transcription. Learn more\"]",
+    "command": "new UiSelector().textContains(\"Use end-to-end encryption for Microsoft Teams calls\")"
+  },
+  "teams_admin_setting_01": {
+    "xpath": "//android.widget.LinearLayout[@resource-id='com.yealink.setting:id/layout_root']/android.widget.TextView[@text='Teams Admin Settings']"
+  },
+  "teams_admin_settings_01_btn": {
+    "xpath": "//android.widget.LinearLayout[@resource-id='com.yealink.setting:id/llyt_content']/android.widget.TextView[@text='Teams Admin Settings']"
+  },
+  "enter_button": {
+    "id": "com.yealink.setting:id/tv_enter",
+    "command": "new UiSelector().textContains(\"Enter\")",
+    "id1": "com.poly.lccsettings:id/enterBtn"
+  },
+  "admin_username_box": {
+    "id": "com.poly.teamssettingscontrol:id/username_field",
+    "id1": "com.poly.lccsettings:id/userName"
+  },
+  "admin_setting_popup_close_btn": {
+    "id": "com.crestron.settings:id/view_login_popup_close_button",
+    "id1": "com.polycom.settings:id/cancel"
+  },
+  "admin_back_button": {
+    "id": "com.crestron.settings:id/activity_admin_back_button"
+  },
+  "connectivity_setting": {
+    "xpath": "//android.widget.TextView[@text='Connectivity']"
+  },
+"time_convention_xpath": {
+    "xpath": "//android.widget.CheckedTextView[@text='timezone_replace']"
+  },
+  "reboot_phones": {
+   "xpath": "//*[@text='Reboot Phone' or @text='Reboot']",
+    "command": "new UiSelector().textContains(\"Reboot phone\")"
+  },
+  "reboot_v1": {
+    "id": "android:id/title",
+    "xpath": "//*[@text='Reboot phone']"
+  },
+  "reboot_v2": {
+    "id": "com.yealink.settings:id/text",
+    "xpath": "//*[@text='Reboot phone']"
+  },
+  "phone_settings": {
+    "xpath": "//*[@text='Phone Settings']"
+  },
+  "general": {
+    "xpath": "//*[@text='General']"
+  },
+  "user_settings":{
+    "xpath": "//*[@text='User settings']"
+  },
+  "device_settings_scroll_view_cal": {
+    "id": "com.yealink.settings:id/list",
+    "id1": "android:id/list"
+  },
+  "phones_device_settings_back_button_v1": {
+    "command": "new UiSelector().descriptionContains(\"Navigate up\")"
+  },
+  "phones_device_settings_back_button_v2": {
+    "id": "com.yealink.settings:id/actionbar_item_icon",
+    "id1": "com.yealink.setting:id/tv_back",
+    "command": "new UiSelector().descriptionContains(\"Back\")"
+  },
+  "device_setting_scroll_view_ac": {
+    "id": "com.android.settings:id/recycler_view",
+    "id1": "com.crestron.settings:id/fragment_container"
+  },
+  "device_dministration": {
+    "xpath": "//android.widget.TextView[@text='Device Administration']"
+  },
+  "admin_password_field_ac": {
+    "id": "com.android.settings:id/admin_password"
+  },
+  "device_settings_scroll_view_dt": {
+    "id": "com.android.dten.settings:id/scrollView"
+  },
+  "admin_logout_user": {
+     "xpath": "//android.widget.TextView[@text='Logout user']"
+  },
+  "enter_pin": {
+    "xpath": "//android.widget.EditText[@text='Enter PIN' or @text='New PIN']"
+  },
+  "re_enter_pin": {
+    "xpath": "//android.widget.EditText[@text='Re-Enter PIN' or @text='Confirm PIN']"
+  },
+  "screen_saver": {
+    "xpath": "//android.widget.TextView[@text='Screen Saver']"
+  },
+  "user_input_timeout": {
+    "xpath": "//android.widget.TextView[@text='User Input Timeout']"
+  },
+  "Off_hours_timeout": {
+    "xpath": "//android.widget.TextView[@text='Off Hours Timeout']"
+  },
+  "office_hours_timeout": {
+    "xpath": "//android.widget.TextView[@text='Office Hours Timeout' or @text='Office Hours Timeout (Backlight and Screensaver Timeout)']"
+  },
+  "swipe_up_to_open": {
+    "xpath" : "//android.widget.TextView[@text='Swipe up to open']"
+  },
+  "enter_key": {
+    "id": "com.android.systemui:id/key_enter"
+  },
+  "lock_screen_backspace": {
+    "id": "com.android.systemui:id/iv_un_lock_num_del"
+  },
+  "lock_keypad_digits": {
+    "xpath": "//android.widget.TextView[@text='num']"
+  },
+  "phone_lock_disable_password_field": {
+    "xpath": "//android.widget.EditText[@text='Please enter password' or @text='Enter PIN']"
+  },
+  "pin_option": {
+    "xpath": "//android.widget.CheckedTextView[@text='PIN']",
+    "xpath1": "//android.widget.TextView[@text='PIN']"
+  },
+  "password_entry": {
+    "id": "com.android.settings:id/password_entry"
+  },
+  "lock_after_screen_timeout_option": {
+    "xpath": "//android.widget.TextView[@text='Lock after screen timeout']"
+  },
+  "delete_screen_lock_popup": {
+    "xpath": "//android.widget.TextView[@text='Delete screen lock?']"
+  },
+  "Screen_timeout_option": {
+    "xpath": "//android.widget.TextView[@text='Screen timeout']"
+  },
+  "power_saving_toggle": {
+    "xpath": "//android.widget.TextView[@text='Power Saving Enabled']/ancestor::android.widget.RelativeLayout/following-sibling::android.widget.LinearLayout[@resource-id='android:id/widget_frame']/*[@resource-id='android:id/switch_widget']"
+  },
+  "1min_idle_time": {
+    "xpath": "//android.widget.TextView[@text='1min' or @text='1 minute'] | //android.widget.CheckedTextView[@text='1 minute']"
+  },
+    "Change_PIN": {
+    "xpath": "//*[@text='Change PIN']"
+  },
+  "Discard_your_changes": {
+    "xpath": "//*[@text='Discard your changes?']"
+  }
+}

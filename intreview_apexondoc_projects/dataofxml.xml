@@ -1,0 +1,91 @@
+<travelers>
+    <traveler>
+        <id>123</id>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <role>Admin</role>
+        <passport>
+            <number>A1234567</number>
+            <country>USA</country>
+            <expiry>2030-05-15</expiry>
+        </passport>
+        <address>
+            <street>123 Main St</street>
+            <city>New York</city>
+            <state>NY</state>
+            <zip>10001</zip>
+            <country>USA</country>
+        </address>
+        <phoneNumbers>
+            <home>+1-123-456-7890</home>
+            <mobile>+1-987-654-3210</mobile>
+            <work>+1-555-789-1234</work>
+        </phoneNumbers>
+        <emergencyContact>
+            <name>Jane Doe</name>
+            <relation>Spouse</relation>
+            <phone>+1-111-222-3333</phone>
+        </emergencyContact>
+        <travelHistory>
+            <trip>
+                <destination>London</destination>
+                <date>2023-06-10</date>
+                <purpose>Business</purpose>
+            </trip>
+            <trip>
+                <destination>Paris</destination>
+                <date>2024-02-20</date>
+                <purpose>Vacation</purpose>
+            </trip>
+        </travelHistory>
+        <preferences>
+            <seat>Aisle</seat>
+            <meal>Vegetarian</meal>
+        </preferences>
+    </traveler>
+
+    <traveler>
+        <id>456</id>
+        <name>Emily Smith</name>
+        <email>emily.smith@example.com</email>
+        <role>Traveler</role>
+        <passport>
+            <number>B9876543</number>
+            <country>UK</country>
+            <expiry>2028-11-30</expiry>
+        </passport>
+        <address>
+            <street>456 Oak St</street>
+            <city>London</city>
+            <state>ENG</state>
+            <zip>SW1A 1AA</zip>
+            <country>UK</country>
+        </address>
+        <phoneNumbers>
+            <home>+44-20-7946-0958</home>
+            <mobile>+44-7751-123456</mobile>
+            <work>+44-303-123-4000</work>
+        </phoneNumbers>
+        <emergencyContact>
+            <name>Michael Smith</name>
+            <relation>Brother</relation>
+            <phone>+44-7890-456789</phone>
+        </emergencyContact>
+        <travelHistory>
+            <trip>
+                <destination>New York</destination>
+                <date>2022-09-15</date>
+                <purpose>Conference</purpose>
+            </trip>
+            <trip>
+                <destination>Tokyo</destination>
+                <date>2023-12-05</date>
+                <purpose>Leisure</purpose>
+            </trip>
+        </travelHistory>
+        <preferences>
+            <seat>Window</seat>
+            <meal>Non-Vegetarian</meal>
+        </preferences>
+    </traveler>
+</travelers>

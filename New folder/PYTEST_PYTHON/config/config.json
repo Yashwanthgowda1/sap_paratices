@@ -1,0 +1,43 @@
+{
+  "environments": {
+    "staging": {
+      "base_url": "https://www.hotstar.com",
+      "api_base_url": "https://api.hotstar.com/v2"
+    },
+    "production": {
+      "base_url": "https://www.hotstar.com",
+      "api_base_url": "https://api.hotstar.com/v2"
+    }
+  },
+  "browser": {
+    "default": "chrome",
+    "options": ["chrome", "firefox", "edge"]
+  },
+  "timeouts": {
+    "implicit_wait": 10,
+    "explicit_wait": 20,
+    "page_load": 30
+  },
+  "test_data": {
+    "valid_user": {
+      "email": "testuser@example.com",
+      "password": "Test@1234"
+    },
+    "premium_user": {
+      "email": "premium@example.com",
+      "password": "Premium@1234"
+    },
+    "invalid_user": {
+      "email": "invalid@example.com",
+      "password": "Wrong@000"
+    }
+  },
+  "content": {
+    "featured_title": "Jio Cinema",
+    "movie_title": "Pathaan",
+    "series_title": "Mirzapur",
+    "live_channel": "Star Sports 1",
+    "search_keyword": "Marvel",
+    "genre": "Action"
+  }
+}

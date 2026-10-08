@@ -1,0 +1,131 @@
+{   "common_desired_caps" : {
+        "appActivity": "com.microsoft.skype.teams.Launcher",
+        "appPackage": "com.microsoft.skype.teams.ipphone",
+        "automationName": "UiAutomator2",
+        "platformName": "android",
+        "deviceName": "Android",
+        "newCommandTimeout": 90000,
+        "optionalIntentArguments": "--esn automation",
+        "SplashActivity.INTENT_TEST_AUTOMATION": "true"
+    },
+    "companyPortal_Package" : "com.microsoft.windowsintune.companyportal",
+    "appium_starting_port" : 5100,
+    "cp_logs_capture" : "True",
+    "device_type": "-",
+    "capture_bug_reports_post_run": "True",
+    "capture_config" : "disabled",
+    "devices" : {
+        "device_1" : {
+             "oem": "-",
+             "model": "-",
+             "port": 5100,
+	         "admin_username": "admin",
+             "admin_password" : "-",
+             "admin_new_password": "-",
+             "firmware" : "-",
+             "teams_device_capabilities": "-",
+             "teams_apk_version": "-",
+             "resolution": "-",
+             "desired_caps" : {
+                    "alias": "app1",
+                    "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+            },
+		    "cap_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	},
+	        "premium_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	},
+	        "standard_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	},
+            "sku_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	},
+            "longname_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	},
+           "customname_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "nickname_displayname": "-"
+           }
+        },
+        "device_2" : {
+            "oem": "-",
+            "model": "-",
+            "port": 5200,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "serial_number":"-",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+            },
+            "cap_user":{
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+         	}
+        }
+	},
+  "browsers": {
+    "tdc_1": {
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      }
+    }
+  },
+  "adb_disabled_device": {
+    "udid":"-"
+  },
+  "Report_feedback" : {
+    "title": "test_purpose",
+    "bug_details": "Test purpose, please ignore it"
+    },
+    "user" : {
+        "invalid_username" : "-",
+        "invalid_domain" : "-",
+        "invalid_password" : "-"
+    },
+    "tenant_admin": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+    }
+}

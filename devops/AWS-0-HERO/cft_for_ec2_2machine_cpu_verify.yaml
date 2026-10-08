@@ -1,0 +1,375 @@
+AWSTemplateFormatVersion: "2010-09-09"
+# ============================================================================
+# AWS CloudFormation Template: Production-Ready Architecture with EC2 Cluster
+# ============================================================================
+# DESCRIPTION:
+#   CloudFormation template that provisions a complete, production-ready AWS
+#   infrastructure suitable for running scalable applications with high
+#   availability and fault tolerance.
+#
+# INFRASTRUCTURE COMPONENTS:
+#   - VPC (Virtual Private Cloud): Custom network with isolated environment
+#   - Subnets: Multiple subnets across availability zones for redundancy
+#   - ALB (Application Load Balancer): Distributes incoming traffic across EC2 instances
+#   - ASG (Auto Scaling Group): Automatically scales EC2 instances (2 machines) based on demand
+#   - RDS (Relational Database Service): Managed database service for persistent data storage
+#   - S3 Storage Bucket: Object storage for application data and backups
+#
+# STACK PURPOSE:
+#   Provides a complete foundation for deploying CPU-intensive or general
+#   workloads with automatic scaling, load balancing, and managed databases.
+#
+# PREREQUISITES:
+#   - Valid AWS credentials configured
+#   - Appropriate IAM permissions for CloudFormation, EC2, RDS, and S3
+#
+# DEPLOYMENT:
+#   Use AWS CloudFormation Console or AWS CLI to create stack with this template
+Description: "Simple production-ready architecture: VPC, Subnets, ALB, ASG, RDS, S3 storage bucket."
+
+
+#=============================================================================#
+# this is used to group parameters in the AWS CloudFormation console
+# Metadata in CloudFormation does NOT affect the infrastructure.
+
+# It is only for UI organization in the AWS Console.
+#=============================================================================#
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Network Configuration name for the VPC and Subnets names"
+        Parameters:
+          - VpcCidr
+          - PublicSubnet1Cidr
+          - PublicSubnet2Cidr
+          - PrivateSubnet1Cidr
+          - PrivateSubnet2Cidr
+
+      - Label:
+          default: "EC2 Application setups"
+        Parameters:
+          - KeyName
+          - InstanceType
+          - SSHLocation
+
+      - Label:
+          default: "Database"
+        Parameters:
+          - DBUser
+          - DBName
+          - DBPassword
+
+      # - Label:
+      #     default: "Storage"
+      #   Parameters:
+      #     - ArtifactBucketName
+
+
+Parameters:
+  VpcCidr:
+    Type: String
+    Default: "10.0.0.0/16"
+
+  PublicSubnet1Cidr:
+    Type: String
+    Default: "10.0.1.0/24"
+
+  PublicSubnet2Cidr:
+    Type: String
+    Default: "10.0.2.0/24"
+
+  PrivateSubnet1Cidr:
+    Type: String
+    Default: "10.0.10.0/24"
+
+  PrivateSubnet2Cidr:
+    Type: String
+    Default: "10.0.11.0/24"
+
+  # KeyName:
+  #   Type: AWS::EC2::KeyPair::KeyName
+  #   Description: "Existing EC2 key pair"
+  KeyName:
+    Type: String
+    Default: new_demo
+
+  InstanceType:
+    Type: String
+    Default: "t3.medium"
+    AllowedValues:
+      - t3.small
+      - t3.medium
+      - t3.large
+      - m5.large
+
+  SSHLocation:
+    Type: String
+    Default: "0.0.0.0/0"
+
+  DBName:
+    Type: String
+    Default: "database_manger"
+
+  DBUser:
+    Type: String
+    Default: "yashwanth_admin"
+
+  DBPassword:
+    NoEcho: true
+    Type: String
+    Description: "The database admin account password"
+    MinLength: 8
+
+  # ArtifactBucketName:
+  #   Type: String
+  #   Default: "pipeline-artifact-storage"
+
+Mappings:
+  RegionToAMI:
+    ap-south-1:
+      AMI: ami-02b8269d5e85954ef
+
+
+#### actual resources to be created for the IAC responsible for the infra setup
+
+Resources:
+
+  ### VPC
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  AttachIGW:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  # InternetGateway:
+  #   Type: AWS::EC2::InternetGateway
+  #   AttachIGW:
+  #     Type: AWS::EC2::VPCGatewayAttachment
+  #     Properties:
+  #       VpcId: !Ref VPC
+  #       InternetGatewayId: !Ref InternetGateway
+     
+
+  ### Subnets
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PublicSubnet1Cidr
+      AvailabilityZone: !Select [0, !GetAZs ""]
+
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PublicSubnet2Cidr
+      AvailabilityZone: !Select [1, !GetAZs ""]
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PrivateSubnet1Cidr
+      AvailabilityZone: !Select [0, !GetAZs ""]
+
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PrivateSubnet2Cidr
+      AvailabilityZone: !Select [1, !GetAZs ""]
+
+  ### Public Route Table
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  DefaultRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnet1Route:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnet2Route:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet2
+      RouteTableId: !Ref PublicRouteTable
+
+  ### NAT
+  EIPNat:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt EIPNat.AllocationId
+      SubnetId: !Ref PublicSubnet1
+
+  PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+
+  PrivateRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGateway
+
+  PrivateSubnet1Route:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable
+
+  PrivateSubnet2Route:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet2
+      RouteTableId: !Ref PrivateRouteTable
+
+  ### S3 Storage  aws is enable autonaming for s3 bucket names 
+  # it has been removed due to error
+  # StorageBucket:
+  #   Type: AWS::S3::Bucket
+  #   Properties:
+  #     BucketName: !Ref ArtifactBucketName
+  #     VersioningConfiguration:
+  #       Status: Enabled
+
+  ### Security Groups
+  ALBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: ALB ingress
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  AppSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: App ingress
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          SourceSecurityGroupId: !Ref ALBSecurityGroup
+
+  #### EC2 Launch Template
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        ImageId: !FindInMap [RegionToAMI, !Ref "AWS::Region", AMI]
+        InstanceType: !Ref InstanceType
+        SecurityGroupIds:
+          - !Ref AppSecurityGroup
+
+  #### ASG
+  AutoscalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier:
+        - !Ref PrivateSubnet1
+        - !Ref PrivateSubnet2
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      MinSize: 2
+      MaxSize: 4
+      DesiredCapacity: 2
+      TargetGroupARNs:
+        - !Ref TargetGroup
+
+  #### ALB
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Subnets:
+        - !Ref PublicSubnet1
+        - !Ref PublicSubnet2
+      SecurityGroups:
+        - !Ref ALBSecurityGroup
+
+  Listener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref LoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref TargetGroup
+
+  TargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      VpcId: !Ref VPC
+      Port: 8080
+      Protocol: HTTP
+      TargetType: instance
+      HealthCheckPath: /
+      HealthCheckIntervalSeconds: 30
+      HealthyThresholdCount: 5
+      UnhealthyThresholdCount: 2
+
+  #### RDS
+  # DBSubnetGroup:
+  #   Type: AWS::RDS::DBSubnetGroup
+  #   Properties:
+  #     SubnetIds:
+  #       - !Ref PrivateSubnet1
+  #       - !Ref PrivateSubnet2
+  #     DBSubnetGroupDescription: DB subnets
+
+  # RDSInstance:
+  #   Type: AWS::RDS::DBInstance
+  #   Properties:
+  #     Engine: mysql
+  #     DBInstanceClass: db.t3.medium
+  #     AllocatedStorage: "20"
+  #     MultiAZ: true
+  #     MasterUsername: !Ref DBUser
+  #     MasterUserPassword: !Ref DBPassword
+  #     DBName: !Ref DBName
+  #     DBSubnetGroupName: !Ref DBSubnetGroup
+  #     PubliclyAccessible: false
+
+
+Outputs:
+  VPC:
+    Value: !Ref VPC
+
+  ALB:
+    Value: !GetAtt LoadBalancer.DNSName
+
+  # StorageBucket:
+  #   Value: !Ref StorageBucket

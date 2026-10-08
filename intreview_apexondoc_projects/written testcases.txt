@@ -1,0 +1,94 @@
+TC35: [Voicemail] DUT user plays the message by off hook
+    Tags]      309030
+    [Setup]    Testcase Setup   count=1
+    press specific hardkey    device=device_1    hard_key=HANDSETHOOK      status=ON
+    verify dialpad after clicking speaker or handsethook button    device=device_1
+    Navigate to voicemail tab    device=device_1
+    verify first voicemail displayname  to_device=device_1  from_device=device_2
+    Play voicemail    device=device_1
+    [Teardown]  Run Keywords    Capture on Failure  AND    Come back to home screen    device_list=device_1,device_2,device_3
+
+
+306933  
+318782 passed
+319074  pass
+already rised
+robot -d results/incress_volume_decress -i 306933  tests
+
+verify_and_resume_call_using_resume_button_with_boss
+
+navigate_to_voicemail_tab(device)
+    common.wait_for_element(device, voicemail_dict, "voicemail_time", "id")
+	common.wait_for_element(device,voicemail_dict,'voicemail_call_duration')
+	common.wait_for_element(device, calls_dict, "user_profile_picture")
+	
+	 tmp_dict = common.get_dict_copy(
+        navigation_dict, "user_name", "replace_xpath", config["devices"][device][account]["displayname"]
+    )
+    common.wait_for_element(device, tmp_dict, "user_name")
+	common.wait_for_and_click(device, tmp_dict, "user_name")
+def 
+	common.wait_for_element(device, 'voicemail_dict','call_action')
+	common.wait_for_element(device,'voicemail_dict','profile_action')
+	common.wait_for_element(device,'voicemail_dict','voicemail_delete_btn')
+	common.wait_for_element(device,'voicemail_dict','playback_time')
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    first_voicemail_time = first_voicemail_text.split()[0]
+    print("First voicemail time : ", first_voicemail_time)
+	
+	
+	==============================================================================
+	318792
+	
+	321034
+	robot -d results/speed_dial_and_delegate122 -i 318792 tests
+	
+	Signin with other user    device=device_2   other_user_account=device_1
+	
+	//*[@text="username"]/anscertor::androidx.recyclerview.widget.RecyclerView[@id='com.microsoft.skype.teams.ipphone:id/call_group_items']/descendent::android.widget.Button[@content-desc='Resume call']"
+	
+	
+	 if not( common.is_portrait_mode_cnf_device(device) and common.is_element_present(device, sign_dict, "sign_in_on_the_device")):
+            common.hide_keyboard(device)
+	
+	
+	
+	
+	
+	
+	41 hide meeting
+	device_2 : there is no more option present
+	
+	suite 1
+	 [Incoming call] Verify DUT user gets missed call when user is in call with another user.
+	 in config given username is wrong in device_1 ---->expected resulted wrong
+	 
+	 
+	 306763
+	 	Calls count didn't increase.
+		
+	 456480
+		could not find 'missed_call'  --->private line account ---> 2
+		
+	suite 2:
+		309730
+		309700
+		turn_on_live_captions--->afetr clicking on more aoption not getting the live caption option 
+		
+	suite :
+	call hold and call mute --->device-1 and device_2  
+	309760
+		ChildThreadError: 'get_user_signed_in_on_device' ("device_1:user") failed:  ---> got it button not get so singin not happened and failed to verify teh uaser name		
+		
+		
+	[CallTransferEnhancements] discoverability > has physical transfer key
+	hint options not found

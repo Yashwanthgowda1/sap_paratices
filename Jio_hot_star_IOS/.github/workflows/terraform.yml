@@ -1,0 +1,92 @@
+name: terraform
+on:
+   push:
+    branches: [ "QA_main"]
+
+env:
+  AWS_ACCESS_KEY_ID:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION:            ${{ secrets.AWS_REGION }}
+
+permissions:
+  contents: read  
+
+jobs:
+  terraform:
+    name: terraform
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # step 1 — checkout your code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GIT_PAT }}
+
+      - name: Debuging
+        run: |
+          pwd
+          ls -R
+          
+
+      # step 2 — install terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: Clean Terraform cache
+        run: |
+          rm -rf ~/.terraform.d
+          rm -rf terraform/.terraform
+          rm -f terraform/.terraform.lock.hcl
+      
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init -upgrade
+
+      # step 4 — check formatting
+      - name: Terraform Format
+        working-directory: terraform
+        run: terraform fmt
+
+      # step 5 — validate code
+      - name: Terraform Validate
+        working-directory: terraform
+        run: terraform validate
+
+      # step 6 — inject secrets (runs before plan AND apply)
+      - name: Inject secrets into tfvars
+        working-directory: terraform
+        run: |
+          echo 'key_pairs = "${{ secrets.AWS_KEY_PAIR }}"'      >> terraform.tfvars
+          echo 'eks_cluster_name = "${{ secrets.EKS_CLUSTER_NAME }}"' >> terraform.tfvars
+
+      # step 7 — plan (shows what will be created)
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan -input=false -var-file="terraform.tfvars"
+
+      # step 8 — apply (only on push to main)
+      - name: Terraform Apply
+        working-directory: terraform
+        if: (github.ref == 'refs/heads/Qa_main' ||  github.ref == 'refs/heads/main')  && github.event_name == 'push'
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
+          
+
+
+    # Save the Terraform state file as an artifact
+      - name: Collect Terraform Outputs
+        if: success()
+        working-directory: terraform
+        run: |
+          echo "Saving Terraform outputs to project folder..."
+          terraform output -json > ../terraform_outputs.json    
+
+      - name: Destroy on Failure
+        if:  failure()
+        working-directory: terraform
+    
+        run: terraform destroy -auto-approve
+

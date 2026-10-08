@@ -1,0 +1,12 @@
+reports/
+__pycache__/
+env/
+.venv/
+.robotcode_cache/
+configs/
+configs.json
+.idea/
+chrome_logs/
+results/
+Test/payments.py
+

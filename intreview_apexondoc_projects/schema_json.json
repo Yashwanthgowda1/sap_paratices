@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "array",
+  "properties": {
+    "students": {
+      "type": "object",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "email": { "type": "string" },
+          "first_name": { "type": "string" },
+          "last_name": { "type": "string" },
+          "avatar": { "type": "string" },
+          "password": { "type": "string" },
+          "username": { "type": "string" },
+          "devicename": { "type": "string" },
+          "device_console": { "type": "string" },
+          "ph": { "type": "string" },
+          "place": { "type": "string" },
+          "mapType": { "type": "string" },
+          "empty": { "type": "boolean" },
+          "desiredCap": {
+            "type": "object",
+            "properties": {
+              "alias": { "type": "string" },
+              "udid": { "type": "string" }
+            },
+            "required": ["alias", "udid"]
+          },
+          "courses": {
+            "type": "object",
+            "properties": {
+              "social": { "type": "string" },
+              "maths": { "type": "string" },
+              "science": { "type": "string" }
+            },
+            "required": ["social", "maths", "science"]
+          },
+          "support": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string" },
+              "url": { "type": "string" }
+            },
+            "required": ["text", "url"]
+          }
+        },
+        "required": ["id", "email", "first_name", "last_name", "avatar"]
+      }
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "text": { "type": "string" }
+      },
+      "required": ["url", "text"]
+    }
+  },
+  "required": ["students", "support"]
+}

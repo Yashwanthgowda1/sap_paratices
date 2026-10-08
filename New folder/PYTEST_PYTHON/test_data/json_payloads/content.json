@@ -1,0 +1,32 @@
+{
+  "movie": {
+    "title": "Pathaan",
+    "genre": "Action",
+    "language": "Hindi",
+    "year": 2023,
+    "is_premium": true
+  },
+  "series": {
+    "title": "Mirzapur",
+    "genre": "Crime Drama",
+    "language": "Hindi",
+    "seasons": 3,
+    "is_premium": true
+  },
+  "free_content": {
+    "title": "News18 India",
+    "type": "live",
+    "is_premium": false
+  },
+  "sports": {
+    "title": "IPL 2024",
+    "type": "live",
+    "channel": "Star Sports 1",
+    "is_premium": true
+  },
+  "search_keywords": {
+    "valid": ["Marvel", "Cricket", "Mirzapur", "Action"],
+    "no_results": ["xyzabcnonexistent123", "zzz999"],
+    "special_chars": ["@#$%", "   "]
+  }
+}

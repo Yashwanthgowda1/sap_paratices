@@ -1,0 +1,981 @@
+rest assured
+
+rest assured an api which is an a api, and it number of methods we can perform some request
+
+pre-request:
+eclips
+java
+test ng
+maven
+
+res-assured
+json-path
+json
+gson
+tesng
+scribejava -apis (create a dummy data)
+json schema validator
+xml schema validator
+
+
+
+swagger api
+https://reqres.in/
+
+rest assured give keyworks((gerkin keyword)---> need to import static packages
+-------------------------------------------------
+rest assured website and static keyword and import it(rest assured matches)
+
+1)given()
+when ever sending a pre-request requiest required , cookies, header,add parameter, authaticasion,
+
+2) when()
+request
+
+3) then()
+
+respones and validation etc
+
+ways to create a request body
+--------------------------
+hasmap
+org.json
+poja class(plain old java object)
+creating the json file
+
+
+npm install -g json-server  (commond to install the verion)
+
+creation of paraeemeter
+--------------------------------------------
+https://reqres.in/api/users?pages=2
+
+https://reqres.in-----------> domain
+/api--------> path
+user--------->path paramter
+pages=2-------> qurey paramter
+give()
+.parme(pairs)
+.qureypara(pairs)
+
+cookies and header ass respones
+--------------------------------------------
+
+
+VALIDATING JSON PARSE AND XML
+------------------------------------
+python -m http.server 8080  (TO RUN XML)
+
+
+
+D:\dsa_java\rest_assured>java -jar file-upload-RestAPI.jar
+
+
+
+		File uploade_single=new File("C:\\Users\\v-ymh\\Documents\\conf.txt");
+	given()
+	.multiPart("file",uploade_single)
+
+
+
+response.jsonPath().getString("id");
+after getting the responce capture like the josnpath
+
+
+convert the serilizateinon (packe like jackson package)
+----------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+1) What is Rest Assured?
+
+	A Java library used to test RESTful APIs. It supports BDD syntax and simplifies HTTP request creation, validation, and response parsing.
+
+2)	What types of HTTP methods can you test with Rest Assured?
+
+	GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD.
+
+3)	How do you validate the response status code?
+
+given().get("/users").then().statusCode(200);
+
+4) How do you add headers in Rest Assured?
+
+
+	given().header("Authorization", "Bearer token").get("/users");
+
+5)How do you send query parameters?
+
+	given().queryParam("page", 2).get("/users");
+
+------------>⚙️ Intermediate Level
+
+1) How do you validate response body content?
+
+	given().get("/users/1")
+
+       .then()
+	.body("name", equalTo("John Doe"));
+
+2) How do you extract a value from the JSON response?
+
+
+	String name = given().get("/users/1")
+                    .then().extract().path("name");
+
+		or
+	--->we can validate by test ng also
+	
+		Assert.assertEquals(responce.getStatusCode(), 200);
+
+	----> data wher extract  what are the value return object need to convert the string
+		String str=responce.jsonPath().get("[1].values.value.first_name").toString();
+	------>
+		JSONObject ob=new JSONObject(responce);
+		for(int i=0;i<ob.getJSONArray("").length();i++) {
+			String val=ob.getJSONArray("").getJSONObject(i).get("last_name").toString();
+			System.out.println(val);
+		}
+
+3) What is the use of Response object in Rest Assured?
+
+	It stores the HTTP response and provides methods to extract data, headers, status,cookies  etc.
+
+4)  How do you handle authentication in Rest Assured?
+
+given().auth().basic("username", "password").get("/users");
+
+5) How do you send a JSON payload in a POST request?
+
+given()
+    .contentType("application/json")
+    .body("{\"name\":\"John\",\"job\":\"QA\"}")
+.when()
+    .post("/users")
+.then()
+    .statusCode(201);
+
+------>  Advanced / Real-time Scenarios
+
+1) How do you send a request using a POJO (Java Object)?
+
+given()
+    .contentType("application/json")
+    .body(new `User("John", "Tester"))
+.when()
+    .post("/users")
+.then()
+    .statusCode(201);
+
+ ----->  // Debug: Print full response
+	    System.out.println("Full Response Body: " + response.getBody().asString());
+
+	    // Extract the ID correctly
+	    id = response.jsonPath().getString("id");
+
+2) file upload handel
+	   Response response = given()
+	            .multiPart("file", uploadSingle)          // Ensure the file is uploaded correctly
+	            .contentType("multipart/form-data")
+
+
+3) How do you validate nested JSON fields?
+
+	.body("data[0].email", equalTo("user@example.com"))
+	JSONObject ob=new JSONObject(responce);
+		for(int i=0;i<ob.getJSONArray("").length();i++) {
+			String val=ob.getJSONArray("").getJSONObject(i).get("last_name").toString();
+
+4) How to log requests and responses?
+
+given().log().all()
+       .when().get("/users")
+       .then().log().all();
+
+5) How do you use JSON schema validation?
+
+	.assertThat()
+	.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema_json.json"));
+
+6) How do you do data-driven testing in Rest Assured with TestNG?
+
+	-----> Use @DataProvider to supply different sets of request payloads or inputs.
+
+
+
+7) How do you integrate Rest Assured with your framework?
+
+	Combine it with TestNG/JUnit + Maven/Gradle. Organize requests and response validations into reusable methods or service classes.
+
+8) Have you tested both positive and negative scenarios?
+
+	Yes. For example: valid user creation (201), invalid payload (400), unauthorized (401), resource not found (404).
+
+9) What challenges have you faced using Rest Assured?
+
+	Dynamic token management, async response handling, deep JSON path validation.
+
+10) How do you test secured APIs (OAuth2/JWT)?
+
+	Use .auth().oauth2("token") for bearer tokens or pass Authorization header manually.
+
+11) Can Rest Assured be used for performance testing?
+no but for performance can use the jmeter
+
+vvip:
+
+REST Assured → use jsonPath().getString() / getInt()
+Python → use res["key"] or res.get("key") (safe way!)
+
+
+
+✅ Send empty body          → expect 400
+✅ Send wrong data type     → expect 400/422
+✅ Send no token            → expect 401
+✅ Send expired token       → expect 401
+✅ Send invalid ID          → expect 404
+✅ Send duplicate data      → expect 409
+✅ Send very large payload  → check behavior
+✅ Miss required fields     → expect 400/422
+
+-------------------------------------------------------------------------------------------------------
+
+appium architeure
+
+1) Sends requests in JSON format via the WebDriver Protocol,
+  A Node.js server that acts as a bridge between test scripts and the mobile device and Can be started via CLI or Appium Desktop
+Drivers communicate with the ->UiAutomator2, XCUITest, WinAppDriver,
+Appium interacts with the system to perform actions like tap, scroll, enter text, etc
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+ 1. How do you prioritize test cases in limited time?
+ 			I focus on core functionalities that the end user
+			High Severity & High Priority Bugs: I target areas where bugs could cause data loss, security issues, or crashes.
+			I test modules that were recently updated or are dependent on those changes.
+			Smoke & Sanity Tests: I ensure basic functionalities are working before diving deeper.
+			Bug History: I check modules that have had frequent bugs in the past — they're more likely to break.
+			I also communicate with the product owner or QA lead to ensure on what matters most in that sprint/release.
+
+
+---------------------------------------------------------------------------------------------------------------
+
+connecrt the appium using python selenium :
+				from appium import webdriver
+				import time
+				from appium.webdriver.common.mobileby import MobileBy
+
+				desired_caps = {
+					"platformName": "Android",
+					"appium:deviceName": "emulator-5554",
+					"appium:udid": "emulator-5554",
+					"appium:automationName": "UiAutomator2",
+					"newCommandTimeout": 300
+				}
+
+				# Connect to Appium server
+				driver = webdriver.Remote("http://127.0.0.1:4723", desired_caps)
+				driver.find_element(MobileBy.ID, "element_id")
+	
+	
+	
+connect it using the java appium :
+	
+		DesiredCapabilities caps = new DesiredCapabilities();
+
+        // Set your desired capabilities
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("deviceName", "Android Emulator"); // Or your real device name
+        caps.setCapability("automationName", "UiAutomator2");
+        caps.setCapability("appPackage", "com.example.yourapp"); // Replace with actual package
+        caps.setCapability("appActivity", "com.example.yourapp.MainActivity");
+        caps.setCapability("noReset", true);
+
+        try {
+            // Appium Server URL
+            URL appiumServer = new URL("http://127.0.0.1:4723/wd/hub");
+
+            // Create AndroidDriver instance
+            AndroidDriver driver = new AndroidDriver(appiumServer, caps);
+
+            // Your automation code here
+            System.out.println("App Launched Successfully");
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+read the json file using the python:
+
+		from collections import OrderDic
+		import json
+		with open("json_path","r) as r:
+		config=json.loads(r.read(),object_pairs_hook=OrderDict)
+		return config
+		config['devices'][device_1]['user']
+	
+	
+	
+	
+	
+
+
+https://sonarcloud.io/organizations/yashwanthgowda1
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+st="ivakatakavi"
+n = len(st)
+my_out = []
+for i in range(n):
+    for j in range(i, n):
+        if st[i:j+1] == st[i:j+1][::-1]:
+            if len(st[i:j+1])>1:
+                 my_out.append(st[i:j+1])
+ 
+ 
+print(my_out)
+
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+       int [] arr={1,1,1,1,1,2,2,2,23,3,4,4,3,3,5,6,7,8,8,8};
+       List<Integer> lsit=new ArrayList();
+       int left=0;
+       int right=0;
+       lsit.add(arr[left]);
+       while(right<arr.length){
+           if(arr[left]==arr[right]){
+               right++;
+           }
+           else{
+               lsit.add(arr[right]);
+               left=right;
+           }
+       }
+     for (int val : lsit) {
+    System.out.print(val+"-->");  // Directly prints the value
+}
+ 
+    }
+}
+
+
+
+D:\automation-robot\robot_code\robot_driver\Libraries
+D:\automation-robot\robot_code\robot_driver
+D:\automation-robot\robot_code\robot_driver\resources\keywords
+
+
+---------------------------------------------------------------------------------------------------------------
+expalin about the project
+====================
+
+In my current role as an SDET, I’m responsible for automating and validate the Microsoft Teams app on Android devices to ensure it meets the certification standards across different categories.
+
+I primarily work with the phones category, where I:
+
+Design and implement end-to-end test cases
+
+Convert those test cases into automation scripts using Python and Robot Framework
+
+Ensure the test scripts are compatible with various partner devices, enhancing reusability and scalability
+
+🧪 Test Automation Framework & Tools:
+
+
+Robot Framework: A keyword-driven testing tool for writing test cases in a modular and readable way.
+
+Selenium: Used for any web-based automation where applicable.
+
+Appium: Used to automate the Android Teams app across different hardware.
+
+Python: Acts as the scripting backbone for developing keywords and utility functions.
+
+⚙️ Framework Structure:
+
+POM class stores all the locators (XPaths).
+
+Keywords folder contains reusable functions for different test scenarios.
+
+Requirements folder holds libraries and dependencies.
+
+An init file is used to clear cache, reset device states, and configure settings before each run.
+----------
+
+
+
+
+🧪 obot files are structured into:
+
+Settings: to import resources
+
+Variables: to declare constants
+
+Test Cases: for executable scenarios
+
+Keywords: for reusable custom steps
+
+📊 Performance Testing:
+
+We also conduct performance benchmarking, using:
+
+Logcat for logs
+
+Python scripts to extract metrics
+
+Median value calculations to analyze app performance against defined benchmarks
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+✅ Roles and Responsibilities as an SDET / QA Engineer:
+
+End-to-End Test Automation:
+--------------------------------------
+
+Design, develop, and maintain automated test scripts using tools like Python, Robot Framework, Selenium, and Appium.
+
+Automate test cases for Microsoft Teams on various Android devices, ensuring certification across multiple device categories.
+
+Framework Development:
+-----------------------------------
+
+Build and enhance a custom automation framework using Robot Framework.
+
+Maintain Page Object Model (POM) for element locators and reusable keyword libraries to support multiple test categories.
+
+Test Execution and Validation:
+----------------------------------------
+
+Execute functional, regression, and compatibility tests across various partner devices.
+
+Analyze results, report bugs, and work closely with developers to resolve issues.
+
+Performance Testing:
+-------------------------------
+
+Perform performance tests based on engineering benchmarks.
+
+Use logcat to collect device logs and extract median values to evaluate app behavior
+
+CI/CD Integration:
+----------------------------------------
+
+Integrate test scripts into the CI/CD pipeline to ensure tests are automatically triggered on new builds.
+
+Cross-Team Collaboration:
+----------------------
+
+Collaborate with developers, product managers, and partner teams to understand requirements and improve test coverage.
+
+Reporting and Documentation:
+
+Document test plans, maintain test reports, and share results with stakeholders for continuous quality improvement.
+
+
+
+challenges faced
+
+------------------------------------
+Challenges Faced and Solutions:
+APK Installation Issues via ADB:
+
+While installing the daily build (canary) APKs through ADB, we often faced errors such as:
+
+App downgrade not allowed
+
+Storage or memory issues
+
+APK signature mismatch
+
+INSTALL_FAILED_ALREADY_EXISTS
+
+USB Debugging Not Enabled / Device Not Detected:
+
+Frequent App Crashes or ANRs (Application Not Responding):
+--------------------------------------
+
+Daily builds may include unstable features leading to app crashes during testing.
+ 
+ solution : collect the ADB logcat.
+
+Shared logs and crash patterns with the development team for quicker debugging.
+
+Added wait conditions and retry logic in scripts to improve stability.
+
+Device Compatibility Issues:
+--------------------
+
+Tests had to run on multiple devices from different partners, each with unique UI behaviors or hardware specs.
+
+Solution:
+
+Built reusable test scripts that adapt dynamically using conditions and device-specific handling.
+
+Maintained separate keyword logic where necessary for different brands.
+
+Performance Log Collection:
+---------------------------------
+
+Collecting logs during performance runs was time-sensitive.
+
+Solution:
+
+Automated the log collection using ADB commands and extracted required data using custom Python scripts.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Advantages of agile methodolgy
+
+✅ 1. Faster Delivery & Continuous Improvement
+Agile follows iterative development, enabling teams to deliver working software in short cycles (sprints).
+
+Frequent releases ensure quicker time-to-market and continuous customer feedback.
+
+✅ 2. Flexibility and Adaptability
+Agile easily accommodates changes in requirements, even late in the development process.
+
+Teams can quickly pivot based on stakeholder or market feedback.
+
+✅ 3. Customer-Centric Approach
+Regular interactions with stakeholders ensure the product is aligned with customer needs.
+
+Continuous feedback loops lead to higher customer satisfaction.
+
+✅ 4. Improved Collaboration and Transparency
+Agile promotes daily stand-ups, sprint reviews, and retrospectives, improving team communication and visibility.
+
+Cross-functional teams collaborate closely, resulting in better decision-making.
+
+✅ 5. Higher Product Quality
+Agile incorporates regular testing, code reviews, and integration, which helps identify issues early.
+
+Continuous integration and automation improve stability and reliability.
+
+✅ 6. Risk Reduction
+Early and frequent delivery of features minimizes the chances of complete project failure.
+
+Incremental releases make it easier to identify and mitigate risks sooner.
+
+✅ 7. Increased Engagement and Ownership
+Developers, testers, and business stakeholders work closely, leading to a sense of shared ownership.
+
+Teams are self-organized and motivated to deliver high-quality results.
+
+✅ 8. Better Predictability
+Fixed-length sprints and velocity tracking make it easier to estimate timelines and set expectations.
+
+
+================================================================================================
+
+rest apis
+
+
+Requires: oauth2 generation
+
+Client ID and Secret
+
+Token endpoint
+
+Sometimes refresh tokens
+
+
+
+
+====================================================================================================================================================================================
+
+✅
+
+"My current project is approaching its ramp-down phase, which naturally results in a reduced scope of responsibilities.
+
+ While I’ve had a great experience working on this project and have learned a lot,
+ 
+ I see this as an opportunity to look for a role where I can continue to grow, take on new challenges, and contribute more meaningfully.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+FAIL FAST
+
+A fail-fast iterator throws a ConcurrentModificationException if the collection is structurally modified after the iterator is created (except through the iterator's own methods).
+
+List<String> list = new ArrayList<>();
+list.add("A");
+list.add("B");
+
+for (String s : list) {
+    list.add("C"); // Structural modification
+}
+ALL LIST IS EXAMPLE
+
+FAILS-SAFE
+
+Definition:
+A fail-safe iterator does not throw an exception if the collection is modified during iteration. Instead, it iterates over a clone (copy) of the collection.
+			CopyOnWriteArrayList
+
+			CopyOnWriteArraySet
+
+			ConcurrentHashMap
+
+		CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+		list.add("A");
+		list.add("B");
+		for (String s : list) {
+ 		   list.add("C"); // No exception
+		}
+
+
+----------------------------------------------------------------------------------------------------------
+API----> WHEN  clients (like mobile apps or websites) communicate with servers to exchange data and perform actions securely
+
+VERSIONING------>   make the changes or addition of the data which avoid the break the existing users , meand backward copactablity
+
+ebdpoint---> used to acccess the resources through the uri(uniform resource interface)
+
+
+uri--> is combination of the url and urn (domain name and prototype)
+
+soap---> simple object acccess protocall
+rest ---> representational state transfer
+
+
+100-->continue
+101---> swtiching the protocals
+102--> early hits
+
+200--> ok
+201--> created
+202--> accepeted
+204----> no content
+
+
+302-->found
+304--> not modified
+
+400--> bad request
+401--> unauthorized
+402---> forbidden
+404---> not found
+408--> request timeout
+429----> to many request
+
+500--> intrenal server side
+501-->  not implented
+502---> bad gateways
+504-->gateway time out
+
+
+Method	Purpose	Example Use
+
+GET	Read / Fetch data
+POST	Create new data
+PUT	Update existing data
+PATCH	Update partial data
+--------------------------------------------------------------------------------------------------------------------
+
+adb commonds===>
+
+install 			--> adb install apk
+	   			--->adb -s ip install apk
+connect 			====>  adb connect
+checkdevices connect		====> adb devuces -l  (list of devices and there name)
+adb shell 			It allows you to directly interact with the Android operating system from your computer’s command line.
+downgrade force 		---> adb install -r -d path     (-r==reinstall)
+stop server			--->  adb kill-server
+Start ADB server		---> adb start-server
+verion 				---> adb version
+Copy file from PC to device	---->  adb push <local> <device_location>
+Copy file from device to PC	---->	adb pull <device> <local>
+Delete file from device		-----> 	adb shell rm <file>
+clear the app data		----> adb shell pm clear com.package.name  (pm->package manager)
+
+pass the input			---->  adb shell input text
+nter the keycode		----> adb shell input keycode value
+
+reboot				----> adb reboot
+logcat				----> adb logcat > filename
+bugreportr			----> adb bugreport
+
+============================================================================================================================
+what is firmware
+
+it is embeeding hardware and low level software which enable the hardwares like radio, mic, camara, ui , toch action , etc
+or it is bridge between the hardware and the andriod os
+
+
+
+*** setting ***
+
+Library SeleniumLibrary
+
+*** variable****
+
+${url}=  https://apexon-peoplehub.darwinbox.com/user/login
+
+*** Test cases ***
+login multioal windows
+    Open Browser    ${url}  Chrome
+    Click Link      id=locator_for_link_that_opens_new_window
+ 
+     ${parent}=    Get Window Handle
+ 
+    ${windows}= Get Window Handles
+ 
+    For  ${handel}  in ${windows}
+        Switch Window   ${handel}
+        ${title}=   Get Title
+        Run Keyword If  ${title}=='people hub'        Exit For Loop
+    END
+ 
+    Switch Window   ${parent}
+ 
+    Select Frame    id=iframe
+    Unselect Frame
+ 
+    # drop downs
+    Select From List By Label   xpath=visable text     Indian
+    Select From List By Index   id=country      2
+ 
+    ${multipal_dropdowns}=    Get Selected List Lables     id=country
+    ${single_dropdowns}=  Get Selected List Label     id=country
+ 
+     ${driver}=      Get WebDriver
+     ${elemnts}=     Get WebElement    xpath=//div[@id='hoverTarget']
+    Drag And Drop   id=firstelemt    id=secondelemnts
+    Click Element  xpath=//div[@id=rightClickTarget    RIGHT
+    Mouse Over      xpath=//div[@id='hoverTarget']
+ 
+    Handle Alert
+    Dismiss Alert
+    Input Text Into Alert       yashu
+    Handle Alert
+ 
+ ==========================================================================================================================
+
+🔹 1. Basic SQL Concepts
+	What is SQL?
+		SQL (Structured Query Language) is a standard programming language used to interact with relational databases.
+		 It allows you to store, retrieve, update, and delete data from a database in a structured and organized way.
+
+
+
+Types of SQL Statements:
+
+		DDL: CREATE, ALTER, DROP, TRUNCATE:
+		data defination language used to modify the structure like index or table
+		table=> combination of row and columns
+			CREATE			Create tables, databases, etc.
+			ALTER			Modify table structure,
+			DROP			Delete table or database and it is pementaly deleted
+			TRUNCATE		Quickly delete all table rows(need to delete the data from the table) but structure remains same
+
+
+
+		DML: SELECT, INSERT, UPDATE, DELETE
+			select Retrieve data from the table
+				1. select column1,column2 from tablename
+			Insert-> insert the value in the data
+				1. Insert Into columname (counmnae 1, column 2, coumun3) Values (coum1_value, cloumn_2 value, cou3_value)
+			Update:	 Modify existing data in the table
+				update tablename set coumnname='whichcolumvalue' where condition
+			Delete :Remove specific records from the table
+				DELETE FROM TABLENAME WHERE CONITION
+				(IT CAN BE ROLL BACK IF IT IS NOT COMMITED OTHER WISE IT IS PREMNET DELETE)[IT IS ONLY ONE CAN BE ROLL BACK]
+
+
+		DCL: GRANT, REVOKE
+			GRANT THE PERMISIION TO MODIFY INSERT THE DATA
+			revoke the prmision
+
+		TCL: COMMIT, ROLLBACK, SAVEPOINT
+			transcition control language need to  manage the changes done in DML
+			COMMIT: Save all changes permanently
+			ROLLBACK – Undo changes since the last COMMIT
+				ROLLBACK TO sp1;
+				rollback;
+				savepoint name
+			SAVEPOINT: it is temporarily changes save
+
+
+	
+
+		Data Types: INT, VARCHAR, DATE, BOOLEAN, etc.
+
+	constraints:
+		it is used to validate the column in a table and avoid the data that can be inserted or modified
+		PRIMARY KEY	Uniquely identifies each row (NOT NULL + UNIQUE)
+		FOREIGN KEY	Links tables and enforces valid references	[link the colu of table to another primary key of table]
+		UNIQUE		Prevents duplicate values in a column
+		NOT NULL	Prevents missing data (no NULLs allowed)
+		CHECK		Validates data using a condition
+
+
+🔹 2. Database Objects
+
+Tables: combination of row and colum
+
+Views:  it used to view the virtual table which craeted from selected query
+
+Indexes:Indexes speed up data retrieval operations (like searching and filtering).
+
+
+
+
+🔹 3. CRUD Operations
+
+SELECT * FROM table;
+
+INSERT INTO table (col1, col2) VALUES (val1, val2);
+
+UPDATE table SET col1 = val1 WHERE condition;
+
+DELETE FROM table WHERE condition;
+
+🔹 4. Filtering and Sorting
+
+WHERE, BETWEEN, LIKE, IN, IS NULL
+
+ORDER BY, LIMIT(limit the acces the table)
+
+DISTINCT: return the unique value  (select distinct couumname from table name)
+
+🔹 5. Joins
+	INNER JOIN : get the match reords
+
+	LEFT JOIN	:SELECT e.name, d.dept_name
+			FROM employees e
+			LEFT OUTER JOIN departments d
+			ON e.dept_id = d.dept_id;
+
+	RIGHT JOIN
+
+	FULL OUTER JOIN
+
+
+
+Use case: Combine data from multiple tables using a key.
+
+🔹 6. Aggregate Functions & GROUP BY
+COUNT(), SUM(), AVG(), MIN(), MAX()
+
+		GROUP BY:Groups rows that have the same values in specified columns
+		 HAVING: HAVING is used to filter groups created by GROUP BY.
+
+🔹 7. Subqueries
+Correlated vs Non-Correlated
+
+Subquery in SELECT, FROM, WHERE clauses
+
+
+DEFAULT
+
+🔹 9. Normalization & Denormalization
+Normal Forms (1NF, 2NF, 3NF)
+
+Purpose: Reduce redundancy, improve data integrity
+
+🔹 10. Indexes
+How indexes speed up queries
+
+When not to use indexes (write-heavy tables)
+
+Difference between clustered and non-clustered
+
+2-3 HIGEST SALERY
+	SELECT DISTINCT salary
+	FROM employees
+		ORDER BY salary DESC
+	LIMIT 1 OFFSET 2;  -- 2 = third highest (0-based index)
+
+or
+	SELECT MAX(salary)
+  	FROM employees
+  	WHERE salary < (
+    	SELECT MAX(salary)
+    	FROM employees
+  	)
+	);
+Employee with Highest Salary Per Department
+	SELECT *
+	FROM employees e
+	WHERE salary = (
+ 	 SELECT MAX(salary)
+  	FROM employees
+  	WHERE department_id = e.department_id
+	);
+
+Count of Employees Per Department
+	SELECT department_id, COUNT(*)
+	FROM employees
+	GROUP BY department_i	d;
+ 
+ 
+ 
+ 
+==========================================================================================================================================================
+"Thank you for this opportunity.
+
+I went through the job description and I feel this role is a great match for my skills and experience.
+I enjoy working with technology and have a strong background in software testing
+	(explain hight leevl abou the project)
+I started my career at a startup, where I learned the importance of teamwork and working in an agile way to solve problems.
+
+
+I'm excited to join SAP because it's a leading company in software and technology.
+ I like how SAP connects different systems and makes work easier for businesses.
+
+ I'm looking forward to sharing new ideas, learning new technologies,
+and growing while working on useful and efficient solutions.
+ 
+ 
+ 
+ 
+What is the relationship between leadership and management?
+	Managers are responsible for assigning assignments,
+	 maintaining work reports, and ensuring team efficiency.
+	 Leaders are concerned with aligning goals and persuading a team to achieve larger business goals.
+
+
+. Have you ever disagreed with coworkers or management?
+"Yes, I’ve had situations where I didn’t fully agree with a coworker
+But I believe that in any team, different opinions are natural.
+ What’s important is how we handle it. We discussed the issue calmly, shared our views,
+and came up with a plan that worked for both sides. In the end,
+finding common SOLUTION helped us move forward without any problems.
+
+
+ Strengths:
+"One of my strengths is that I’m very detail-oriented and organized.
+ In testing and automation, even small issues matter,
+and I always make sure my work is accurate.
+ I’m also a quick learner — I enjoy picking up new tools or technologies when the project needs it.
+
+WEEKNESS
+Sometimes I take extra time to make things perfect. But I’m learning to manage time better and focus on what’s most important.
+
+
+Could you elaborate on the day-to-day tasks of this position? What is a typical day like in the company?
+What are your expectations of me if I am hired for this position?

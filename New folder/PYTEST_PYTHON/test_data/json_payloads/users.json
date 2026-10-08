@@ -1,0 +1,21 @@
+{
+  "valid_user": {
+    "email": "testuser@example.com",
+    "password": "Test@1234",
+    "name": "Test User"
+  },
+  "premium_user": {
+    "email": "premium@example.com",
+    "password": "Premium@1234",
+    "name": "Premium User"
+  },
+  "invalid_user": {
+    "email": "notexist@example.com",
+    "password": "Wrong@000"
+  },
+  "new_user": {
+    "email": "newuser_{{random}}@example.com",
+    "password": "NewUser@1234",
+    "phone": "9876543210"
+  }
+}

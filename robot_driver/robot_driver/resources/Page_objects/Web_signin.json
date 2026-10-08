@@ -1,0 +1,549 @@
+{
+  "web_code_field": {
+    "name": "otc"
+  },
+  "web_next_btn": {
+    "id": "idSIButton9"
+  },
+  "web_username_field": {
+    "id": "i0116"
+  },
+  "web_pswd_field": {
+    "id": "i0118"
+  },
+  "web_add_button": {
+    "id": "otherTile"
+  },
+  "avatar": {
+    "id": "idna-me-control-avatar-trigger"
+  },
+  "loading": {
+    "id": "loading-screen-logo"
+  },
+  "username_signin": {
+    "xpath": "//div[@class='table-cell text-left content']//div[not(@id='otherTileText')][1]",
+    "xpath1": "//span[@data-tid='me-control-displayname']"
+  },
+  "activity_button": {
+    "xpath": "//button[starts-with(@aria-label, 'Activity')]"
+  },
+  "calendar_button": {
+    "xpath": "//button[starts-with(@aria-label, 'Calendar')]"
+  },
+  "chat_button": {
+    "xpath": "//button[starts-with(@aria-label, 'Chat')]"
+  },
+  "check_bug_4501948": {
+    "xpath": "//iframe[@title='Calendar']"
+  },
+  "more_apps_button": {
+    "xpath": "//div[@class='___77lcry0 f10pi13n' and @aria-label='View more apps']"
+  },
+  "app_btn": {
+    "xpath": "//div[@class='___77lcry0 f10pi13n' and @aria-label='specific_app']"
+  },
+  "create_new_meeting_btn": {
+    "xpath": "//button[@id='header_new_meeting_button' and @data-tid='calendar-new-meeting']"
+  },
+  "add_title": {
+    "xpath": "//input[@placeholder='Add title']"
+  },
+  "add_participant": {
+    "xpath": "//input[@id='cv2-sf-required-people-picker'] | //input[@placeholder='Add required attendees']"
+  },
+  "select_add_user": {
+    "xpath": "//button[@id='cv2-sf-people-result-0' and @role='option']",
+    "xpath1": "//*[@role='option' and @index='0']"
+  },
+  "add_location": {
+    "xpath": "//input[@placeholder='Add location']"
+  },
+  "web_all_day_toggle": {
+    "xpath": "//button[@data-tid='calv2-sf-all-day-toggle' and @aria-label='All day']"
+  },
+  "web_send_meeting_btn": {
+    "xpath": "//*[@id='splitButton-r3n__primaryActionButton' or @data-tid='calv2-sf-send' or @data-tid='calv2-sf-save']"
+  },
+  "connection_isn't_private": {
+    "xpath": "//*[@id='main-message']/h1"
+  },
+  "date_block": {
+    "xpath": "//div[@class='ui-flex a b bbe bbf']/span[text()='current_date']"
+  },
+  "start_time": {
+    "id": "ComboBox22-input",
+    "xpath": "//*[@aria-label='Start time']"
+  },
+  "delay_in_minutes": {
+    "xpath": "//span[contains(text(),'delay_time')]"
+  },
+  "end_timer": {
+    "id": "ComboBox26-input",
+    "xpath": "//*[@aria-label='end_timer' or @aria-label='End time']"
+  },
+  "end_meeting_label": {
+    "xpath": "//input[@aria-label=\"End time\"]"
+  },
+  "meeting_names_on_calender": {
+    "xpath": "//*[contains(@class, 'fui-StyledText') and contains(normalize-space(text()), 'meeting_name') or text() = 'meeting_name']"
+  },
+  "Cancel": {
+    "xpath": "//span[normalize-space()='Cancel' or normalize-space()='Delete']"
+  },
+  "Edit": {
+    "xpath": "//span[text()='Edit']"
+  },
+  "remove_participant": {
+    "xpath": "//button[contains(@class, 'ms-TagItem-close')]"
+  },
+  "maybe_later": {
+    "xpath": "//button[@title='Maybe later' and @aria-label='Maybe later']//span[text()='Maybe later']"
+  },
+  "popup_get_started_button": {
+    "xpath": "//button[@title='Get started' and @aria-label='Get started']//span[text()='Get started']"
+  },
+  "popup_get_started_button_new": {
+    "xpath": "//button[@title='Get started' and @aria-label='Get started']"
+  },
+  "popup_close_get_started_button": {
+    "xpath": "//button[@data-testid='esp-fluent-dialog-button' and @aria-label='Close']",
+    "xpath1": "//*[@id='close_button']"
+  },
+  "calendar_page": {
+    "xpath": "//*[@data-tid='calendar-app-header-title']"
+  },
+  "chat_with_participants": {
+    "xpath": "//span[normalize-space()='Chat with participants']"
+  },
+  "accept": {
+    "xpath": "//span[normalize-space()='Accept']"
+  },
+  "meeting_time_span": {
+    "xpath": "//div[contains(@class, 'ui-popup__content__content')]//span[contains(@class, 'ui-text') and contains(@class, 'ka') and contains(@class, 'kc')]"
+  },
+  "more_options_button": {
+    "xpath": "//button[@data-testid='mo_more_options_button' and @data-tid='mo_more_options_button']"
+  },
+  "e2ee_toggle": {
+    "id": "MeetingEndToEndEncryption"
+  },
+  "save_button": {
+    "xpath": "(//button[contains(text(),'Save')])[2]",
+    "xpath1": "//button[contains(text(),'Save')]"
+  },
+  "close": {
+    "xpath": "//span[@aria-label='Close']//*[name()='svg']",
+    "xpath1": "//button[.//span[@aria-label='Close' or text()='Close']]"
+  },
+  "end_date_calender": {
+    "xpath": "//input[@aria-label='End date']"
+  },
+  "end_date": {
+    "xpath": "//button[@aria-label='end_date']"
+  },
+  "show_as": {
+    "xpath": "//*[@data-automationid='splitbuttonprimary']"
+  },
+  "private": {
+    "xpath": "//*[@name='Private']"
+  },
+  "end_date_calendar1": {
+    "xpath": "//*[@aria-label='End date']"
+  },
+  "got_it_button": {
+    "xpath": "//span[text()='Got it']"
+  },
+  "got_it_button2": {
+    "xpath": "//*[text()='Got it']"
+  },
+  "expand_meeting_list": {
+    "xpath": "//*[@aria-label='Expand meeting details']"
+  },
+  "more_button_inside_meeting_details": {
+    "xpath": "//*[@name='More options']"
+  },
+  "forward_button": {
+    "xpath": "//*[@id='forwardCommandBarItemId']"
+  },
+  "do_it_later": {
+    "xpath": "//*[@aria-label='Do it later']"
+  },
+  "join_btn_tdc": {
+    "xpath": "//*[@data-track-module-name='calendarEventPeekViewMeetingJoinButton']",
+    "xpath1": "//*[@data-tid='prejoin-join-button']"
+  },
+  "leave_btn_tdc": {
+    "id": "hangup-button",
+    "xpath": "//*[@data-tid='hangup-main-btn']"
+  },
+  "without_audio_or_video": {
+    "xpath": "//*[@class='fui-Button r1alrhcs']"
+  },
+  "join_button_2": {
+    "xpath": "//*[@aria-label='Join']"
+  },
+  "chat_button_in_meeting": {
+    "xpath": "//*[@data-inp='chat-button']"
+  },
+  "send_chat": {
+    "xpath1": "//*[@class='ck-placeholder']"
+  },
+  "send_button": {
+    "xpath": "//*[@data-tid='newMessageCommands-send']"
+  },
+  "people_btn_tdc": {
+    "xpath": "//*[@aria-label='People']"
+  },
+  "dismiss_btn_tdc": {
+    "xpath": "//*[@data-testid='post-meeting-follow-up-dismiss-button']"
+  },
+  "more_button_in_TDC": {
+    "id": "callingButtons-showMoreBtn"
+  },
+  "record_btn_TDC": {
+    "id": "RecordingMenuControl-id"
+  },
+  "record_dialog": {
+    "xpath": "//*[contains(text(), 'Agreement is needed first')]"
+  },
+  "dialog_continue": {
+    "xpath": "//button[normalize-space()='Continue']"
+  },
+  "dialog_confirm": {
+    "xpath": "//button[text()='Confirm']"
+  },
+  "start_recording_TDC": {
+    "xpath": "//*[@aria-label='Start recording']"
+  },
+  "record_notification_TDC": {
+    "xpath": "//*[@data-tid='call-recording-transcript-started']"
+  },
+  "call_controls_TDC": {
+    "xpath": "//*[@aria-label='Meeting controls']"
+  },
+  "meet_now_TDC": {
+    "xpath": "//*[@data-track-module-name='openMeetNowShareFlyout']"
+  },
+  "accept_TDC": {
+    "xpath": "//*[@aria-label='Accept']"
+  },
+  "dismiss_rating_button": {
+    "id": "cqf-dismiss-button"
+  },
+  "settings_pop_up": {
+    "xpath": "//*[@title='Teams needs permission to access your camera']"
+  },
+  "sensitivity": {
+    "xpath": "//button[@class='fui-Button r1alrhcs fui-MenuButton ___1tqz01i fly5x3f f1869bpl f1o700av f71fsbu']",
+    "xpath1": "//button[@aria-label='Sensitivity None']"
+  },
+  "none": {
+    "xpath": "//span[text()='None']"
+  },
+  "bypass_the_lobby": {
+    "xpath": "(//*[@id=\"AutoAdmittedUsers\" and @value=\"People in my org and guests\"])[2]"
+  },
+  "org_and_guests": {
+    "command": "new UiSelector().text(\"People in my org and guests\")",
+    "xpath": "(//button[@value=\"People in my org and guests\"])[2]"
+  },
+  "app_lable": {
+    "xpath": "//span[text()='App_Testing_Label']"
+  },
+  "new_label": {
+    "xpath": "//span[text()='New Label']"
+  },
+  "Dpec_Test": {
+    "xpath": "//span[text()='Dpec_Test']"
+  },
+  "can_present": {
+    "xpath": "//span[text()='Who can present']"
+  },
+  "Everyone": {
+    "xpath": "//button[@value='Everyone' and @id='PresenterOption' ]"
+  },
+  "label_PresenterOption": {
+    "xpath": "//*[@aria-labelledby='label_PresenterOption']"
+  },
+  "apply": {
+    "xpath": "//*[text()='Apply']",
+    "xpath1": "//button[@aria-label='Apply']"
+  },
+  "Meeting_chat": {
+    "xpath": "//span[text()='Meeting chat']"
+  },
+  "MeetingChat_lable": {
+    "xpath": "//button[@data-tid='AllowMeetingChat']"
+  },
+  "MeetingChat_off": {
+    "xpath": "//div[@id='option2' and normalize-space(text())='Off']"
+  },
+  "MeetingChat_on": {
+    "xpath": "//div[@id='option1' and normalize-space(text())='On']"
+  },
+  "Whiteboard": {
+    "xpath": "//p[text()='Whiteboard']"
+  },
+  "new_session": {
+    "xpath": "//button[text()='Start a new session']"
+  },
+  "zoom_signin_fld": {
+    "xpath": "//input[@type='email']"
+  },
+  "zoom_Password_fld": {
+    "xpath": "//input[@type='password']"
+  },
+  "Sign_In": {
+    "xpath": "//span[text()=' Sign In ']"
+  },
+  "zoom_profile_card": {
+    "xpath": "//span[@class='hidden-xs']/b"
+  },
+  "zoom_profile_pic": {
+    "id": "headerPic"
+  },
+  "zoom_meetings": {
+    "xpath": "//a[@tracking-id=\"leftNavMeetings\"]"
+  },
+  "Schedule_Meeting": {
+    "xpath": "//span[normalize-space(text())='Schedule a Meeting']"
+  },
+  "zoom_meeting_title": {
+    "xpath": "//input[@placeholder='My Meeting']"
+  },
+  "zoom_from_time": {
+    "xpath": "//input[@aria-label='select start time']"
+  },
+  "zoom_hr_duration": {
+    "id": "duration_time"
+  },
+  "zoom_min_duration": {
+    "xpath": "//input[@aria-controls='select-1-popup-list']"
+  },
+  "zoom_time_zone_dropdown": {
+    "xpath": "(//i[@class=\"zm-select__caret zm-input__icon zm-icon-up\"])[4]"
+  },
+  "zoom_hr_drop_down": {
+    "xpath": "(//button[@type='button' and @aria-label='Show options' and contains(@class, 'zm-select-toggle')])[1]"
+  },
+  "zoom_save": {
+    "xpath": "//*[@class='zm-sticky-fixed schedule-bar-sticky' ]//button[@class='save-btn zm-button--primary zm-button--small zm-button']"
+  },
+  "popup_list": {
+    "xpath": "//dl[@id='select-0-popup-list']"
+  },
+  "registration": {
+    "id": "registration"
+  },
+  "web_meeting_id": {
+    "xpath": "//span[contains(text(), 'Meeting ID: ')]/following-sibling::span"
+  },
+  "web_passcode": {
+    "xpath": "//span[contains(text(), 'Passcode:')]/following-sibling::span"
+  },
+  "invalid_dcf_code_in_web_sing_in": {
+    "id": "error"
+  },
+  "new_calender_toggle": {
+    "xpath": "//input[@id='switch-rp' and @role='switch']",
+    "id": "switch-rp",
+    "xpath1": "//div[contains(@class, 'fui-Switch__indicator')]"
+  },
+  "skip_feedback_btn": {
+    "xpath": "//*[@class='ms-Stack css-181']//*[text()='Skip Feedback']"
+  },
+  "new_calendar_title": {
+    "xpath": "//*[text() = 'New Calendar']"
+  },
+  "lang_close_btn": {
+    "xpath": "//*[@aria-label='Close' and @type='button']"
+  },
+  "feedback_form_title": {
+    "xpath": "//*[text()='Feedback to Microsoft']"
+  },
+  "call_tab": {
+    "xpath": "//*[@aria-label='Calls']"
+  },
+  "calling_search_button": {
+    "id": "people-picker-input"
+  },
+  "select_calling_user": {
+    "xpath": "//*[@type='ADUser' and @role='option']"
+  },
+  "call_button": {
+    "xpath": "//*[@data-tid='call-button']"
+  },
+  "history_container": {
+    "xpath": "//button[@aria-controls='callHistoryContainer']"
+  },
+  "dial_pad": {
+    "xpath": "//*[@data-tid='whole-dialpad']"
+  },
+  "hang_up_button": {
+    "xpath": "//*[data-track-action-scenario='callStopMeeting']",
+    "id": "com.microsoft.skype.teams.ipphone:id/call_end_button"
+  },
+  "resize_frame": {
+    "xapth": "//*[@data-popper-placement='bottom-end']",
+    "xpath1": "//*[@data-tid='esp-quickguide-next-button']"
+  },
+  "join_cal_in_tdc": {
+    "xpath": "//*[@aria-label='Accept with audio']"
+  },
+  "options": {
+    "xpath": "//span[text()='Options']"
+  },
+  "options_collapsed": {
+    "xpath": "//button[@aria-label='Show More Options, Collapsed']"
+  },
+  "schedule_meeting": {
+    "xpath": "//h1[text()='Schedule Meeting']"
+  },
+  "allow_participants_to_join_anytime": {
+    "xpath": "(//span[@class='zm-checkbox__inner' and ancestor::label[span[contains(text(), 'Allow participants to join anytime')]]])[1]\n"
+  },
+  "remove_from_calendar": {
+    "xpath": "//span[ normalize-space()='Remove from calendar']"
+  },
+  "switch_calendar_view": {
+    "xpath": "//*[@title='Switch your calendar view']"
+  },
+  "week_view": {
+    "xpath": "//*[@aria-label='Week view']"
+  },
+  "day": {
+    "xpath": "//*[@aria-label='Day view']"
+  },
+  "work_week": {
+    "xpath": "//*[@aria-label='Work week view']"
+  },
+  "agenda": {
+    "xpath": "//*[@aria-label='Agenda view']"
+  },
+  "saturday": {
+    "xpath": "//*[text()='Saturday']"
+  },
+  "sunday": {
+    "xpath": "//*[text()='Sunday']"
+  },
+  "stop_sharing_indicator": {
+    "xpath": "//*[@aria-label='Stop sharing']",
+    "xpath1": "//button[contains(., 'Stop sharing')]"
+  },
+  "phone_option": {
+    "id": "20c3440d-c67e-4420-9f80-0e50c39693df"
+  },
+  "Type_a_name_or_number": {
+    "xpath": "//input[@aria-label='Type a name or number']"
+  },
+  "click_on_call": {
+    "xpath": "//button[contains(@class,'fui-Button r1alrhcs ___klx6rg0 ffp7eso')]"
+  },
+  "dial_pad_digits_in_tdc": {
+    "xpath": "//div[contains(@class,'fui-Grid ___j1o2k00')]"
+  },
+  "accept_call_button": {
+    "xpath": "//button[@aria-label='Accept with audio']",
+    "xpath1": "//button[normalize-space(text())='Accept']"
+  },
+  "hang_up_button_in_tdc": {
+    "xpath": "//button[@aria-label='Leave' or text()='Leave']",
+    "xpath1": "//button[text()='Leave']"
+  },
+  "hold_label_in_tdc": {
+    "xpath": "//*[text()='On hold']"
+  },
+  "resume_button": {
+    "xpath": "//button[contains(@title,'Resume call' or @class='fui-Button r1alrhcs']"
+  },
+  "language_and_speech": {
+    "id": "LanguageSpeechMenuControl-id"
+  },
+  "turn_on_rtt_option": {
+    "xpath": "//div[@aria-label='Turn on RTT for this call']"
+  },
+  "turn_on_rtt_enable": {
+    "xpath": "//div[contains(@class,'fui-DialogActions')]/button[text()='Turn on']"
+  },
+  "rtt_text_message": {
+    "xpath": "//input[@class='fui-Input__input r12stul0']"
+  },
+  "more_option_in_rtt_meeting": {
+    "xpath": "//button[@aria-label='More']"
+  },
+  "external_participant_popup": {
+    "xpath": "//*[@class='fui-StyledText' and @dir='auto']"
+  },
+  "admit_external_participant": {
+    "xpath": "//*[text()='Admit']"
+  },
+  "people_tab": {
+    "xpath": "//button[@id= 'roster-button']"
+  },
+  "pin_option_in_people_tab": {
+    "xpath": "//div[contains(@id,'calling-roster-item')]/div[contains(@class,'fui-TreeItemPersonaLayout__main')]/span[text()='username_to_pin']/ancestor::div[contains(@class,'fui-TreeItemPersonaLayout__main')]/following-sibling::div[contains(@class,'aside r1825u21')]"
+  },
+  "triple_dots_under_mouse_action": {
+    "xpath": "//*[@class='fui-TreeItemPersonaLayout__actions rzvs2in ___10hxkuc f8wuabp f1mk8lai']"
+  },
+  "pin_for_me": {
+    "xpath": "//*[text()='Pin for me']"
+  },
+  "pinned_elements": {
+    "xpath": "//*[@aria-label='username_to_pin, Has context menu, Pinned, Muted']"
+  },
+  "raise_hand_in_tdc": {
+    "xpath": "//img[@itemid='raisehandV3-3D']"
+  },
+  "meet_now_in_tdc": {
+    "xpath": "//span[text()='Meet now']"
+  },
+  "start_meet_now_popup": {
+    "xpath": "//div[contains(@class,'ui-popup__content__content')]"
+  },
+  "meeting_name": {
+    "xpath": "//input[@placeholder=\"Enter meeting name\"]"
+  },
+  "start_meet_now_button": {
+    "xpath": "//button[text()='Start meeting']"
+  },
+  "invite_people_to_join_you_popups": {
+    "xpath": "//div[@aria-label='Invite people to join you']"
+  },
+  "add_participants": {
+    "xpath": "//*[text()='Add participants']"
+  },
+  "participants": {
+    "xpath": "//h2[text()='Participants']"
+  },
+  "invite_someone_or_dial_number_for_meet_now": {
+    "id": "roster-participants-search-input"
+  },
+  "searched_user": {
+    "xpath": "//span[text()='user_name']"
+  },
+  "request_to_join": {
+    "xpath": "//span[@title='user_name']/ancestor::div[contains(@class,'fgr6219 f16tcgob')]/following-sibling::div[contains(@class,'10hxkuc f8wuabp f1mk8lai')]"
+  },
+  "join_button_in_tdc": {
+    "xpath": "//button[text()='Join now']"
+  },
+  "share_icon": {
+    "xpath": "//*[text() ='Share']"
+  },
+  "verify_rtt_text_box_on_tdc": {
+    "xpath": "//div[contains(@class,'1x1hcrp f1vx9l62 f14k419y f1fgo9fz')]"
+  },
+  "verify_disable_of_rtt": {
+    "xpath": "//div[@aria-disabled=\"true\"]"
+  },
+  "room_audio": {
+    "xpath": "//span[text()='Room audio']"
+  },
+  "room_input": {
+    "xpath": "//*[@placeholder='Search for a room']"
+  },
+  "room_user_search_result": {
+    "xpath": "//*[@roomtype='3' and @role='option']"
+  }
+}

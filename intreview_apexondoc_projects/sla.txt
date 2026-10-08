@@ -1,0 +1,213 @@
+
+
+def verify_call_hold_banner_for_delegates(from_device, to_device ,method=None, device_delegate=None):
+    to_devices = to_device.split(",")
+    display_names = []
+    for device in to_devices:
+        print("the devices is ---->", device)
+        if method.lower()=='delegate':
+            print("enterd into delegate users{}")
+            to_device_displayname = common.device_displayname(device)
+            from_device_displayname = common.device_displayname(device_delegate)
+            display_name = to_device_displayname + " for " + from_device_displayname
+            display_names.append(display_name)
+            print(display_names)
+        if method.lower()==None:
+             print("enter to this else condition---->")
+             display_name = common.device_displayname(device)
+             display_names.append(display_name)
+             print(display_names)
+    print(display_names)
+    time.sleep(action_time)
+    common.click_if_present(from_device, calls_dict, "Multiple_call_hold_ribbon_dropdown")
+    # xpath
+    # common.wait_for_element(from_device, calls_dict, "Call_bar_resume_btn")
+    # changed heree feb_1_pr
+    common.wait_for_element(from_device, calls_dict, "Resume_banner_icon")
+    hold_banner_display_names = common.get_all_elements_texts(from_device, calls_dict, "caller_name_in_hold_banner")
+    for display_name_1 in hold_banner_display_names:
+        if display_name_1 not in display_names:
+            raise AssertionError(
+                f"{display_names} not found in call hold banner in {from_device}:{hold_banner_display_names}"
+            )
+
+
+
+
+TC36 : [Call view] UI should not have any distortion when default call view screen is set
+    [Tags]      318792    P2
+    [Setup]      Run Keywords     Testcase Setup    count=3    AND     select call list item    device=device_1     item=favorite
+    Select default view value   device=device_1     option=speed dial
+    Validate calls tab after default value change    device=device_1      default_option=speed dial
+    return to home screen    device_list=device_1
+    Add new delegates with both permission and validate   from_device=device_2    to_device=device_1
+    Add new delegates with both permission and validate   from_device=device_1    to_device=device_3
+    Navigate to Calls Favorites page    device=device_1
+    Verify delegates in favorites page     device=device_1
+    Validate People you support tab     device=device_1
+    verify added delegate user with presence in favorites page      from_device=device_1    to_device=device_3
+    verify user in people you support with presence in favorites_page       from_device=device_1    to_device=device_2
+    Verify added favorite user in favorites page      from_device=device_1    to_device=device_2
+    verify make a call options and dial pad present     device=device_1
+    Select default view value     device=device_1     option=recent call history
+    Navigate to calls tab   device=device_1
+    Verify call history log    device=device_1
+    verify make a call options and dial pad present     device=device_1
+    [Teardown]    Run Keywords    Capture on Failure   AND  Remove favorite user from favorites page    from_device=device_1     to_device=device_2
+
+
+def verify_call_hold_banner_for_delegates(from_device, to_device ,method=None, device_delegate=None, delegate_device=None):
+    to_devices = to_device.split(",")
+    display_names = []
+    for device in to_devices:
+        print("the devices is ---->", device)
+        if method and method.lower()=='delegate':
+            print("enterd into delegate users{}")
+            to_device_displayname = common.device_displayname(device)
+            from_device_displayname = common.device_displayname(device_delegate)
+            display_name = to_device_displayname + " for " + from_device_displayname
+            display_names.append(display_name)
+            print(display_names)
+        else:
+             print("enter to this else condition---->")
+             display_name = common.device_displayname(device)
+             display_names.append(display_name)
+             print(display_names)
+    print(display_names)
+    time.sleep(action_time)
+    common.click_if_present(from_device, calls_dict, "Multiple_call_hold_ribbon_dropdown")
+    # xpath
+    # common.wait_for_element(from_device, calls_dict, "Call_bar_resume_btn")
+    # changed heree feb_1_pr
+    common.wait_for_element(from_device, calls_dict, "Resume_banner_icon")
+    if delegate_device=='NO':
+        hold_banner_display_names = common.get_all_elements_texts(from_device, calls_dict, "caller_name_in_hold_banner")
+    else:
+        hold_banner_display_names = common.get_all_elements_texts(from_device ,home_screen_dict, "caller_name_in_home_screen")
+    for display_name_1 in hold_banner_display_names:
+        if display_name_1 not in display_names:
+            raise AssertionError(
+                f"{display_names} not found in call hold banner in {from_device}:{hold_banner_display_names}"
+            )
+
+
+
+def resume_multipal_call_banner_inside_delegate_call(from_device,to_device, device_delegate=None):
+    to_device_displayname = common.device_displayname(to_device)
+    if device_delegate is not None:
+        from_device_displayname = common.device_displayname(device_delegate)
+        display_name = to_device_displayname + " for " + from_device_displayname
+    else:
+        display_name=to_device_displayname
+    common.click_if_present(from_device, calls_dict, "Multiple_call_hold_ribbon_dropdown")
+    print("cl;icked on mutipal banner and now ned to see the dataa")
+    user_name_in_delegate=common.get_dict_copy(calls_dict,'resume_multipal_call_in_delegate','username',display_name)
+    common.wait_for_and_click(from_device,user_name_in_delegate,'resume_multipal_call_in_delegate')
+
+
+TC44 : [Manage Delegates] [SLA] Hold call banner should display to Boss as well as DUT, when DUT place any call on hold on behalf of Boss
+    [Tags]      321034   P2
+    [Setup]  Testcase Setup for Delegate User       count=4
+    Initiate OBO call using display name    from_device=device_1      to_device=device_3    obo_option=device_2
+    Verify calling behalf of device text    device=device_1     to_device=device_3    from_device=device_2
+    Pick incoming call    device=device_3
+    Verify Call State    device_list=device_1,device_3    state=Connected
+    Hold the call   device=device_1
+    Verify Call State    device_list=device_1,device_3     state=Hold
+    verify resume banner    device_list=device_1
+    verify call hold banner for delegates   from_device=device_1   to_device=device_3       method=delegate      device_delegate=device_2
+#    addnewxpath
+    Initiate OBO call using display name    from_device=device_1      to_device=device_4     obo_option=device_2
+    Verify calling behalf of device text    device=device_1     to_device=device_4    from_device=device_2
+    Pick incoming call    device=device_4
+    Verify Call State    device_list=device_1,device_4    state=Connected
+    Hold the call   device=device_1
+    Verify Call State    device_list=device_1,device_4     state=Hold
+    verify call hold banner for delegates       from_device=device_1        to_device=device_3,device_4       method=delegate      device_delegate=device_2
+#    newkwyword
+    resume multipal call banner inside delegate call    from_device=device_1    to_device=device_3      device_delegate=device_2
+    Verify Call State    device_list=device_1,device_3    state=Connected
+    wait for some time      time=${wait_time}
+    resume multipal call banner inside delegate call    from_device=device_1    to_device=device_4      device_delegate=device_2
+    Verify Call State    device_list=device_1,device_4    state=Connected
+#
+    Disconnect call     device=device_4
+    Verify Call State    device_list=device_4   state=disConnected
+    Verify Call State    device_list=device_1       state=hold
+    resume multipal call banner inside delegate call    from_device=device_1    to_device=device_3      device_delegate=device_2
+    Verify Call State    device_list=device_1,device_3    state=Connected
+    Disconnect call     device=device_3
+    Verify Call State    device_list=device_1,device_3    state=disConnected
+#
+    Initiate OBO call using display name    from_device=device_1      to_device=device_3    obo_option=device_2
+    Verify calling behalf of device text    device=device_1     to_device=device_3    from_device=device_2
+    Pick incoming call    device=device_3
+    Verify Call State    device_list=device_1,device_3    state=Connected
+    Hold the call   device=device_1
+    Verify Call State    device_list=device_1,device_3     state=Hold
+    verify call hold banner for delegates   from_device=device_2   to_device=device_1
+#    addnewxpath
+    Initiate OBO call using display name    from_device=device_1      to_device=device_4    obo_option=device_2
+    Verify calling behalf of device text    device=device_1     to_device=device_4    from_device=device_2
+    Pick incoming call    device=device_4
+    Verify Call State    device_list=device_1,device_4    state=Connected
+    Hold the call   device=device_1
+    Verify Call State    device_list=device_1,device_4     state=Hold
+    verify call hold banner for delegates   from_device=device_2   to_device=device_1,device_1
+    resume multipal call banner inside delegate call    from_device=device_2    to_device=device_1
+    Verify Call State    device_list=device_1,device_3     state=connected
+    resume multipal call banner inside delegate call    from_device=device_2    to_device=device_1
+    Verify Call State    device_list=device_1,device_4   state=connected
+    Disconnect call     device=device_3,device_4
+    Verify Call State    device_list=device_1,device_2,device_3,device_4     state=disconnected
+    [Teardown]  run keywords        Capture on Failure    AND   Delete delegate from manage delegate   from_device=device_1    to_device=device_3   AND    Come back to home screen   device_list=device_1,device_2,device_3,device_4
+
+
+
+
+Teams Android Devices for the below V-accounts:
+
+v-babavalis@microsoft.com
+v-santoshkm@microsoft.com
+v-patilaksha@microsoft.com
+v-ymh@microsoft.com
+Teams Build Management Portal for the below V-accounts:
+
+v-babavalis@microsoft.com
+v-santoshkm@microsoft.com
+v-ymh@microsoft.com
+
+
+verify_and_search_for_unknown_user
+
+
+
+perform_web_sign
+
+verify ztp signin ui on lcp
+
+ ${old_dfc_code}=     fetch dfc code      device=device_1
+    Wait for Some Time    time=${16_minutes_wait_time}
+    ${new_dfc_code}=     fetch dfc code      device=device_1
+    Validate dfc code    ${old_dfc_code}    ${new_dfc_code}    device=device_1    status=different
+    signin method with dcf code    device=device_1    user=user
+	
+	nw9j7aqmr
+	
+	
+	verify_meeting_notification_on_home_screen
+	
+	
+	invalid_dcf_code_in_web_sing_in
+	
+	
+	"invalid_dcf_code_in_web_sing_in": {
+    "id": "error",
+    "xpath": "//*[text()=\"That code didn't work. Check the code and try again.\"]"
+  }
+  
+  
+  verify_voicemail_option_before_collapse_after_collapse
+  
+  
+  robot -d results/test_call_dq  -i 502321 -i 502322 tests

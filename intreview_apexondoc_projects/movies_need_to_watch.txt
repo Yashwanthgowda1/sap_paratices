@@ -1,0 +1,73 @@
+vidaamuyarchi  
+
+
+
+
+
+def verify_cq_call_log_in_calls_tab(device,to_device, status="Outgoing"):
+    if status not in ["Outgoing", "Incoming"]:
+        raise AssertionError(f"Illegal value for 'status': '{status}'")
+    common.wait_for_element(device, settings_dict, "callqueues")
+    contact_details= common.device_phonenumber(to_device)
+    tmp_dict = common.get_dict_copy(calls_dict, "call_duration", "username", contact_details)
+    call_status_and_call_duration = common.wait_for_element(device, tmp_dict, "call_duration").text
+    if (status == "Incoming"):
+        values = call_status_and_call_duration.split(":")
+        condition = f"{status}:" + values[1] 
+        if not condition == call_status_and_call_duration:
+            raise AssertionError(f"{device} call status is not {status}")
+    elif (status == "Outgoing"):
+        values = call_status_and_call_duration.split(":")
+        condition = f"{status}:" + values[1] 
+        if not condition == call_status_and_call_duration:
+            raise AssertionError(f"{device} call status is not {status}")
+        
+def navigate_to_calls_in_queue_tab(device):
+    common.wait_for_and_click(device, app_bar_dict, "call_tab")
+
+
+def verify_list_of_contacts_inside_people_tab_click_on_drop_down(device, options_inside_people):
+    common.wait_for_and_click(device, call_views_keywords.call_view_dict, "people_option")
+    if (options_inside_people=="Opted out"):        
+        common.scroll_the_page(
+            device,
+            common.wait_for_element(device, settings_dict, "people_tab_scroll_view_in_call_queues_name"),
+            swiping="up",
+        )
+    group_names_inpeople_tab=common.get_dict_copy(
+        settings_dict, "groups_in_people_tab_at_call_queues", "group_name", options_inside_people.capitalize()
+    )
+    temp_dec=common.get_dict_copy(
+        settings_dict, "list_of_contact_in_call_queue_options", "group_name", options_inside_people.capitalize()
+    )
+    all_contact_present_inside_particular_group=common.get_all_elements_texts(device, temp_dec, "list_of_contact_in_call_queue_options")
+    common.wait_for_and_click(device, group_names_inpeople_tab, "groups_in_people_tab_at_call_queues")
+    common.sleep_with_msg(device, 1, "Wait for contact to disable dropdown")
+    common.wait_for_and_click(device, group_names_inpeople_tab, "groups_in_people_tab_at_call_queues")
+    all_contact_present_inside_particular_group_after_drop_down=common.get_all_elements_texts(device, temp_dec, "list_of_contact_in_call_queue_options")
+    if all_contact_present_inside_particular_group!=all_contact_present_inside_particular_group_after_drop_down:
+        raise AssertionError(f"{device} contact list is not same after drop down")
+
+
+
+ "xpath1" : "//*[@resource-id='com.microsoft.skype.teams.ipphone:id/contacts_grid']/*[contains(@content-desc, 'Leads']/following-sibling::*[@resource-id='com.microsoft.skype.teams.ipphone:id/contact_display_name']"
+ 
+ 
+ "//*[@resource-id='com.microsoft.skype.teams.ipphone:id/call_item_container']/*[@text='username]/following-sibling::*[@resource-id='com.microsoft.skype.teams.ipphone:id/call_description'][0]"
+ 
+ 
+ 
+ 
+Feature: Signin Functionality
+
+  Background: Sign in the user with valid credentials
+    Given User connects the device
+    When user clicks the "sign_link"
+    Then user enters "Username" and clicks "Sign_in_button"
+    Then user enters "Password" and clicks "Sign_in_button"
+    Then user clicks "register"
+
+  Scenario: Valid Sign-in
+    Given user is on the login page
+    When user enters valid "Username" and "Password"
+    Then user should be redirected to the dashboard

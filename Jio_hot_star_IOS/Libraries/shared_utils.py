@@ -1,0 +1,503 @@
+import json
+import random
+import time
+import subprocess
+import os
+
+import requests
+from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.common.action_chains import ActionChains
+import sys
+import shutil
+
+from collections import OrderedDict
+from robot.api import logger
+from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    StaleElementReferenceException,
+    ElementNotInteractableException,
+    ElementNotVisibleException,
+)
+from Libraries import device_manager
+from Libraries.error_handler_utils import auto_handle_appium_errors, for_each_device
+import socket
+
+# ---------------- CONFIG ---------------- #
+
+
+def _init_config(file_name: str):
+    """Load config.json"""
+    with open(file_name, "r") as f:
+        return json.load(f)
+
+
+file_path = "./config.json"
+config = _init_config(file_path)
+print(f"Config loaded: {config}")
+
+
+def getconfig_device_class(device_name):
+    """Return whether config belongs to devices or browsers"""
+    device_name = device_name.split(":", 1)[0]
+
+    if "devices" in config and device_name in config["devices"]:
+        return "devices"
+    if "browsers" in config and device_name in config["browsers"]:
+        return "browsers"
+
+    raise ValueError(f"{device_name}: Not found under devices or browsers")
+
+
+# ---------------- HELPERS ---------------- #
+
+
+def sleep_with_msg(device, wait_seconds, why_message):
+    msg = f"{device}: " if device else ""
+    print(f"{msg}Sleeping {wait_seconds}s: {why_message}")
+    time.sleep(wait_seconds)
+
+
+def appium_endpoint_suffix(device):
+    version = subprocess.check_output("appium -v", shell=True).decode().strip()
+    major = int(version.split(".")[0])
+    suffix = "" if major >= 2 else "/wd/hub"
+    print(f"{device}: Appium version {version}, endpointSuffix={suffix}")
+    return suffix
+
+
+# unused
+def decode_device_specifier(device):
+    if not isinstance(device, str):
+        raise AssertionError("Device specifier must be string")
+
+    pieces = device.split(":", 1)
+    device_name = pieces[0]
+    account_type = pieces[1] if len(pieces) > 1 else "user"
+
+    device_class = getconfig_device_class(device_name)
+
+    if device_name not in config[device_class]:
+        raise ValueError(f"{device_name} not in config")
+
+    if account_type not in config[device_class][device_name]:
+        raise ValueError(f"{device_name} has no account type {account_type}")
+
+    return device_name, account_type
+
+
+# unused
+def get_configured_device_property(device, propname):
+    device_name, _ = decode_device_specifier(device)
+    device_class = getconfig_device_class(device_name)
+
+    if propname not in config[device_class][device_name]:
+        raise ValueError(f"{device_name} missing property {propname}")
+
+    return config[device_class][device_name][propname]
+
+
+def get_top_level_device_port(device):
+    device_name = device.split(":", 1)[0]
+
+    device_data = config.get("devices", {}).get(device_name)
+    if not device_data:
+        raise ValueError(f"{device_name} not in config devices")
+
+    port = device_data.get("port")
+    if not port or port == "-":
+        raise ValueError(f"{device_name}: Invalid port")
+
+    return port
+
+
+def take_screenshot(driver, device_name, locator_key):
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    # both are same  use cases
+    # timestamp = datetime.now().strftime("%y%m%d-%H%M%S")
+
+    # Root folder (your custom directory)
+    directory_name = "screenshots"
+    root_dir = os.path.join("./reports", directory_name, device_name)
+
+    # Create root directory if missing
+    os.makedirs(root_dir, exist_ok=True)
+
+    # Device-specific folder inside "logs and screenshots"
+    screenshot_dir = os.path.join(root_dir, locator_key)
+    os.makedirs(screenshot_dir, exist_ok=True)
+
+    # Final file path
+    file_path = os.path.join(screenshot_dir, f"screenshot_{timestamp}.png")
+
+    # Capture screenshot
+    driver.get_screenshot_as_file(file_path)
+
+    return file_path
+
+
+# ---------------- LOCATOR METHODS ---------------- #
+
+
+@auto_handle_appium_errors()
+def find_element(device, locator_dict, locator_key, timeout=10, single_element=True):
+    # Convert single device → list
+    # isinstncewill chekc the object and ther type
+    devices = [device] if isinstance(device, str) else device
+    locator_found = False
+    for dev in devices:
+        # --------------------------------------
+        # 1️⃣ Ensure driver exists
+        # --------------------------------------
+        driver = device_manager.get_existing_driver(dev)
+
+        if driver is None:
+            print(f"[{dev}] ⚠ Driver not initialized — starting...")
+            driver = device_manager.DriverManger.initiate_driver(dev)
+            sleep_with_msg(dev, 5, "Waiting after driver start")
+
+        # --------------------------------------
+        # 2️⃣ Determine locator type map
+        # --------------------------------------
+        device_type = getconfig_device_class(dev)
+
+        if device_type == "devices":  # Appium
+            by_map = {
+                "xpath": AppiumBy.XPATH,
+                "xpath1": AppiumBy.XPATH,
+                # content-desc
+                "id": AppiumBy.ACCESSIBILITY_ID,
+                # resource - id
+                "id2": AppiumBy.ID,
+                "class_name": AppiumBy.CLASS_NAME,
+                "android_ui_automator": AppiumBy.ANDROID_UIAUTOMATOR,
+            }
+        else:  # Browser
+            by_map = {"id": By.ID, "xpath": By.XPATH, "text": By.LINK_TEXT}
+
+        locators = locator_dict[locator_key]
+
+        # --------------------------------------
+        # 3️⃣ Try each locator until success
+        # --------------------------------------
+        for loc_type, loc_value in locators.items():
+            by = by_map.get(loc_type.lower())
+            if not by:
+                continue
+
+            try:
+                if single_element:
+                    elem = WebDriverWait(driver, timeout).until(
+                        EC.presence_of_element_located((by, loc_value))
+                    )
+                    if elem:
+                        locator_found = True
+
+                # """presence of all the elements in page """
+                else:
+                    elem = WebDriverWait(driver, timeout).until(
+                        EC.presence_of_all_elements_located((by, loc_value))
+                    )
+                    if elem:
+                        locator_found = True
+
+                print(f"[{dev}]  Element found: {locator_key}")
+                return elem
+
+            except Exception:
+                print(f"[{dev}]  Locator failed: {locator_key} → trying next")
+                #         not required jst for debug continue
+                continue
+
+        if not locator_found:
+            print(f"[{dev}] All locators failed")
+            take_screenshot(driver, dev, f"{locator_key}_not_found")
+            raise Exception(f"[{dev}] Element '{locator_key}' NOT FOUND")
+
+
+def find_elements(devices, locator_dict, locator_key, timeout=10):
+    return find_element(
+        devices, locator_dict, locator_key, timeout, single_element=False
+    )
+
+
+def load_loctors(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        return json.load(f, object_pairs_hook=OrderedDict)
+
+
+def click_if_visible(devices, locator_dict, locator_key):
+    if isinstance(devices, str):
+        devices = [devices]
+
+    for device in devices:
+        try:
+            elem = find_element(device, locator_dict, locator_key, timeout=10)
+            if elem.is_displayed():
+                elem.click()
+                print(f"Clicked '{locator_key}' on {device}")
+            else:
+                return
+        except Exception as e:
+            print(f"Click failed for {device}: {e}")
+            raise
+
+
+def swipe_up(device):
+    driver = device_manager.get_existing_driver(device)
+    size = driver.get_window_size()
+    width, height = size["width"], size["height"]
+
+    if height > width:  # Portrait
+        driver.swipe(width / 2, 4 * (height / 5), width / 2, height / 5)
+    else:  # Landscape
+        driver.swipe(width / 4, 4 * (height / 5), width / 4, height / 5)
+
+
+def swipe_down(device):
+    driver = device_manager.get_existing_driver(device)
+    size = driver.get_window_size()
+    width, height = size["width"], size["height"]
+
+    if height > width:  # Portrait
+        # Swipe from top → bottom
+        driver.swipe(width / 2, height / 5, width / 2, 4 * (height / 5))
+    else:  # Landscape
+        driver.swipe(width / 4, height / 5, width / 4, 4 * (height / 5))
+
+
+def swipe_multiple(device, count=3):
+    for _ in range(count):
+        swipe_up(device)
+
+
+def swipe_till_end(device):
+    driver = device_manager.get_existing_driver(device)
+
+    last_page = ""
+    same_count = 0
+
+    while True:
+        # Take page source before swipe
+        page_before = driver.page_source
+
+        # Swipe once
+        swipe_up(device)
+
+        time.sleep(1)
+
+        # Take page source after swipe
+        page_after = driver.page_source
+
+        # If page did not change → end reached
+        if page_before == page_after:
+            same_count += 1
+        else:
+            same_count = 0
+
+        if same_count >= 2:  # two same results = no more scrolling
+            print(f"{device}: Reached end of page.")
+            break
+
+
+def swipe_left(device):
+    driver = device_manager.get_existing_driver(device)
+    size = driver.get_window_size()
+
+    start_x = int(size["width"] * 0.8)  # right side
+    end_x = int(size["width"] * 0.2)  # left side
+    y = int(size["height"] * 0.5)  # middle
+
+    actions = TouchAction(driver)
+    actions.press(x=start_x, y=y).wait(ms=300).move_to(x=end_x, y=y).release().perform()
+
+
+def swipe_left_multiple(device, count=3):
+    for _ in range(count):
+        swipe_left(device)
+
+
+def swipe_right(device):
+    driver = device_manager.get_existing_driver(device)
+    size = driver.get_window_size()
+
+    start_x = int(size["width"] * 0.2)  # left side
+    end_x = int(size["width"] * 0.8)  # right side
+    y = int(size["height"] * 0.5)  # middle
+
+    actions = TouchAction(driver)
+    actions.press(x=start_x, y=y).wait(ms=300).move_to(x=end_x, y=y).release().perform()
+
+
+def swipe_left_to_right_fav_shows(device, element):
+    # it will help to swipe from right  to left
+    driver = device_manager.get_existing_driver(device)
+    size = element.size
+    location = element.location
+    start_x = location["x"] + size["width"] * 0.8
+    end_x = location["x"] + size["width"] * 0.2
+    y = location["y"] + size["height"] / 2
+    driver.swipe(start_x, y, end_x, y, 800)
+
+
+def swipe_up_element_ref(device, element):
+    driver = device_manager.get_existing_driver(device)
+    loc = element.location
+    size = element.size
+
+    start_x = loc["x"] + size["width"] / 2
+    start_y = loc["y"] + size["height"] * 0.8
+    end_x = start_x
+    end_y = loc["y"] + size["height"] * 0.2
+
+    driver.swipe(start_x, start_y, end_x, end_y, 500)
+
+
+def get_dict_copy_locater(
+    device, loacter_dict, loacter_key, existing_value, replace_value
+):
+    _new_parent_copy = {}
+    _new_child_dict = {}
+
+    for child_dict_key in loacter_dict[loacter_key]:
+        # Only process known locator keys
+        if child_dict_key.lower() not in [
+            "xpath",
+            "id",
+            "id1",
+            "xpath1",
+            "android_ui_automator",
+        ]:
+            continue
+
+        child_value = loacter_dict[loacter_key][child_dict_key]
+
+        # Check if value contains the word to replace
+        if existing_value in child_value:
+            # Perform replacement
+            _new_child_dict[child_dict_key] = child_value.replace(
+                existing_value, replace_value
+            )
+
+    # If nothing was replaced, raise error
+    if len(_new_child_dict) == 0:
+        raise AssertionError(
+            f"Dictionary '{loacter_key}' has no valid selectors containing '{existing_value}'"
+        )
+
+    _new_parent_copy[loacter_key] = _new_child_dict
+    return _new_parent_copy
+
+
+def get_action_chain_object(
+    device, perform="Drag_and_drop", src=None, dest=None
+):
+    """'
+    This method will help to perform the action like drag and drop , right click , double click and move to element and here src menas elmenet
+    which one we need to perform the action and dest means where we need to drop the element
+    """
+
+    if perform.lower() not in [
+        "drag_and_drop",
+        "right_click",
+        "double_click",
+        "mouse_hover",
+    ]:
+        raise AssertionError(f"{perform} action is not supported")
+    driver = device_manager.get_existing_driver(device)
+    if perform.lower() == "drag_and_drop" and src is not None and dest is not None:
+        action = ActionChains(driver)
+        action.drag_and_drop(src, dest).perform()
+
+    elif perform.lower() == "right_click" and src is not None:
+        action = ActionChains(driver)
+        action.context_click(src).perform()
+    elif perform.lower() == "double_click" and src is not None:
+        action = ActionChains(driver)
+        action.double_click(src).perform()
+    elif perform.lower() == "mouse_hover" and src is not None:
+        action = ActionChains(driver)
+        action.move_to_element(src).perform()
+
+
+def is_port_open(port):
+    """Check if a TCP port is already in use."""
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(("localhost", port)) == 0
+
+
+def wait_for_accept_appium_connection(port, timeout=35):
+    """Wait until Appium server responds on /wd/hub/status"""
+    start_time = time.time()
+    url = f"http://127.0.0.1:{port}/wd/hub/status"
+
+    while True:
+        elapsed_time = time.time() - start_time
+        if elapsed_time > timeout:
+            break
+        try:
+            r = requests.get(url)
+            if r.status_code == 200:
+                return True, elapsed_time
+        except requests.exceptions.ConnectionError:
+            pass
+        time.sleep(0.5)
+
+    return False, timeout
+
+
+def find_appium_executable():
+    """
+    Find the Appium executable.
+    Works in CI, Windows, Linux, MacOS.
+    """
+    # 1. If APP_HOME or PATH contains it
+    appium_cmd = shutil.which("appium")
+    if appium_cmd:
+        return appium_cmd
+
+    # 2. Windows default global npm location
+    if sys.platform.startswith("win"):
+        npm_global = "appium"
+        return npm_global
+
+    # 3. Linux / Mac default global npm location
+    default_npm = "/usr/local/bin/appium"
+    if os.path.exists(default_npm):
+        return default_npm
+
+    raise FileNotFoundError(
+        "Appium executable not found. Install Appium globally or add it to PATH."
+    )
+
+
+def start_appium_background(device):
+    """
+    Start Appium server in the background.
+    If already running on port, reuse it.
+    Returns the port number.
+    """
+    port = random.randint(4500, 5000)
+    appium_executable = find_appium_executable()
+    print(f" the appium executable is --> ${appium_executable}")
+    if is_port_open(port):
+        print(f"Appium is already running on port {port}, continuing...")
+    else:
+        print(f"Starting Appium on port {port} for device {device}...")
+        subprocess.Popen([appium_executable, "-p", str(port)], shell=True)
+    print(
+        "<----------------------- uptio here the appium auto lanuched and get the cmd --------------->"
+    )
+    # Wait until Appium server is ready status check
+    flag, waited_time = wait_for_accept_appium_connection(port=port, timeout=35)
+    if flag:
+        print(f"Appium ready on port {port} after {waited_time:.2f}s")
+    else:
+        raise RuntimeError(
+            f"Appium server on port {port} did not start in {waited_time}s"
+        )
+
+    return port

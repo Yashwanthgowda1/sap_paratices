@@ -1,0 +1,30 @@
+{
+  "room_user_name": {
+    "id": "com.microsoft.skype.teams.ipphone:id/phone_room_number"
+  },
+  "phone_number": {
+    "id": "com.microsoft.skype.teams.ipphone:id/vc_phone_call_number"
+  },
+  "meet_now_icon": {
+    "id": "com.microsoft.skype.teams.ipphone:id/meetnow_btn",
+    "xpath": "//android.widget.TextView[@text='Meet now']",
+    "xpath1": "//android.widget.TextView[@text='Meet']"
+  },
+  "more_option": {
+    "id": "com.microsoft.skype.teams.ipphone:id/more_btn",
+    "xpath": "//*[@text='More']"
+  },
+  "call_icon": {
+    "id": "com.microsoft.skype.teams.ipphone:id/call_button",
+    "id1": "com.microsoft.skype.teams.ipphone:id/dialpad_btn",
+    "xpath": "//*[@text='Call']"
+  },
+  "feedback_btn": {
+    "xpath": "//android.widget.TextView[@text='Feedback']",
+    "id": "com.microsoft.skype.teams.ipphone:id/help_button_container"
+  },
+  "caller_num": {
+    "id": "com.microsoft.skype.teams.ipphone:id/connect_callee_text_line_2",
+    "id1": "com.microsoft.skype.teams.ipphone:id/action_bar_title_text_norden"
+  }
+}

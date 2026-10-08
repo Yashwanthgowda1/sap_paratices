@@ -1,0 +1,9 @@
+new things fiexs
+
+
+  if common.is_lcp(from_device) and common.is_element_present(from_device, calls_dict, "call_more_options_container"):
+                settings_keywords.device_setting_back(from_device)
+				
+				
+				screen shot is there
+				244116

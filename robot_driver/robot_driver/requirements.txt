@@ -1,0 +1,22 @@
+#
+# pillow==10.2.0 : bad, corrupt package
+pillow==11.2.1
+
+#
+# selenium (latest) 4.32.0 bad: AttributeError: 'WebDriver' object has no attribute 'get_log'
+# last known good:
+selenium==4.27.1
+
+Appium-Python-Client==2.11.1
+pytz==2021.1
+robotframework==3.2.1
+PyAutoGUI==0.9.54
+pandas
+XlsxWriter
+openpyxl
+mitmproxy
+requests
+
+# To support pipeline quality gates:
+pylint==3.2.2
+black==23.3.0

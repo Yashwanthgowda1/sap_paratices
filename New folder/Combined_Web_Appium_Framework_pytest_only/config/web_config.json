@@ -1,0 +1,32 @@
+{
+  "environments": {
+    "staging": {
+      "base_url": "https://staging.myapp.com",
+      "api_base_url": "https://api.staging.myapp.com"
+    },
+    "production": {
+      "base_url": "https://www.myapp.com",
+      "api_base_url": "https://api.myapp.com"
+    }
+  },
+  "browser": {
+    "default": "chrome",
+    "headless": false,
+    "window_size": "1920,1080"
+  },
+  "timeouts": {
+    "implicit_wait": 5,
+    "explicit_wait": 15,
+    "page_load": 30
+  },
+  "test_data": {
+    "valid_user": {
+      "email": "testuser@example.com",
+      "password": "Test@1234"
+    },
+    "invalid_user": {
+      "email": "wrong@example.com",
+      "password": "Wrong@999"
+    }
+  }
+}

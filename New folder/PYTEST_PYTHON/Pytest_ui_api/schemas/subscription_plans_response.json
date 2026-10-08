@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["plans"],
+  "properties": {
+    "plans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "price"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "price": {"type": "number"},
+          "currency": {"type": "string"},
+          "duration_days": {"type": "integer"},
+          "features": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

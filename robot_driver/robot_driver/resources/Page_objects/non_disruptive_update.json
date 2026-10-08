@@ -1,0 +1,15 @@
+{
+  "postpone_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/buttonView",
+    "xpath": "//*[@text='Postpone']"
+  },
+  "dismiss_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/cancelIcon"
+  },
+  "consent_banner": {
+    "id":"com.microsoft.skype.teams.ipphone:id/innerContainer"
+  },
+  "banner_text_option": {
+    "id": "//android.widget.LinearLayout[@text='Your device will restart soon for an update. This may take a few minutes.']"
+  }
+}

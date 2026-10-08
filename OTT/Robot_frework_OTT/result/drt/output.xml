@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-10-09T18:52:52.362404" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\python_study\OTT\Robot_frework_OTT\tests">
+<suite id="s1-s1" name="Andriod" source="C:\python_study\OTT\Robot_frework_OTT\tests\andriod">
+<suite id="s1-s1-s1" name="Home Page" source="C:\python_study\OTT\Robot_frework_OTT\tests\andriod\home_page.robot">
+<test id="s1-s1-s1-t1" name="Search Udemy On YouTube" line="7">
+<kw name="verify andriod is open or not" owner="common_andriod">
+<kw name="Initialize Driver" owner="common_web_andriod">
+<var>${driver}</var>
+<arg>emulator</arg>
+<doc>Initialize driver once for web or Android.</doc>
+<status status="NOT RUN" start="2025-10-09T18:52:52.829975" elapsed="0.000082"/>
+</kw>
+<status status="PASS" start="2025-10-09T18:52:52.829647" elapsed="0.000475"/>
+</kw>
+<kw name="quit driver in andriod" owner="common_andriod">
+<kw name="Quit Driver" owner="common_web_andriod">
+<doc>Quit the driver if it's running (web or Android). Only call this after all test steps are done.</doc>
+<status status="NOT RUN" start="2025-10-09T18:52:52.830437" elapsed="0.000277"/>
+</kw>
+<status status="PASS" start="2025-10-09T18:52:52.830303" elapsed="0.000451"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" start="2025-10-09T18:52:52.829026" elapsed="0.001875"/>
+</test>
+<status status="PASS" start="2025-10-09T18:52:52.410066" elapsed="0.421335"/>
+</suite>
+<suite id="s1-s1-s2" name="Sigin" source="C:\python_study\OTT\Robot_frework_OTT\tests\andriod\sigin.robot">
+<test id="s1-s1-s2-t1" name="Sign In" line="7">
+<kw name="Open Web Browser And Go To URL">
+<msg time="2025-10-09T18:52:52.835545" level="FAIL">No keyword with name 'Open Web Browser And Go To URL' found.</msg>
+<status status="FAIL" start="2025-10-09T18:52:52.835497" elapsed="0.000111">No keyword with name 'Open Web Browser And Go To URL' found.</status>
+</kw>
+<kw name="search_methods">
+<msg time="2025-10-09T18:52:52.836655" level="FAIL">No keyword with name 'search_methods' found.</msg>
+<status status="FAIL" start="2025-10-09T18:52:52.836554" elapsed="0.000168">No keyword with name 'search_methods' found.</status>
+</kw>
+<status status="FAIL" start="2025-10-09T18:52:52.834394" elapsed="0.002745">Several failures occurred:
+
+1) No keyword with name 'Open Web Browser And Go To URL' found.
+
+2) No keyword with name 'search_methods' found.</status>
+</test>
+<status status="FAIL" start="2025-10-09T18:52:52.831977" elapsed="0.006549"/>
+</suite>
+<status status="FAIL" start="2025-10-09T18:52:52.408615" elapsed="0.431198"/>
+</suite>
+<suite id="s1-s2" name="Web" source="C:\python_study\OTT\Robot_frework_OTT\tests\web">
+<suite id="s1-s2-s1" name="Home page" source="C:\python_study\OTT\Robot_frework_OTT\tests\web\Home_page.robot">
+<test id="s1-s2-s1-t1" name="signin to orangeHRM" line="6">
+<kw name="Sign In">
+<msg time="2025-10-09T18:52:52.849963" level="FAIL">No keyword with name 'Sign In' found.</msg>
+<status status="FAIL" start="2025-10-09T18:52:52.849924" elapsed="0.000087">No keyword with name 'Sign In' found.</status>
+</kw>
+<kw name="Close Web Browser" type="TEARDOWN">
+<msg time="2025-10-09T18:52:52.851097" level="FAIL">No keyword with name 'Close Web Browser' found.</msg>
+<status status="FAIL" start="2025-10-09T18:52:52.851044" elapsed="0.000091">No keyword with name 'Close Web Browser' found.</status>
+</kw>
+<tag>56754</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2025-10-09T18:52:52.848854" elapsed="0.002587">No keyword with name 'Sign In' found.
+
+Also teardown failed:
+No keyword with name 'Close Web Browser' found.</status>
+</test>
+<status status="FAIL" start="2025-10-09T18:52:52.845740" elapsed="0.006579"/>
+</suite>
+<status status="FAIL" start="2025-10-09T18:52:52.841362" elapsed="0.011961"/>
+</suite>
+<status status="FAIL" start="2025-10-09T18:52:52.364308" elapsed="0.489840"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">56754</stat>
+<stat pass="1" fail="1" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="2" skip="0">Tests</stat>
+<stat name="Andriod" id="s1-s1" pass="1" fail="1" skip="0">Tests.Andriod</stat>
+<stat name="Home Page" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.Andriod.Home Page</stat>
+<stat name="Sigin" id="s1-s1-s2" pass="0" fail="1" skip="0">Tests.Andriod.Sigin</stat>
+<stat name="Web" id="s1-s2" pass="0" fail="1" skip="0">Tests.Web</stat>
+<stat name="Home page" id="s1-s2-s1" pass="0" fail="1" skip="0">Tests.Web.Home page</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-10-09T18:52:52.833051" level="ERROR">Error in file 'C:\python_study\OTT\Robot_frework_OTT\tests\andriod\sigin.robot' on line 2: Library 'sign_in.py' does not exist.</msg>
+<msg time="2025-10-09T18:52:52.833503" level="ERROR">Error in file 'C:\python_study\OTT\Robot_frework_OTT\tests\andriod\sigin.robot' on line 3: Resource file '..\library\common_web.robot' does not exist.</msg>
+<msg time="2025-10-09T18:52:52.848110" level="ERROR">Error in file 'C:\python_study\OTT\Robot_frework_OTT\tests\web\Home_page.robot' on line 2: Resource file '..\..\resource\keywords\sigin.robot' does not exist.</msg>
+</errors>
+</robot>

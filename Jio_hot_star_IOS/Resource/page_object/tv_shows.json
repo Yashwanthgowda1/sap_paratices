@@ -1,0 +1,57 @@
+{
+    "main_tv_shows_menu_home_page":{
+        "xpath":"//android.view.View[@resource-id='test_tag_landing_page_navigation_sub_menu']/android.view.View"
+    },
+
+    "tv_shows_first_item":{
+        "id":"TV"
+    },
+    "clsoe_filter_button":{
+        "id":"Close filter"
+    },
+    "family_show_filter_option":{
+        "id2":"Family Shows"
+    },
+    "select_the_show_favritos":{
+        "xpath":"//android.widget.TextView[@resource-id='tag_label_regular_tray_title' and @text='Popular Shows']"
+
+    },
+    "scroll_the_favriout_section_left_right":{
+
+        "xpath":"(//android.view.View[@resource-id='tag_content_regular_tray'])[3]",
+        "android_ui_automator":"new UiSelector().resourceId('tag_content_regular_tray').instance(2)"
+
+    },
+    "select_home_drame_required_movie_click":{
+        "xpath": "//android.view.View[@resource-id='tag_box_masthead_tray']"
+    },
+    "studio_page_options":{
+        "xpath":"//*[@resource-id='tag_image_content_poster_parent']//*[contains(@content-desc,'CHANNEL')]",
+        "xpath1":"//android.view.View[@resource-id='tag_image_content_poster' and contains(@content-desc,'CHANNEL')]"
+
+    },
+    "selected_top_movies":{
+        "xpath":"//android.view.View[@content-desc='SELECTED']"
+    },
+    "web_tv_shows_main_watch_now_button":{
+        "xpath":"//*[@aria-label='Subscribe to Watch' or  @aria-label='Play' or text()='Watch Now']"
+    },
+    "verify_adds_section_in_tv_shows_page":{
+        "xpath":"//span[@class=' ON_IMAGE LABEL_CAPTION1_SEMIBOLD ']"
+
+    },
+    "double_click_the_page_toaper_the_vieo_line":{
+        "xpath":"//div[@class='oMSW6l4Y23kO6ZaD67dCu']"
+    },
+    "skipp_backwards_button":{
+        "xpath":"//button[@data-testid='seek-rewind']"
+    },
+    "skipp_forwrd_button":{
+        "xpath" :"//button[@data-testid='seek-forward']"
+    },
+    "current_time_before_skipping":{
+        "xpath":"//span[@style='-webkit-line-clamp: 1;']"
+    }
+    }
+
+

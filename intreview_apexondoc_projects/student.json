@@ -1,0 +1,310 @@
+{
+  "student": [
+    {
+      "id": "7",
+      "email": "michael.lawson@reqres.in",
+      "first_name": "Michael",
+      "last_name": "Lawson",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+      "id": "8",
+      "email": "lindsay.ferguson@reqres.in",
+      "first_name": "Lindsay",
+      "last_name": "Ferguson",
+      "avatar": "https://reqres.in/img/faces/8-image.jpg",
+      "values":
+            {
+              "last_name": "Ferguson",
+              "id": "8",
+              "avatar": "https://reqres.in/img/faces/8-image.jpg",
+              "value":
+                {
+              "last_name": "Ferguson",
+              "id": "8",
+              "avatar": "https://reqres.in/img/faces/8-image.jpg",
+              "first_name": "Lindsay",
+              "email": "lindsay.ferguson@reqres.in"
+             }
+            }
+    },
+    {
+      "id": "9",
+      "email": "tobias.funke@reqres.in",
+      "first_name": "Tobias",
+      "last_name": "Funke",
+      "avatar": "https://reqres.in/img/faces/9-image.jpg"
+    },
+    {
+      "id": "10",
+      "email": "byron.fields@reqres.in",
+      "first_name": "Byron",
+      "last_name": "Fields",
+      "avatar": "https://reqres.in/img/faces/10-image.jpg"
+    },
+    {
+      "id": "11",
+      "email": "george.edwards@reqres.in",
+      "first_name": "George",
+      "last_name": "Edwards",
+      "avatar": "https://reqres.in/img/faces/11-image.jpg"
+    },
+    {
+      "id": "12",
+      "email": "rachel.howell@reqres.in",
+      "first_name": "Rachel",
+      "last_name": "Howell",
+      "avatar": "https://reqres.in/img/faces/12-image.jpg"
+    },
+    {
+      "id": "999d",
+      "password": "ysahu@123",
+      "desiredCap": {
+        "alias": "app1",
+        "udid": "10.50.11.121:5555"
+      },
+      "devicename": "olampia",
+      "device_console": "oem",
+      "username": "yashwanth@gmail.com"
+    },
+    {
+      "id": "7038",
+      "courses": {
+        "social": "amma",
+        "maths": "sharu",
+        "science": "yashu"
+      },
+      "name": "yashwanth",
+      "ph": "098765",
+      "place": "yashwanth"
+    },
+    {
+      "id": "6357",
+      "courses": {
+        "social": "ammasdfghjkl",
+        "maths": "sharu",
+        "science": "yashu"
+      },
+      "name": "yashwanth",
+      "ph": "098765",
+      "place": "yashwanth"
+    },
+    {
+      "id": "6bbb",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "9771",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "8691",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "9ae8",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "773f",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "4674",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "1aec",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "14bc",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "3d0a",
+      "empty": false,
+      "mapType": "java.util.HashMap"
+    },
+    {
+      "id": "020f",
+      "courses": {
+        "social": "ammasdfghjkl",
+        "maths": "sharu",
+        "science": "yashu"
+      },
+      "name": "yashwanth",
+      "ph": "098765",
+      "place": "yashwanth"
+    },
+    {
+      "id": "1986",
+      "courses": {
+        "social": "ammasdfghjkl",
+        "maths": "sharu",
+        "science": "yashu"
+      },
+      "student": [
+        {
+          "last_name": "Lawson",
+          "id": "7",
+          "avatar": "https://reqres.in/img/faces/7-image.jpg",
+          "first_name": "Michael",
+          "email": "michael.lawson@reqres.in"
+        },
+        {
+          "last_name": "Ferguson",
+          "id": "8",
+          "avatar": "https://reqres.in/img/faces/8-image.jpg",
+          "first_name": "Lindsay",
+          "email": "lindsay.ferguson@reqres.in",
+          "values":
+            {
+              "last_name": "Ferguson",
+              "id": "8",
+              "avatar": "https://reqres.in/img/faces/8-image.jpg",
+              "first_name": "Lindsay",
+              "email": "lindsay.ferguson@reqres.in"
+            }
+          
+        },
+        {
+          "last_name": "Funke",
+          "id": "9",
+          "avatar": "https://reqres.in/img/faces/9-image.jpg",
+          "first_name": "Tobias",
+          "email": "tobias.funke@reqres.in"
+        },
+        {
+          "last_name": "Fields",
+          "id": "10",
+          "avatar": "https://reqres.in/img/faces/10-image.jpg",
+          "first_name": "Byron",
+          "email": "byron.fields@reqres.in"
+        },
+        {
+          "last_name": "Edwards",
+          "id": "11",
+          "avatar": "https://reqres.in/img/faces/11-image.jpg",
+          "first_name": "George",
+          "email": "george.edwards@reqres.in"
+        },
+        {
+          "last_name": "Howell",
+          "id": "12",
+          "avatar": "https://reqres.in/img/faces/12-image.jpg",
+          "first_name": "Rachel",
+          "email": "rachel.howell@reqres.in"
+        },
+        {
+          "password": "ysahu@123",
+          "desiredCap": {
+            "alias": "app1",
+            "udid": "10.50.11.121:5555"
+          },
+          "devicename": "olampia",
+          "id": "999d",
+          "device_console": "oem",
+          "username": "yashwanth@gmail.com"
+        },
+        {
+          "courses": {
+            "social": "amma",
+            "maths": "sharu",
+            "science": "yashu"
+          },
+          "name": "yashwanth",
+          "ph": "098765",
+          "id": "7038",
+          "place": "yashwanth"
+        },
+        {
+          "courses": {
+            "social": "ammasdfghjkl",
+            "maths": "sharu",
+            "science": "yashu"
+          },
+          "name": "yashwanth",
+          "ph": "098765",
+          "id": "6357",
+          "place": "yashwanth"
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "6bbb",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "9771",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "8691",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "9ae8",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "773f",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "4674",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "1aec",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "14bc",
+          "empty": false
+        },
+        {
+          "mapType": "java.util.HashMap",
+          "id": "3d0a",
+          "empty": false
+        },
+        {
+          "courses": {
+            "social": "ammasdfghjkl",
+            "maths": "sharu",
+            "science": "yashu"
+          },
+          "name": "yashwanth",
+          "ph": "098765",
+          "id": "020f",
+          "place": "yashwanth"
+        }
+      ],
+      "name": "yashwanth",
+      "ph": "098765",
+      "place": "yashwanth",
+      "support": {
+        "text": "Tired of writing endless social media content? Let Content Caddy generate it for you.",
+        "url": "https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral"
+      }
+    }
+  ],
+  "support": {
+    "url": "https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral",
+    "text": "Tired of writing endless social media content? Let Content Caddy generate it for you."
+  }
+}

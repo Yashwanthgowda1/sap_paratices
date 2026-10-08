@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.13.7 on win32)" generated="20250902 23:15:03.569" rpa="false" schemaversion="4">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" library="common_api_key" type="SETUP">
+<kw name="Create A New Session" library="create_common_data">
+<arg>alias=new_session</arg>
+<arg>base_url=${Base_url}</arg>
+<status status="PASS" starttime="20250902 23:15:04.401" endtime="20250902 23:15:04.402"/>
+</kw>
+<status status="PASS" starttime="20250902 23:15:04.401" endtime="20250902 23:15:04.402"/>
+</kw>
+<test id="s1-t1" name="Create Booking" line="7">
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250902 23:15:04.403" level="INFO">the random price genrate is  115 EPDrMD fhtjaqkn
+{'firstname': 'fhtjaqkn', 'lastname': 'EPDrMD', 'totalprice': 115, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250902 23:15:04.403" level="INFO">${data} = {'firstname': 'fhtjaqkn', 'lastname': 'EPDrMD', 'totalprice': 115, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250902 23:15:04.403" endtime="20250902 23:15:04.403"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>new_session</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250902 23:15:04.403" level="FAIL">Non-existing index or alias 'new_session'.</msg>
+<status status="FAIL" starttime="20250902 23:15:04.403" endtime="20250902 23:15:04.406"/>
+</kw>
+<status status="FAIL" starttime="20250902 23:15:04.402" endtime="20250902 23:15:04.406"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20250902 23:15:04.407" endtime="20250902 23:15:04.407"/>
+</kw>
+<tag>132345</tag>
+<status status="FAIL" starttime="20250902 23:15:04.402" endtime="20250902 23:15:04.407">Non-existing index or alias 'new_session'.</status>
+</test>
+<status status="FAIL" starttime="20250902 23:15:03.571" endtime="20250902 23:15:04.408"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">132345</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Restful-Booker API">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

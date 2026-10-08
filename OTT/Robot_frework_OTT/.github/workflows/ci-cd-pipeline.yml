@@ -1,0 +1,127 @@
+name: CI CD Pipeline for OTT Platform
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"   # Daily at midnight
+    - cron: "0 */1 * * *" # Every hour
+
+jobs:
+  build-and-quality-check: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check code quality and reformat
+        run: |
+          python -m pip install --upgrade pip
+          pip install black pylint
+          black .
+          pylint resource/library/*.py --exit-zero > pylint_output.txt
+          score=$(tail -1 pylint_output.txt | awk '{print $7}' | sed 's/\/10//')
+          echo "Pylint score: $score"
+          if (( $(echo "$score < 8" | bc -l) )); then
+            echo "Pylint score is below 8!"
+            exit 1
+          fi
+
+         
+
+  merge-request:
+    needs: build-and-quality-check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for manual approval before merge
+        uses: trstringer/manual-approval@v1
+        with:
+          approvers: Yashwanthgowda1
+          minimum-approvals: 1
+
+  set-up-web:
+    needs: merge-request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Chrome & Chromedriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chromedriver-version: 'latest'
+
+  run-robot-code-for-web:
+    needs: set-up-web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure results folder exists
+        run: mkdir -p results/web
+
+      - name: Run Robot Framework smoke tests
+        run: |
+          TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ github.event.schedule }}" == "0 0 * * *" ]]; then
+            robot --outputdir results/web/$TIMESTAMP --include smoke tests/web
+          fi
+
+      - name: Upload web test results to artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-test-results
+          path: results/web
+
+  set-up-android:
+    needs: run-robot-code-for-web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify SDK Path
+        run: |
+          echo "ANDROID_HOME = $ANDROID_HOME"
+          echo "Listing AVDs..."
+          $ANDROID_HOME/emulator/emulator -list-avds
+
+      - name: Detect Running Emulator
+        run: |
+          echo "Checking for running Android emulator..."
+          RUNNING_EMU=$(adb devices | findstr "emulator")
+          if [ -n "$RUNNING_EMU" ]; then
+            echo "Emulator already running: $RUNNING_EMU"
+          else
+            echo "No emulator running. Starting a new one..."
+            EMULATOR_NAME=$($ANDROID_HOME/emulator/emulator -list-avds | head -n 1)
+            echo "Starting emulator: $EMULATOR_NAME"
+            nohup $ANDROID_HOME/emulator/emulator -avd $EMULATOR_NAME -no-snapshot -noaudio -no-boot-anim -netdelay none -netspeed full &
+          fi
+
+      - name: Wait for Emulator Boot
+        run: |
+          adb wait-for-device
+          until [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" = "1" ]; do
+            sleep 5
+          done
+          echo "Emulator is ready."
+
+      - name: Run Android Tests
+        run: |
+          TIMESTAMP_ANDROID=$(date +'%Y-%m-%d_%H-%M-%S')
+          robot --outputdir results/android/$TIMESTAMP_ANDROID tests/android
+
+      - name: Upload Android Test Results to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-test-results
+          path: results/android

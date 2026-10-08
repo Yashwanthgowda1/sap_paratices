@@ -1,0 +1,207 @@
+name: JioHotstar OTT BDD Tests — Android + Appium
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+  pull_request_review:
+    types: [ submitted ]
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Which suite to run?'
+        required: true
+        default: 'smoke'
+        type: choice
+        options:
+          - smoke
+          - regression
+          - all
+
+jobs:
+
+  # ─────────────────────────────────────────
+  # JOB 1 — SMOKE TESTS (Android + Appium)
+  # ─────────────────────────────────────────
+  smoke-tests:
+    name: Smoke Tests — Android
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Step 1 — Checkout your code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2 — Setup Java 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      # Step 3 — Setup Android SDK + ADB
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      # Step 4 — Start Android Emulator (matches your config.json platformName: android)
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33                          # Android 13
+          target: google_apis
+          arch: x86_64
+          profile: pixel_5
+          avd-name: OTT_Test_Device
+          emulator-options: -no-window -no-audio -no-boot-anim
+          disable-animations: true
+          script: echo "Emulator started"
+
+      # Step 5 — Verify device connected via ADB (same as your ConfigReader.java adb check)
+      - name: Verify ADB Device Connected
+        run: |
+          adb devices
+          adb wait-for-device
+          echo "Device connected successfully"
+
+      # Step 6 — Install Node.js (needed for Appium)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Step 7 — Install Appium + UiAutomator2 driver (matches your config.json automationName)
+      - name: Install Appium + UiAutomator2
+        run: |
+          npm install -g appium
+          appium driver install uiautomator2
+          appium --version
+
+      # Step 8 — Start Appium Server on port 4730 (matches your config.json device_1 port)
+      - name: Start Appium Server
+        run: |
+          appium --port 4730 --log appium.log &
+          sleep 5
+          echo "Appium server started on port 4730"
+
+      # Step 9 — Install JioHotstar APK on emulator
+      - name: Install JioHotstar APK
+        run: |
+          adb install -r src/test/resources/apk/hotstar.apk
+          echo "APK installed: in.startv.hotstar"
+
+      # Step 10 — Run Smoke Tests via Maven
+      - name: Run Smoke Tests
+        run: mvn test -DsuiteXmlFile=testng-smoke.xml
+
+      # Step 11 — Upload Extent Report
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-extent-report
+          path: test-output/
+          retention-days: 7
+
+      # Step 12 — Upload Appium logs if tests fail
+      - name: Upload Appium Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-logs
+          path: appium.log
+          retention-days: 3
+
+      # Step 13 — Upload Surefire Reports
+      - name: Upload Surefire Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-surefire-report
+          path: target/surefire-reports/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # JOB 2 — REGRESSION TESTS (runs after Smoke passes OR PR approved)
+  # ─────────────────────────────────────────
+  regression-tests:
+    name: Regression Tests — Android
+    runs-on: ubuntu-latest
+    if: |
+      github.event.inputs.test_suite == 'regression'                              ||
+      github.event.inputs.test_suite == 'all'                                     ||
+      (github.event_name == 'pull_request_review' &&
+       github.event.review.state == 'approved')
+    needs: smoke-tests
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          profile: pixel_5
+          avd-name: OTT_Test_Device
+          emulator-options: -no-window -no-audio -no-boot-anim
+          disable-animations: true
+          script: echo "Emulator started"
+
+      - name: Verify ADB Device Connected
+        run: |
+          adb devices
+          adb wait-for-device
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Appium + UiAutomator2
+        run: |
+          npm install -g appium
+          appium driver install uiautomator2
+
+      - name: Start Appium Server
+        run: |
+          appium --port 4730 --log appium-regression.log &
+          sleep 5
+
+      - name: Install JioHotstar APK
+        run: adb install -r src/test/resources/apk/hotstar.apk
+
+      - name: Run Regression Tests
+        run: mvn test -DsuiteXmlFile=testng-regression.xml
+
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-extent-report
+          path: test-output/
+          retention-days: 7
+
+      - name: Upload Appium Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-regression-logs
+          path: appium-regression.log
+          retention-days: 3

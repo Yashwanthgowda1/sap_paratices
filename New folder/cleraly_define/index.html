@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DepLens — License & Dependency Scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── Tokens ──────────────────────────────────────────────────────── */
+:root{
+  --bg:#0b0c0f; --surface:#111318; --card:#16181f;
+  --border:#23262f; --border-hi:#2e3240;
+  --txt:#e8eaf2; --txt-2:#9296aa; --txt-3:#636880; --txt-4:#3a3e52;
+  --accent:#5affa3; --accent-lo:rgba(90,255,163,.08); --accent-md:rgba(90,255,163,.18);
+  --ok:#5affa3;   --ok-bg:rgba(90,255,163,.11);
+  --warn:#ffca58; --warn-bg:rgba(255,202,88,.11);
+  --bad:#ff5e7e;  --bad-bg:rgba(255,94,126,.11);
+  --unk:#8b8fa8;  --unk-bg:rgba(139,143,168,.11);
+  --info:#60a5fa; --info-bg:rgba(96,165,250,.11);
+  --r:6px; --rl:12px;
+  --ui:'Syne',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ui);background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+
+/* grid bg */
+body::before{content:'';position:fixed;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:40px 40px;opacity:.3;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:-320px;left:50%;transform:translateX(-50%);
+  width:960px;height:640px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(90,255,163,.06) 0%,transparent 70%);
+  pointer-events:none;z-index:0}
+
+/* layout */
+.shell{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 24px 80px}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+header{display:flex;align-items:flex-end;justify-content:space-between;
+  padding:44px 0 36px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.logo{display:flex;flex-direction:column;gap:4px}
+.logo-mark{display:flex;align-items:center;gap:10px}
+.logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;
+  display:grid;place-items:center;flex-shrink:0}
+.logo-name{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.logo-name span{color:var(--accent)}
+.logo-sub{font-family:var(--mono);font-size:11px;color:var(--txt-3);letter-spacing:.04em;padding-left:42px}
+.header-meta{font-family:var(--mono);font-size:11px;color:var(--txt-4);text-align:right;line-height:1.7}
+
+/* ── Mode tabs ───────────────────────────────────────────────────── */
+.mode-row{display:flex;gap:6px;margin-bottom:18px}
+.mode-tab{font-family:var(--mono);font-size:12px;font-weight:500;
+  padding:7px 18px;border:1px solid var(--border-hi);border-radius:var(--r);
+  background:transparent;color:var(--txt-3);cursor:pointer;transition:all .15s}
+.mode-tab:hover{border-color:var(--accent);color:var(--accent)}
+.mode-tab.active{background:var(--accent-md);border-color:var(--accent);color:var(--accent)}
+
+/* ── Eco tabs ────────────────────────────────────────────────────── */
+.eco-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.eco-tab{font-family:var(--mono);font-size:11px;padding:4px 12px;
+  border:1px solid var(--border-hi);border-radius:20px;
+  background:transparent;color:var(--txt-3);cursor:pointer;transition:all .13s}
+.eco-tab:hover{border-color:var(--accent);color:var(--accent)}
+.eco-tab.active{background:var(--accent-lo);border-color:rgba(90,255,163,.4);color:var(--accent)}
+
+/* ── Inputs ──────────────────────────────────────────────────────── */
+.search-row{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}
+.search-row input{flex:1;min-width:0;height:46px;padding:0 14px;
+  background:var(--card);border:1px solid var(--border-hi);border-radius:var(--r);
+  font-family:var(--mono);font-size:13px;color:var(--txt);outline:none;transition:border-color .15s}
+.search-row input::placeholder{color:var(--txt-4)}
+.search-row input:focus{border-color:var(--accent)}
+.branch-sel{height:46px;padding:0 10px;
+  background:var(--card);border:1px solid var(--border-hi);border-radius:var(--r);
+  font-family:var(--mono);font-size:12px;color:var(--txt);outline:none;cursor:pointer;
+  appearance:none;min-width:96px;padding-right:28px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23636880' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;transition:border-color .15s}
+.branch-sel:focus{border-color:var(--accent)}
+.scan-btn{height:46px;padding:0 22px;background:var(--accent);color:#0b0c0f;
+  font-family:var(--ui);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border:none;border-radius:var(--r);cursor:pointer;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;transition:opacity .15s,transform .1s}
+.scan-btn:hover{opacity:.88}.scan-btn:active{transform:scale(.97)}.scan-btn:disabled{opacity:.35;cursor:not-allowed}
+.info-box{background:var(--info-bg);border:1px solid rgba(96,165,250,.2);border-radius:var(--r);
+  padding:10px 14px;font-family:var(--mono);font-size:11px;color:var(--info);margin-bottom:10px}
+.detected-box{background:var(--accent-lo);border:1px solid rgba(90,255,163,.2);border-radius:var(--r);
+  padding:9px 14px;font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:12px;display:none}
+
+/* ── Stats ───────────────────────────────────────────────────────── */
+.stats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);
+  padding:16px 18px;display:flex;flex-direction:column;gap:5px}
+.stat-card.s-ok  {border-color:rgba(90,255,163,.2)}
+.stat-card.s-warn{border-color:rgba(255,202,88,.2)}
+.stat-card.s-bad {border-color:rgba(255,94,126,.2)}
+.stat-card.s-unk {border-color:rgba(139,143,168,.18)}
+.stat-num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
+.s-ok   .stat-num{color:var(--ok)}
+.s-warn .stat-num{color:var(--warn)}
+.s-bad  .stat-num{color:var(--bad)}
+.s-unk  .stat-num{color:var(--unk)}
+.stat-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--txt-3)}
+
+/* ── Filters ─────────────────────────────────────────────────────── */
+.filter-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.filter-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-3);margin-right:2px}
+.filter-btn{font-family:var(--mono);font-size:11px;padding:4px 12px;
+  border-radius:20px;border:1px solid var(--border-hi);background:transparent;
+  color:var(--txt-3);cursor:pointer;transition:all .13s}
+.filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.filter-btn.active{background:var(--accent-md);border-color:var(--accent);color:var(--accent)}
+.pkg-count{font-family:var(--mono);font-size:11px;background:var(--surface);
+  border:1px solid var(--border);border-radius:20px;padding:3px 10px;color:var(--txt-3);margin-left:auto}
+
+/* ── Detail panel ────────────────────────────────────────────────── */
+.detail-panel{background:var(--card);border:1px solid var(--border-hi);
+  border-left:3px solid var(--accent);border-radius:var(--rl);
+  padding:20px 22px;margin-bottom:14px;animation:panelIn .18s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.dp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.dp-title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dp-pkg{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--txt)}
+.dp-close{background:transparent;border:1px solid var(--border-hi);border-radius:var(--r);
+  color:var(--txt-3);cursor:pointer;padding:4px 10px;font-size:11px;
+  font-family:var(--mono);transition:all .13s;flex-shrink:0}
+.dp-close:hover{border-color:var(--bad);color:var(--bad)}
+.dp-desc{font-family:var(--mono);font-size:12px;color:var(--txt-2);line-height:1.65;
+  background:var(--surface);border-radius:var(--r);padding:10px 14px;margin-bottom:14px}
+.dp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 20px;font-size:12px;margin-bottom:14px}
+.dp-key{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--txt-3);margin-bottom:2px}
+.dp-val{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--txt)}
+.chain-lbl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--txt-3);margin-bottom:7px}
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.chain-node{font-family:var(--mono);font-size:11px;padding:3px 10px;
+  border-radius:var(--r);border:1px solid var(--border-hi);background:var(--surface);color:var(--txt-2)}
+.chain-node.is-root{border-color:rgba(96,165,250,.35);color:var(--info)}
+.chain-node.is-cur {border-color:var(--accent);color:var(--accent);font-weight:700}
+.chain-arrow{color:var(--txt-4);font-size:12px}
+.dp-links{display:flex;gap:10px;flex-wrap:wrap}
+.dp-link{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;
+  opacity:.7;transition:opacity .13s;display:flex;align-items:center;gap:4px}
+.dp-link:hover{opacity:1}
+
+/* ── Table ───────────────────────────────────────────────────────── */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+thead th{background:var(--surface);font-family:var(--mono);font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--txt-4);padding:10px 14px;text-align:left;
+  border-bottom:1px solid var(--border);font-weight:500}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s;cursor:pointer}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.018)}
+tbody tr.selected td{background:rgba(90,255,163,.04)}
+tbody td{padding:11px 14px;vertical-align:top;word-break:break-word}
+.pkg-name{font-family:var(--mono);font-weight:700;font-size:12px;color:var(--txt);display:block}
+.pkg-ver {font-family:var(--mono);font-size:10px;color:var(--txt-3);margin-top:2px;display:block}
+.lic-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:4px;
+  font-family:var(--mono);font-size:10px;font-weight:600;white-space:nowrap}
+.lic-badge.ok  {background:var(--ok-bg);  color:var(--ok)}
+.lic-badge.warn{background:var(--warn-bg);color:var(--warn)}
+.lic-badge.bad {background:var(--bad-bg); color:var(--bad)}
+.lic-badge.unk {background:var(--unk-bg); color:var(--unk)}
+.lic-full{font-family:var(--mono);font-size:10px;color:var(--txt-2);margin-top:3px;display:block}
+.lic-short{font-family:var(--mono);font-size:10px;color:var(--txt-3);margin-top:1px;display:block;font-style:italic}
+.type-badge{font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px}
+.type-badge.root      {background:var(--info-bg);color:var(--info)}
+.type-badge.direct    {background:var(--accent-lo);color:var(--accent)}
+.type-badge.transitive{background:var(--surface);border:1px solid var(--border);color:var(--txt-3)}
+.origin-via{font-family:var(--mono);font-size:10px;color:var(--txt-3);margin-top:4px}
+.origin-chain{font-family:var(--mono);font-size:9px;color:var(--txt-4);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.score-bar{display:flex;align-items:center;gap:6px}
+.score-track{width:52px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
+.score-fill{height:100%;border-radius:2px}
+.score-fill.hi {background:var(--ok)}
+.score-fill.mid{background:var(--warn)}
+.score-fill.lo {background:var(--bad)}
+.score-val{font-family:var(--mono);font-size:10px;color:var(--txt-3);min-width:24px}
+.row-link{font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none;
+  opacity:.65;display:block;margin-top:3px;transition:opacity .13s;white-space:nowrap}
+.row-link:hover{opacity:1}
+
+/* ── Progress ────────────────────────────────────────────────────── */
+.progress-wrap{padding:52px 0;display:flex;flex-direction:column;align-items:center;gap:18px}
+.progress-ring{width:38px;height:38px;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress-stage{font-family:var(--mono);font-size:11px;color:var(--txt-3);text-align:center}
+.progress-bar-outer{width:300px;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--accent);border-radius:2px;transition:width .3s ease}
+
+/* ── Empty / Error ───────────────────────────────────────────────── */
+.empty{padding:64px 0;display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--txt-4)}
+.empty-icon{width:44px;height:44px;opacity:.35}
+.empty-title{font-size:15px;font-weight:700;color:var(--txt-3)}
+.empty-desc{font-family:var(--mono);font-size:11px;color:var(--txt-4);text-align:center;
+  max-width:420px;line-height:1.7}
+.empty-desc code{color:var(--accent);background:var(--accent-lo);
+  border:1px solid rgba(90,255,163,.15);border-radius:3px;padding:1px 6px}
+.err-toast{background:var(--bad-bg);border:1px solid rgba(255,94,126,.25);border-radius:var(--r);
+  padding:11px 15px;font-family:var(--mono);font-size:11px;color:var(--bad);margin-bottom:14px;display:none}
+.err-toast.show{display:block}
+
+/* ── Utils ───────────────────────────────────────────────────────── */
+.hidden{display:none!important}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.row-in{animation:fadeUp .15s ease both}
+@media(max-width:800px){
+  .stats-row{grid-template-columns:repeat(3,1fr)}
+  thead th:nth-child(4),tbody td:nth-child(4){display:none}
+}
+@media(max-width:560px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .mode-row{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="18" height="18" fill="none">
+          <path d="M3 9h12M9 3v12M3 5.5l2.5 2.5L3 10.5M15 5.5l-2.5 2.5L15 10.5"
+                stroke="#0b0c0f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="logo-name">Dep<span>Lens</span></span>
+    </div>
+    <span class="logo-sub">// Open-Source License &amp; Dependency Scanner</span>
+  </div>
+  <div class="header-meta">
+    ClearlyDefined · npm · PyPI · Maven<br/>
+    Go · RubyGems · NuGet · Debian<br/>
+    GitHub · GitLab
+  </div>
+</header>
+
+<!-- Mode tabs -->
+<div class="mode-row">
+  <button class="mode-tab active" data-mode="pkg"  onclick="setMode('pkg', this)">
+    ⬡ Package
+  </button>
+  <button class="mode-tab"        data-mode="repo" onclick="setMode('repo', this)">
+    ⌥ GitHub / GitLab Repo
+  </button>
+</div>
+
+<!-- Package mode -->
+<div id="pkg-mode">
+  <div class="eco-row">
+    <button class="eco-tab active" data-eco="npm"    onclick="setEco('npm',this)">npm</button>
+    <button class="eco-tab"        data-eco="pypi"   onclick="setEco('pypi',this)">PyPI</button>
+    <button class="eco-tab"        data-eco="maven"  onclick="setEco('maven',this)">Maven</button>
+    <button class="eco-tab"        data-eco="go"     onclick="setEco('go',this)">Go</button>
+    <button class="eco-tab"        data-eco="gem"    onclick="setEco('gem',this)">RubyGems</button>
+    <button class="eco-tab"        data-eco="nuget"  onclick="setEco('nuget',this)">NuGet</button>
+    <button class="eco-tab"        data-eco="debian" onclick="setEco('debian',this)">Debian</button>
+  </div>
+  <div class="search-row">
+    <input id="pkg-input" type="text" autocomplete="off" spellcheck="false"
+           placeholder="e.g. express, requests, org.springframework:spring-core…"/>
+    <button id="pkg-btn" class="scan-btn" onclick="startPkgScan()">
+      <svg width="13" height="13" fill="none"><circle cx="5.5" cy="5.5" r="4.5" stroke="#0b0c0f" stroke-width="1.5"/>
+        <path d="M9 9l3 3" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Scan
+    </button>
+  </div>
+</div>
+
+<!-- Repo mode -->
+<div id="repo-mode" class="hidden">
+  <div class="info-box">
+    Auto-detects manifest (package.json, requirements.txt, go.mod, pom.xml, Gemfile, debian/control)
+    and scans every dependency. Supports <strong>github.com</strong> and <strong>gitlab.com</strong>.
+  </div>
+  <div id="detected-box" class="detected-box"></div>
+  <div class="search-row">
+    <input id="repo-input" type="text" autocomplete="off" spellcheck="false"
+           placeholder="owner/repo  or  https://github.com/owner/repo"/>
+    <select id="branch-sel" class="branch-sel">
+      <option value="main">main</option>
+      <option value="master">master</option>
+      <option value="develop">develop</option>
+    </select>
+    <button id="repo-btn" class="scan-btn" onclick="startRepoScan()">
+      <svg width="13" height="13" fill="none"><circle cx="5.5" cy="5.5" r="4.5" stroke="#0b0c0f" stroke-width="1.5"/>
+        <path d="M9 9l3 3" stroke="#0b0c0f" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Scan
+    </button>
+  </div>
+</div>
+
+<!-- Error toast -->
+<div id="err-toast" class="err-toast"></div>
+
+<!-- Stats -->
+<div id="stats-row" class="stats-row hidden">
+  <div class="stat-card">     <div class="stat-num" id="s-total">0</div><div class="stat-lbl">Total</div></div>
+  <div class="stat-card s-ok"> <div class="stat-num" id="s-ok">0</div>   <div class="stat-lbl">Permissive</div></div>
+  <div class="stat-card s-warn"><div class="stat-num" id="s-warn">0</div> <div class="stat-lbl">Copyleft</div></div>
+  <div class="stat-card s-bad"> <div class="stat-num" id="s-bad">0</div>  <div class="stat-lbl">Restrictive</div></div>
+  <div class="stat-card s-unk"> <div class="stat-num" id="s-unk">0</div>  <div class="stat-lbl">Unknown</div></div>
+  <div class="stat-card">      <div class="stat-num" id="s-trans">0</div> <div class="stat-lbl">Transitive</div></div>
+</div>
+
+<!-- Filters -->
+<div id="filter-bar" class="filter-bar hidden">
+  <span class="filter-lbl">Filter:</span>
+  <button class="filter-btn active" data-f="all"        onclick="setFilter('all',this)">All</button>
+  <button class="filter-btn"        data-f="direct"     onclick="setFilter('direct',this)">Direct</button>
+  <button class="filter-btn"        data-f="transitive" onclick="setFilter('transitive',this)">Transitive</button>
+  <button class="filter-btn"        data-f="copyleft"   onclick="setFilter('copyleft',this)">Copyleft</button>
+  <button class="filter-btn"        data-f="unknown"    onclick="setFilter('unknown',this)">Unknown</button>
+  <span id="pkg-count" class="pkg-count"></span>
+</div>
+
+<!-- Detail panel -->
+<div id="detail-panel" class="detail-panel hidden"></div>
+
+<!-- Progress -->
+<div id="progress-area" class="hidden">
+  <div class="progress-wrap">
+    <svg class="progress-ring" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="16" fill="none" stroke="var(--border-hi)" stroke-width="3"/>
+      <circle cx="20" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="3"
+        stroke-dasharray="100" stroke-dashoffset="60" stroke-linecap="round" transform="rotate(-90 20 20)"/>
+    </svg>
+    <div id="progress-stage" class="progress-stage">Initialising…</div>
+    <div class="progress-bar-outer">
+      <div id="progress-bar" class="progress-bar-inner" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Results table -->
+<div id="results-area" class="hidden">
+  <div class="table-wrap">
+    <table>
+      <colgroup>
+        <col style="width:20%"><col style="width:30%"><col style="width:13%">
+        <col style="width:22%"><col style="width:15%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>License · SPDX · full name · summary</th>
+          <th>Type</th>
+          <th>Origin chain</th>
+          <th>Score · Links</th>
+        </tr>
+      </thead>
+      <tbody id="tbl-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Empty state -->
+<div id="empty-state" class="empty">
+  <svg class="empty-icon" viewBox="0 0 48 48" fill="none">
+    <rect x="8" y="12" width="32" height="28" rx="3" stroke="currentColor" stroke-width="2"/>
+    <path d="M16 20h16M16 26h10M16 32h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M8 18h32" stroke="currentColor" stroke-width="2"/>
+    <circle cx="13" cy="15" r="1.5" fill="currentColor"/>
+    <circle cx="19" cy="15" r="1.5" fill="currentColor"/>
+    <circle cx="25" cy="15" r="1.5" fill="currentColor"/>
+  </svg>
+  <div class="empty-title">No scan yet</div>
+  <div class="empty-desc">
+    Start the backend, then enter a package or repo and hit <strong>Scan</strong>.<br/>
+    <code>pip install -r requirements.txt</code>&nbsp;&nbsp;
+    <code>uvicorn app:app --reload</code>
+  </div>
+</div>
+
+</div><!-- /shell -->
+
+<script>
+// ── License database ───────────────────────────────────────────────────────
+const LIC_DB = {
+  'MIT':             { name:'MIT License',                type:'ok',   short:'Use freely; keep copyright notice',          desc:'Very permissive. Allows use, copy, modify, merge, publish, distribute, sublicense, and sell. Only requires retaining the copyright notice and license text.',        spdx:'https://spdx.org/licenses/MIT.html',           osi:'https://opensource.org/licenses/MIT' },
+  'Apache-2.0':      { name:'Apache License 2.0',         type:'ok',   short:'Permissive + explicit patent grant',          desc:'Permissive with an explicit patent grant. Allows use, modification, and distribution. Requires retaining notices and includes patent protection for contributors.', spdx:'https://spdx.org/licenses/Apache-2.0.html',    osi:'https://opensource.org/licenses/Apache-2.0' },
+  'BSD-2-Clause':    { name:'BSD 2-Clause',               type:'ok',   short:'Keep copyright & disclaimer',                desc:'Permissive. Requires only retaining the copyright notice and disclaimer in redistributions.',                                                                       spdx:'https://spdx.org/licenses/BSD-2-Clause.html', osi:'https://opensource.org/licenses/BSD-2-Clause' },
+  'BSD-3-Clause':    { name:'BSD 3-Clause',               type:'ok',   short:'BSD-2 + no-endorsement clause',              desc:'Like BSD-2-Clause, plus a clause preventing use of the project name for promotion without permission.',                                                             spdx:'https://spdx.org/licenses/BSD-3-Clause.html', osi:'https://opensource.org/licenses/BSD-3-Clause' },
+  'ISC':             { name:'ISC License',                type:'ok',   short:'Equivalent to BSD-2-Clause',                 desc:'Functionally equivalent to BSD-2-Clause. Simple and permissive. Widely used in the npm ecosystem.',                                                                spdx:'https://spdx.org/licenses/ISC.html',          osi:'https://opensource.org/licenses/ISC' },
+  '0BSD':            { name:'BSD Zero Clause',            type:'ok',   short:'No attribution required',                    desc:'Maximally permissive BSD variant. No attribution, no conditions whatsoever.',                                                                                       spdx:'https://spdx.org/licenses/0BSD.html',         osi:'https://opensource.org/licenses/0BSD' },
+  'Unlicense':       { name:'The Unlicense',              type:'ok',   short:'Public domain — do anything',               desc:'Public domain dedication. All rights relinquished worldwide. No conditions.',                                                                                        spdx:'https://spdx.org/licenses/Unlicense.html',    osi:'https://opensource.org/licenses/unlicense' },
+  'CC0-1.0':         { name:'Creative Commons Zero v1.0', type:'ok',   short:'Public domain, no conditions',               desc:'Public domain. Author waives all copyright worldwide. No conditions whatsoever.',                                                                                   spdx:'https://spdx.org/licenses/CC0-1.0.html',      osi:'https://creativecommons.org/publicdomain/zero/1.0/' },
+  'WTFPL':           { name:'Do What The F*** You Want',  type:'ok',   short:'No conditions at all',                       desc:'Entirely permissive. No restrictions of any kind.',                                                                                                                 spdx:'https://spdx.org/licenses/WTFPL.html',        osi:null },
+  'Zlib':            { name:'zlib License',               type:'ok',   short:'Cannot misrepresent origin',                 desc:'Permissive. Modified versions must be marked as changed and must not misrepresent authorship.',                                                                     spdx:'https://spdx.org/licenses/Zlib.html',         osi:'https://opensource.org/licenses/Zlib' },
+  'PSF-2.0':         { name:'Python Software Foundation License 2.0', type:'ok', short:'Permissive — used by Python itself', desc:'Permissive license used for the CPython implementation. Similar to BSD.',                                                                                      spdx:'https://spdx.org/licenses/PSF-2.0.html',      osi:'https://opensource.org/licenses/Python-2.0' },
+  'MPL-2.0':         { name:'Mozilla Public License 2.0', type:'warn', short:'File-level copyleft; mixing allowed',        desc:'Weak copyleft at file level. Modified MPL-2.0 files must remain open; you may combine with proprietary code in separate files.',                                  spdx:'https://spdx.org/licenses/MPL-2.0.html',      osi:'https://opensource.org/licenses/MPL-2.0' },
+  'LGPL-2.1':        { name:'GNU LGPL v2.1',              type:'warn', short:'Weak copyleft — library linking allowed',    desc:'Weak copyleft. Proprietary software may link to LGPL libraries. Modifications to the library itself must stay LGPL.',                                             spdx:'https://spdx.org/licenses/LGPL-2.1.html',     osi:'https://opensource.org/licenses/LGPL-2.1' },
+  'LGPL-2.1-only':   { name:'GNU LGPL v2.1 only',         type:'warn', short:'Weak copyleft, v2.1 exactly',               desc:'LGPL v2.1 only — cannot upgrade to a later version. Linking from proprietary code is allowed.',                                                                    spdx:'https://spdx.org/licenses/LGPL-2.1-only.html',osi:'https://opensource.org/licenses/LGPL-2.1' },
+  'LGPL-3.0':        { name:'GNU LGPL v3.0',              type:'warn', short:'Weak copyleft v3, linking allowed',          desc:'Weak copyleft v3. Proprietary software may link to the library. Modifications to the library must remain open.',                                                   spdx:'https://spdx.org/licenses/LGPL-3.0.html',     osi:'https://opensource.org/licenses/LGPL-3.0' },
+  'EUPL-1.2':        { name:'European Union Public License 1.2', type:'warn', short:'Weak copyleft under EU law',          desc:'Weak copyleft governed by EU law. Compatible with GPL-2.0+, AGPL-3.0, and MPL-2.0.',                                                                              spdx:'https://spdx.org/licenses/EUPL-1.2.html',     osi:'https://opensource.org/licenses/EUPL-1.1' },
+  'CDDL-1.0':        { name:'Common Development and Distribution License 1.0', type:'warn', short:'File-level copyleft from Oracle', desc:'File-level weak copyleft from Sun/Oracle. Modified CDDL files must remain open; can be combined with proprietary code in other files.',               spdx:'https://spdx.org/licenses/CDDL-1.0.html',     osi:'https://opensource.org/licenses/CDDL-1.0' },
+  'GPL-2.0':         { name:'GNU GPL v2.0',               type:'warn', short:'Strong copyleft — derivatives must be GPL', desc:'Strong copyleft. Any derivative work must also be GPL-2.0. Source must be made available to recipients.',                                                         spdx:'https://spdx.org/licenses/GPL-2.0.html',      osi:'https://opensource.org/licenses/GPL-2.0' },
+  'GPL-2.0-only':    { name:'GNU GPL v2.0 only',          type:'warn', short:'Strong copyleft, v2 only',                  desc:'GPL v2 only — cannot upgrade to v3. All derivative works must remain GPL-2.0.',                                                                                    spdx:'https://spdx.org/licenses/GPL-2.0-only.html', osi:'https://opensource.org/licenses/GPL-2.0' },
+  'GPL-2.0-or-later':{ name:'GNU GPL v2.0 or later',      type:'warn', short:'Strong copyleft, v2 or any later',          desc:'GPL v2 or any later FSF version. Derivative works must remain GPL.',                                                                                               spdx:'https://spdx.org/licenses/GPL-2.0-or-later.html',osi:'https://opensource.org/licenses/GPL-2.0' },
+  'GPL-3.0':         { name:'GNU GPL v3.0',               type:'warn', short:'Strong copyleft + patent + anti-tivoization',desc:'Strong copyleft with patent grant and anti-tivoization clauses. Source must be disclosed. Network distribution counted.',                                         spdx:'https://spdx.org/licenses/GPL-3.0.html',      osi:'https://opensource.org/licenses/GPL-3.0' },
+  'GPL-3.0-only':    { name:'GNU GPL v3.0 only',          type:'warn', short:'Strong copyleft, v3 exactly',               desc:'GPL v3 only — cannot use under later versions.',                                                                                                                   spdx:'https://spdx.org/licenses/GPL-3.0-only.html', osi:'https://opensource.org/licenses/GPL-3.0' },
+  'GPL-3.0-or-later':{ name:'GNU GPL v3.0 or later',      type:'warn', short:'Strong copyleft, v3 or later',              desc:'GPL v3 or any later FSF version. Network use in some contexts requires source disclosure.',                                                                         spdx:'https://spdx.org/licenses/GPL-3.0-or-later.html',osi:'https://opensource.org/licenses/GPL-3.0' },
+  'AGPL-3.0':        { name:'GNU AGPL v3.0',              type:'warn', short:'Strongest copyleft — SaaS triggers it',     desc:'Strongest copyleft. Extends GPL-3.0: even network/SaaS use requires releasing source code. Very restrictive for web services.',                                   spdx:'https://spdx.org/licenses/AGPL-3.0.html',     osi:'https://opensource.org/licenses/AGPL-3.0' },
+  'AGPL-3.0-only':   { name:'GNU AGPL v3.0 only',         type:'warn', short:'Network copyleft, v3 only',                 desc:'AGPL v3 only. Network use triggers source disclosure requirements.',                                                                                               spdx:'https://spdx.org/licenses/AGPL-3.0-only.html',osi:'https://opensource.org/licenses/AGPL-3.0' },
+  'BUSL-1.1':        { name:'Business Source License 1.1',type:'bad',  short:'Source-available, restricted commercial use',desc:'Not open source. Commercial use is restricted for a set period (typically 4 years) then converts to a specified open-source license.',                           spdx:'https://spdx.org/licenses/BUSL-1.1.html',     osi:null },
+  'SSPL-1.0':        { name:'Server Side Public License 1.0', type:'bad', short:'Strong copyleft — cloud deployments trigger it', desc:'Controversial license by MongoDB. Deploying a service using this software requires releasing the full stack under SSPL.',                                spdx:'https://spdx.org/licenses/SSPL-1.0.html',     osi:null },
+  'Artistic-2.0':    { name:'Artistic License 2.0',       type:'ok',   short:'Permissive with distribution requirements', desc:'Permissive with some conditions on distributing modified versions. Common in the Perl ecosystem.',                                                                  spdx:'https://spdx.org/licenses/Artistic-2.0.html', osi:'https://opensource.org/licenses/Artistic-2.0' },
+  'NOASSERTION':     { name:'Not Asserted',                type:'unk',  short:'License not confidently identified',        desc:'ClearlyDefined has some data for this package but could not definitively identify the license. Manual review recommended.',                                        spdx:null, osi:null },
+  'NONE':            { name:'No License Found',            type:'unk',  short:'All rights reserved by default',            desc:'No license file or SPDX identifier was found. Without an explicit license all rights are reserved by the author — use may be legally risky.',                   spdx:null, osi:null },
+};
+
+function getLic(spdx) {
+  if (!spdx || spdx.trim() === '') return LIC_DB['NOASSERTION'];
+  if (LIC_DB[spdx]) return LIC_DB[spdx];
+  // Handle compound expressions like "MIT OR Apache-2.0"
+  const ids = spdx.split(/[\s+()AND OR]+/).filter(Boolean);
+  const first = LIC_DB[ids[0]];
+  if (first) return {
+    ...first, name: spdx,
+    short: ids.map(id => LIC_DB[id] ? LIC_DB[id].name : id).join(' + '),
+    desc:  'Compound SPDX expression. ' + ids.map(id => LIC_DB[id] ? LIC_DB[id].name + ': ' + LIC_DB[id].short : id).join(' | '),
+  };
+  return { name: spdx, type: 'unk', short: 'See SPDX.org for details',
+           desc: 'License identifier not in local database — check SPDX.org for details.',
+           spdx: `https://spdx.org/licenses/${encodeURIComponent(spdx)}.html`, osi: null };
+}
+
+// ── State ──────────────────────────────────────────────────────────────────
+let allRows      = [];
+let activeFilter = 'all';
+let selectedIdx  = -1;
+let activeSource = null;
+let currentMode  = 'pkg';
+let currentEco   = 'npm';
+const PKG_HINTS  = {
+  npm:    'e.g. express, lodash, react-router',
+  pypi:   'e.g. requests, django, flask',
+  maven:  'e.g. org.springframework:spring-core',
+  go:     'e.g. github.com/gin-gonic/gin',
+  gem:    'e.g. rails, sinatra',
+  nuget:  'e.g. Newtonsoft.Json, Serilog',
+  debian: 'e.g. curl, libssl-dev',
+};
+
+// ── UI helpers ─────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const show = (id, v=true) => $(id).classList.toggle('hidden', !v);
+const dot  = cls => {
+  const c = {ok:'#5affa3',warn:'#ffca58',bad:'#ff5e7e',unk:'#8b8fa8'};
+  return `<svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="${c[cls]}"/></svg>`;
+};
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function showError(msg) {
+  const t = $('err-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+}
+function hideError() { $('err-toast').classList.remove('show'); }
+function setProgress(pct, stage) {
+  $('progress-bar').style.width = pct + '%';
+  $('progress-stage').textContent = stage;
+}
+
+// ── Mode / eco switching ───────────────────────────────────────────────────
+function setMode(mode, btn) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  show('pkg-mode',  mode === 'pkg');
+  show('repo-mode', mode === 'repo');
+}
+
+function setEco(eco, btn) {
+  currentEco = eco;
+  document.querySelectorAll('.eco-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  $('pkg-input').placeholder = PKG_HINTS[eco] || 'Package name';
+}
+
+// ── Stats ──────────────────────────────────────────────────────────────────
+function updateStats() {
+  const c = { ok:0, warn:0, bad:0, unk:0, trans:0 };
+  allRows.forEach(r => {
+    c[r.lic_class]++;
+    if (r.dep_type === 'transitive') c.trans++;
+  });
+  $('s-total').textContent = allRows.length;
+  $('s-ok').textContent    = c.ok;
+  $('s-warn').textContent  = c.warn;
+  $('s-bad').textContent   = c.bad;
+  $('s-unk').textContent   = c.unk;
+  $('s-trans').textContent = c.trans;
+}
+
+// ── Filter ─────────────────────────────────────────────────────────────────
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === f));
+  renderTable();
+}
+
+function matchFilter(row) {
+  if (activeFilter === 'all')        return true;
+  if (activeFilter === 'direct')     return row.dep_type === 'direct' || row.dep_type === 'root';
+  if (activeFilter === 'transitive') return row.dep_type === 'transitive';
+  if (activeFilter === 'copyleft')   return row.lic_class === 'warn';
+  if (activeFilter === 'unknown')    return row.lic_class === 'unk';
+  return true;
+}
+
+// ── Origin chain helper ────────────────────────────────────────────────────
+function getChain(row) {
+  const chain = [{ name: row.name, cur: true }];
+  let parentName = row.parent;
+  let safety = 0;
+  while (parentName && safety < 8) {
+    const found = allRows.find(r => r.name === parentName);
+    chain.unshift({ name: parentName, root: !found || found.dep_type === 'root' });
+    parentName = found ? found.parent : null;
+    safety++;
+  }
+  return chain;
+}
+
+// ── Detail panel ───────────────────────────────────────────────────────────
+function openDetail(idx) {
+  selectedIdx = idx;
+  const row = allRows[idx];
+  if (!row) return;
+
+  const li  = getLic(row.license);
+  const cls = row.lic_class;
+  const chain = getChain(row);
+
+  const chainHtml = chain.length > 1
+    ? `<div class="chain-lbl">Full origin chain</div>
+       <div class="chain">${chain.map((n,i) => `
+         <span class="chain-node ${n.root?'is-root':''} ${n.cur?'is-cur':''}">${esc(n.name)}</span>
+         ${i < chain.length-1 ? '<span class="chain-arrow">→</span>' : ''}
+       `).join('')}</div>`
+    : '';
+
+  const linksHtml = [
+    row.cd_url       ? `<a class="dp-link" href="${esc(row.cd_url)}"       target="_blank" rel="noopener">ClearlyDefined ↗</a>` : '',
+    row.registry_url ? `<a class="dp-link" href="${esc(row.registry_url)}" target="_blank" rel="noopener">Registry ↗</a>` : '',
+    li.spdx          ? `<a class="dp-link" href="${esc(li.spdx)}"          target="_blank" rel="noopener">SPDX ↗</a>` : '',
+    li.osi           ? `<a class="dp-link" href="${esc(li.osi)}"           target="_blank" rel="noopener">OSI ↗</a>` : '',
+  ].filter(Boolean).join('');
+
+  $('detail-panel').innerHTML = `
+    <div class="dp-header">
+      <div class="dp-title">
+        <span class="dp-pkg">${esc(row.name)}</span>
+        <span class="lic-badge ${cls}">${dot(cls)} ${esc(row.license)}</span>
+      </div>
+      <button class="dp-close" onclick="closeDetail()">✕ close</button>
+    </div>
+    <div class="dp-desc">${esc(li.desc)}</div>
+    <div class="dp-grid">
+      <div><div class="dp-key">Full name</div><div class="dp-val">${esc(li.name)}</div></div>
+      <div><div class="dp-key">Version</div><div class="dp-val">${esc(row.version)}</div></div>
+      <div><div class="dp-key">Dep type</div><div class="dp-val">${esc(row.dep_type)}</div></div>
+      <div><div class="dp-key">CD score</div><div class="dp-val">${row.score > 0 ? row.score + '/100' : '—'}</div></div>
+      <div><div class="dp-key">Category</div><div class="dp-val">${esc(li.short)}</div></div>
+      ${row.parent ? `<div><div class="dp-key">Introduced by</div><div class="dp-val">${esc(row.parent)}</div></div>` : ''}
+    </div>
+    ${chainHtml}
+    <div class="dp-links">${linksHtml || '<span style="font-family:var(--mono);font-size:11px;color:var(--txt-4)">No links available</span>'}</div>
+  `;
+  show('detail-panel', true);
+  renderTable();
+}
+
+function closeDetail() {
+  selectedIdx = -1;
+  show('detail-panel', false);
+  renderTable();
+}
+
+// ── Render table ───────────────────────────────────────────────────────────
+function renderTable() {
+  const visible = allRows.filter(matchFilter);
+  $('pkg-count').textContent = `${visible.length} / ${allRows.length} pkgs`;
+  const tbody = $('tbl-body');
+  tbody.innerHTML = '';
+
+  visible.forEach((row, i) => {
+    const realIdx = allRows.indexOf(row);
+    const cls     = row.lic_class;
+    const li      = getLic(row.license);
+    const score   = row.score;
+    const fillCls = score >= 75 ? 'hi' : score >= 45 ? 'mid' : 'lo';
+    const sel     = realIdx === selectedIdx ? 'selected' : '';
+    const chain   = getChain(row);
+    const chainStr = chain.map(n => n.name).join(' → ');
+
+    let originHtml = '—';
+    if (row.dep_type === 'transitive' && row.parent) {
+      originHtml = `<span class="origin-via">via ${esc(row.parent)}</span>
+        ${chain.length > 2 ? `<span class="origin-chain" title="${esc(chainStr)}">${esc(chainStr)}</span>` : ''}`;
+    } else if (row.dep_type === 'direct' && row.parent) {
+      originHtml = `<span class="origin-via">${esc(row.parent)}</span>`;
+    }
+
+    const tr = document.createElement('tr');
+    tr.className = `row-in ${sel}`;
+    tr.style.animationDelay = (i * 14) + 'ms';
+    tr.onclick = () => openDetail(realIdx);
+    tr.innerHTML = `
+      <td>
+        <span class="pkg-name">${esc(row.name)}</span>
+        <span class="pkg-ver">${esc(row.version)}</span>
+      </td>
+      <td>
+        <span class="lic-badge ${cls}">${dot(cls)} ${esc(row.license)}</span>
+        <span class="lic-full">${esc(li.name)}</span>
+        <span class="lic-short">${esc(li.short)}</span>
+      </td>
+      <td><span class="type-badge ${row.dep_type}">${esc(row.dep_type)}</span></td>
+      <td>${originHtml}</td>
+      <td>
+        <div class="score-bar">
+          <div class="score-track"><div class="score-fill ${fillCls}" style="width:${score}%"></div></div>
+          <span class="score-val">${score > 0 ? score : '—'}</span>
+        </div>
+        ${row.cd_url       ? `<a class="row-link" href="${esc(row.cd_url)}"       target="_blank" rel="noopener">ClearlyDefined ↗</a>` : ''}
+        ${row.registry_url ? `<a class="row-link" href="${esc(row.registry_url)}" target="_blank" rel="noopener">Registry ↗</a>` : ''}
+      </td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+// ── Scan helpers ───────────────────────────────────────────────────────────
+function resetUI() {
+  hideError();
+  allRows = [];
+  selectedIdx = -1;
+  show('empty-state', false);
+  show('results-area', false);
+  show('detail-panel', false);
+  show('stats-row', false);
+  show('filter-bar', false);
+  show('progress-area', true);
+  setProgress(0, 'Initialising…');
+  activeFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === 'all'));
+  $('detected-box').style.display = 'none';
+  if (activeSource) { activeSource.close(); activeSource = null; }
+}
+
+function onPackage(pkg) {
+  allRows.push(pkg);
+  if (allRows.length === 1) {
+    show('stats-row', true);
+    show('filter-bar', true);
+    show('results-area', true);
+  }
+  updateStats();
+  renderTable();
+}
+
+function onDone(btnId) {
+  setProgress(100, 'Scan complete.');
+  setTimeout(() => show('progress-area', false), 500);
+  $(btnId).disabled = false;
+}
+
+function onError(msg, btnId) {
+  if (activeSource) { activeSource.close(); activeSource = null; }
+  show('progress-area', false);
+  if (!allRows.length) show('empty-state', true);
+  showError(msg);
+  $(btnId).disabled = false;
+}
+
+function connectSSE(url, btnId) {
+  const src = new EventSource(url);
+  activeSource = src;
+  src.onmessage = e => {
+    let msg; try { msg = JSON.parse(e.data); } catch { return; }
+    if      (msg.type === 'progress') setProgress(msg.pct, msg.stage);
+    else if (msg.type === 'package')  onPackage(msg.pkg);
+    else if (msg.type === 'detected') {
+      const db = $('detected-box');
+      db.textContent = `Detected ${msg.eco} via ${msg.file} on ${msg.platform} — ${msg.count} deps found`;
+      db.style.display = 'block';
+    }
+    else if (msg.type === 'done')  { src.close(); activeSource = null; onDone(btnId); }
+    else if (msg.type === 'error') onError(msg.message, btnId);
+  };
+  src.onerror = () => {
+    src.close(); activeSource = null;
+    onError('Cannot reach the backend. Make sure it is running: uvicorn app:app --reload', btnId);
+  };
+}
+
+// ── Package scan ───────────────────────────────────────────────────────────
+function startPkgScan() {
+  const pkg = $('pkg-input').value.trim();
+  if (!pkg) { showError('Enter a package name.'); return; }
+  resetUI();
+  $('pkg-btn').disabled = true;
+  connectSSE(`/api/scan?package=${encodeURIComponent(pkg)}&ecosystem=${currentEco}`, 'pkg-btn');
+}
+
+// ── Repo scan ──────────────────────────────────────────────────────────────
+function startRepoScan() {
+  const repo   = $('repo-input').value.trim();
+  const branch = $('branch-sel').value;
+  if (!repo) { showError('Enter a repo (e.g. owner/repo or full URL).'); return; }
+  resetUI();
+  $('repo-btn').disabled = true;
+  connectSSE(`/api/scan-repo?repo=${encodeURIComponent(repo)}&branch=${branch}`, 'repo-btn');
+}
+
+// ── Keyboard shortcuts ─────────────────────────────────────────────────────
+$('pkg-input').addEventListener('keydown',  e => { if (e.key === 'Enter') startPkgScan(); });
+$('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') startRepoScan(); });
+</script>
+</body>
+</html>

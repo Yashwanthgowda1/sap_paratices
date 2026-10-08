@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketDeep AI Trading Assistant</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .main-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 12px 24px;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .tab:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.95em;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .status-message {
+      background: #f8f9ff;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .status-message.show {
+      display: block;
+      animation: slideIn 0.3s;
+    }
+
+    .status-message.success {
+      background: #d4edda;
+      border-left-color: #28a745;
+      color: #155724;
+    }
+
+    .status-message.error {
+      background: #f8d7da;
+      border-left-color: #dc3545;
+      color: #721c24;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .json-output {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      overflow-x: auto;
+      display: none;
+    }
+
+    .json-output.show {
+      display: block;
+      animation: slideIn 0.3s;
+    }
+
+    .json-output pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .action-btn {
+      padding: 10px 20px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+    }
+
+    .action-btn.secondary {
+      background: #6c757d;
+    }
+
+    .action-btn.secondary:hover {
+      background: #5a6268;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .tabs {
+        justify-content: center;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 MarketDeep AI Trading Assistant</h1>
+      <p>Generate JSON data for AI agent analysis</p>
+    </div>
+
+    <div class="main-card">
+      <div class="tabs">
+        <button class="tab active" data-tab="options">Options Trading</button>
+        <button class="tab" data-tab="stocks">Stocks</button>
+        <button class="tab" data-tab="mutualfunds">Mutual Funds</button>
+        <button class="tab" data-tab="news">Market News</button>
+      </div>
+
+      <!-- Options Trading Tab -->
+      <div class="tab-content active" id="options">
+        <form id="optionsForm">
+          <div class="form-group">
+            <label>Stock Symbol</label>
+            <input type="text" name="ticker" placeholder="e.g., INFY, TCS, RELIANCE" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Strategy Type</label>
+              <select name="strategy">
+                <option value="intraday">Intraday</option>
+                <option value="swing">Swing Trading</option>
+                <option value="positional">Positional</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Option Type</label>
+              <select name="option_type">
+                <option value="auto">AI Auto-Select</option>
+                <option value="call">Call</option>
+                <option value="put">Put</option>
+                <option value="both">Both (Straddle)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Strike Preference</label>
+              <select name="strike_preference">
+                <option value="ATM">At The Money (ATM)</option>
+                <option value="ITM">In The Money (ITM)</option>
+                <option value="OTM">Out of The Money (OTM)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Expiry</label>
+              <select name="expiry">
+                <option value="nearest">Nearest Expiry</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Risk Tolerance</label>
+              <select name="risk_tolerance">
+                <option value="low">Low Risk</option>
+                <option value="medium">Medium Risk</option>
+                <option value="high">High Risk</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Time Horizon</label>
+              <select name="time_horizon">
+                <option value="today">Today</option>
+                <option value="this_week">This Week</option>
+                <option value="this_month">This Month</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">🚀 Generate JSON</button>
+        </form>
+      </div>
+
+      <!-- Stocks Tab -->
+      <div class="tab-content" id="stocks">
+        <form id="stocksForm">
+          <div class="form-group">
+            <label>Stock Symbol</label>
+            <input type="text" name="ticker" placeholder="e.g., INFY, TCS, RELIANCE" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Analysis Type</label>
+              <select name="analysis_type">
+                <option value="technical">Technical Analysis</option>
+                <option value="fundamental">Fundamental Analysis</option>
+                <option value="both">Complete Analysis</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Trading Type</label>
+              <select name="trading_type">
+                <option value="intraday">Intraday</option>
+                <option value="delivery">Delivery</option>
+                <option value="swing">Swing Trading</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Action</label>
+              <select name="action">
+                <option value="buy">Buy</option>
+                <option value="sell">Sell</option>
+                <option value="hold">Hold Analysis</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Quantity</label>
+              <input type="number" name="quantity" placeholder="Number of shares" min="1" />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">📊 Generate JSON</button>
+        </form>
+      </div>
+
+      <!-- Mutual Funds Tab -->
+      <div class="tab-content" id="mutualfunds">
+        <form id="mfForm">
+          <div class="form-group">
+            <label>Fund Name or ISIN</label>
+            <input type="text" name="fund_name" placeholder="e.g., SBI Bluechip Fund" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Investment Type</label>
+              <select name="investment_type">
+                <option value="lumpsum">Lumpsum</option>
+                <option value="sip">SIP</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Investment Horizon</label>
+              <select name="horizon">
+                <option value="short">Short Term (&lt;1 year)</option>
+                <option value="medium">Medium Term (1-3 years)</option>
+                <option value="long">Long Term (3+ years)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Risk Profile</label>
+              <select name="risk_profile">
+                <option value="conservative">Conservative</option>
+                <option value="moderate">Moderate</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Investment Amount (₹)</label>
+              <input type="number" name="amount" placeholder="Amount in Rupees" min="500" />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">💰 Generate JSON</button>
+        </form>
+      </div>
+
+      <!-- News Tab -->
+      <div class="tab-content" id="news">
+        <form id="newsForm">
+          <div class="form-group">
+            <label>Stock Symbol (Optional - Leave blank for general market news)</label>
+            <input type="text" name="ticker" placeholder="e.g., INFY, TCS, RELIANCE" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>News Category</label>
+              <select name="category">
+                <option value="all">All News</option>
+                <option value="market">Market Updates</option>
+                <option value="earnings">Earnings Reports</option>
+                <option value="policy">Policy Changes</option>
+                <option value="sector">Sector News</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Time Range</label>
+              <select name="time_range">
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">📰 Generate JSON</button>
+        </form>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px; color: #667eea; font-weight: 600;">Processing request...</p>
+      </div>
+
+      <!-- Status Message -->
+      <div class="status-message" id="statusMessage"></div>
+
+      <!-- JSON Output -->
+      <div class="json-output" id="jsonOutput">
+        <pre id="jsonContent"></pre>
+        <div class="action-buttons">
+          <button class="action-btn" onclick="copyJSON()">📋 Copy JSON</button>
+          <button class="action-btn" onclick="downloadJSON()">💾 Download JSON</button>
+          <button class="action-btn secondary" onclick="downloadPriceFile()">📄 Download Price File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentJSON = null;
+    let currentPriceData = null;
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Process form and generate JSON
+    async function processForm(data, type) {
+      const loading = document.getElementById('loading');
+      const statusMessage = document.getElementById('statusMessage');
+      const jsonOutput = document.getElementById('jsonOutput');
+      const jsonContent = document.getElementById('jsonContent');
+
+      loading.classList.add('show');
+      statusMessage.classList.remove('show');
+      jsonOutput.classList.remove('show');
+
+      try {
+        // Add metadata
+        const payload = {
+          ...data,
+          instrument_type: type,
+          timestamp: new Date().toISOString(),
+          request_id: `REQ_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+          status: "pending_analysis",
+          auto_scrape: "every 30 minutes"
+        };
+
+        // Send to webhook
+        fetch("http://localhost:5678/webhook-test/394945a8-24aa-4029-9a67-05b587a43410", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload)
+});
+
+        // Store JSON data
+        currentJSON = payload;
+        
+        // Create price file data
+        currentPriceData = {
+          ticker: data.ticker || data.fund_name || 'MARKET',
+          request_id: payload.request_id,
+          timestamp: payload.timestamp,
+          type: type,
+          buy_price: null,
+          sell_price: null,
+          target_price: null,
+          stop_loss: null,
+          notes: "Prices to be filled by AI agent after market analysis"
+        };
+
+        // Display JSON
+        loading.classList.remove('show');
+        jsonContent.textContent = JSON.stringify(payload, null, 2);
+        jsonOutput.classList.add('show');
+
+        // Show success message
+        statusMessage.textContent = '✅ JSON generated successfully! Sent to MarketDeep webhook.';
+        statusMessage.className = 'status-message success show';
+
+      } catch (error) {
+        loading.classList.remove('show');
+        statusMessage.textContent = `⚠️ Error: ${error.message}`;
+        statusMessage.className = 'status-message error show';
+      }
+    }
+
+    // Copy JSON to clipboard
+    function copyJSON() {
+      if (!currentJSON) return;
+      
+      navigator.clipboard.writeText(JSON.stringify(currentJSON, null, 2))
+        .then(() => {
+          const btn = event.target;
+          const originalText = btn.textContent;
+          btn.textContent = '✅ Copied!';
+          setTimeout(() => btn.textContent = originalText, 2000);
+        })
+        .catch(err => alert('Failed to copy: ' + err));
+    }
+
+    // Download JSON file
+    function downloadJSON() {
+      if (!currentJSON) return;
+
+      const blob = new Blob([JSON.stringify(currentJSON, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `marketdeep_${currentJSON.request_id}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Download price text file
+    function downloadPriceFile() {
+      if (!currentPriceData) return;
+
+      const content = `=== MarketDeep Price Data ===
+Request ID: ${currentPriceData.request_id}
+Ticker: ${currentPriceData.ticker}
+Type: ${currentPriceData.type}
+Timestamp: ${currentPriceData.timestamp}
+
+=== PRICES (To be filled by AI Agent) ===
+BUY_PRICE: _________
+SELL_PRICE: _________
+TARGET_PRICE: _________
+STOP_LOSS: _________
+
+=== ANALYSIS NOTES ===
+${currentPriceData.notes}
+
+=== INSTRUCTIONS ===
+This file will be processed by the AI agent for:
+1. Real-time market data analysis
+2. Price recommendation calculation
+3. Risk assessment
+4. Entry/Exit point determination
+`;
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `price_data_${currentPriceData.ticker}_${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Form submissions
+    document.getElementById('optionsForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(e.target));
+      processForm(formData, 'option');
+    });
+
+    document.getElementById('stocksForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(e.target));
+      processForm(formData, 'stock');
+    });
+
+    document.getElementById('mfForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(e.target));
+      processForm(formData, 'mutual_fund');
+    });
+
+    document.getElementById('newsForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(e.target));
+      processForm(formData, 'news');
+    });
+  </script>
+</body>
+</html>

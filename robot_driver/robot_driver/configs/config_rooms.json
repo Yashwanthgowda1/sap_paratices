@@ -1,0 +1,397 @@
+{
+  "common_desired_caps": {
+    "appActivity": "com.microsoft.skype.teams.Launcher",
+    "appPackage": "com.microsoft.skype.teams.ipphone",
+    "automationName": "UiAutomator2",
+    "platformName": "android",
+    "deviceName": "Android",
+    "newCommandTimeout": 90000,
+    "optionalIntentArguments": "--esn automation"
+  },
+  "companyPortal_Package": "com.microsoft.windowsintune.companyportal",
+  "appium_starting_port": 5100,
+  "cp_logs_capture": "True",
+  "dpi": {
+    "phyiscal_density": "-",
+    "override_density": "-"
+  },
+  "physical_size": "-",
+  "console_physical_size": "-",
+  "console_physical_density": "-",
+  "device_type": "-",
+  "encryption_state": "encrypted",
+  "devices": {
+    "device_1": {
+      "oem": "-",
+      "model": "-",
+      "port": 5100,
+      "admin_username": "admin",
+      "admin_password": "admin",
+      "firmware": "1.0",
+      "teams_device_capabilities": "-",
+      "teams_apk_version": "-",
+      "serial_number": "-",
+      "avd_name": "Mitm_only",
+      "avd_proxy_port": "Mitm_only",
+      "camera": {
+        "default": "_",
+        "external_1": "_",
+        "external_2": "_"
+      },
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "-"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_disabled": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "basic_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "manufacture_block_user": {
+        "username": "-",
+        "password": "-"
+      },
+      "complex_pwd_user": {
+        "username": "-",
+        "password": "-"
+      },
+      "intune_license_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "feedback_user": {
+            "username": "-",
+            "password": "-",
+            "displayname": "-"
+      },
+      "gcc_meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "minimum_os_account": {
+        "username": "-",
+        "password": "-"
+      },
+      "maximum_os_account": {
+        "username": "-",
+        "password": "-"
+      }
+    },
+    "device_2": {
+      "oem": "-",
+      "model": "-",
+      "port": 5200,
+      "admin_username": "admin",
+      "admin_password": "admin",
+      "firmware": "1.0",
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "-"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_disabled": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      }
+    },
+    "device_3": {
+      "oem": "-",
+      "model": "-",
+      "port": 5300,
+      "admin_username": "admin",
+      "admin_password": "admin",
+      "firmware": "1.0",
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "-"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      }
+    },
+    "device_4": {
+      "oem": "-",
+      "model": "-",
+      "port": 5400,
+      "admin_username": "admin",
+      "admin_password": "admin",
+      "admin_new_password": "-",
+      "firmware": "1.0",
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "-"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      }
+    }
+  },
+  "consoles": {
+    "console_1": {
+      "oem": "-",
+      "model": "-",
+      "port": 5110,
+      "firmware": "1.0",
+      "admin_username": "-",
+      "admin_password": "-",
+      "serial_number": "-",
+      "teams_apk_version": "-",
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "-"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_disabled": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "basic_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "manufacture_block_user": {
+        "username": "-",
+        "password": "-"
+      },
+      "complex_pwd_user": {
+        "username": "-",
+        "password": "-"
+      },
+      "intune_license_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "feedback_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      },
+      "minimum_os_account": {
+        "username": "-",
+        "password": "-"
+      },
+      "maximum_os_account": {
+        "username": "-",
+        "password": "-"
+      }
+    },
+    "console_2": {
+      "oem": "",
+      "model": "",
+      "port": 5210,
+      "firmware": "",
+      "admin_username": "",
+      "admin_password": "",
+      "serial_number": "",
+      "teams_apk_version": "-",
+      "desired_caps": {
+        "alias": "",
+        "udid": ""
+      },
+      "user": {
+        "username": "",
+        "password": "",
+        "displayname": "",
+        "phonenumber": "",
+        "pstndisplay": "",
+        "extension": ""
+      },
+      "pstn_user": {
+        "username": "",
+        "password": "",
+        "displayname": "",
+        "phonenumber": "",
+        "pstndisplay": "",
+        "extension": ""
+      }
+    }
+  },
+  "browsers": {
+    "tdc_1": {
+      "chrome_options": "--incognito",
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "user_1": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "pstn_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "non_pro_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "zoom_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-"
+      }
+    }
+  },
+  "Report_feedback": {
+    "title": "-",
+    "bug_details": "-"
+  },
+  "user": {
+    "invalid_username": "-",
+    "invalid_domain": "-",
+    "invalid_password": "-"
+  },
+  "incorrect_number": {
+    "phonenumber": "11234567890"
+  },
+  "meeting_details": {
+    "meeting_id": "-",
+    "meeting_passcode": "-",
+    "invalid_meeting_id": "-",
+    "invalid_passcode": "-"
+  },
+  "extend_meeting_details": {
+    "meeting_id": "-",
+    "meeting_passcode": "-"
+  },
+  "zoom_meeting_details": {
+    "meeting_id": "-",
+    "meeting_passcode": "-",
+    "invalid_meeting_id": "-",
+    "invalid_passcode": "-"
+  }
+}

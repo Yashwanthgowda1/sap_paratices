@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    // at the opath need to mention this used for andriod
+    "types": ["mocha"],
+    "paths": {
+      "@pages/*":     ["src/pages/*"],
+      "@screens/*":   ["src/screens/*"],
+      "@fixtures":    ["src/fixtures/hotstar.fixtures"],
+      "@types/*":     ["src/types/*"],
+      "@test-data/*": ["test-data/*"],
+      "@config/*":    ["config/*"]
+    }
+  },
+  "include": ["src/**/*", "tests/**/*", "test-data/**/*", "config/**/*", "wdio.config.ts"],
+  "exclude": ["node_modules", "dist", "playwright-report", "test-results"]
+}

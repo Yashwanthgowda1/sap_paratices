@@ -1,0 +1,124 @@
+samsung realted
+
+
+
+
+❓ Q: Can you describe a time you found a defect that others missed? How did you identify it?
+
+
+🟢 Situation:
+In one of my projects, we were testing an Android version of a  ---->[ Microsoft Teams-like collaboration app]. The app had passed regular functional and UI tests on popular devices like all the devices. It was scheduled for release across a wide range of OEM devices.
+
+🟢 Task:
+
+My responsibility was to conduct device compatibility and real-time performance testing across different Android versions and manufacturers, especially for budget/mid-range devices that are often overlooked but widely used.
+
+🟢 Action:
+
+While running exploratory and background usage tests on a mid-range Android device (with limited RAM), I noticed that the app was getting force-closed automatically after switching between apps and coming back to the chat screen.
+
+I dug deeper using ADB logs and discovered that =======>  [[ Android's memory manager was killing the background service ]]] that maintained socket connections for real-time messaging. This issue was not reproducible on high-end phones where memory was not a concern, which is why it was missed during initial testing.
+
+🟢 Result:
+
+I logged the issue with a detailed analysis including logcat traces, steps to reproduce, and a memory usage report. The dev team optimized background service handling and added fallback logic for socket reconnection.
+
+As a result, we prevented real-time messaging failures on 30% of our target devices and improved app stability ratings in early user feedback. My findings were added as part of mandatory test cases for future device certification.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----->   quality audits and track software quality
+
+
+In my project, I perform quality audits and track software quality using a structured but practical approach that fits well with our automation and CI/CD setup.
+
+    1)   aduit:
+
+I regularly review and validate our test cases, test data, and automation scripts 
+
+   2) Tracking Software Quality :
+
+Test Coverage: 
+Pass/Fail Rate:
+exicution reposrt
+
+
+
+"My goal with these audits and metrics is not just to measure numbers, but to get early visibility of risks, make our test framework more reliable, and help the team ship bug-free features faster.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+🟢  How I would automate tests for IoT or AI/ML projects:
+
+While I haven’t worked directly on IoT or AI/ML models end-to-end, but i can apply mt testing knowlge inthis demoin
+
+AI/ML Models:
+
+AI/ML testing is more about data quality and output accuracy:
+model predictions
+actual vs. expected outputs
+ex: --------->  ai transcriptions i am working
+
+
+
+ci /cd
+----------------------
+
+not fully onership i have but i have partilay worked with my teams:   I’m confident to take full ownership in the future.
+
+Device Setup Support:
+
+I helped in connecting Android devices to the system using ADB, making sure they were recognized properly by the pipeline.
+
+I supported in ------>[setting up Appium so that our tests could run on real mobile devices]]] connected to the machine used by the pipeline. I helped make sure the devices were detected and the tests worked correctly
+
+
+
+-------------------------->>>>>>>> We follow a branching strategy (like feature branches → pull request → main).
+
+The pipeline includes stages like:
+
+Install dependencies (Python, Robot Framework, Appium, etc.)
+
+Run Robot Framework test cases (on Android devices, web apps, or APIs)
+
+Collect logs and screenshots on failures
+
+Generate HTML and log reports
+
+publish Robot Framework reports (log.html, report.html) as artifacts,
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+What is your approach for creating a test strategy for an IoT device or ML-based system?
+
+		1.  Understand the System Architecture
+		
+		
+		ML: I study the model's input/output, preprocessing pipeline, expected predictions, training data sources, and model deployment setup.
+
+		2. Test Objectives and Scope
+
+			functional:
+			For ML: Test for correct predictions, edge cases, model integration, and REST API results.
+			
+			non functional:
+			model response time (ML), and reliability under load.
+			
+			Security Testing:
+			Ensure data encryption, secure firmware updates (IoT), and model/data access control (ML).
+
+		3	Test Data Strategy
+
+		4. 	Automation and Tools
+			Build or reuse automation frameworks (e.g., PyTest, Robot Framework).
+		5. 	Use Python scripts for mocking sensors or validating API responses.
+		6. 	Integrate with CI/CD (e.g., Jenkins, GitHub Actions) to run automated tests continuously.
+
+		7.	 Validation in Real-World Scenarios

@@ -1,0 +1,20 @@
+{
+  "favorites_section_replace": {
+    "xpath": "//android.widget.Button[@content-desc='replace_this']"
+  },
+  "favorites_section_expanded_replace": {
+    "xpath": "//*[@resource-id='com.microsoft.skype.teams.ipphone:id/contacts_grid']/android.view.ViewGroup[contains(@index,'replace_index')]"
+  },
+  "favorites_more_options_for_user": {
+    "xpath": "//*[@text = 'user_name']/../following-sibling::android.widget.Button[@content-desc=\"More options\"]"
+  },
+  "favorites_generic_user_detail": {
+    "xpath": "//*[@content-desc='replace_section']/following-sibling::android.view.ViewGroup[contains(@index, 'replace_index')]/android.widget.Button/android.widget.TextView"
+  },
+  "favorites_generic_more_options_for_user": {
+    "xpath": "//*[@content-desc='replace_section']/following-sibling::android.view.ViewGroup/android.widget.Button/android.widget.TextView[@text='replace_username']/../../android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/more_options']"
+  },
+  "favorites_all_grid_elements": {
+    "xpath": "//*[@resource-id='com.microsoft.skype.teams.ipphone:id/contacts_grid']/*[@class='android.widget.Button' or @class='android.view.ViewGroup']"
+  }
+}

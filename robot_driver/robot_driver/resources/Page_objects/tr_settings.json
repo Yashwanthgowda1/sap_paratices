@@ -1,0 +1,248 @@
+{
+  "settings_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/settings",
+    "id1": "com.microsoft.skype.teams.ipphone:id/fre_partner_settings",
+    "xpath": "//*[@text='Settings']"
+  },
+  "help_and_feedback": {
+    "id": "com.microsoft.skype.teams.ipphone:id/settings_item_help_and_feedback_text",
+    "xpath": "//android.widget.TextView[@text='Help & feedback']"
+  },
+  "Report_an_issue": {
+    "id": "om.microsoft.skype.teams.ipphone:id/settings_item_report_an_issue_text",
+    "command": "new UiSelector().textContains(\"Report an issue\")",
+    "xpath": "//*[@text='Report an issue' or @text='Report a problem']"
+  },
+  "more_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/more_btn",
+    "id1": "com.microsoft.skype.teams.ipphone:id/call_more_options",
+    "xpath": "//android.widget.TextView[@text='More']"
+  },
+  "settings_tool_bar": {
+    "id": "com.microsoft.skype.teams.ipphone:id/toolbar"
+  },
+  "about": {
+    "xpath": "//android.widget.TextView[@text='About']",
+    "id": "com.microsoft.skype.teams.ipphone:id/settings_item_about"
+  },
+  "privacy_cookies": {
+    "id": "com.microsoft.skype.teams.ipphone:id/privacy_link",
+    "xpath": "//android.widget.TextView[@text='Privacy & Cookies']"
+  },
+  "term_of_use": {
+    "id": "com.microsoft.skype.teams.ipphone:id/terms_of_use_link",
+    "xpath": "//android.widget.TextView[@text='Terms of Use']"
+  },
+  "version": {
+    "id": "com.microsoft.skype.teams.ipphone:id/build_version"
+  },
+  "copy_right": {
+    "id": "com.microsoft.skype.teams.ipphone:id/copyright"
+  },
+  "third_party_information": {
+    "id": "com.microsoft.skype.teams.ipphone:id/third_party_notices_link"
+  },
+  "proximity_join": {
+    "xpath": "//android.widget.TextView[@text='Proximity join']"
+  },
+  "manage_devices": {
+    "xpath": "//android.widget.TextView[@text='Manage devices']"
+  },
+  "calling_button": {
+    "xpath": "//android.widget.TextView[@text='Calling']"
+  },
+  "proximity_toggle_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/toggle"
+  },
+  "proximity_toggle_on": {
+    "xpath": "//android.widget.Switch[@text='ON']"
+  },
+  "proximity_toggle_off": {
+    "xpath": "//android.widget.Switch[@text='OFF']"
+  },
+  "meetings_button": {
+    "xpath": "//*[@text='Meetings']"
+  },
+  "connect_device_text": {
+    "xpath": "//android.widget.TextView[@text='Connect a device']"
+  },
+  "find_device_btn": {
+    "xpath": "//android.widget.TextView[@text='Find a device']",
+    "id": "com.microsoft.skype.teams.ipphone:id/pair_add_device_label"
+  },
+  "proximity_toggle": {
+    "id": "com.microsoft.skype.teams.ipphone:id/toggle"
+  },
+  "device_health": {
+    "id": "com.microsoft.skype.teams.ipphone:id/settings_health_privacy"
+  },
+  "wallpapers_button": {
+    "xpath": "//*[@text='Wallpapers']"
+  },
+  "send_bug": {
+    "xpath": "//android.widget.Button[@text='Report an issue']"
+  },
+  "Report Problem": {
+    "xpath": "//android.widget.TextView[@text='Report Problem']"
+  },
+  "Audio": {
+    "xpath": "//android.widget.TextView[@text='Audio']"
+  },
+  "Alias": {
+    "id": "com.microsoft.skype.teams.ipphone:id/feedback_alias"
+  },
+  "Select category": {
+    "xpath": "//android.widget.TextView[@text='Select category']"
+  },
+  "Title required": {
+    "xpath": "//android.widget.EditText[@text='Title required (min 10 characters)']",
+    "id": "com.microsoft.skype.teams.ipphone:id/feedback_title"
+  },
+  "bug details": {
+    "xpath": "//android.widget.EditText[@text='Please enter bug details here including repro steps. Do not include personally identifiable information.']",
+    "id": "com.microsoft.skype.teams.ipphone:id/feedback_content"
+  },
+  "device_settings": {
+    "command": "new UiSelector().textContains(\"Device settings\")"
+  },
+  "calling_button_text": {
+    "id": "com.microsoft.skype.teams.ipphone:id/action_bar_title_text",
+    "xpath": "android.widget.TextView[@text='Calling']"
+  },
+  "Calls_for_you": {
+    "xpath": "//android.widget.TextView[@text='Calls for you']"
+  },
+  "forwarded_calls": {
+    "xpath": "//android.widget.TextView[@text='Forwarded calls']"
+  },
+  "delegated_calls": {
+    "xpath": "//android.widget.TextView[@text='Delegated calls']"
+  },
+  "block_calls_with_no_caller_ID": {
+    "xpath": "//android.widget.TextView[@text='Block calls with no caller ID']"
+  },
+  "Blocked_numbers": {
+    "xpath": "//android.widget.Button[@text='Blocked numbers']"
+  },
+  "Add_number": {
+    "xpath": "//android.widget.TextView[@text='Add number']"
+  },
+  "Block_number": {
+    "xpath": "//android.widget.TextView[@text='Block number']"
+  },
+  "Block_number_field": {
+    "xpath": "//android.widget.EditText[@class = 'android.widget.EditText']"
+  },
+  "block_ok_button": {
+    "xpath": "//android.widget.Button[@text='BLOCK']"
+  },
+  "blocked_list": {
+    "id": "com.microsoft.skype.teams.ipphone:id/blocked_number"
+  },
+  "unblock_number": {
+    "id": "com.microsoft.skype.teams.ipphone:id/ImageView_UnBlockNumber"
+  },
+  "unblock_ok_button": {
+    "xpath": "//android.widget.Button[@text='UNBLOCK']"
+  },
+  "send_button": {
+    "id": "com.microsoft.skype.teams.ipphone:id/action_submit"
+  },
+  "call_forwarding_tgl": {
+    "id": "com.microsoft.skype.teams.ipphone:id/calling_toggle_call_ring_me_switch"
+  },
+  "facebook": {
+    "command": "new UiSelector().text(\"Facebook\")"
+  },
+  "Default_stage_layout": {
+    "command": "new UiSelector().textContains(\"Default stage layout\")"
+  },
+  "standard_license": {
+    "xpath": "//android.widget.TextView[@text='License details: Room System Standard']"
+  },
+  "premium_license": {
+    "xpath": "//android.widget.TextView[@text='License details: Room System Premium']"
+  },
+  "upgrade_to_pro": {
+    "xpath": "//android.widget.TextView[@text='Upgrade to Pro plan']"
+  },
+  "manufacture_blocked_message": {
+    "xpath": "//android.widget.TextView[contains(@text, 'Signing out') and contains(@text, 'This device is blocked by company policy. Contact your admin')]"
+  },
+  "pro_licence": {
+    "xpath": "//android.widget.TextView[@text='License details: Microsoft Teams Room Pro']"
+  },
+  "pro_tag_show_meeting_name": {
+    "xpath": "//*[@text = 'Show meeting names']/following-sibling::android.widget.TextView[1]"
+  },
+  "basic_licence": {
+    "xpath": "//android.widget.TextView[@text='License details: Microsoft Teams Room Basic']"
+  },
+  "pro_tag_Extend_room_reservation": {
+    "xpath": "//*[@text = 'Extend room reservation']/following-sibling::android.widget.TextView[1]"
+  },
+  "pro_tag_Room_capacity_Notification": {
+    "xpath": "//*[@text = 'Max room occupancy notification']/following-sibling::android.widget.TextView[1]"
+  },
+  "Retry_button": {
+    "xpath": "//android.widget.Button[@text='Retry' and @enabled='false']"
+  },
+  "pro_tag_require_passcode":{
+    "xpath": "//*[@text = 'Require passcode for all meetings']/following-sibling::android.widget.TextView[1]"
+  },
+  "microsoft": {
+    "xpath": "//*[@text='Microsoft Software License Terms Mobile']"
+  },
+  "device_restart": {
+    "command": "new UiSelector().textContains(\"Device Restart\")"
+  },
+  "start": {
+    "command": "new UiSelector().textContains(\"Start\")"
+  },
+  "end": {
+    "xpath": "//*[@text='End']",
+    "command": "new UiSelector().textContains(\"End\")"
+  },
+  "device_restart_tgl": {
+    "xpath":"//*[@text = 'Turn on daily maintenance window']/following-sibling::android.widget.Switch[1]"
+  },
+  "start_hours": {
+    "id": "android:id/input_hour"
+  },
+  "start_minutes": {
+    "id": "android:id/input_minute"
+  },
+  "am_lable": {
+    "command": "new UiSelector().textContains(\"AM\")"
+  },
+  "pm_lable": {
+    "command": "new UiSelector().textContains(\"PM\")"
+  },
+  "start_timer": {
+    "xpath":"//android.widget.LinearLayout[contains(@index,'1')]/android.widget.TextView[@resource-id='com.microsoft.skype.teams.ipphone:id/time_text']"
+  },
+  "end_timer": {
+    "xpath":"//android.widget.LinearLayout[contains(@index,'2')]/android.widget.TextView[@resource-id='com.microsoft.skype.teams.ipphone:id/time_text']"
+  },
+  "end_hours": {
+    "id": "android:id/input_hour"
+  },
+  "end_minutes": {
+    "id": "android:id/input_minute"
+  },
+  "hours": {
+    "id": "android:id/hours"
+  },
+  "time_toggle_mode": {
+    "id": "android:id/toggle_mode"
+  },
+  "am_pm_spinner": {
+    "id": "android:id/text1"
+  },
+  "termscroll": {
+    "id": "supArticleContent"
+  },
+  "linkedin": {
+    "xpath": "//*[@text='LinkedIn']"
+  }
+}

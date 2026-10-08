@@ -1,0 +1,11 @@
+selenium>=4.20.0
+webdriver-manager>=4.0.1
+requests>=2.31.0
+pytest>=8.0.0
+pytest-bdd>=7.2.0
+pytest-html>=4.1.1
+allure-pytest>=2.13.5
+pytest-rerunfailures>=14.0
+python-dotenv>=1.0.0
+Faker>=25.0.0
+jsonschema>=4.22.0

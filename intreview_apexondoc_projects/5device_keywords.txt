@@ -1,0 +1,673 @@
+
+def click_on_resume_button(device):
+    driver = driver_manager_instance.get_driver(device)
+    common.wait_for_and_click(device, web_signin_dict, "resume_button")
+
+
+def click_on_more(device):
+    common.wait_for_and_click(device, web_signin_dict, "more_apps_button")
+    common.wait_while_present(device, web_signin_dict, "more_apps_button")
+
+
+def click_on_merge_call(device):
+    common.wait_for_and_click(device, web_signin_dict, "merge_call")
+    common.sleep_with_msg(device,2, "Allow app to settle")
+    common.wait_for_and_click(device, web_signin_dict, "merge_calls_confirm_button")
+
+def escalate_to_conference_call(from_device, to_device):
+    phonenumber=shared_utils.getconfig_phonenumber(to_device)
+    common.wait_for_and_click(from_device, web_signin_dict, "people_tab")
+    common.sleep_with_msg(from_device, 2, "Allow app to settle")
+    search_participate_in_people_tab(device)
+
+def search_participate_in_people_tab(device):
+    display_name = shared_utils.getconfig_displayname(to_device)
+    common.wait_for_element(from_device, web_signin_dict, "people_search_box").send_keys(phonenumber)
+    replace_user_name = display_name+', '+display_name.upper()
+    temp_dect_name=common.get_dict_copy(web_signin_dict, "searched_user","user_name and capital_user_name",replace_user_name)
+    common.wait_for_and_click(device, temp_dect_name,"searched_user")
+
+
+calling --->
+//button[@aria-label="View more apps"]
+20c3440d-c67e-4420-9f80-0e50c39693df-->id
+//input[@aria-label="Type a name or number"] ---------> input text
+//button[contains(@class,'fui-Button r1alrhcs ___klx6rg0 ffp7eso')]  -------->? click on call afetr handel poop
+
+//span[@data-tid="participant-state-indicator"]
+
+
+webui
+
+	 "merge_call": {
+    "xpath": "//div[@aria-label='Merge Calls']",
+    "id": "merge-calls"
+  },
+  "resume_button": {
+    "xpath": "//button[contains(@title,'Resume call' or @class='fui-Button r1alrhcs']"
+  },
+
+  "merge_calls_confirm_button": {
+    "xpath": "//*[@data-tid='merge-calls-confirm-button']"
+  },
+  "people_search_box": {//*[@class='fui-TreeItemPersonaLayout__actions rzvs2in ___10hxkuc f8wuabp f1mk8lai']
+    "xpath": "//input[@aria-label='Contact']"
+  },
+  "searched_user": {
+    "xpath": "//li[@aria-label='user_name and capital_user_name']"
+  },
+  "people_tab": {
+    "xpath": "//button[@id= 'roster-button']"
+  }
+  
+  
+  
+  
+  "accept_call_button": {
+    "xpath": "//button[@aria-label='Accept with audio']"
+  },
+  "hangup_call": {
+    "xpath": "//div[@aria-label='Leave (Ctrl+Shift+H)' or  @id='hangup-button']"
+  },
+  "hold_call": {
+    "xpath": "//button[@id='hold-button']"
+  }
+  
+  
+  # common.sleep_with_msg(device,2,"waiting for settel")
+        #  elements=common.wait_for_element(device,web_signin_dict,"click_choose_white_board")
+        #  actions = ActionChains(driver)
+        # # Hover over the element and then click another element
+        # actions.move_to_element(hover_element).click(elements).perform()
+		
+		
+		//input[@id='ms-searchux-input']
+  
+  
+TC4 : [OBO]DUT user has multiple boss and able to receive calls on behalf of them_ call forwarding
+    [Tags]  308707   P1  alt_blocked        exclude_ftp
+    [Setup]   Testcase Setup for Delegate User  count=4
+    Add new delegates with both permission and validate   from_device=device_3    to_device=device_2:delegate_user
+    Enable call forwarding to delegates     from_device=device_3    contact_device=device_2
+    nable call forwarding to delegates     from_device=device_1    contact_device=device_2
+    Make outgoing call using display name    from_device=device_4    to_device=device_1
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call   device=device_2
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    make_outgoing_call_from_tdc_using_number    device=tdc_1:user_5     to_device=device_3
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call   device=device_2
+
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=connected        device_list=device_2
+#    Verify Call State    device_list=device_2,device_5    state=Connected
+    Verify Call State    device_list=device_4     state=Hold
+    Resume the hold call     device=device_2
+    verify call state in tdc     device=tdc_1:user_5     state=Hold
+#    Verify Call State    device_list=device_5     state=Hold
+    Disconnect call     device=device_2
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=disconnected        device_list=device_2,device_4
+#    Verify Call State    device_list=device_2,device_4,device_5     state=Disconnected
+    [Teardown]  Verify device criteria and call forward teardown
+
+TC3 : [GCP] DUT user accepts 3 forwarded GCP calls and toggles between them
+    [Tags]  308627      P1  alt_blocked    exclude_ftp       # bvt_tp  sanity_tp
+    [Setup]   Testcase Setup for GCP User  count=5
+    click on calls tab   device=device_3
+    Make outgoing call using phonenumber    from_device=device_3      to_device=device_1
+    Verify call notification    device=device_2     status=appear
+    Pick incoming call from call notification    device=device_2
+    Verify Call State    device_list=device_2,device_3    state=Connected
+    click on calls tab   device=device_4
+    Make outgoing call using phonenumber    from_device=device_4      to_device=device_1
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call    device=device_2
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    Verify Call State    device_list=device_3     state=Hold
+    click on calls tab   device=device_5
+    Make outgoing call using phonenumber    from_device=device_5      to_device=device_1
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call    device=device_2
+    Verify Call State    device_list=device_2    state=Connected
+    Wait for Some Time    time=${wait_time}
+    Disconnect call     device=device_2
+    Verify Call State    device_list=device_2,device_3,device_4,device_5     state=Disconnected
+    [Teardown]  verify device criteria and teardown
+
+
+TC1: [OBO]DUT user has multiple boss and able to receive calls on behalf of them_ call forwarding
+    [Tags]   308707       sanity_tp   p1
+    [Setup]   Run Keywords   Testcase Setup for Delegate User  count=4
+    Make outgoing call using display name    from_device=device_4    to_device=device_1
+    Verify Incoming call    device=device_1,device_2     status=appear
+    Pick incoming call    device=device_2
+    Verify Incoming call    device=device_1     status=disappear
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    make_outgoing_call_from_tdc_using_number       device=tdc_1:user_5     to_device=device_3
+    Verify Incoming call    device=device_3,device_2     status=appear
+    Pick incoming call    device=device_2
+    Verify Incoming call    device=device_3     status=disappear
+    verify call state in TDC and DUT        device=tdc_1:user_5     state=connected        device_list=device_2
+    resume call from call hold banner   device=device_2
+    verify call state in tdc    device=tdc_1:user_5     state=hold
+    disconnect the call in tdc      device=tdc_1:user_5
+    Wait for Some Time    time=5
+    Verify call state and disconnect     device=device_2
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=disconnected        device_list=device_2,device_4
+    [Teardown]  Run Keywords    Capture on Failure    AND   disable and remove delegate during five devices    AND   Come back to home screen    device_list=device_1,device_2,device_3,device_4
+
+
+
+Enable Also Ring delegates during five devices and add delegate
+    Add new delegates with both permission and validate   from_device=device_3    to_device=device_2:delegate_user
+    Enable call forwarding to delegates     from_device=device_3    contact_device=device_2
+    Enable call forwarding to delegates     from_device=device_1    contact_device=device_2
+	
+	
+	
+Desktop Automation Enablement:
+Successfully planned and implemented a Proof of Concept (PoC) using WinAppDriver to automate standalone desktop applications like Microsoft Outlook and Teams Desktop, proving feasibility for broader adoption in enterprise QA environments.
+
+📱 IP Phone Testing Excellence:
+Played a key role in testing and supporting IP Phones, achieving 85% test case coverage, exceeding previous benchmarks of 70-75%. This included functional and regression testing, improving test reliability across multiple phone models and scenarios.
+
+🔐 Device Lock Screen Scenarios:
+Successfully implemented lock screen testing and end-to-end mobile scenarios across 4 different devices, ensuring compatibility, performance, and consistency across OS versions and hardware configurations.
+
+🧪 Comprehensive Test Coverage & Setup:
+Designed and executed detailed test cases per requirement specs, with complete test setup configuration, including environment readiness and test data preparation. This enabled scalable and reliable test cycles for multi-platform testing.
+
+🛠️ Fix Verification & Support:
+Actively supported the validation of fixes related to IP Phones by executing regression test suites, identifying gaps, and collaborating with developers to ensure high-quality releases
+
+
+
+Tech Stack: Python, LangChain, FastAPI, Azure/AWS Cloud Functions, and Vector DBs (like Pinecone/FAISS) for efficient data retrieval.
+Goal: Build a smart, scalable, and life-saving AI tool using cutting-edge automation and real-time intelligence.
+
+
+
+
+
+
+
+
+
+
+
+
+TC3 : [OBO]DUT user has multiple boss and able to receive calls on behalf of them_ call forwarding
+    [Tags]   308707       sanity_tp   p1
+    [Setup]   Run Keywords   Testcase Setup for Delegate User  count=4      AND     Enable call forward to delegates during five devices and add delegate
+    Make outgoing call using display name    from_device=device_4    to_device=device_1
+    Verify Incoming call    device=device_1     status=disappear
+    Pick incoming call    device=device_2
+    Verify Incoming call    device=device_1     status=disappear
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    make_outgoing_call_from_tdc_using_number       device=tdc_1:user_5     to_device=device_3
+    Verify Incoming call    device=device_3     status=disappear
+    Pick incoming call    device=device_2
+    verify call state in TDC and DUT        device=tdc_1:user_5     state=connected        device_list=device_2
+    resume call from call hold banner   device=device_2
+    verify call state in tdc    device=tdc_1:user_5     state=hold
+    disconnect the call in tdc      device=tdc_1:user_5
+    Verify call state and disconnect     device=device_2
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=disconnected        device_list=device_2,device_4
+    [Teardown]  Run Keywords    Capture on Failure    AND   disable and remove delegate during five devices    AND   Come back to home screen    device_list=device_1,device_2,device_3,device_4
+
+TC4 : [GCP] DUT user accepts 3 forwarded GCP calls and toggles between them
+    [Tags]   308627      P1
+    [Setup]     Run Keywords     Testcase Setup for GCP User  count=4      AND     Enable call forwarding to call group     from_device=device_1    contact_device=device_2
+    Make outgoing call using phonenumber    from_device=device_3      to_device=device_1
+    Verify call notification    device=device_2     status=appear
+    Pick incoming call from call notification    device=device_2
+    Verify Call State    device_list=device_2,device_3    state=Connected
+    click on calls tab   device=device_4
+    Make outgoing call using phonenumber    from_device=device_4      to_device=device_1
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call from call notification     device=device_2
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    Verify Call State    device_list=device_3     state=Hold
+    make_outgoing_call_from_tdc_using_number       device=tdc_1:user_5     to_device=device_1
+    Verify incoming call    device=device_2     status=appear
+    Pick incoming call from call notification     device=device_2
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=connected        device_list=device_2
+    Wait for Some Time    time=5
+    Resume the call   device=device_2
+    Verify Call State    device_list=device_2,device_4    state=Connected
+    Verify call state and disconnect     device=device_2,device_3.device_4
+    verify call state in TDC and DUT    device=tdc_1:user_5     state=disconnected        device_list=device_2,device_3,device_4
+    [Teardown]  Run Keywords    Capture on Failure    AND    Disable call forwarding     device=device_1     AND   Come back to home screen    device_list=device_1,device_2,device_3,device_4
+
+
+
+
+Enable call forward to delegates during five devices and add delegate
+    Add new delegates with both permission and validate   from_device=device_3    to_device=device_2:delegate_user
+    Enable call forwarding to delegates     from_device=device_3    contact_device=device_2
+    Enable call forwarding to delegates     from_device=device_1    contact_device=device_2
+
+disable call forward and remove delegate during five devices
+    Delete delegate from manage delegate   from_device=device_3    to_device=device_2:delegate_user
+    Disable call forwarding     device=device_1,device_3
+	
+
+TC2 : [Phone lock] User to disable the Phone Lock from Device settings
+    [Tags]    307731
+    [Setup]    Testcase Setup for Phone Lock    count=1
+    disable device lock     device=device_1
+    [Teardown]    Run Keywords    Capture on Failure  AND    Testcase Teardown    device=device_1
+
+
+ "device_2": {
+          "oem": "California",
+            "model": "Bakersfield_13",
+            "port": 8111,
+            "firmware": "1.0",
+            "desired_caps": {
+                "alias": "app1",
+                "udid": "10.50.10.149:5555"
+
+            },
+            "user": {
+                "username": "lcp_auto2@tdr0.onmicrosoft.com",
+                "password": "Apexo@25",
+                "displayname": "lcp_auto2",
+                "phonenumber": "13173160792",
+                "pstndisplay": "+1 317-316-0792",
+                "extension": "3160792"
+            },
+             "delegate_user": {
+                "username": "p8_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "p8_auto",
+                "phonenumber": "+13173160503",
+                "pstndisplay": "+1 317-316-0503",
+                "extension": "-"
+            },
+            "cap_search_enabled": {
+                "username": "l6_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "l6_auto",
+                "phonenumber": "12067560207",
+                "pstndisplay": "+1 206 756 0207",
+                "extension": "-"
+            },
+            "cap_search_disabled": {
+                "username": "Teamsdeviceauto18@3pip.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Teamsdeviceauto18",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "meeting_user": {
+                "username": "teamsdeviceauto19@3pip.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Teams Device Auto19",
+                "phonenumber": "14086847025",
+                "pstndisplay": "+1 408-684-7025",
+                "extension": "6847025"
+            },
+            "cq_user": {
+                "username": "auto_cq1@dpec02.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Auto CQ1",
+                "phonenumber": "",
+                "pstndisplay": "",
+                "extension": "-"
+            },
+            "hotdesk_disabled_user": {
+                "username": "hddisabled@3pip.onmicrosoft.com",
+                "password": "Apexo@22",
+                "displayname": "HD Disabled",
+                "phonenumber": "14084782456",
+                "pstndisplay": "+1 408-478-2456",
+                "extension": "-"
+            },
+          "gcp_user": {
+                "username": "k8_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "k8_auto",
+                "phonenumber": "12067560179",
+                "pstndisplay": "+1 206-756-0179",
+                "extension": "7560179"
+            }
+        },
+        "device_3" : {
+           "oem": "California",
+            "model":"Bakersfield_13",
+              "port": 5390,
+              "admin_password" : "Admin@123",
+              "firmware" : "1.0",
+              "desired_caps" : {
+                "alias": "app1",
+                "udid": "10.39.10.43:5555"
+            },
+           "user": {
+              "username": "lcp_auto3@tdr0.onmicrosoft.com",
+              "password": "Apexo@25",
+              "displayname": "lcp_auto3",
+              "phonenumber": "13173180108",
+              "pstndisplay": "+1 317-318-0108",
+              "extension": "3180108"
+
+            },
+            "pstn_user": {
+                "username": "teamsprodauto6@nextgenipphone.onmicrosoft.com",
+                "password": "S@kurai1202",
+                "displayname": "Teams Prod Auto6",
+                "phonenumber": "14255280194",
+                "pstndisplay": "+1 425-528-0194",
+                "extension": "-"
+            },
+            "cq_user": {
+                "username": "auto_cq2@dpec02.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Auto CQ2",
+                "phonenumber": "",
+                "pstndisplay": "",
+                "extension": "-"
+            }
+        },
+        "device_4" : {
+           "oem": "California",
+            "model":"Bakersfield",
+              "port": 5991,
+              "admin_password" : "Admin@123",
+              "firmware" : "1.0",
+              "desired_caps" : {
+                "alias": "app1",
+                "udid": "10.39.3.46:5555"
+            },
+            "user": {
+              "username": "lcp_auto4@tdr0.onmicrosoft.com",
+              "password": "Apexo@25",
+              "displayname": "lcp_auto4",
+              "phonenumber": "13173768092",
+              "pstndisplay": "+1 317-376-8092",
+              "extension": "-"
+                },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "delegate_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "gcp_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+		}
+		
+		
+		
+whiteboard shared_utils
+
+def mouse_hover_at_particular_element_and_click(device,hover_element):
+    driver = driver_manager_instance.get_driver(device)
+    location = hover_element.location
+    size = hover_element.size
+    # Calculate center of the element
+    center_x = location['x'] + size['width'] // 2
+    center_y = location['y'] + size['height'] // 2
+    # Move mouse to the element and click
+    pyautogui.moveTo(center_x, center_y)
+    pyautogui.click()
+	
+	
+def share_white_board_from_tdc(device):
+    # driver = driver_manager_instance.get_driver(device)
+    common.wait_for_and_click(device, web_signin_dict, "white_board_share_in_tdc")
+    common.wait_for_and_click(device, web_signin_dict, "white_board_share_popup")
+    common.wait_while_present(device,web_signin_dict,"microsoft_whiteboard_share")
+    common.sleep_with_msg(device,10, "wait microsoft_whiteboard_share appear")
+    if common.is_element_present(device, web_signin_dict, "teams_permission"):
+        for itration in range(2):
+            common.wait_for_and_click(device, web_signin_dict, "teams_need_permission")
+            common.sleep_with_msg(device,2,"waiting to stable the next popups")
+    common.click_if_present(device, web_signin_dict, "popup_skip")
+    common.sleep_with_msg(device,50, "wait microsoft_whiteboard_share appear")
+    if common.is_element_present(device, web_signin_dict, "choose_a_white_board"):
+        # common.wait_for_and_click(device, web_signin_dict, "choose_a_white_board")
+    mouse_hover_at_particular_element_and_click(device,element)
+    common.wait_for_element(device, web_signin_dict, "stop_sharing_indicator")
+	
+TC9 : [Light Weight Meeting]TDC user to share the screen/PPT/White board with DUT user while in a meeting
+    [Tags]    476179     P2
+#    [Setup]    Testcase Setup   count=1
+    create new meeting
+    Join TDC meeting    device=tdc_1:user_5    edit_meeting_name=test_meeting
+#    Join Meeting    device=device_1     meeting=test_meeting
+#    Verify meeting state    device_list=device_1    state=Connected
+    verify call state in tdc    device=tdc_1:user_5     state=connected
+    initiate tdc screen sharing    device=tdc_1:user_5
+    Wait for Some Time    time=5
+#    verify lightweight meeting ui    device=device_1    participants=tdc_1:user_5
+#    verify call state in TDC and DUT    device=tdc_1:user_5     state=connected        device_list=device_1
+#    Wait for Some Time    time=5
+    share_white_board_from_tdc   device=tdc_1:user_5
+#    verify call state in TDC and DUT    device=tdc_1:user_5     state=connected        device_list=device_1
+#    [Teardown]  Run Keywords    Capture on Failure    AND   Delete create meetin
+
+
+
+
+
+
+
+
+
+
+TC4 : Verify old RTT text should not be display for late joinees
+    [Tags]      Rtt_1
+    [Setup]      Testcase Setup    count=3
+    Join TDC meeting    device=tdc_1:device2user    edit_meeting_name=test_meeting
+    Join Meeting    device=device_1,device_2     meeting=test_meeting
+    Verify meeting state   device_list=device_1,device_2    state=Connected
+    verify call state in TDC and DUT    device=tdc_1:device2user     state=connected        device_list=device_1
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify rtt text box appearance      devices=device_1,device_2
+    verify message from desktop user reflected in Dut    devices=device_1,device_2       from_device=tdc_1:device2user
+    Join Meeting    device=device_3     meeting=test_meeting
+    enable rtt option during meeting in Dut    device=device_3
+    verify rtt text box appearance      devices=device_3
+    verify disable of rtt message after a minute    devices=device_3
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_3       from_device=tdc_1:device2user
+    Wait for Some Time    time=120s
+    verify disable of rtt message after a minute    devices=device_3
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2,device_3
+    create a meeting using meet now in tdc      device=tdc_1:device2user
+    search participate in people tab request to join    device=tdc_1:device2user    to_device=device_1,device_2
+    Wait for Some Time    time=5s
+    Pick incoming call    device=device_1,device_2
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify rtt text box appearance      devices=device_1,device_2
+    verify message from desktop user reflected in Dut    devices=device_1,device_2       from_device=tdc_1:device2user
+    search_participate_in_people_tab_request_to_join    device=tdc_1:device2user    to_device=device_3
+    enable rtt option during meeting in Dut    device=device_3
+    verify rtt text box appearance      devices=device_3
+    verify disable of rtt message after a minute    devices=device_3
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_3       from_device=tdc_1:device2user
+    Wait for Some Time    time=120s
+    verify disable of rtt message after a minute    devices=device_3
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2,device_3
+    [Teardown]  Run Keywords   Capture on Failure   AND    Come back to home screen    device_list=device_1,device_2,device_3
+
+
+10.39.4.75
+
+
+
+
+
+
+===============================================================================================================================================
+
+
+TC4 : Verify the RTT view when DUT user disconnect the meeting and joins back the same meeting while RTT is enabled and vice versa
+    [Tags]      Rtt_2
+    [Setup]      Testcase Setup    count=2
+    Join TDC meeting    device=tdc_1:device2user    edit_meeting_name=test_meeting
+    Join Meeting    device=device_1,device_2     meeting=test_meeting
+    Verify meeting state   device_list=device_1,device_2    state=Connected
+    verify call state in TDC and DUT    device=tdc_1:device2user     state=connected        device_list=device_1,device_2
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1,device_2      from_device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1
+    Come back to home screen    device_list=device_1
+    Join Meeting    device=device_1     meeting=test_meeting
+    verify disable of rtt message after a minute    devices=device_1
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1       from_device=tdc_1:device2user
+    Disconnect the call on TDC      device=tdc_1:device2user
+    Join TDC meeting    device=tdc_1:device2user    edit_meeting_name=test_meeting
+    verify_Rtt_text_box_availability    device=tdc_1:device2user
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1,device_2       from_device=tdc_1:device2user
+    Wait for Some Time    time=1 minutes
+    verify disable of rtt message after a minute    devices=device_1,device_2
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2
+    [Teardown]  Run Keywords   Capture on Failure   AND    Come back to home screen    device_list=device_1,device_2
+
+TC5: [Meet now] Verify RTT view in meet now
+    [Tags]      Rtt_3
+    [Setup]      Testcase Setup    count=2
+    create a meeting using meet now in tdc      device=tdc_1:device2user
+    search participate in people tab request to join    device=tdc_1:device2user    to_device=device_1
+    Wait for Some Time    time=5s
+    Pick incoming call    device=device_1
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify rtt text box appearance      devices=device_1
+    verify message from desktop user reflected in Dut    devices=device_1       from_device=tdc_1:device2user
+    tap_on_more_verify_available_option     devices=device_1
+    verify_disable_real_time_text_meeting_web       device=tdc_1:device2user
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2
+    [Teardown]  Run Keywords   Capture on Failure   AND    Come back to home screen    device_list=device_1
+	
+	
+	
+	
+	
+	web_signin_dict
+	
+	 "verify_rtt_text_box_on_tdc": {
+    "xpath": "//div[contains(@class,'1x1hcrp f1vx9l62 f14k419y f1fgo9fz')]"
+  },
+  "verify_disable_of_rtt": {
+    "xpath": "//div[@aria-disabled=\"true\"]"
+  }
+  
+  calender_dict
+  
+  "people_in_rtt": {
+    "xpath": "//*[@text='People' or @text='PEOPLE']"
+  }
+  
+  webui_keywords
+  
+  def verify_Rtt_text_box_availability(device):
+    common.raise_if_present(device,web_signin_dict,"verify_rtt_text_box_on_tdc")
+
+
+def verify_disable_real_time_text_meeting_web(device):
+    common.wait_for_and_click(device, web_signin_dict, "more_option_in_rtt_meeting")
+    common.wait_for_element(device, web_signin_dict, "language_and_speech")
+    common.wait_for_and_click(device, web_signin_dict, "language_and_speech")
+    common.wait_for_element(device, web_signin_dict, "verify_disable_of_rtt")
+	
+	
+	
+	calndrer keyword
+	
+	
+def tap_on_more_verify_available_option(devices):
+    participants = devices.split(",")
+    print("Participants : ", participants)
+    for device in participants:
+        common.wait_for_element(device, calendar_dict,"call_control_reactions_button")
+        common.wait_for_element(device,calendar_dict,"call_control_mute")
+        common.wait_for_element(device, calendar_dict, "call_more_options")
+        common.wait_for_and_click(device, calendar_dict, "call_more_options")
+        common.wait_for_element(device,calendar_dict,"start_recording")
+        common.wait_for_element(device, calendar_dict,"turn_on_live_captions")
+        common.wait_for_element(device,calendar_dict,"people_in_rtt")
+        common.wait_for_element(device,calendar_dict, "dial_pad")
+        common.wait_for_element(device,calendar_dict, "switch_audio_route")
+        common.raise_if_present(device, calendar_dict, "turn_on_rtt_for_this_message_DUT")
+        settings_keywords.device_setting_back(device)
+        if common.is_element_present(device, calls_dict, "call_bar"):
+            tap_to_return_to_meeting(device)
+
+  
+  
+  
+
+TC4 : Verify the RTT view when DUT user disconnect the meeting and joins back the same meeting while RTT is enabled and vice versa
+    [Tags]      Rtt_2
+    [Setup]      Testcase Setup    count=2
+    Join TDC meeting    device=tdc_1:device2user    edit_meeting_name=test_meeting
+    Join Meeting    device=device_1,device_2     meeting=test_meeting
+    Verify meeting state   device_list=device_1,device_2    state=Connected
+    verify call state in TDC and DUT    device=tdc_1:device2user     state=connected        device_list=device_1,device_2
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1,device_2      from_device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1
+    Come back to home screen    device_list=device_1
+    Join Meeting    device=device_1     meeting=test_meeting
+    verify disable of rtt message after a minute    devices=device_1
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1       from_device=tdc_1:device2user
+    Disconnect the call on TDC      device=tdc_1:device2user
+    Join TDC meeting    device=tdc_1:device2user    edit_meeting_name=test_meeting
+    verify_Rtt_text_box_availability    device=tdc_1:device2user
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify message from desktop user reflected in Dut    devices=device_1,device_2       from_device=tdc_1:device2user
+    Wait for Some Time    time=1 minutes
+    verify disable of rtt message after a minute    devices=device_1,device_2
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2
+    [Teardown]  Run Keywords   Capture on Failure   AND    Come back to home screen    device_list=device_1,device_2
+
+TC5: [Meet now] Verify RTT view in meet now
+    [Tags]      Rtt_3
+    [Setup]      Testcase Setup    count=2
+    create a meeting using meet now in tdc      device=tdc_1:device2user
+    search participate in people tab request to join    device=tdc_1:device2user    to_device=device_1
+    Wait for Some Time    time=5s
+    Pick incoming call    device=device_1
+    enable real time text meeting web    device=tdc_1:device2user
+    share rtt message from chat option in TDC    device=tdc_1:device2user
+    verify rtt text box appearance      devices=device_1
+    verify message from desktop user reflected in Dut    devices=device_1       from_device=tdc_1:device2user
+    tap_on_more_verify_available_option     devices=device_1
+    verify_disable_real_time_text_meeting_web       device=tdc_1:device2user
+    Disconnect the call on TDC      device=tdc_1:device2user
+    End call during meeting in DUT    device_lists=device_1,device_2
+    [Teardown]  Run Keywords   Capture on Failure   AND    Come back to home screen    device_list=device_1

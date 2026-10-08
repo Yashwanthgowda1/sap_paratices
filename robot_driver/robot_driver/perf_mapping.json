@@ -1,0 +1,88 @@
+{
+  "scenario": {
+    "Navigation_scenarios": {
+      "search_text": ["start_calls_app_end_to_end", "recent_page_load", "favorites_page_load", "start_people_app_end_to_end", "start_voicemail_app_end_to_end", "whole_calendar_load", "calls_app_home_end_to_end", "people_app_home_end_to_end", "voicemail_app_home_end_to_end", "calendar_app_home_end_to_end"],
+      "title": ["Navigation from Home-screen to Calls tab", "Load Recent tab", "Load Favorites tab", "Navigation from Home-screen to People tab", "Navigation from Home-screen to Voicemail tab", "Navigation from Home-screen to Calendar tab", "Navigation from Calls tab to Home-screen", "Navigation from People tab to Homescreen", "Navigation from Voicemail tab to Homescreen", "Navigation from Calendar tab to Homescreen"],
+      "category": ["1"],
+      "benchmark": ["0", "0", "0", "0", "0", "0", "0.04", "0.04", "0.04", "0.04"]
+    },
+    "Navigation_on_conf_phones": {
+      "search_text": ["start_people_app_end_to_end", "whole_calendar_load", "people_app_home_end_to_end", "calendar_app_home_end_to_end"],
+      "title": ["Navigation from Home-screen to People tab", "Navigation from Home-screen to Calendar tab", "Navigation from People tab to Homescreen", "Navigation from Calendar tab to Homescreen"],
+      "category": ["2"],
+      "benchmark": ["0.04", "0.04", "0.04", "0.04"]
+    },
+    "Navigation_to_various_tabs": {
+      "search_text": ["start_calls_app_end_to_end", "recent_page_load", "favorites_page_load", "start_people_app_end_to_end", "start_voicemail_app_end_to_end"],
+      "title": ["Navigation from Home-screen to Calls tab", "Load Recent tab", "Load Favorites tab", "Navigation from Home-screen to People tab", "Navigation from Home-screen to Voicemail tab"],
+      "category": ["3"],
+      "benchmark": ["0", "0", "0", "0", "0"]
+    },
+    "Incoming_P2P_Call_Hold_Resume_and_Park": {
+      "search_text" : ["pre_call_to_in_call", "park_call_for_hold_v2", "unpark_call_for_hold_v2", "park_call"],
+      "title": ["Incoming P2P PreCall to Incall Activity [Time for incoming call to move from connecting to connected state]", "Incoming P2P Call Hold [Time taken to hold incoming call]", "Incoming P2P Call Resume [Time taken to resume the held incoming call]", "Park Incoming Call [Time taken to park incoming call]"],
+      "category": ["1","2"],
+      "benchmark": ["0.25", "5", "0.04", "7.5"]
+    },
+    "Outgoing_P2P_Call_Hold_Resume_and_Park": {
+      "search_text" : ["search_page_load", "pre_call_to_in_call", "park_call_for_hold_v2", "unpark_call_for_hold_v2", "park_call"],
+      "title": ["Contact search using search icon [Time taken from tapping on contact search icon to cursor blink]" ,"Outgoing P2P PreCall to Incall Activity [Time for outgoing call to move from connecting to connected state once farend user answers the call]", "Outgoing P2P Call Hold [Time taken to hold outgoing call]", "Outgoing P2P Call Resume [Time taken to resume held outgoing call]", "Park Outgoing Call [Time taken to park outgoing call]"],
+      "category": ["1","2"],
+      "benchmark": ["0.8", "0.25", "5", "0.04", "7.5"]
+    },
+    "Incoming_PSTN_Call_Hold_Resume_and_Park": {
+      "search_text" : ["pre_call_to_in_call", "park_call_for_hold_v2", "unpark_call_for_hold_v2", "park_call"],
+      "title": ["Incoming PSTN PreCall to Incall Activity [Time for incoming call to move from connecting to connected state]", "Incoming PSTN Call Hold [Time taken to hold incoming PSTN call]", "Incoming PSTN Call Resume [Time taken to resume the held incoming PSTN call]", "Park Incoming PSTN Call [Time taken to park incoming PSTN call]"],
+      "category": ["1","2"],
+      "benchmark": ["0.25", "4", "0.04", "7.5"]
+    },
+    "Outgoing_PSTN_Call_Hold_Resume_and_Park": {
+      "search_text" : ["pre_call_to_in_call", "park_call_for_hold_v2", "unpark_call_for_hold_v2", "park_call"],
+      "title": ["Outgoing PSTN PreCall to Incall Activity [Time for outgoing call to move from connecting to connected state once farend user answers the call]", "Outgoing PSTN Call Hold [Time taken to hold outgoing PSTN call]", "Outgoing PSTN Call Resume [Time taken to resume the held outgoing PSTN call]", "Park Outgoing PSTN Call [Time taken to park outgoing PSTN call]"],
+      "category": ["1","2"],
+      "benchmark": ["0.25", "4", "0.04", "7.5"]
+    },
+    "Access_Meeting_Details_Join_meeting_and_Hangup": {
+      "search_text" : ["show_meeting_details", "join_scheduled_meetup", "calling_call_disconnected"],
+      "title": ["Access complete meeting details [Time taken to load complete meeting details]", "Meeting join from Calendar tab", "Disconnect from meeting [Time taken to disconnect from current meeting]"],
+      "category": ["1"],
+      "benchmark": ["0", "8", "0"]
+    },
+    "Start_meet_now_meeting": {
+      "search_text" : "create_and_join_instant_meeting",
+      "title": "Starting an instant meeting using Meet Now",
+      "category": ["1", "2", "4"],
+      "benchmark": ["8"]
+    },
+    "Enable_and_Disable_Dark_Theme": {
+      "search_text" : ["switch_theme_restart", "switch_theme_restart"],
+      "title": ["Enable dark theme [Time taken to switch to dark theme]", "Disable dark theme [Time taken to switch to light theme]"],
+      "category": ["1","2"],
+      "benchmark": ["0", "0"]
+    },
+    "Signout_and_Refresh_DCF_Code": {
+      "search_text" : ["sign_out", "cp_dcf_login_request"],
+      "title": ["Sign-out from Teams", "Refresh DCF Code [Time taken to refresh DCF code]"],
+      "category": ["1", "2", "3", "4"],
+      "benchmark": ["0", "0"]
+    },
+    "Incoming_P2P_Call_Hold_and_Resume": {
+      "search_text" : ["pre_call_to_in_call", "hold_call", "resume_call"],
+      "title": ["Incoming P2P PreCall to Incall Activity [Time for incoming call to move from connecting to connected state]", "Incoming P2P Call Hold [Time taken to hold incoming call]", "Incoming P2P Call Resume [Time taken to resume the held incoming call]"],
+      "category": ["4"],
+      "benchmark": ["0.25", "0", "0"]
+    },
+    "Outgoing_P2P_Call_Hold_and_Resume": {
+      "search_text" : ["pre_call_to_in_call", "hold_call", "resume_call"],
+      "title": ["Outgoing P2P PreCall to Incall Activity [Time for outgoing call to move from connecting to connected state once farend user answers the call]", "Outgoing P2P Call Hold [Time taken to hold outgoing call]", "Outgoing P2P Call Resume [Time taken to resume held outgoing call]"],
+      "category": ["4"],
+      "benchmark": ["0.25", "0", "0"]
+    },
+    "Join_meeting_and_hangup": {
+      "search_text" : "join_scheduled_meetup",
+      "title": "Meeting join from calendar tab",
+      "category": ["4"],
+      "benchmark": ["8"]
+    }
+}
+}

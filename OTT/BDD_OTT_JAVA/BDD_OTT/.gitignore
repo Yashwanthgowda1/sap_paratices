@@ -1,0 +1,15 @@
+target/
+*.iml
+test-output/
+screenshots/
+*.class
+*.jar
+config.properties
+allure.properties
+run*
+/jdk/
+/jre/
+.classpath
+.settings/
+.vscode/
+/bin/

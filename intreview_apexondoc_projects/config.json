@@ -1,0 +1,242 @@
+{   "common_desired_caps" : {
+        "appActivity": "com.microsoft.skype.teams.Launcher",
+        "appPackage": "com.microsoft.skype.teams.ipphone",
+        "automationName": "UiAutomator2",
+        "platformName": "android",
+        "deviceName": "Android",
+        "newCommandTimeout": 90000,
+        "optionalIntentArguments": "--esn automation"
+    },
+    "companyPortal_Package" : "com.microsoft.windowsintune.companyportal",
+    "ngms_package" : "com.microsoft.intune.aospagent",
+    "ngms_package1": "com.azure.authenticator",
+    "authenticator_app": "companyportal",
+    "appium_starting_port" : 5100,
+    "chrome_driver_path" : "-",
+    "cq_no" : "+16672904182",
+    "cp_logs_capture" : "False",
+    "capture_bug_reports_post_run": "False",
+    "gcc_flag": "disabled",
+    "capture_config" : "disabled",
+    "dpi": {
+      "phyiscal_density": "-",
+      "override_density": "-"
+    },
+    "physical_size": "-",
+    "console_physical_size": "-",
+    "console_physical_density": "-",
+    "device_type": "-",
+    "console_type": "-",
+    "encryption_state": "encrypted",
+    "devices" : {
+        "device_1": {
+          "oem": "California",
+            "model": "Santa Cruz",
+            "port": 8110,
+            "firmware": "1.0",
+            "desired_caps": {
+                "alias": "app1",
+                "udid": "10.50.11.121:5555"
+
+            },
+            "user": {
+                "username": "lcp_auto1@tdr0.onmicrosoft.com",
+                "password": "Apexo@25",
+                "displayname": "lcp_auto1",
+                "phonenumber": "12138669144",
+                "privatenumber": "14254909194",
+                "pstndisplay": "+1 213-866-9144",
+                "extension": "8669144"
+            },
+            "cap_search_enabled": {
+                "username": "l6_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "l6_auto",
+                "phonenumber": "12067560207",
+                "pstndisplay": "+1 206 756 0207",
+                "extension": "-"
+            },
+            "cap_search_disabled": {
+                "username": "Teamsdeviceauto18@3pip.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Teamsdeviceauto18",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "meeting_user": {
+                "username": "teamsdeviceauto19@3pip.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Teams Device Auto19",
+                "phonenumber": "14086847025",
+                "pstndisplay": "+1 408-684-7025",
+                "extension": "6847025"
+            },
+            "cq_user": {
+                "username": "auto_cq1@dpec02.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Auto CQ1",
+                "phonenumber": "",
+                "pstndisplay": "",
+                "extension": "-"
+            },
+            "hotdesk_disabled_user": {
+                "username": "hddisabled@3pip.onmicrosoft.com",
+                "password": "Apexo@22",
+                "displayname": "HD Disabled",
+                "phonenumber": "14084782456",
+                "pstndisplay": "+1 408-478-2456",
+                "extension": "-"
+            }
+        },
+         "device_2": {
+            "oem": "Washington",
+            "model": "Olympia",
+            "port": 5700,
+            "admin_password": "Admin@123",
+            "firmware": "1.0",
+            "desired_caps": {
+            "alias": "app1",
+                "udid": "10.50.11.131:5555"
+            },
+            "user": {
+                "username": "lcp_auto3@tdr0.onmicrosoft.com",
+                "password": "Apexo@25",
+                "displayname": "lcp_auto3",
+                "phonenumber": "13173180108",
+                "pstndisplay": "+1 317-318-0108",
+                "extension": "3180108"
+            },
+            "pstn_user": {
+                "username": "Phones_Auto7@Dpec02.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Phones_Auto7",
+                "phonenumber": "14054468912",
+                "pstndisplay": "+1 405-446-8912",
+                "extension": "4468912"
+            },
+            "delegate_user": {
+                "username": "p8_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "p8_auto",
+                "phonenumber": "+13173160503",
+                "pstndisplay": "+1 317-316-0503",
+                "extension": "-"
+            },
+            "gcp_user": {
+                "username": "p8_auto@tdr0.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "p8_auto",
+                "phonenumber": "13173160503",
+                "pstndisplay": "+1 317-316-0503",
+                "extension": "-"
+            }
+        },
+         "device_3" : {
+           "oem": "Washington",
+            "model":"Bakersfield_13",
+              "port": 5390,
+              "admin_password" : "Admin@123",
+              "firmware" : "1.0",
+              "desired_caps" : {
+                "alias": "app1",
+                "udid": "10.50.10.95:5555"
+
+
+            },
+            "user": {
+                "username": "lcp_auto2@tdr0.onmicrosoft.com",
+                "password": "Apexo@25",
+                "displayname": "lcp_auto2",
+                "phonenumber": "13173160792",
+                "pstndisplay": "+1 317-316-0792",
+                "extension": "3160792"
+
+            },
+            "pstn_user": {
+                "username": "teamsprodauto6@nextgenipphone.onmicrosoft.com",
+                "password": "S@kurai1202",
+                "displayname": "Teams Prod Auto6",
+                "phonenumber": "14255280194",
+                "pstndisplay": "+1 425-528-0194",
+                "extension": "-"
+            },
+            "cq_user": {
+                "username": "auto_cq2@dpec02.onmicrosoft.com",
+                "password": "Apexo@24",
+                "displayname": "Auto CQ2",
+                "phonenumber": "",
+                "pstndisplay": "",
+                "extension": "-"
+            }
+        },
+        "device_4" : {
+           "oem": "Washington",
+            "model": "Olympia",
+              "port": 5341,
+              "admin_password" : "Admin@123",
+              "firmware" : "1.0",
+              "desired_caps" : {
+                "alias": "app1",
+                "udid": "10.50.11.129:5555"
+            },
+            "user": {
+                "username": "lcp_auto4@tdr0.onmicrosoft.com",
+                "password": "Apexo@25",
+                "displayname": "lcp_auto4",
+                "phonenumber": "13173768092",
+                "pstndisplay": "+1 317-376-8092",
+                "extension": "-"
+            },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "delegate_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "gcp_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+		}
+
+
+    },
+    "meetings" : {
+        "name": "test_meeting",
+        "participant": "Teams Device Auto18",
+        "location": "Bangalore"
+    },
+    "Report_feedback" : {
+        "title": "test_purpose",
+        "bug_details": "Test purpose, please ignore it"
+    },
+    "hot_desk" : {
+        "invalid_username" : "testmail"
+    },
+    "set_status_message" : {
+        "message" : "Automation team"
+    },
+    "user" : {
+        "invalid_username" : "teaviceauto1@3pip.onmicrosoft.com",
+        "invalid_domain" : "teamsdeviceauto1@invalid.com",
+        "invalid_password" : "invalidpwd"
+    },
+ "incorrect_number": {
+      "phonenumber": "11234567890"
+    }
+}

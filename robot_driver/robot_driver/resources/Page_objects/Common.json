@@ -1,0 +1,18 @@
+{
+  "back": {
+    "id": "com.microsoft.skype.teams.ipphone:id/roster_back_icon",
+    "xpath": "//*[@content-desc='Back' or @text='Back']",
+    "xpath1": "//android.widget.ImageButton[@content-desc='Back']"
+  },
+  "more_tab": {
+    "xpath": "//android.widget.TextView[@text='More']"
+  },
+  "hide_more_app_icon": {
+    "id": "com.microsoft.skype.teams.ipphone:id/modules_tray_handle_view",
+    "xpath": "//android.widget.ImageView[@content-desc='Hide more apps']"
+  },
+  "home_btn": {
+    "id": "com.microsoft.skype.teams.ipphone:id/btn_home",
+    "id1": "com.microsoft.skype.teams.ipphone:id/home_tab"
+  }
+}

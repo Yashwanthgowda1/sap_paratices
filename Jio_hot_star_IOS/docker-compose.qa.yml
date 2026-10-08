@@ -1,0 +1,19 @@
+services:
+  automation:
+    # pull image from registry — built and pushed by CI/CD pipeline
+    image: docker.io/${DOCKER_USER}/automation-service:${TEST_ENV}-${VERSION}
+    container_name: automation-test
+
+    environment:
+      - TEST_ENV=${TEST_ENV}
+
+    volumes:
+      - /data/results:/mnt/results   # run: mkdir -p /data/results on host first
+
+    ports:
+      - "8000:8000"
+
+    # allocated space for chrome
+    shm_size: "2gb"
+
+    restart: "no"

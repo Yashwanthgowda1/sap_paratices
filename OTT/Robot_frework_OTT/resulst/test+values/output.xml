@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2025-10-02T13:53:38.981630" rpa="false" schemaversion="5">
+<suite id="s1" name="Sigin" source="D:\ROBOT_FRAME_WORK_REAL\Robot_frework_OTT\resource\keywords\sigin.robot">
+<test id="s1-t1" name="Sign In" line="7">
+<kw name="Open Web Browser And Go To URL" owner="common_web">
+<kw name="Initialize Driver" owner="common_web_andriod">
+<msg time="2025-10-02T13:53:40.510092" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="c2ee67342d2ece7524378ef059f7af81")&gt;</msg>
+<var>${driver}</var>
+<arg>device_type=web</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Initialize driver once for web or Android.</doc>
+<status status="PASS" start="2025-10-02T13:53:39.192728" elapsed="1.317460"/>
+</kw>
+<kw name="Go To Url" owner="common_web_andriod">
+<msg time="2025-10-02T13:55:40.511854" level="FAIL">ReadTimeoutError: HTTPConnectionPool(host='localhost', port=56499): Read timed out. (read timeout=120)</msg>
+<arg>${URL}</arg>
+<doc>Navigate to the given URL using Selenium driver.</doc>
+<status status="FAIL" start="2025-10-02T13:53:40.510387" elapsed="120.011878">ReadTimeoutError: HTTPConnectionPool(host='localhost', port=56499): Read timed out. (read timeout=120)</status>
+</kw>
+<status status="FAIL" start="2025-10-02T13:53:39.192364" elapsed="121.330099">ReadTimeoutError: HTTPConnectionPool(host='localhost', port=56499): Read timed out. (read timeout=120)</status>
+</kw>
+<kw name="serach_methods">
+<status status="NOT RUN" start="2025-10-02T13:55:40.522979" elapsed="0.000039"/>
+</kw>
+<status status="FAIL" start="2025-10-02T13:53:39.191808" elapsed="121.331417">ReadTimeoutError: HTTPConnectionPool(host='localhost', port=56499): Read timed out. (read timeout=120)</status>
+</test>
+<status status="FAIL" start="2025-10-02T13:53:38.982850" elapsed="121.540870"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Sigin" id="s1" pass="0" fail="1" skip="0">Sigin</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-10-02T13:53:39.008747" level="ERROR">Error in file 'D:\ROBOT_FRAME_WORK_REAL\Robot_frework_OTT\resource\keywords\sigin.robot' on line 2: Importing library 'D:\ROBOT_FRAME_WORK_REAL\Robot_frework_OTT\resource\keywords\sign_in.py' failed: ImportError: attempted relative import with no known parent package
+Traceback (most recent call last):
+  File "D:\ROBOT_FRAME_WORK_REAL\Robot_frework_OTT\resource\keywords\sign_in.py", line 1, in &lt;module&gt;
+    from ..library.Setuputility import SetupUtility
+PYTHONPATH:
+  D:\ROBOT_FRAME_WORK_REAL\Robot_frework_OTT\resource\keywords
+  C:\Python313\Scripts\robot.exe
+  C:\Python313\python313.zip
+  C:\Python313\DLLs
+  C:\Python313\Lib
+  C:\Python313
+  C:\Users\yashu\AppData\Roaming\Python\Python313\site-packages
+  C:\Python313\Lib\site-packages</msg>
+</errors>
+</robot>

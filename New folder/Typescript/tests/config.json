@@ -1,0 +1,83 @@
+{
+  "environment": "qa",
+  "application": {
+    "name": "EcommerceApp",
+    "version": "2.3.1",
+    "baseUrl": "https://qa.ecommerce.com"
+  },
+  "users": [
+    {
+      "id": 101,
+      "role": "admin",
+      "credentials": {
+        "username": "admin_user",
+        "password": "Admin@123"
+      },
+      "profile": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com"
+      },
+      "permissions": ["create_product", "delete_product", "view_reports"],
+      "active": true
+    },
+    {
+      "id": 102,
+      "role": "customer",
+      "credentials": {
+        "username": "customer_user",
+        "password": "Cust@123"
+      },
+      "profile": {
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "email": "alice.smith@example.com"
+      },
+      "permissions": ["view_products", "place_order"],
+      "active": true
+    }
+  ],
+  "loginTestCases": [
+    {
+      "testCaseId": "TC_LOGIN_01",
+      "description": "Valid login with admin user",
+      "input": {
+        "username": "admin_user",
+        "password": "Admin@123"
+      },
+      "expectedResult": {
+        "status": "success",
+        "redirectPage": "dashboard"
+      }
+    },
+    {
+      "testCaseId": "TC_LOGIN_02",
+      "description": "Invalid password",
+      "input": {
+        "username": "admin_user",
+        "password": "WrongPassword"
+      },
+      "expectedResult": {
+        "status": "error",
+        "message": "Invalid credentials"
+      }
+    },
+    {
+      "testCaseId": "TC_LOGIN_03",
+      "description": "Empty username",
+      "input": {
+        "username": "",
+        "password": "Admin@123"
+      },
+      "expectedResult": {
+        "status": "validation_error",
+        "message": "Username is required"
+      }
+    }
+  ],
+  "features": {
+    "login": true,
+    "checkout": true,
+    "paymentMethods": ["credit_card", "paypal", "upi"]
+  }
+}

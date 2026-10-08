@@ -1,0 +1,115 @@
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.address`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.address` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.automotive`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.automotive` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.bank`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.barcode`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.barcode` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.color`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.color` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.company`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.company` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.credit_card`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.credit_card` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.currency`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.currency` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.date_time`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.date_time` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.geo`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.geo` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.internet`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.internet` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.isbn` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.job`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.job` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.lorem`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.lorem` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.misc`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.misc` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.passport`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.passport` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.person`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.person` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.phone_number`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.phone_number` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Looking for locale `en_US` in provider `faker.providers.ssn`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.ssn` has been localized to `en_US`.
+2026-06-26 22:03:12 [DEBUG] faker.factory: Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+2026-06-26 22:03:12 [INFO] utilities.api_client: POST https://api.hotstar.com/v2/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-06-26 22:03:12 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:13 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "POST /v2/auth/login HTTP/1.1" 403 282
+2026-06-26 22:03:13 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;c5fed417&#46;1782491593&#46;15610458
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;c5fed417&#46;1782491593&#46;15610458</P>
+</BODY></HTML>
+
+2026-06-26 22:03:16 [INFO] utilities.api_client: POST https://api.hotstar.com/v2/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-06-26 22:03:16 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:17 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "POST /v2/auth/login HTTP/1.1" 403 278
+2026-06-26 22:03:17 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;dcfed417&#46;1782491596&#46;562032
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;dcfed417&#46;1782491596&#46;562032</P>
+</BODY></HTML>
+
+2026-06-26 22:03:17 [INFO] utilities.api_client: POST https://api.hotstar.com/v2/auth/login | payload={'email': 'testuser@example.com', 'password': 'WrongPass999'}
+2026-06-26 22:03:17 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:18 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "POST /v2/auth/login HTTP/1.1" 403 278
+2026-06-26 22:03:18 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;cdfed417&#46;1782491597&#46;5581ef
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;cdfed417&#46;1782491597&#46;5581ef</P>
+</BODY></HTML>
+
+2026-06-26 22:03:20 [INFO] utilities.api_client: POST https://api.hotstar.com/v2/auth/login | payload={'email': 'testuser@example.com', 'password': 'WrongPass999'}
+2026-06-26 22:03:20 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:21 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "POST /v2/auth/login HTTP/1.1" 403 280
+2026-06-26 22:03:21 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;c6fed417&#46;1782491600&#46;b17954e
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;c6fed417&#46;1782491600&#46;b17954e</P>
+</BODY></HTML>
+
+2026-06-26 22:03:21 [INFO] utilities.api_client: GET https://api.hotstar.com/v2/content | params={'type': 'movie'}
+2026-06-26 22:03:21 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:22 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "GET /v2/content?type=movie HTTP/1.1" 403 278
+2026-06-26 22:03:22 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;95fed417&#46;1782491601&#46;23ede3
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;95fed417&#46;1782491601&#46;23ede3</P>
+</BODY></HTML>
+
+2026-06-26 22:03:24 [INFO] utilities.api_client: GET https://api.hotstar.com/v2/content | params={'type': 'movie'}
+2026-06-26 22:03:24 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:25 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "GET /v2/content?type=movie HTTP/1.1" 403 282
+2026-06-26 22:03:25 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;7cfed417&#46;1782491604&#46;1e1ecd90
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;7cfed417&#46;1782491604&#46;1e1ecd90</P>
+</BODY></HTML>
+
+2026-06-26 22:03:25 [INFO] utilities.api_client: GET https://api.hotstar.com/v2/content/movie-001 | params=None
+2026-06-26 22:03:25 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:25 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "GET /v2/content/movie-001 HTTP/1.1" 403 280
+2026-06-26 22:03:25 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;7dfed417&#46;1782491605&#46;d34b152
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;7dfed417&#46;1782491605&#46;d34b152</P>
+</BODY></HTML>
+
+2026-06-26 22:03:27 [INFO] utilities.api_client: GET https://api.hotstar.com/v2/content/movie-001 | params=None
+2026-06-26 22:03:27 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): api.hotstar.com:443
+2026-06-26 22:03:28 [DEBUG] urllib3.connectionpool: https://api.hotstar.com:443 "GET /v2/content/movie-001 HTTP/1.1" 403 282
+2026-06-26 22:03:28 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;d5fed417&#46;1782491608&#46;2061ca01
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;d5fed417&#46;1782491608&#46;2061ca01</P>
+</BODY></HTML>
+

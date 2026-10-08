@@ -1,0 +1,71 @@
+TC16 : [Home screen] DUT user to verify hard dial pad keys from 0 to 9 on Home screen
+hard key issues
+
+
+
+
+[Call Transfer] DUT user blind transfer one PSTN user call to another PSTN user
+same pstn blind transfer crashing 
+
+
+
+ [Call Park] DUT user try to retrieve the parked call with wrong code
+ verify call state : hold is getting in the device 2 afetr the park the call in device 1
+ 
+ 
+ 
+ [Call Transfer] TDC user End the call while consultative transfers the PSTN call from DUT
+ Verify Voicemail Forwarding Message Text 
+ before verify it is closing "foward text message"
+ 
+ accept multiple incoming calls  device=device_1   full_screen_call=accept    notification_call=accept    count=3
+ 
+ 
+ verify_login_url_with_cloud_setting_as_gcc_high
+ changes added steps
+ 
+ Username
+ xpath changes in waill 
+ 
+ @sai
+ 
+ 
+ robot -d resluts/cap_fixes11212 -i 419896 -i 348571 -i 348567 -i 150116 tests_cap
+ ademin passord 
+ mtra basics error setupsd
+ 
+ TC3: [Device Properties] Check device capabilities
+ teams_device_capabilities
+ : Returned Teams capabilities: '['better_together', 'sidecar_extension']'
+ crt the config while doing
+ 
+ 
+ 
+ [License Stacking] Verify DUT should display CAP UI, when user sign with TSD + User/Personal License & Basic CAP Policy assigned account
+ 419896
+ account experies
+ cap_personal_license_with_personal_policy_assigned_account
+ 
+ 
+ 
+ 
+ overflow tc2 "need to ask"
+ 
+ 
+ 
+ 
+ :[Customer Readiness] ADB access to be disabled by default
+ key error in confi not added the 'adb_disabled_device'
+ 
+ 
+ 
+ 
+  if full_screen_call == "accept" and notification_call == "accept":
+        # two call is accepted
+        for mutiple in range(2):
+            if common.is_element_present(device, calls_dict, "Multiple_call_hold_ribbon"):
+                common.wait_for_and_click(device, calls_dict, "Multiple_call_hold_ribbon_dropdown")
+                common.wait_for_element(device, calls_dict, "Accept_call_button", wait_attempts=)
+                common.sleep_with_msg(device, 3, "Waiting after accepting full screen call")
+        common.click_if_present(device, calls_dict, "Multiple_call_hold_ribbon_dropdown")
+        common.wait_for_element(device, calls_dict, "Notification_group_call_answer_button")

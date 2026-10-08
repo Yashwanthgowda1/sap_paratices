@@ -1,0 +1,4 @@
+name,role,permissions
+John,admin,read;write
+Alice,user,read
+Bob,guest,

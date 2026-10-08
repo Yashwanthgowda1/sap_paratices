@@ -1,0 +1,67 @@
+{
+  "common_desired_caps": {
+    "appActivity": "com.microsoft.skype.teams.Launcher",
+    "appPackage": "com.microsoft.skype.teams.ipphone",
+    "automationName": "UiAutomator2",
+    "platformName": "android",
+    "deviceName": "Android",
+    "newCommandTimeout": 90000,
+    "noReset": true,
+    "optionalIntentArguments": "--esn automation  --ez disableCompanyPortal true"
+  },
+  "companyPortal_Package": "com.microsoft.windowsintune.companyportal",
+  "appium_starting_port": 5100,
+  "cp_logs_capture": "",
+  "capture_bug_reports_post_run": "False",
+  "capture_config": "disabled",
+  "device_type": "-",
+  "devices": {
+    "device_1": {
+      "oem": "emulator",
+      "model": "nordenEmulator",
+      "port": 5100,
+      "avd_name": "emulator-5554",
+      "avd_proxy_port": "8888",
+      "desired_caps": {
+        "alias": "app1",
+        "udid": "emulator-5554"
+      },
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      }
+    }
+  },
+  "browsers": {
+    "tdc_1": {
+      "user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      },
+      "meeting_user": {
+        "username": "-",
+        "password": "-",
+        "displayname": "-",
+        "phonenumber": "-",
+        "pstndisplay": "-",
+        "extension": "-"
+      }
+    }
+  }
+}

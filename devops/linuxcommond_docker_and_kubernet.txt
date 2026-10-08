@@ -1,0 +1,66 @@
+o my z shell
+cmd where write ---> docker run -it ubuntu
+		root-> where the location
+hidden file show => ls -a
+					ls -i
+what are the file in the folder inside folders	=> ls -R
+
+cat ==> list all the content avilable ===> cat nameof the file
+
+cat > file.txt   ---> use to write and create the file
+
+> ---> this funel hindicats the merge into one another
+
+cat file.txt |  tr a-z A-z > UPPER.TXT  ---> HERE tr means the translater man  (| --> means continue )
+
+man --help  => all the inbuits to write , remove and read uppercase and lowercase etc
+
+\  --> means next line also i can write the commonds without exicute
+
+rm file.txt   -> common to delete rm
+
+mkdir -p  file.txt/newfile.txt ---> (-p  pernetal commond) crete a folder inside another folder
+
+
+cp file.txt copy.txt  --->  cp copy 
+
+
+man mv
+------
+moving the folder 
+mv file.txt inside_folder_moveid
+
+			mv file.txt  ../new_file_directorymove
+
+
+sudo commond
+--------------
+some commond rquired the admin access
+
+sudo echo "hellow word"
+
+df commond (spce and volume avilabe)
+-----------------------------------------
+df -m (in mb)
+df -h  (h => human redalble)
+
+
+du---> disply the statics(how many size it is presents )
+
+
+vi filename
+insert 
+:q!
+
+head -n 4 filename ---> data from the first 4 line
+tail -n 4 filename  ----> data from the bottom the 4 lines
+
+find (find current)  (../ prebious direcroy)
+
+find . -type f -name "new*"   (find the file based on the file name )
+find . -type f -min -20    (file modified 20 bfore any file based on the time)
+
+find . -perm 777  (.perm means permision read,write, open)
+ 
+ 
+cmod 777 filename (permision )

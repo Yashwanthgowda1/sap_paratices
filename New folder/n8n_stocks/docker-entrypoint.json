@@ -1,0 +1,34 @@
+{
+  "name": "Chat to MarketDeep",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ChatTrigger",
+      "name": "When chat message received",
+      "type": "n8n-nodes-base.chatTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/marketdeep",
+        "method": "POST",
+        "responseFormat": "json",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\n  \"sessionId\": \"{{$json.sessionId}}\",\n  \"chatInput\": \"{{$json.chatInput}}\"\n}"
+      },
+      "id": "HTTPRequest",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [550, 300]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [[{ "node": "HTTP Request", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": true
+}

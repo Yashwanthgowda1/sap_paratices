@@ -1,0 +1,22 @@
+Test Case 502321: Verify DUT user shouldn't get the call queue call from the TDC/PSTN user when call queue toggle is disabled under the Calling / Queues app
+Test Case 502322: Verify DUT user should  get the call queue call from the TDC/PSTN user when call queue toggle is enabled under Calling /Queues app
+
+
+
+password
+cap---> 3 sing in  suite 
+
+
+	149940, bvt_cap, P1, sanity_cap
+	
+	
+	419896 [License Stacking] Verify--->device_1: element is not present: 'sign_in_on_the_device'	
+01:29:11.798	FAIL	Device is not on the sign-in page
+
+
+
+account ------>  device_2----> 1234
+
+
+308862
+149940---------------->necxt present

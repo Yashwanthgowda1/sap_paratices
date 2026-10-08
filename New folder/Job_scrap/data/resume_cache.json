@@ -1,0 +1,68 @@
+{
+  "name": "Yashwanth M H",
+  "email": "yashwanthmhg@gmail.com",
+  "phone": "+91-6363750475",
+  "total_years": 3,
+  "current_title": "Associate Consultant – Quality Engineering & AI Automation",
+  "skills": [
+    "Python",
+    "TypeScript",
+    "Java",
+    "SQL",
+    "Playwright",
+    "Selenium",
+    "Robot Framework",
+    "Appium",
+    "TestNG",
+    "Cucumber",
+    "Postman",
+    "LangChain",
+    "OpenAI API",
+    "RAG",
+    "Hugging Face",
+    "Ollama",
+    "LLMs",
+    "Vector Databases",
+    "AI Log Analysis",
+    "AWS",
+    "Terraform",
+    "Ansible",
+    "Kubernetes (K8s)",
+    "Docker",
+    "CI/CD Pipelines (Jenkins, GitHub Actions)",
+    "Grafana",
+    "Prometheus",
+    "Git",
+    "GitHub",
+    "Azure"
+  ],
+  "experience": [
+    {
+      "company": "NTT DATA",
+      "title": "Associate Consultant – Quality Engineering & AI Automation",
+      "duration": "Jun 2025 – Present",
+      "description": "Skilled in utilizing Python, TypeScript, Selenium, Appium, Robot Framework (with RequestsLibrary), and WinAppDriver for automation of Android, iOS, Windows, and web applications."
+    },
+    {
+      "company": "Apexon",
+      "title": "SDET",
+      "duration": "Sep 2023 – July 2025",
+      "description": "Automated Android and iOS app testing using Appium, Selenium, and Robot Framework; reduced manual testing effort by 80% and accelerated deployment cycles."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering",
+      "institution": "Visvesvaraya Technological University",
+      "year": "2022"
+    }
+  ],
+  "domain": "Quality Engineering & AI Automation",
+  "career_level": "junior",
+  "ats_score": 90,
+  "key_achievements": [
+    "Participated and successfully completed a 24-hour Hackathon by developing a Generative AI-based audio assistant application.",
+    "Recognized for outstanding excellence – awarded Employee of the Month and Quarter at NTT DATA.",
+    "Reduced regression test execution time by 60% through parallel Playwright/Selenium grid execution on Zion project."
+  ]
+}

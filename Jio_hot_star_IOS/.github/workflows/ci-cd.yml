@@ -1,0 +1,92 @@
+name: CI/CD Docker + Ansible
+
+on:
+  workflow_run:
+    workflows:
+      - "terraform"   # MUST match the name of the workflow that runs before
+    types:
+      - completed
+    branches:
+      - "QA_main"     # only trigger when terraform runs on QA_main
+
+jobs:
+  build_image_push_and_deploy:
+    # only run if terraform workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      # All 3 run at the same time (parallel)
+      matrix:
+        env: [QA, STAGING, PROD]
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GIT_PAT }}
+
+      # Step 2: Set environment variables — secrets hidden in GitHub, passed into workflow
+      - name: Set environment variables
+        run: |
+          echo "DOCKER_USER=${{ secrets.DOCKER_USER }}" >> $GITHUB_ENV
+          echo "DOCKER_PASS=${{ secrets.DOCKER_PASS }}" >> $GITHUB_ENV
+          echo "TEST_ENV=${{ matrix.env }}" >> $GITHUB_ENV
+          echo "VERSION=1.2.0" >> $GITHUB_ENV
+
+      # Step 3: Build Docker image — passes TEST_ENV as build-arg so Dockerfile ARG receives it
+      - name: Build Docker image
+        run: |
+          docker build \
+            --build-arg TEST_ENV=${{ env.TEST_ENV }} \
+            -t docker.io/${{ env.DOCKER_USER }}/automation-service:${{ env.TEST_ENV }}-${{ env.VERSION }} .
+
+      # Step 4: Login and push image to Docker Hub registry
+      - name: Push Docker image
+        run: |
+          echo "${{ env.DOCKER_PASS }}" | docker login docker.io -u ${{ env.DOCKER_USER }} --password-stdin
+          docker push docker.io/${{ env.DOCKER_USER }}/automation-service:${{ env.TEST_ENV }}-${{ env.VERSION }}
+
+      # Step 5: Install Ansible on the runner
+      - name: Install Ansible
+        run: |
+          sudo apt update
+          sudo apt install -y ansible python3-pip
+          pip3 install kubernetes
+
+      # Step 6: Run Ansible — installs docker + kubectl + helm on server, sets up k8s namespace
+      - name: Run Ansible deploy
+        run: |
+          ansible-playbook Ansible_configuration/site.yml \
+            -i Ansible_configuration/Inventory/Inventory.ini \
+            -e "TEST_ENV=${{ env.TEST_ENV }}" \
+            -e "VERSION=${{ env.VERSION }}"
+
+      # Step 7: Deploy app to K8s using Helm with env specific values file
+      - name: Helm deploy to K8s
+        run: |
+          aws eks update-kubeconfig \
+            --region ${{ secrets.AWS_REGION }} \
+            --name ${{ secrets.EKS_CLUSTER_NAME }}
+
+          helm upgrade --install automation-service ./helm/automation-service \
+            --namespace ${{ env.TEST_ENV | lowercase }} \
+            --create-namespace \
+            -f helm/automation-service/values.${{ env.TEST_ENV | lowercase }}.yaml \
+            --set image.repository=docker.io/${{ env.DOCKER_USER }}/automation-service \
+            --set image.tag=${{ env.TEST_ENV }}-${{ env.VERSION }} \
+            --atomic \
+            --timeout 5m
+
+      # Step 8: Rollback helm if deploy failed
+      - name: Helm Rollback on Failure
+        if: failure()
+        run: |
+          helm rollback automation-service \
+            --namespace ${{ env.TEST_ENV | lowercase }}
+
+      # Step 9: Destroy only app infra if any step above fails
+      - name: Destroy on Failure
+        if: failure()
+        working-directory: terraform
+        run: terraform destroy -target=module.app -auto-approve

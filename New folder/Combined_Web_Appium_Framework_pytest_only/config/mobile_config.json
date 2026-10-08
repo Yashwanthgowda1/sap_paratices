@@ -1,0 +1,31 @@
+{
+  "appium_server": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "url": "http://127.0.0.1:4723"
+  },
+  "android": {
+    "platformName": "Android",
+    "platformVersion": "13.0",
+    "deviceName": "emulator-5554",
+    "app": "/path/to/your/app.apk",
+    "appPackage": "com.myapp.android",
+    "appActivity": "com.myapp.android.MainActivity",
+    "automationName": "UiAutomator2",
+    "noReset": false,
+    "fullReset": false,
+    "newCommandTimeout": 60,
+    "autoGrantPermissions": true
+  },
+  "timeouts": {
+    "implicit_wait": 10,
+    "explicit_wait": 20,
+    "gesture_duration": 800
+  },
+  "test_data": {
+    "valid_user": {
+      "username": "mobileuser",
+      "password": "Mobile@1234"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-08-20T20:10:41.688832" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot frework OTT" source="C:\python_study\OTT\Robot_frework_OTT">
+<suite id="s1-s1" name="Library" source="C:\python_study\OTT\Robot_frework_OTT\library">
+<suite id="s1-s1-s1" name="Common Web" source="C:\python_study\OTT\Robot_frework_OTT\library\common_web.robot">
+<test id="s1-s1-s1-t1" name="Signin To OrangeHRM" line="10">
+<kw name="Initialize Driver">
+<msg time="2025-08-20T20:10:42.414854" level="FAIL">No keyword with name 'Initialize Driver' found.</msg>
+<arg>device_type=web</arg>
+<arg>browser=${BROWSER}</arg>
+<status status="FAIL" start="2025-08-20T20:10:42.414767" elapsed="0.000184">No keyword with name 'Initialize Driver' found.</status>
+</kw>
+<kw name="Go To Url">
+<arg>${URL}</arg>
+<status status="NOT RUN" start="2025-08-20T20:10:42.415195" elapsed="0.000037"/>
+</kw>
+<kw name="Perform Login" owner="sigin">
+<status status="NOT RUN" start="2025-08-20T20:10:42.415378" elapsed="0.000032"/>
+</kw>
+<kw name="Close Browser" type="TEARDOWN">
+<msg time="2025-08-20T20:10:42.416634" level="FAIL">No keyword with name 'Close Browser' found.</msg>
+<status status="FAIL" start="2025-08-20T20:10:42.416586" elapsed="0.000106">No keyword with name 'Close Browser' found.</status>
+</kw>
+<tag>45456</tag>
+<status status="FAIL" start="2025-08-20T20:10:42.412438" elapsed="0.004340">No keyword with name 'Initialize Driver' found.
+
+Also teardown failed:
+No keyword with name 'Close Browser' found.</status>
+</test>
+<status status="FAIL" start="2025-08-20T20:10:41.817515" elapsed="0.599973"/>
+</suite>
+<status status="FAIL" start="2025-08-20T20:10:41.815524" elapsed="0.602852"/>
+</suite>
+<status status="FAIL" start="2025-08-20T20:10:41.741855" elapsed="0.677094"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">45456</stat>
+</tag>
+<suite>
+<stat name="Robot frework OTT" id="s1" pass="0" fail="1" skip="0">Robot frework OTT</stat>
+<stat name="Library" id="s1-s1" pass="0" fail="1" skip="0">Robot frework OTT.Library</stat>
+<stat name="Common Web" id="s1-s1-s1" pass="0" fail="1" skip="0">Robot frework OTT.Library.Common Web</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-08-20T20:10:41.628707" level="ERROR">Error in file 'C:\python_study\OTT\Robot_frework_OTT\resource\keywords\home_page.robot' on line 2: Non-existing setting 'L'.</msg>
+<msg time="2025-08-20T20:10:42.403648" level="WARN">Imported library 'C:\python_study\OTT\Robot_frework_OTT\library\common_web_andriod.py' contains no keywords.</msg>
+</errors>
+</robot>

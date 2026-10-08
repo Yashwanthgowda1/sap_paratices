@@ -1,0 +1,41 @@
+{
+"web_display_txt": {
+    "xpath": "//div[@id='mectrl_currentAccount_secondary']"
+  },
+  "web_profile_pic": {
+    "id": "O365_HeaderRightRegion"
+  },
+  "teams_device_option": {
+    "xpath": "//button[@data-testid='Devices']"
+  },
+  "panels_option": {
+    "xpath": "//button[@data-testid='TeamsPanels']"
+  },
+  "tac_panels_header": {
+    "xpath": "//h1[@class='string__title___Wemnh page-header__title___1-lNo page-header__mobile___3VFnr']"
+  },
+  "tac_device_options": {
+    "xpath": "//button[@data-testid='device_type']"
+  },
+  "tac_device_health_summary": {
+    "xpath": "//*[@data-testid='manageDevicesSummaryCard']"
+  },
+  "tac_search_result_device": {
+    "xpath": "//*[text()='udid']//..//../preceding-sibling::*/*/*[text()='display_name']"
+  },
+  "tac_device_health_summary_card": {
+    "id": "manageDeviceSummaryWidget1"
+  },
+  "tac_device_health_page": {
+    "xpath": "//*[@title='Health status']"
+  },
+  "tac_device_health_status": {
+    "xpath": "//*[@class='device-profile-card__healthStatus___3Aipp' or @class='device-profile-card__link___1XxVr']//label"
+  },
+  "tac_web_profile_card": {
+    "id": "mectrl_currentAccount_primary"
+  },
+  "tac_dashboard_option": {
+    "xpath": "//button[@data-testid='Dashboard']"
+  }
+}

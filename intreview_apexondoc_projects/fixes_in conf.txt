@@ -1,0 +1,79 @@
+conf ---->  log annalyis
+
+incomming call -> device_3 --> white screen issue
+2. random issue
+
+
+-------------------------------------------------------
+call merger
+2 test cases random issue means not able initiate the  call
+
+
+---------------------------------------------------------
+
+syite 04 :no soft dialpad----> iniside calnder make call icon  present----> call park not found
+suite 05 --> make call icon not found ob=nce clicked
+
+=====================================
+
+
+suit  07 ----->     calnder meeting ----(most test cases 'accept call not found"
+create  multiple meetuing (server side error)
+
+
+suite 7 -->   tc 11 -->  daya meeting random  issue
+
+
+
+
+452016
+305866
+465974
+
+
+
+305954----> setup issue
+----------------------------------------------------------------------------
+
+ [People] DUT user to receive/reject meeting invite call in people tab
+ sing in fail ---> random issue
+
+465987-----> not able to get the add dicrectory in the contect tile
+306603------> need to run
+
+452016--------------------------> i this test cases not able to capture the window like person is at another call getting the fails
+
+
+
+12 Call Hand Off
+"suite fail because of device_2 sing in not hapen properly------> 3 tests
+
+13 meet now 
+here device_2 is not propely get sigin here so  get fail-----> 1 tests cases
+
+
+16 Emergency Calls
+calling -> inside the admin setting--> done not clicked and calling ----> 2 test cases
+
+
+
+TC16 :[Multiple Call Banner] DUT user to tap on the "multiple calls" banner
+here navigate to people tab ----> before the come back to home
+
+
+21----> call forward ---> suite fail becasue admin password done cliking hot happen
+
+TC28------>> [Simul-ring] DUT user can configure a PSTN user to ring simultaneously for an incoming call from TDC user
+same issue beacuse  password not obtains---> done
+
+27 Light weight meeting----> suite(device_2)  issue is there sigin not happen
+
+SUITE 28 Hide Meeting Name--->   same issue device_2 fail to sing in  (4) tets cases fails
+
+
+[E2EE] E2EE user calls to PSTN user  ----->   same issue device_12  admin password click not happened
+30 VQE    ----> same issue
+
+
+
+Firmware accepetence tests ---> faile after bring the device online

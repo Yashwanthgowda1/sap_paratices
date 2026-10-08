@@ -1,0 +1,74 @@
+data "http" "my_ip" {
+  url = "https://checkip.amazonaws.com/"
+}
+
+provider "aws" {
+  region = var.aws_region
+}
+
+module "ec2_vpc_infrastructure" {
+  source = "./modules/ec2"
+
+  # network
+  vpc_cretion          = var.vpc_cretion
+  cidr_blocks          = var.cidr_blocks
+  enable_dns_hostnames = var.enable_dns_hostnames
+  igw_name             = "igw-demo"
+  nat_gateway          = var.nat_gateway
+  aws_route_table      = "ci_cd_pipeline_routetable"
+
+  # subnets / security
+# extra not used
+# Your module creates everything itself:
+# ```
+# subnets        → created by aws_subnet.public_subnets
+# security group → created by aws_security_group.public_sg
+  subnets_id                     = []
+  security_groups_public_subnets = []
+
+  # environment
+  environment  = var.environment
+  selected_env = var.selected_env
+
+  # ec2
+  aws_instance          = var.aws_instance
+  instance_type         = var.instance_type
+  aws_ami_values        = var.aws_ami_values
+  key_pairs             = var.key_pairs
+  aws_public_ip_enabled = var.aws_public_ip_enabled
+
+  # resolved at apply time — data source interpolation not allowed in variable defaults
+  my_ip = "${chomp(data.http.my_ip.response_body)}/32"
+}
+
+
+# templatefile = reads a .tpl file and fills in the variables:
+
+resource "local_file" "ansible_inventory" {
+  # cannot use the modules value access , because it is not a direct output but we take output and values then access inside the resource
+  content = templatefile("${path.module}/inventory.tpl", {
+    instances = module.ec2_vpc_infrastructure.instances
+  })
+
+  # it will take the foler of inventory.ini as the path and create the file
+  filename = "${path.module}/../Ansible_configuration/Inventory/Inventory.ini"
+}
+
+# ── EKS Cluster Module ───────────────────────────────────────────────────────
+module "eks" {
+  source = "./modules/eks"
+
+  cluster_name       = var.eks_cluster_name
+  k8s_version        = var.k8s_version
+  selected_env       = var.selected_env[0]
+
+  # reuse subnets and security groups already created by EC2 module
+  subnet_ids         = module.ec2_vpc_infrastructure.subnet_ids
+  security_group_ids = module.ec2_vpc_infrastructure.security_group_ids
+
+  # worker node config
+  node_instance_type = var.node_instance_type
+  node_desired_size  = var.node_desired_size
+  node_min_size      = var.node_min_size
+  node_max_size      = var.node_max_size
+}

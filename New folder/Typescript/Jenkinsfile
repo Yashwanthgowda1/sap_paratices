@@ -1,0 +1,501 @@
+// ============================================================
+// Multi-Stage QA CI/CD Pipeline
+// Environments: On-Prem (real devices/browsers) + Cloud (emulators/cloud browsers)
+// ============================================================
+
+def ALLURE_RESULTS_DIR = 'allure-results'
+def REPORTS_DIR        = 'test-reports'
+def ARTIFACTS_RETAIN   = '30'           // days
+
+// ---- Shared library helpers (inline for portability) -------
+def notifySlack(String color, String msg) {
+    slackSend(color: color, message: msg, channel: '#qa-pipeline')
+}
+
+// ============================================================
+//  PIPELINE DEFINITION
+// ============================================================
+pipeline {
+
+    // Allow both on-prem and cloud labels; overridden per stage
+    agent none
+
+    // ---------- environment variables ------------------------
+    environment {
+        PLAYWRIGHT_BROWSERS_PATH = '0'                      // use system browsers on agents
+        APPIUM_HOST_ONPREM       = 'http://onprem-appium:4723'
+        APPIUM_HOST_CLOUD        = 'http://cloud-appium:4723'
+        BROWSERSTACK_CREDS       = credentials('browserstack-creds') // user:key
+        AWS_CREDENTIALS          = credentials('aws-creds')
+        SLACK_TOKEN              = credentials('slack-webhook')
+        NODE_VERSION             = '20'
+        PYTHON_VERSION           = '3.11'
+        TF_DIR                   = 'infra/terraform'
+    }
+
+    // ---------- triggers -------------------------------------
+    triggers {
+        // Nightly scheduled suite (Mon–Fri  11 PM)
+        cron('0 23 * * 1-5')
+        // Weekend full regression (Sat midnight)
+        cron('0 0 * * 6')
+        // PR trigger is handled by GitHub webhook → no cron needed
+    }
+
+    // ---------- global options --------------------------------
+    options {
+        timeout(time: 4, unit: 'HOURS')
+        buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '10'))
+        timestamps()
+        ansiColor('xterm')
+        skipStagesAfterUnstable()
+    }
+
+    // ---------- parameters -----------------------------------
+    parameters {
+        choice(
+            name: 'SUITE',
+            choices: ['BVT', 'SMOKE', 'SANITY', 'REGRESSION', 'FULL'],
+            description: 'Test suite to run (manual trigger)'
+        )
+        booleanParam(name: 'RUN_ONPREM',  defaultValue: true,  description: 'Execute on real devices/browsers')
+        booleanParam(name: 'RUN_CLOUD',   defaultValue: true,  description: 'Execute on cloud/emulators')
+        booleanParam(name: 'SKIP_APPROVAL', defaultValue: false, description: 'Skip manual approval gate')
+        string(name: 'DEVICE_FILTER', defaultValue: 'all', description: 'Device tag filter for Appium')
+    }
+
+    // =========================================================
+    //  STAGES
+    // =========================================================
+    stages {
+
+        // ----------------------------------------------------- 1. DETECT CONTEXT
+        stage('Detect Pipeline Context') {
+            agent { label 'controller' }
+            steps {
+                script {
+                    env.IS_PR         = (env.CHANGE_ID != null).toString()
+                    env.IS_WEEKEND    = (new Date().get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY).toString()
+                    env.IS_SCHEDULED  = (currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause').size() > 0).toString()
+
+                    if (env.IS_PR == 'true') {
+                        env.ACTIVE_SUITE = 'BVT'
+                        echo "▶  PR pipeline detected → running BVT"
+                    } else if (env.IS_WEEKEND == 'true') {
+                        env.ACTIVE_SUITE = 'REGRESSION'
+                        echo "▶  Weekend regression run"
+                    } else if (env.IS_SCHEDULED == 'true') {
+                        env.ACTIVE_SUITE = 'SMOKE'
+                        echo "▶  Nightly scheduled run → SMOKE"
+                    } else {
+                        env.ACTIVE_SUITE = params.SUITE
+                        echo "▶  Manual trigger → ${env.ACTIVE_SUITE}"
+                    }
+                }
+            }
+        }
+
+        // ----------------------------------------------------- 2. SECURITY SCAN (PR only)
+        stage('Security Scan') {
+            when {
+                expression { env.IS_PR == 'true' }
+            }
+            agent { label 'security-scanner' }
+            steps {
+                echo "Running SAST + dependency audit..."
+                sh '''
+                    # SAST — semgrep
+                    semgrep --config=p/owasp-top-ten \
+                            --config=p/nodejs \
+                            --json \
+                            --output semgrep-results.json \
+                            src/ tests/ || true
+
+                    # Dependency audit
+                    npm audit --audit-level=high --json > npm-audit.json || true
+
+                    # Python deps (if present)
+                    if [ -f requirements.txt ]; then
+                        pip-audit -r requirements.txt --format json -o pip-audit.json || true
+                    fi
+
+                    # Secret detection
+                    trufflehog filesystem --directory=. \
+                        --only-verified \
+                        --json > trufflehog.json 2>&1 || true
+                '''
+                script {
+                    def semgrep = readJSON file: 'semgrep-results.json'
+                    def criticals = semgrep.results?.findAll { it.extra?.severity == 'ERROR' }
+                    if (criticals?.size() > 0) {
+                        error("Security scan failed: ${criticals.size()} critical SAST findings")
+                    }
+                    echo "Security scan passed."
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '*-audit.json, semgrep-results.json, trufflehog.json', allowEmptyArchive: true
+                }
+            }
+        }
+
+        // ----------------------------------------------------- 3. TERRAFORM DRY-RUN (PR only)
+        stage('Terraform Plan (Dry-Run)') {
+            when {
+                allOf {
+                    expression { env.IS_PR == 'true' }
+                    expression { fileExists("${env.TF_DIR}/main.tf") }
+                }
+            }
+            agent { label 'terraform' }
+            environment {
+                TF_IN_AUTOMATION = 'true'
+                AWS_ACCESS_KEY_ID     = "${AWS_CREDENTIALS_USR}"
+                AWS_SECRET_ACCESS_KEY = "${AWS_CREDENTIALS_PSW}"
+            }
+            steps {
+                dir("${env.TF_DIR}") {
+                    sh '''
+                        terraform init -input=false
+                        terraform validate
+                        terraform plan -input=false -out=tfplan.bin
+                        terraform show -json tfplan.bin > tfplan.json
+                    '''
+                }
+                script {
+                    def plan = readJSON file: "${env.TF_DIR}/tfplan.json"
+                    def destroys = plan.resource_changes?.findAll { it.change?.actions?.contains('delete') }
+                    if (destroys?.size() > 0) {
+                        echo "WARNING: Terraform plan includes ${destroys.size()} destructive resource deletions."
+                        currentBuild.description = "⚠️ TF destroys: ${destroys.size()}"
+                    }
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: "${env.TF_DIR}/tfplan.json", allowEmptyArchive: true
+                }
+            }
+        }
+
+        // ----------------------------------------------------- 4. MANUAL APPROVAL GATE (PR only)
+        stage('Approval Gate') {
+            when {
+                allOf {
+                    expression { env.IS_PR == 'true' }
+                    expression { params.SKIP_APPROVAL == false }
+                }
+            }
+            // No agent needed — just a gate
+            agent none
+            steps {
+                script {
+                    notifySlack('#ffcc00',
+                        "⏳ PR #${env.CHANGE_ID} awaiting QA gate approval — <${env.BUILD_URL}|Review>")
+                    timeout(time: 30, unit: 'MINUTES') {
+                        input message: "Approve deployment to QA and proceed with ${env.ACTIVE_SUITE}?",
+                              ok: 'Approve',
+                              submitter: 'qa-leads,devops-leads'
+                    }
+                }
+            }
+        }
+
+        // ----------------------------------------------------- 5. CHECKOUT & BUILD
+        stage('Checkout & Build') {
+            agent { label 'build-agent' }
+            steps {
+                checkout scm
+                sh '''
+                    # Node / TypeScript
+                    node --version
+                    npm ci
+                    npx tsc --noEmit                   # type-check only, no emit
+                    npm run lint 2>&1 | tee lint.log || true
+
+                    # Python (pytest suite)
+                    python --version
+                    pip install -r requirements.txt --quiet
+                '''
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'lint.log', allowEmptyArchive: true
+                }
+                success {
+                    stash name: 'workspace', includes: '**/*', excludes: '.git/**'
+                }
+            }
+        }
+
+        // ----------------------------------------------------- 6. PARALLEL EXECUTION
+        stage('Run Tests') {
+            parallel {
+
+                // =============================================
+                //  6A. ON-PREM: Real Browsers + Real Devices
+                // =============================================
+                stage('On-Prem: Real Browsers & Devices') {
+                    when { expression { params.RUN_ONPREM == true } }
+                    agent { label 'onprem-agent' }
+                    environment {
+                        TEST_ENV     = 'onprem'
+                        APPIUM_URL   = "${env.APPIUM_HOST_ONPREM}"
+                        BROWSER_MODE = 'local'
+                    }
+                    steps {
+                        unstash 'workspace'
+                        script {
+                            def suiteMarker = getSuiteMarker(env.ACTIVE_SUITE, 'onprem')
+                            sh """
+                                mkdir -p ${REPORTS_DIR}/onprem ${ALLURE_RESULTS_DIR}/onprem
+
+                                echo "=== TypeScript / Playwright (real browsers) ==="
+                                npx playwright test \\
+                                    --project=chromium \\
+                                    --project=firefox \\
+                                    --project=webkit \\
+                                    --grep "@${suiteMarker}" \\
+                                    --reporter=allure-playwright,junit,html \\
+                                    --output=${REPORTS_DIR}/onprem/playwright \\
+                                    2>&1 | tee ${REPORTS_DIR}/onprem/playwright.log || true
+
+                                echo "=== Python / Pytest (real Android devices) ==="
+                                pytest tests/mobile/ \\
+                                    -m "${suiteMarker} and real_device" \\
+                                    --device-filter="${params.DEVICE_FILTER}" \\
+                                    --appium-url=${APPIUM_HOST_ONPREM} \\
+                                    --alluredir=${ALLURE_RESULTS_DIR}/onprem \\
+                                    --junitxml=${REPORTS_DIR}/onprem/pytest-mobile.xml \\
+                                    -v 2>&1 | tee ${REPORTS_DIR}/onprem/pytest-mobile.log || true
+                            """
+                        }
+                    }
+                    post {
+                        always {
+                            junit "${REPORTS_DIR}/onprem/**/*.xml"
+                            stash name: 'allure-onprem',
+                                  includes: "${ALLURE_RESULTS_DIR}/onprem/**",
+                                  allowEmpty: true
+                            archiveArtifacts artifacts: "${REPORTS_DIR}/onprem/**,${ALLURE_RESULTS_DIR}/onprem/**",
+                                             allowEmptyArchive: true,
+                                             fingerprint: true
+                        }
+                    }
+                }
+
+                // =============================================
+                //  6B. CLOUD: BrowserStack + Android Emulators
+                // =============================================
+                stage('Cloud: BrowserStack & Emulators') {
+                    when { expression { params.RUN_CLOUD == true } }
+                    agent { label 'cloud-agent' }
+                    environment {
+                        TEST_ENV      = 'cloud'
+                        APPIUM_URL    = "${env.APPIUM_HOST_CLOUD}"
+                        BROWSER_MODE  = 'browserstack'
+                        BS_USERNAME   = "${BROWSERSTACK_CREDS_USR}"
+                        BS_ACCESS_KEY = "${BROWSERSTACK_CREDS_PSW}"
+                    }
+                    steps {
+                        unstash 'workspace'
+                        script {
+                            def suiteMarker = getSuiteMarker(env.ACTIVE_SUITE, 'cloud')
+                            sh """
+                                mkdir -p ${REPORTS_DIR}/cloud ${ALLURE_RESULTS_DIR}/cloud
+
+                                echo "=== TypeScript / Playwright (BrowserStack) ==="
+                                npx playwright test \\
+                                    --project=browserstack-chrome \\
+                                    --project=browserstack-safari \\
+                                    --grep "@${suiteMarker}" \\
+                                    --reporter=allure-playwright,junit \\
+                                    --output=${REPORTS_DIR}/cloud/playwright \\
+                                    2>&1 | tee ${REPORTS_DIR}/cloud/playwright.log || true
+
+                                echo "=== Python / Pytest (Android emulators) ==="
+                                pytest tests/mobile/ \\
+                                    -m "${suiteMarker} and emulator" \\
+                                    --appium-url=${APPIUM_HOST_CLOUD} \\
+                                    --alluredir=${ALLURE_RESULTS_DIR}/cloud \\
+                                    --junitxml=${REPORTS_DIR}/cloud/pytest-mobile.xml \\
+                                    -v 2>&1 | tee ${REPORTS_DIR}/cloud/pytest-mobile.log || true
+                            """
+                        }
+                    }
+                    post {
+                        always {
+                            junit "${REPORTS_DIR}/cloud/**/*.xml"
+                            stash name: 'allure-cloud',
+                                  includes: "${ALLURE_RESULTS_DIR}/cloud/**",
+                                  allowEmpty: true
+                            archiveArtifacts artifacts: "${REPORTS_DIR}/cloud/**,${ALLURE_RESULTS_DIR}/cloud/**",
+                                             allowEmptyArchive: true,
+                                             fingerprint: true
+                        }
+                    }
+                }
+
+            } // end parallel
+        }
+
+        // ----------------------------------------------------- 7. WEEKEND REGRESSION (extra)
+        stage('Weekend Full Regression') {
+            when {
+                expression { env.IS_WEEKEND == 'true' }
+            }
+            parallel {
+
+                stage('Regression — On-Prem Full Suite') {
+                    agent { label 'onprem-agent' }
+                    steps {
+                        unstash 'workspace'
+                        sh """
+                            mkdir -p ${REPORTS_DIR}/regression-onprem ${ALLURE_RESULTS_DIR}/regression-onprem
+                            pytest tests/ \\
+                                -m "regression" \\
+                                --appium-url=${APPIUM_HOST_ONPREM} \\
+                                --alluredir=${ALLURE_RESULTS_DIR}/regression-onprem \\
+                                --junitxml=${REPORTS_DIR}/regression-onprem/results.xml \\
+                                --screenshot=on \\
+                                --video=on \\
+                                -n 4 \\
+                                -v 2>&1 | tee ${REPORTS_DIR}/regression-onprem/run.log || true
+                        """
+                    }
+                    post {
+                        always {
+                            junit "${REPORTS_DIR}/regression-onprem/**/*.xml"
+                            archiveArtifacts artifacts: "${REPORTS_DIR}/regression-onprem/**",
+                                             allowEmptyArchive: true
+                        }
+                    }
+                }
+
+                stage('Regression — Cloud Full Suite') {
+                    agent { label 'cloud-agent' }
+                    environment {
+                        BS_USERNAME   = "${BROWSERSTACK_CREDS_USR}"
+                        BS_ACCESS_KEY = "${BROWSERSTACK_CREDS_PSW}"
+                    }
+                    steps {
+                        unstash 'workspace'
+                        sh """
+                            mkdir -p ${REPORTS_DIR}/regression-cloud ${ALLURE_RESULTS_DIR}/regression-cloud
+                            npx playwright test \\
+                                --project=browserstack-chrome \\
+                                --project=browserstack-safari \\
+                                --grep "@regression" \\
+                                --reporter=allure-playwright,junit,html \\
+                                --output=${REPORTS_DIR}/regression-cloud \\
+                                2>&1 | tee ${REPORTS_DIR}/regression-cloud/playwright.log || true
+                        """
+                    }
+                    post {
+                        always {
+                            junit "${REPORTS_DIR}/regression-cloud/**/*.xml"
+                            archiveArtifacts artifacts: "${REPORTS_DIR}/regression-cloud/**",
+                                             allowEmptyArchive: true
+                        }
+                    }
+                }
+
+            } // end parallel
+        }
+
+        // ----------------------------------------------------- 8. ALLURE REPORT
+        stage('Publish Allure Report') {
+            agent { label 'controller' }
+            steps {
+                script {
+                    // Collect all allure results from stashes
+                    ['allure-onprem', 'allure-cloud'].each { stashName ->
+                        try { unstash stashName } catch (e) { echo "Stash ${stashName} not found, skipping" }
+                    }
+                }
+                allure([
+                    includeProperties: true,
+                    jdk: '',
+                    results: [
+                        [path: "${ALLURE_RESULTS_DIR}/onprem"],
+                        [path: "${ALLURE_RESULTS_DIR}/cloud"],
+                        [path: "${ALLURE_RESULTS_DIR}/regression-onprem"],
+                        [path: "${ALLURE_RESULTS_DIR}/regression-cloud"]
+                    ]
+                ])
+            }
+        }
+
+    } // end stages
+
+    // =========================================================
+    //  POST PIPELINE ACTIONS
+    // =========================================================
+    post {
+        always {
+            node('controller') {
+                // Retain all artifacts for configured days
+                archiveArtifacts artifacts: """
+                    ${REPORTS_DIR}/**,
+                    ${ALLURE_RESULTS_DIR}/**,
+                    **/screenshots/**,
+                    **/videos/**,
+                    **/*.log
+                """.stripIndent().trim(),
+                allowEmptyArchive: true,
+                fingerprint: true
+
+                // Publish JUnit trend
+                junit allowEmptyResults: true, testResults: '**/test-reports/**/*.xml'
+
+                // Clean workspace after keeping artifacts
+                cleanWs(patterns: [
+                    [pattern: '**/*.tmp', type: 'INCLUDE'],
+                    [pattern: 'node_modules/', type: 'INCLUDE']
+                ])
+            }
+        }
+        success {
+            node('controller') {
+                notifySlack('#36a64f',
+                    "✅ *${env.JOB_NAME}* #${env.BUILD_NUMBER} passed [${env.ACTIVE_SUITE}] — <${env.BUILD_URL}allure|Allure Report>")
+            }
+        }
+        unstable {
+            node('controller') {
+                notifySlack('#ffcc00',
+                    "⚠️ *${env.JOB_NAME}* #${env.BUILD_NUMBER} unstable [${env.ACTIVE_SUITE}] — <${env.BUILD_URL}testReport|Test Report>")
+            }
+        }
+        failure {
+            node('controller') {
+                notifySlack('#cc0000',
+                    "❌ *${env.JOB_NAME}* #${env.BUILD_NUMBER} FAILED [${env.ACTIVE_SUITE}] — <${env.BUILD_URL}console|Console>")
+                emailext(
+                    to: 'qa-team@company.com',
+                    subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """Build failed. Suite: ${env.ACTIVE_SUITE}
+Environment: ${env.IS_PR == 'true' ? 'PR' : env.IS_WEEKEND == 'true' ? 'Weekend Regression' : 'Scheduled'}
+Console: ${env.BUILD_URL}console
+Allure:  ${env.BUILD_URL}allure
+""")
+            }
+        }
+    }
+
+} // end pipeline
+
+// =========================================================
+//  HELPER: map suite name → pytest/playwright marker
+// =========================================================
+def getSuiteMarker(String suite, String env) {
+    def map = [
+        'BVT'        : 'bvt',
+        'SMOKE'      : 'smoke',
+        'SANITY'     : 'sanity',
+        'REGRESSION' : 'regression',
+        'FULL'       : 'not skip'
+    ]
+    return map.getOrDefault(suite?.toUpperCase(), 'smoke')
+}

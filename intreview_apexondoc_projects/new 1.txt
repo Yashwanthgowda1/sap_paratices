@@ -1,0 +1,54 @@
+bug fix :
+244111
+TC9 : [Call Transfer] User to test the transfer hard button
+
+
+435 and 430 devices has same issue
+
+
+ TC10 : [App Settings] DUT user block calls with no caller ID
+ 243463
+ 
+ 
+ TC6 : [Esc to Conf.] DUT user in P2P call with TDC, add another TDC and make an Presenter
+ 
+ message is displaying attendee and presenter
+ 
+ Test Case 318432: [Call Merge][1:1 call] Verify that correct name appears with Merge call in more option menu
+ fiex required
+ 
+ 
+ 
+ 18 suite : Call Forward Label On Home Screen
+ 452140 'screen shots are not captured properly"
+ 
+ 
+  [Call Park] DUT user able to resume the call, when call is parked for second time.
+  s . Verify Call State device_list=device_1,device_2, state=Connected  ,but hangbutton is there call completele not connected
+  
+  
+  
+  [Call Park] Reject ring back to retrieve the parked call
+  rejected also device_2 is connected verification is required
+   
+  
+  TC5: [Outgoing Calls] DUT user calls TDC user for which VM is enabled and VM is disabled
+  wait staement required (add this to bug fixes)
+  Wait Until Call Disconnected device=device_2  (but call is still present)
+  
+  TC6 : [Presence] DUT user can see the correct presence in Voice mail tab (in the form of presence icon only)
+  cehck the x path once in love land devices
+  
+  
+  C1: [Call forward on home screen] Verify DUT after adding delegates from TDC /DUT.
+  home screen is not appeering the call forward toggle after calling is enabled (most of the call forward test cases)
+  
+  
+  : [Call views] DUT user to cancel the selection in Default view and selects other options
+  for 435 device one more swiping required to reach default view
+  
+  
+  
+  [Settings Consistency] Meeting settings should not be shown for LCP with CAP or advanced CAP
+  452086
+  admin password

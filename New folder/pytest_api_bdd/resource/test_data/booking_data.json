@@ -1,0 +1,49 @@
+{
+  "valid_booking": {
+    "firstname": "Yashwanth",
+    "lastname": "Gowda",
+    "totalprice": 200,
+    "depositpaid": true,
+    "bookingdates": { "checkin": "2025-01-01", "checkout": "2025-01-10" },
+    "additionalneeds": "Breakfast"
+  },
+  "updated_booking": {
+    "firstname": "Updated",
+    "lastname": "Name",
+    "totalprice": 500,
+    "depositpaid": false,
+    "bookingdates": { "checkin": "2025-06-01", "checkout": "2025-06-15" },
+    "additionalneeds": "Lunch"
+  },
+  "multiple_bookings": [
+    {
+      "firstname": "Yashwanth",
+      "lastname": "Gowda",
+      "totalprice": 200,
+      "depositpaid": true,
+      "bookingdates": { "checkin": "2025-01-01", "checkout": "2025-01-10" },
+      "additionalneeds": "Breakfast"
+    },
+    {
+      "firstname": "Ramesh",
+      "lastname": "Kumar",
+      "totalprice": 350,
+      "depositpaid": false,
+      "bookingdates": { "checkin": "2025-03-01", "checkout": "2025-03-05" },
+      "additionalneeds": "Lunch"
+    },
+    {
+      "firstname": "Priya",
+      "lastname": "Sharma",
+      "totalprice": 500,
+      "depositpaid": true,
+      "bookingdates": { "checkin": "2025-05-10", "checkout": "2025-05-20" },
+      "additionalneeds": "Dinner"
+    }
+  ],
+  "invalid_credentials": [
+    { "username": "",      "password": "password123" },
+    { "username": "admin", "password": ""             },
+    { "username": "",      "password": ""             }
+  ]
+}

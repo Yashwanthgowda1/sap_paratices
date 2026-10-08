@@ -1,0 +1,434 @@
+// 📦 Step 1: Import required Guava classes
+import com.google.common.collect.*;
+import com.google.common.primitives.*;
+import java.util.*;
+
+public class GuavaUtilitiesDemo {
+    public static void main(String[] args) {
+
+        // ───────────────────────────────────────────────
+        // 1️⃣ PRIMITIVE UTILITIES (Ints, Longs, Doubles)
+        // ───────────────────────────────────────────────
+        System.out.println("=== 1️⃣ PRIMITIVES (Ints) ===");
+
+        int[] arr = {1, 2, 3, 4, 5};
+        List<Integer> intList = Ints.asList(arr); // Convert array → List
+        System.out.println("Array to List: " + intList);
+
+        int[] backArray = Ints.toArray(intList); // List → Array
+        System.out.println("List to Array: " + Arrays.toString(backArray));
+
+        System.out.println("Contains 3? " + Ints.contains(arr, 3));
+        System.out.println("Min: " + Ints.min(arr));
+        System.out.println("Max: " + Ints.max(arr));
+        System.out.println("Joined String: " + Ints.join("-", arr));
+
+        // ───────────────────────────────────────────────
+        // 2️⃣ LIST UTILITIES
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 2️⃣ LIST UTILITIES ===");
+
+        List<String> names = Lists.newArrayList("Alice", "Bob", "Charlie", "Diana", "Eve");
+        System.out.println("Original List: " + names);
+
+        List<String> reversed = Lists.reverse(names); // Reverse view
+        System.out.println("Reversed List: " + reversed);
+
+        List<List<String>> partitioned = Lists.partition(names, 2); // Divide into sublists
+        System.out.println("Partitioned (size 2): " + partitioned);
+
+        // ───────────────────────────────────────────────
+        // 3️⃣ SET UTILITIES
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 3️⃣ SET UTILITIES ===");
+
+        Set<Integer> setA = Sets.newHashSet(1, 2, 3);
+        Set<Integer> setB = Sets.newHashSet(3, 4, 5);
+
+        System.out.println("Set A: " + setA);
+        System.out.println("Set B: " + setB);
+
+        Set<Integer> union = Sets.union(setA, setB);
+        Set<Integer> intersection = Sets.intersection(setA, setB);
+        Set<Integer> difference = Sets.difference(setA, setB);
+
+        System.out.println("Union: " + union);
+        System.out.println("Intersection: " + intersection);
+        System.out.println("Difference (A - B): " + difference);
+
+        // ───────────────────────────────────────────────
+        // 4️⃣ MAP UTILITIES
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 4️⃣ MAP UTILITIES ===");
+
+        Map<String, Integer> fruits = Maps.newHashMap();
+        fruits.put("Apple", 3);
+        fruits.put("Banana", 5);
+        fruits.put("Mango", 1);
+
+        System.out.println("Original Map: " + fruits);
+
+        // Filter values > 2
+        Map<String, Integer> filtered = Maps.filterValues(fruits, v -> v > 2);
+        System.out.println("Filtered (value > 2): " + filtered);
+
+        // Transform values (multiply by 10)
+        Map<String, Integer> transformed = Maps.transformValues(fruits, v -> v * 10);
+        System.out.println("Transformed (value * 10): " + transformed);
+
+        // ───────────────────────────────────────────────
+        // 5️⃣ IMMUTABLE COLLECTIONS
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 5️⃣ IMMUTABLE COLLECTIONS ===");
+
+        ImmutableList<String> immutableList = ImmutableList.of("Red", "Green", "Blue");
+        ImmutableSet<Integer> immutableSet = ImmutableSet.of(10, 20, 30);
+        ImmutableMap<String, Integer> immutableMap = ImmutableMap.of("A", 1, "B", 2);
+
+        System.out.println("Immutable List: " + immutableList);
+        System.out.println("Immutable Set: " + immutableSet);
+        System.out.println("Immutable Map: " + immutableMap);
+
+        // ───────────────────────────────────────────────
+        // 6️⃣ ITERABLES UTILITIES
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 6️⃣ ITERABLES UTILITIES ===");
+
+        Iterable<Integer> combined = Iterables.concat(Lists.newArrayList(1, 2), Lists.newArrayList(3, 4));
+        System.out.println("Concatenated Iterables: " + combined);
+        System.out.println("Contains 3? " + Iterables.contains(combined, 3));
+        System.out.println("Size: " + Iterables.size(combined));
+
+        // ───────────────────────────────────────────────
+        // 7️⃣ COLLECTIONS2 UTILITIES
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 7️⃣ COLLECTIONS2 UTILITIES ===");
+
+        Collection<Integer> nums = Lists.newArrayList(1, 2, 3, 4, 5, 6);
+        Collection<Integer> evens = Collections2.filter(nums, n -> n % 2 == 0);
+        System.out.println("Even Numbers: " + evens);
+
+        Collection<Integer> doubled = Collections2.transform(nums, n -> n * 2);
+        System.out.println("Doubled Numbers: " + doubled);
+
+        // ───────────────────────────────────────────────
+        // 8️⃣ COMBINING EVERYTHING TOGETHER
+        // ───────────────────────────────────────────────
+        System.out.println("\n=== 8️⃣ COMBINED EXAMPLE ===");
+
+        // Step 1: Start with primitive array
+        int[] numbers = {10, 20, 30, 40, 50, 60};
+        List<Integer> numberList = Ints.asList(numbers);
+
+        // Step 2: Partition into groups of 3
+        List<List<Integer>> chunks = Lists.partition(numberList, 3);
+        System.out.println("Chunks of 3: " + chunks);
+
+        // Step 3: Reverse and double each number using Collections2
+        List<Integer> reversedNums = Lists.reverse(numberList);
+        Collection<Integer> doubledNums = Collections2.transform(reversedNums, n -> n * 2);
+        System.out.println("Reversed & Doubled: " + doubledNums);
+
+        // Step 4: Convert to Immutable
+        ImmutableList<Integer> finalList = ImmutableList.copyOf(doubledNums);
+        System.out.println("Immutable Final List: " + finalList);
+    }
+}
+\
+
+
+
+===========================================================================
+
+
+SHC-SSAM_METADATA_UPGRADETOOL
+1.0.2
+
+shipping (policyvoilation)
+Grafana
+10.2.6
+
+subscription-manager-cockpit
+8
+
+==============================================================================
+
+
+SHC-MOB_SVC_ASSET_MANAGER_IOS
+2511
+
+unmatched "
+
+
+			ArcGIS:200.8									
+			CoreArcGIS:200.8.0									
+			DocumentEditor:1.0									
+			EditableDataTable:1.0									
+			Factory									
+			HierarchyFramework:1.0									
+			iOS_QR_Code_Generator:0.1.0									
+			MapAuthenticator:1.0									
+			MapFramework:1.0									
+			NSCWinterTC:1.0									
+			PDFFramework:1.0									
+			ProgressTrackerFramework:1.0									
+			QuickActionBarFramework:1.0									
+			SAMFoundation:1.0									
+			SectionHeader:1.0									
+			TKLiveSync:1.0									
+			TNSCore:1.0									
+			TNSSideDrawer:1.0									
+			TNSWidgets:1.0
+
+iText, a JAVA-PDF library
+iText0.94
+
+libjpeg-turbo
+2.1.3
+
+The FreeType Project
+2.13.3 (it same in iso all versuion policy)
+
+
+unmatched need to ask
+
+
+
+
+
+
+note : komal
+
+
+https://mvnrepository.com/artifact/com.esri.arcgisruntime/arcgis-android/100.15.3
+
+
+
+
+===========================================================================================================
+
+SHC-MDK_PLUG-IN_SDK_AND
+=========================
+
+
+
+
+2511/beiginings
+
+
+
+
+2511/DOCUMENTEDITOR
+need to move the Ip 
+and need to do unmatched
+
+2511/EDITABLEDATATABLE
+unmatched: 2
+org.slf4j:slf4j-api:null									
+org.slf4j:slf4j-api:null FAILED
+
+
+2511/FOUNDATION
+unmatche : 1 sap
+
+2511/HIERARCHYCONTROL
+ unmatche : all sap
+ 
+
+2511/MAPAUTHENTICATOR
+
+need to ask the commercial licnecs
+com.esri:arcgis-maps-kotlin:200.8.0									
+com.esri:arcgis-maps-kotlin-toolkit-authentication:200.8.0									
+com.esri:arcgis-maps-kotlin-toolkit-bom:200.8.0									
+com.esri:arcgis-maps-kotlin-toolkit-compass:200.8.0									
+com.esri:arcgis-maps-kotlin-toolkit-indoors:200.8.0	
+
+
+
+2511/MAPS
+unmatche : 5 same ask tookit
+
+
+
+2511/PROGRESSTRACKER
+
+false postive : unmatche
+
+
+
+2511/QUICKACTIONBAR
+union: sap 
+
+
+2511/SECTIONHEADER
+unmatche : sap
+
+=========================================================================================================================
+======================-----------------------------------------------------------------------------------
+
+SHC-MDK_PLUG-IN_SDK_IOS
+
+2511/BARCODESCANNER
+unmatche : 1 need to ask
+
+
+2511/DOCUMENTEDITOR
+UMATCHED 2:  PACAKGES
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/c782fad0-b976-4666-9b37-d9b6e670d8ed/components?limit=100&offset=0
+
+
+2511/EDITABLEDATATABLE
+UNMATCHED : 2
+https://www.google.com/search?q=extension-EditableDataTable+2511.0.0&sca_esv=2b402440a197c26d&rlz=1C1CHBD_en-GBIN1173IN1173&sxsrf=AE3TifPmT6b6kf3cjGPX9miGxD-sNmcWmg%3A1761887252104&ei=FEQEaf-PBv6UseMPgabZ0QI&ved=0ahUKEwj_6a6-1c2QAxV-SmwGHQFTNioQ4dUDCBE&uact=5&oq=extension-EditableDataTable+2511.0.0&gs_lp=Egxnd3Mtd2l6LXNlcnAiJGV4dGVuc2lvbi1FZGl0YWJsZURhdGFUYWJsZSAyNTExLjAuMEiWEVAAWNIQcAB4AJABAJgBmwKgAZsCqgEDMi0xuAEDyAEA-AEC-AEBmAIAoAIAmAMA4gMFEgExIECSBwCgB6YCsgcAuAcAwgcAyAcA&sclient=gws-wiz-serp
+
+
+
+2511/FOUNDATION
+UNMATCHED : 3
+UNREVIEW COMPONETS ARE NOT PROPER: 4
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/7eb9d1c4-160a-418e-b987-aa8993d0ec5f/source-trees
+
+
+2511/HIERARCHYCONTROL
+UNMATCHED 3:  SMAE FOUNDATION THINGS  (sap foundation)
+UNREVIEW : 5 
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/78d73652-59f9-4cd4-8085-79185f3f0d7f/source-trees
+not review need to clarify :  all
+
+
+2511/MAPS
+unmatche : 4
+ArcGIS:200.8									
+CoreArcGIS:200.8.0									
+extension-MapFramework/2511.0.0									
+MapFramework:1.0
+
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/cac682d6-61e4-4a77-90b9-f85434d623fe/components?limit=100&offset=0
+same policy voilateion as above : The FreeType Project 2.13.3
+componets are comming from : core Arcgis
+
+
+
+
+2511/MAPAUTHENTICATOR
+same policy voilateion as above : The FreeType Project 2.13.3
+unmatche: extension-MapAuthenticator/2511.0.0									
+			MapAuthenticator:1.0
+
+
+
+
+2511/PDF
+unmatche : 2 pdf related 
+		extension-PDFFramework/2511.0.0									
+		PDFFramework:1.0
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/0d866ae9-6334-44a2-b759-816cdde90e70/source-trees
+
+
+
+
+2511/QUICKACTIONBAR
+unmatche 2:
+
+	extension-QuickActionBarFramework/2511.0.0									
+		QuickActionBarFramework:1.0
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/f5658d3c-b6ab-425d-94a1-5451129501b7/source-trees
+
+
+
+
+2511/PROGRESSTRACKER
+unmatche : 2 (progress tracker)
+	extension-ProgressTrackerFramework/2511.0.0									
+		ProgressTrackerFramework:1.0
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/36e34520-f845-430c-bc37-b69fcb714313/source-trees
+
+
+
+2511/SECTIONHEADER\
+
+unmatche: 2
+extension-SectionHeader/2511.0.0									
+SectionHeader:1.0
+
+
+https://sap.blackducksoftware.com/api/projects/b8d14e2d-e749-4e81-927f-3d25c348dd9e/versions/98c0f2ff-2aa0-4712-a458-c62eb238e1cd/source-trees
+
+
+
+
+
+
+
+
+
+
+new project back end:
+
+
+aafp-portal-frontend 1/ aafp-admin-frontend 1
+
+
+aa.foerdermittelportal.applicationportal.reusetheme	
+aa.foerdermittelportal.applicationportal.reuse	
+
+
+
+
+
+Hi All,
+ 
+We have now completed the review of the FOSS IP scan detections by Black Duck for your product versions "305254950_CSD_Auswärtiges_Amt_ePMS"
+ 
+Here is the snapshot as of 07th nov 2025 for the scan of Black Duck Project "aafp-backend 1" , "aafp-portal-frontend 1", "aafp-admin-frontend 1"
+ 
+Below the FOSS:
+https://iungo.wdf.sap.corp/ui#!result/r=ebb95567-bbbd-11f0-8d44-e17b40fc3a22
+
+CTP Scan:
+
+aafp-backend 1
+https://iungo.wdf.sap.corp/ui#!result/r=a9b300a2-b953-11f0-90b6-c5f4456ae896
+
+aafp-portal-frontend 1
+https://iungo.wdf.sap.corp/ui#!result/r=d487ad31-ba1b-11f0-8440-6d557144c5a4
+
+aafp-admin-frontend 1
+https://iungo.wdf.sap.corp/ui#!result/r=6c6627e2-ba1c-11f0-8440-e3276b6e090c
+ 
+If you have questions or need any information/clarification, please do not hesitate to ask me. There is no problem to have an additional call/meeting if there are questions/concerns.
+ 
+Please note that the remaining policy violations are either security policy violations or operational policy violations. For security policy violations, either your in-house security expert or the OS3 team colleagues can help.
+ 
+Best regards,
+yashwanth
+
+
+
+
+====================================================================================================================
+
+11/11/2025
+
+SAP BTP LATEST SDK FOR IOS 25.11
+unmatche :0
+review=  3 
+
+
+FioriUIIntCardsSDKForiOS 25.11.0
+unmatche : 1
+unrevied : 16
+
+
+SAPJouleMobileClient 25.11.0
+unmatche : 2
+unreview: 2
+
+offline-swift 25.11.0
+unmatche :1 
+unrevied 16
+
+
+
+com.sap.conn.jco.sapjco

@@ -1,0 +1,354 @@
+{
+  "name": "Docker Image Scan (BlackDuck-style)",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Docker Image Scan",
+        "formDescription": "Paste BlackDuck-style scan output (one component per line) and pick the LLM provider used for enrichment. Mirrors the existing React UI flow: parse → OSV vulns → license lookup → LLM use-case classification → aggregated report.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Provider",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  { "option": "anthropic" },
+                  { "option": "openai" },
+                  { "option": "groq" },
+                  { "option": "mistral" }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Model",
+              "placeholder": "e.g. claude-sonnet-4-5 / gpt-4o / llama-3.3-70b-versatile / mistral-large-latest",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "API Key",
+              "fieldType": "password",
+              "placeholder": "sk-ant-... / sk-proj-... / gsk_... / mistral key",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "GitHub Token (optional)",
+              "fieldType": "password",
+              "placeholder": "ghp_... — used for license fallback lookups"
+            },
+            {
+              "fieldLabel": "Ecosystem",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  { "option": "npm" },
+                  { "option": "PyPI" },
+                  { "option": "Maven" },
+                  { "option": "crates.io" },
+                  { "option": "Packagist" }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Scan Output (paste raw text)",
+              "fieldType": "textarea",
+              "placeholder": "abbrev 3.0.1 Layer 49 Direct Dependency Binary 100% Dynamically Linked ISC\nopenssl 3.1.4 Layer 12 Direct Dependency Binary 100% Dynamically Linked Apache-2.0 Medium",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Max components to enrich",
+              "placeholder": "20",
+              "requiredField": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "form-trigger",
+      "name": "Form Trigger (UI)",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [-1200, 0],
+      "webhookId": "docker-image-scan-form"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse BlackDuck-style raw scan text into structured rows.\n// Mirrors src/parser.js -> parseBlackDuckLine in the React app.\nconst input = $input.first().json;\nconst raw = input['Scan Output (paste raw text)'] || input.scan_output || '';\nconst maxRaw = input['Max components to enrich'];\nconst max = parseInt(maxRaw, 10);\nconst limit = Number.isFinite(max) && max > 0 ? max : 20;\n\nconst meta = {\n  provider: input['Provider'],\n  model: input['Model'],\n  apiKey: input['API Key'],\n  githubToken: input['GitHub Token (optional)'] || '',\n  ecosystem: (input['Ecosystem'] || 'npm').toLowerCase(),\n};\n\nfunction parseLine(line) {\n  line = (line || '').trim();\n  if (!line) return null;\n  const layerMatch = line.match(/Layer\\s+(\\d+)/i);\n  const layer = layerMatch ? parseInt(layerMatch[1], 10) : 0;\n  const pctMatch = line.match(/(\\d+)%/);\n  const matchPercent = pctMatch ? parseInt(pctMatch[1], 10) : 100;\n  const riskMatch = line.match(/\\b(Critical|High|Medium|Low)\\b/i);\n  const risk = riskMatch\n    ? riskMatch[1][0].toUpperCase() + riskMatch[1].slice(1).toLowerCase()\n    : (/Ignored/i.test(line) ? 'Ignored' : 'None');\n  const linkMatch = line.match(/(Dynamically Linked|Statically Linked|Not Linked)/i);\n  const linkType = linkMatch ? linkMatch[1] : 'Unknown';\n  const detMatch = line.match(/\\b(Binary|Source|Signature|Manual)\\b/i);\n  const detectionType = detMatch ? detMatch[1] : 'Binary';\n  const depMatch = line.match(/(Direct Dependency|Transitive|Development)/i);\n  const depType = depMatch ? depMatch[1] : 'Direct Dependency';\n  const licMatch = line.match(/(MIT|ISC|Apache-[\\d.]+(?:-or-later)?|GPL-[\\d.]+(?:-or-later|-only)?|LGPL-[\\d.]+(?:-or-later|-only)?|BSD-[\\d]+-Clause|MPL-[\\d.]+|CC0-[\\d.]+|Unlicense|CDDL-[\\d.]+|EPL-[\\d.]+)/i);\n  const license = licMatch ? licMatch[1] : 'Unknown';\n\n  const beforeLayer = line.split(/Layer\\s+\\d+/i)[0].trim();\n  const tokens = beforeLayer.split(/\\s+/);\n  let version = '?', nameParts = tokens;\n  for (let i = tokens.length - 1; i >= 0; i--) {\n    if (/^\\d[\\d.]+/.test(tokens[i])) { version = tokens[i]; nameParts = tokens.slice(0, i); break; }\n  }\n  const name = nameParts.join(' ').replace(/\\s*\\(.*?\\)/, '').trim() || beforeLayer;\n  return { name, version, layer, depType, detectionType, matchPercent, linkType, license, risk, raw: line };\n}\n\nconst rows = raw.split(/\\r?\\n/).map(parseLine).filter(Boolean).slice(0, limit);\nreturn rows.map(r => ({ json: { ...r, ...meta } }));"
+      },
+      "id": "parse-rows",
+      "name": "Parse BlackDuck Rows",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-960, 0]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "split-rows",
+      "name": "Split Rows",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [-720, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.osv.dev/v1/query",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ package: { name: $json.name, ecosystem: ($json.ecosystem === 'pypi' ? 'PyPI' : ($json.ecosystem === 'npm' ? 'npm' : ($json.ecosystem === 'maven' ? 'Maven' : ($json.ecosystem === 'crates.io' ? 'crates.io' : 'Packagist')))) }, version: ($json.version === '?' ? undefined : $json.version) }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 15000
+        }
+      },
+      "id": "osv-query",
+      "name": "OSV Vulnerability Query",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-480, -160],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://registry.npmjs.org/{{ encodeURIComponent($('Split Rows').item.json.name) }}/latest",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 10000
+        }
+      },
+      "id": "npm-license",
+      "name": "npm License Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-480, 0],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://pypi.org/pypi/{{ encodeURIComponent($('Split Rows').item.json.name) }}/json",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 10000
+        }
+      },
+      "id": "pypi-license",
+      "name": "PyPI License Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-480, 160],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge OSV + npm + pypi results back onto the row.\nconst row = $('Split Rows').item.json;\nconst osvResp = $('OSV Vulnerability Query').item.json || {};\nconst npmResp = $('npm License Lookup').item.json || {};\nconst pypiResp = $('PyPI License Lookup').item.json || {};\n\nconst osvVulns = Array.isArray(osvResp.vulns) ? osvResp.vulns.map(v => ({ id: v.id, summary: v.summary, severity: (v.database_specific && v.database_specific.severity) || (v.severity && v.severity[0] && v.severity[0].score) || 'Unknown' })) : [];\n\nlet detectedLicense = row.license;\nif (!detectedLicense || detectedLicense === 'Unknown') {\n  if (row.ecosystem === 'npm') {\n    if (typeof npmResp.license === 'string') detectedLicense = npmResp.license;\n    else if (npmResp.license && npmResp.license.type) detectedLicense = npmResp.license.type;\n  } else if (row.ecosystem === 'pypi') {\n    detectedLicense = (pypiResp.info && pypiResp.info.license) || detectedLicense;\n  }\n}\n\nreturn [{ json: { ...row, license: detectedLicense || 'Unknown', vulnerabilities: osvVulns, vuln_count: osvVulns.length } }];"
+      },
+      "id": "merge-enrichment",
+      "name": "Merge Enrichment",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-220, 0]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            { "conditions": { "options": { "caseSensitive": false, "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.provider }}", "rightValue": "anthropic", "operator": { "type": "string", "operation": "equals" } } ], "combinator": "and" }, "renameOutput": true, "outputKey": "anthropic" },
+            { "conditions": { "options": { "caseSensitive": false, "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.provider }}", "rightValue": "openai", "operator": { "type": "string", "operation": "equals" } } ], "combinator": "and" }, "renameOutput": true, "outputKey": "openai" },
+            { "conditions": { "options": { "caseSensitive": false, "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.provider }}", "rightValue": "groq", "operator": { "type": "string", "operation": "equals" } } ], "combinator": "and" }, "renameOutput": true, "outputKey": "groq" },
+            { "conditions": { "options": { "caseSensitive": false, "typeValidation": "strict" }, "conditions": [ { "leftValue": "={{ $json.provider }}", "rightValue": "mistral", "operator": { "type": "string", "operation": "equals" } } ], "combinator": "and" }, "renameOutput": true, "outputKey": "mistral" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "provider-switch",
+      "name": "Provider Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [40, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "x-api-key", "value": "={{ $json.apiKey }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.model, max_tokens: 1024, system: 'You classify open-source components by primary use-case category. Return ONLY a JSON object with keys category, summary, risk_note. Categories: \"CLI Tooling\",\"HTTP / Networking\",\"Package Management\",\"Filesystem / IO\",\"Security / Auth\",\"OS System Utility\",\"Runtime / VM\",\"Logging / Observability\",\"Testing\",\"Data / Parsing\",\"UI / Frontend\",\"Crypto\",\"Compression\",\"Build Tool\",\"Database / Storage\",\"IPC / Messaging\",\"Unknown\".', messages: [{ role: 'user', content: 'Component: ' + $json.name + ' ' + $json.version + ' (license=' + $json.license + ', risk=' + $json.risk + ', layer=' + $json.layer + ', vulns=' + $json.vuln_count + '). Return JSON only.' }] }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 30000
+        }
+      },
+      "id": "llm-anthropic",
+      "name": "LLM: Anthropic",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [280, -240],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "Authorization", "value": "=Bearer {{ $json.apiKey }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.model, max_tokens: 1024, messages: [{ role: 'system', content: 'You classify open-source components by primary use-case category. Return ONLY a JSON object with keys category, summary, risk_note.' }, { role: 'user', content: 'Component: ' + $json.name + ' ' + $json.version + ' (license=' + $json.license + ', risk=' + $json.risk + ', layer=' + $json.layer + ', vulns=' + $json.vuln_count + '). Return JSON only.' }] }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 30000
+        }
+      },
+      "id": "llm-openai",
+      "name": "LLM: OpenAI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [280, -80],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "Authorization", "value": "=Bearer {{ $json.apiKey }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.model, max_tokens: 1024, messages: [{ role: 'system', content: 'You classify open-source components by primary use-case category. Return ONLY a JSON object with keys category, summary, risk_note.' }, { role: 'user', content: 'Component: ' + $json.name + ' ' + $json.version + ' (license=' + $json.license + ', risk=' + $json.risk + ', layer=' + $json.layer + ', vulns=' + $json.vuln_count + '). Return JSON only.' }] }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 30000
+        }
+      },
+      "id": "llm-groq",
+      "name": "LLM: Groq",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [280, 80],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "Authorization", "value": "=Bearer {{ $json.apiKey }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.model, max_tokens: 1024, messages: [{ role: 'system', content: 'You classify open-source components by primary use-case category. Return ONLY a JSON object with keys category, summary, risk_note.' }, { role: 'user', content: 'Component: ' + $json.name + ' ' + $json.version + ' (license=' + $json.license + ', risk=' + $json.risk + ', layer=' + $json.layer + ', vulns=' + $json.vuln_count + '). Return JSON only.' }] }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } },
+          "timeout": 30000
+        }
+      },
+      "id": "llm-mistral",
+      "name": "LLM: Mistral",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [280, 240],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract LLM JSON output (handles both Anthropic and OpenAI-shaped responses)\n// and attach the use-case classification onto the row.\nconst row = $('Merge Enrichment').item.json;\nconst llm = $input.first().json || {};\n\nlet text = '';\nif (llm.content && Array.isArray(llm.content)) {\n  text = llm.content.map(b => b.text || '').join('');\n} else if (llm.choices && llm.choices[0] && llm.choices[0].message) {\n  text = llm.choices[0].message.content || '';\n}\n\nfunction extract(t) {\n  if (!t) return null;\n  t = t.replace(/```json/gi, '').replace(/```/g, '').trim();\n  const s = t.indexOf('{');\n  const e = t.lastIndexOf('}');\n  if (s === -1 || e === -1 || e <= s) return null;\n  try { return JSON.parse(t.slice(s, e + 1)); } catch (_) { return null; }\n}\n\nconst parsed = extract(text) || {};\nconst { apiKey, ...safeRow } = row;\nreturn [{ json: { ...safeRow, useCase: parsed.category || 'Unknown', useCaseSummary: parsed.summary || '', riskNote: parsed.risk_note || '' } }];"
+      },
+      "id": "parse-llm",
+      "name": "Parse LLM Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [540, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Aggregate the loop output into one final report.\nconst items = $input.all().map(i => i.json);\nconst totals = items.reduce((a, r) => {\n  a.total += 1;\n  a.byRisk[r.risk] = (a.byRisk[r.risk] || 0) + 1;\n  a.byLicense[r.license] = (a.byLicense[r.license] || 0) + 1;\n  a.byUseCase[r.useCase] = (a.byUseCase[r.useCase] || 0) + 1;\n  a.totalVulns += (r.vuln_count || 0);\n  return a;\n}, { total: 0, byRisk: {}, byLicense: {}, byUseCase: {}, totalVulns: 0 });\nreturn [{ json: { generatedAt: new Date().toISOString(), summary: totals, components: items } }];"
+      },
+      "id": "aggregate",
+      "name": "Aggregate Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1020, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond to Form",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1260, 0]
+    }
+  ],
+  "connections": {
+    "Form Trigger (UI)": { "main": [[{ "node": "Parse BlackDuck Rows", "type": "main", "index": 0 }]] },
+    "Parse BlackDuck Rows": { "main": [[{ "node": "Split Rows", "type": "main", "index": 0 }]] },
+    "Split Rows": {
+      "main": [
+        [{ "node": "Aggregate Report", "type": "main", "index": 0 }],
+        [
+          { "node": "OSV Vulnerability Query", "type": "main", "index": 0 },
+          { "node": "npm License Lookup", "type": "main", "index": 0 },
+          { "node": "PyPI License Lookup", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "OSV Vulnerability Query": { "main": [[{ "node": "Merge Enrichment", "type": "main", "index": 0 }]] },
+    "npm License Lookup": { "main": [[{ "node": "Merge Enrichment", "type": "main", "index": 0 }]] },
+    "PyPI License Lookup": { "main": [[{ "node": "Merge Enrichment", "type": "main", "index": 0 }]] },
+    "Merge Enrichment": { "main": [[{ "node": "Provider Switch", "type": "main", "index": 0 }]] },
+    "Provider Switch": {
+      "main": [
+        [{ "node": "LLM: Anthropic", "type": "main", "index": 0 }],
+        [{ "node": "LLM: OpenAI", "type": "main", "index": 0 }],
+        [{ "node": "LLM: Groq", "type": "main", "index": 0 }],
+        [{ "node": "LLM: Mistral", "type": "main", "index": 0 }]
+      ]
+    },
+    "LLM: Anthropic": { "main": [[{ "node": "Parse LLM Output", "type": "main", "index": 0 }]] },
+    "LLM: OpenAI":    { "main": [[{ "node": "Parse LLM Output", "type": "main", "index": 0 }]] },
+    "LLM: Groq":      { "main": [[{ "node": "Parse LLM Output", "type": "main", "index": 0 }]] },
+    "LLM: Mistral":   { "main": [[{ "node": "Parse LLM Output", "type": "main", "index": 0 }]] },
+    "Parse LLM Output": { "main": [[{ "node": "Split Rows", "type": "main", "index": 0 }]] },
+    "Aggregate Report": { "main": [[{ "node": "Respond to Form", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "meta": { "instanceId": "docker-image-scan-n8n" }
+}

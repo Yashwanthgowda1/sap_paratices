@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="OTT_BDD_Suite" verbose="1" parallel="tests" thread-count="2">
+
+    <!-- RetryListener auto-wires retry to every test — no per-class annotation needed -->
+    <listeners>
+        <listener class-name="utilities.RetryListener"/>
+    </listeners>
+
+    <!-- ==================== SMOKE ==================== -->
+    <test name="Smoke_Tests">
+        <parameter name="tag" value="@smoke"/>
+        <classes>
+            <class name="Testngrunners.SmokeTestRunner"/>
+        </classes>
+    </test>
+
+    <!-- ==================== REGRESSION ==================== -->
+    <test name="Regression_Tests">
+        <parameter name="tag" value="@regression"/>
+        <classes>
+            <class name="Testngrunners.RegressionTestRunner"/>
+        </classes>
+    </test>
+
+</suite>

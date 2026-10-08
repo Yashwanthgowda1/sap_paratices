@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.13.7 on win32)" generated="20250902 23:07:09.896" rpa="false" schemaversion="4">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" library="common_api_key" type="SETUP">
+<kw name="Create A New Session" library="create_common_data">
+<arg>new_session</arg>
+<arg>${Base_url}</arg>
+<status status="PASS" starttime="20250902 23:07:10.977" endtime="20250902 23:07:10.978"/>
+</kw>
+<status status="PASS" starttime="20250902 23:07:10.977" endtime="20250902 23:07:10.978"/>
+</kw>
+<test id="s1-t1" name="Verify response contains bookingid and booking object" line="13">
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250902 23:07:10.979" level="INFO">the random price genrate is  285 krYnyd qdpzfdsp
+{'firstname': 'qdpzfdsp', 'lastname': 'krYnyd', 'totalprice': 285, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250902 23:07:10.979" level="INFO">${data} = {'firstname': 'qdpzfdsp', 'lastname': 'krYnyd', 'totalprice': 285, 'depositpaid': False, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250902 23:07:10.979" endtime="20250902 23:07:10.979"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>new_session</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250902 23:07:10.980" level="FAIL">Non-existing index or alias 'new_session'.</msg>
+<status status="FAIL" starttime="20250902 23:07:10.980" endtime="20250902 23:07:10.984"/>
+</kw>
+<status status="FAIL" starttime="20250902 23:07:10.979" endtime="20250902 23:07:10.984"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.985" endtime="20250902 23:07:10.985"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.986" endtime="20250902 23:07:10.986"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.986" endtime="20250902 23:07:10.986"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.987" endtime="20250902 23:07:10.987"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.987" endtime="20250902 23:07:10.987"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.988" endtime="20250902 23:07:10.988"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.988" endtime="20250902 23:07:10.988"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250902 23:07:10.989" endtime="20250902 23:07:10.989"/>
+</kw>
+<tag>134445</tag>
+<status status="FAIL" starttime="20250902 23:07:10.978" endtime="20250902 23:07:10.990">Non-existing index or alias 'new_session'.</status>
+</test>
+<status status="FAIL" starttime="20250902 23:07:09.899" endtime="20250902 23:07:10.993"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">134445</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Restful-Booker API">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

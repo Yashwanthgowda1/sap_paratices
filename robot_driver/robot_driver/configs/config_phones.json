@@ -1,0 +1,366 @@
+{   "common_desired_caps" : {
+        "appActivity": "com.microsoft.skype.teams.Launcher",
+        "appPackage": "com.microsoft.skype.teams.ipphone",
+        "automationName": "UiAutomator2",
+        "platformName": "android",
+        "deviceName": "Android",
+        "newCommandTimeout": 90000,
+        "optionalIntentArguments": "--esn automation"
+    },
+    "companyPortal_Package" : "com.microsoft.windowsintune.companyportal",
+    "ngms_package" : "com.microsoft.intune.aospagent",
+    "ngms_package1": "com.azure.authenticator",
+    "authenticator_app": "companyportal",
+    "appium_starting_port" : 5100,
+    "cq_no" : "-",
+    "cp_logs_capture" : "True",
+    "gcc_flag": "disabled",
+    "capture_bug_reports_post_run": "True",
+    "device_type": "-",
+    "encryption_state": "encrypted",
+    "devices" : {
+        "device_1" : {
+             "oem": "-",
+             "model": "-",
+             "port": 5100,
+			 "admin_username": "admin",
+             "admin_password" : "admin",
+             "admin_new_password": "-",
+             "phone_screen_lock_password": "-",
+             "firmware" : "1.0",
+             "Emergency_location": "-",
+             "teams_device_capabilities": "-",
+             "teams_apk_version": "-",
+             "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "privatelinenumber":"_",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "cap_search_enabled": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "privatelinenumber":"_",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "cap_search_disabled": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "meeting_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "cq_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "hotdesk_disabled_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "intune_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-"
+            },
+             "mtra_basic_account": {
+                "username": "-",
+                "password": "-"
+            },
+            "minimum_os_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "maximum_os_account": {
+                "username": "-",
+                "password": "-"
+            },
+            "enrollment_restrict_account": {
+                "username": "-",
+                 "password": "-"
+            },
+            "cap_mtra_pro_license_with_personal_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+             "cap_personal_license_with_personal_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "CAP_License_and_CAP_sign_in_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+             },
+            "CAP_License_and_Meeting_sign_in_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "Personal_License_and_Meeting_sign_in_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "Personal_License_and_CAP_sign_in_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "Personal_License_and_User_sign_in_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "cap_basic_personal_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "Personal_Basic_Personal_Policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "CapPersonal_ProPersonal_policy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "cappersonal_standard_personalpolicy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "CAPStandard_PersonalPolicy_assigned_account": {
+                 "username": "-",
+                 "password": "-"
+            },
+            "Personalstandard_personalpolicy_assigned_account": {
+                "username": "-",
+                "password": "-"
+           },
+           "cappro_personal_policy_assigned_account": {
+                "username": "-",
+                "password": "-"
+           },
+           "personalpremium_personalpolicy_assigned_account": {
+                "username": "-",
+                "password": "-"
+           },
+          "cappremium_personalpolicy_assigned_account": {
+               "username": "-",
+               "password": "-"
+           },
+          "cappersonalpremium_personalpolicy_assigned_account": {
+               "username": "-",
+               "password": "-"
+           },
+          "standard_resource_assigned_account": {
+               "username": "-",
+               "password": "-"
+           },
+          "CAP_License_and_User_sign_in_policy_assigned_account": {
+              "username": "-",
+              "password": "-"
+           },
+          "aadp_license_account": {
+              "username": "-",
+              "password": "-"
+          },
+          "Personal_License_and_MTR_Pro_License_with_Personal_policy_assigned_account": {
+              "username": "-",
+              "password": "-"
+          }
+        },
+        "device_2" : {
+            "oem": "-",
+            "model": "-",
+            "port": 5200,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "delegate_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "gcp_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+              "cap_search_enabled": {
+              "username": "-",
+              "password": "-",
+              "displayname": "-",
+              "phonenumber": "-",
+              "pstndisplay": "-",
+              "extension": "-"
+            }
+        },
+        "device_3" : {
+            "oem": "-",
+            "model": "-",
+            "port": 5300,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "cq_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "delegate_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+        },
+        "device_4" : {
+              "oem": "-",
+              "model": "-",
+              "port": 5400,
+              "admin_username": "admin",
+              "admin_password" : "admin",
+              "firmware": "1.0",
+              "desired_caps": {
+                  "alias": "app1",
+                  "udid": "-"
+              },
+              "user": {
+                  "username": "-",
+                  "password": "-",
+                  "displayname": "-",
+                  "phonenumber": "-",
+                  "pstndisplay": "-",
+                  "extension": "-"
+              }
+        }
+	},
+    "browsers": {
+        "tdc_1": {
+          "user": {
+            "username": "-",
+            "password": "-",
+            "displayname": "-",
+            "phonenumber": "-",
+            "pstndisplay": "-",
+            "extension": "-"
+            },
+          "device1user": {
+            "username": "-",
+            "password": "-",
+            "displayname": "-",
+            "phonenumber": "-",
+            "pstndisplay": "-",
+            "extension": "-"
+            },
+          "device2user": {
+            "username": "-",
+            "password": "-",
+            "displayname": "-",
+            "phonenumber": "-",
+            "pstndisplay": "-",
+            "extension": "-",
+            "rtt_text_data":"welcome to automation"
+          } 
+        }
+      },
+    "adb_disabled_device": {
+        "udid": "-"
+    },
+    "meetings" : {
+        "name": "test_meeting",
+        "participant": "-",
+        "location": "-"
+    },
+    "Report_feedback" : {
+        "title": "-",
+        "bug_details": "-"
+    },
+    "hot_desk" : {
+        "invalid_username" : "-"
+    },
+    "set_status_message" : {
+        "message" : "-"
+    },
+    "user" : {
+        "invalid_username" : "-",
+        "invalid_domain" : "-",
+        "invalid_password" : "-"
+    },
+	"incorrect_number": {
+        "phonenumber": "11234567890"
+    }
+}

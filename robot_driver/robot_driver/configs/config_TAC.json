@@ -1,0 +1,83 @@
+{
+    "common_desired_caps": {
+        "appActivity": "com.microsoft.skype.teams.Launcher",
+        "appPackage": "com.microsoft.skype.teams.ipphone",
+        "automationName": "UiAutomator2",
+        "platformName": "android",
+        "deviceName": "Android",
+        "newCommandTimeout": 90000,
+        "appium:optionalIntentArguments": "-esn automation"
+    },
+    "companyPortal_Package" : "com.microsoft.windowsintune.companyportal",
+    "ngms_package" : "com.microsoft.intune.aospagent",
+    "ngms_package1": "com.azure.authenticator",
+    "authenticator_app": "companyportal",
+    "appium_starting_port": 4510,
+    "cp_logs_capture": "false",
+	"capture_bug_reports_post_run": "false",
+    "device_type": "-",
+    "encryption_state": "-",
+    "chrome_driver_path" : "-",
+    "devices": {
+        "device_1": {
+            "oem": "-",
+            "model": "-",
+            "port": 4510,
+            "firmware": "1.0",
+            "admin_username": "-",
+			"admin_password": "-",
+            "desired_caps": {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+				"privatelinenumber": "-",
+                "pstndisplay": "-",
+                "extension": ""
+            }
+        },
+		"device_2": {
+            "oem": "-",
+            "model": "-",
+            "port": 4520,
+            "firmware": "1.0",
+            "admin_username": "-",
+            "admin_password": "-",
+            "desired_caps": {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+		}
+    },
+    "browsers": {
+        "tdc_1": {
+            "chrome_options": "--incognito",
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-"
+            },
+			"admin_tac_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-"
+            }
+        }
+    }
+}

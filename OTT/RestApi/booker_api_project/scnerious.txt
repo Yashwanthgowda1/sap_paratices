@@ -1,0 +1,135 @@
+API Testing Scenarios & Test Cases (Detailed)
+________________________________________
+Part A: Restful-Booker API
+1. Create Booking
+•	Precondition: API is reachable
+•	Steps:
+1.	Send POST /booking with valid JSON body (firstname, lastname, totalprice, depositpaid, dates).
+2.	Verify status = 200.
+3.	Verify response contains bookingid and booking object.
+4.	Validate schema.
+•	Variations:
+o	Create booking with different price ranges (min, max).
+o	Create booking with additional needs like "Breakfast", "Lunch".
+•	Expected: Booking created with correct data.
+________________________________________
+2. Get Booking By ID
+•	Precondition: A booking exists.
+•	Steps:
+1.	Use GET /booking/{id} with an existing booking ID.
+2.	Verify status = 200.
+3.	Verify response contains all fields (firstname, lastname, etc.).
+•	Negative: Use invalid ID → expect 404.
+________________________________________
+3. Get Booking List
+•	Steps:
+1.	Use GET /booking.
+2.	Verify status = 200.
+3.	Response should be a list of booking IDs.
+•	Filter scenarios:
+o	GET /booking?firstname=Jim → expect only filtered records.
+________________________________________
+4. Auth & Token
+•	Steps:
+1.	Send POST /auth with valid admin creds.
+2.	Verify status = 200 and token returned.
+•	Negative:
+o	Wrong username/password → 401.
+________________________________________
+5. Update Booking (PUT)
+•	Precondition: Booking exists & token available.
+•	Steps:
+1.	Use PUT /booking/{id} with full JSON payload.
+2.	Verify status = 200.
+3.	Verify updated fields reflect new values.
+•	Negative: Without token → expect 403.
+________________________________________
+6. Partial Update (PATCH)
+•	Precondition: Booking exists.
+•	Steps:
+1.	Send PATCH /booking/{id} with only firstname or lastname.
+2.	Verify status = 200.
+3.	Verify only patched field changed.
+•	Negative: Patch invalid fields → API ignores or error.
+________________________________________
+7. Delete Booking
+•	Precondition: Booking exists.
+•	Steps:
+1.	Send DELETE /booking/{id} with valid token.
+2.	Verify status = 201.
+3.	Re-check with GET → 404.
+•	Negative: Delete with invalid token → 403.
+________________________________________
+8. Negative & Edge Cases
+•	Create with:
+
+o	Missing mandatory field (firstname) → expect 400/500.
+o	Wrong datatype (totalprice as string) → expect error.
+o	Extra unexpected field → ignored or error.
+o	Empty request body → 400.
+________________________________________
+9. Performance Checks
+•	Measure response time for:
+o	Create Booking < 1s
+o	Get Booking < 500ms
+
+
+
+==================================================================================
+Practice 2:
+
+
+
+
+Part B: GitHub API
+1. Get Public Repo Metadata
+•	Steps:
+1.	GET /repos/octocat/Hello-World.
+2.	Verify status = 200.
+3.	Verify repo contains keys: id, name, owner, stargazers_count.
+________________________________________
+2. List User Repos
+•	Steps:
+1.	GET /users/octocat/repos.
+2.	Verify status = 200.
+3.	Verify response is array with repo objects.
+________________________________________
+3. Repo Not Found
+•	Steps:
+1.	GET /repos/nope/nope.
+2.	Verify status = 404.
+________________________________________
+4. Rate Limit Check
+•	Steps:
+1.	GET /rate_limit.
+2.	Verify status = 200.
+3.	Validate structure: rate.limit, rate.remaining.
+________________________________________
+5. Create Repository (Auth Required)
+•	Precondition: GitHub token available.
+•	Steps:
+1.	POST /user/repos with payload {name, private=false, auto_init=true}.
+2.	Verify status = 201.
+3.	Verify repo name matches.
+•	Negative: Without token → 401.
+________________________________________
+6. Create Issue in Repo
+•	Precondition: Repo exists.
+•	Steps:
+1.	POST /repos/{user}/{repo}/issues with {title, body}.
+2.	Verify status = 201.
+3.	Verify issue number created.
+•	Negative: Invalid repo → 404.
+________________________________________
+7. Close Issue
+•	Steps:
+1.	PATCH /repos/{user}/{repo}/issues/{number} with {state: closed}.
+2.	Verify status = 200.
+3.	Verify issue state = "closed".
+________________________________________
+8. Delete Repository
+•	Steps:
+1.	DELETE /repos/{user}/{repo} with token.
+2.	Verify status = 204.
+3.	Try GET → expect 404.
+

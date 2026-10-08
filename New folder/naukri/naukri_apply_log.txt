@@ -1,0 +1,311 @@
+[2026-09-24 00:34:02] ============================================================
+[2026-09-24 00:34:02] [START] Naukri Auto-Apply
+[2026-09-24 00:34:03] [*] Logging in...
+[2026-09-24 00:34:13] [+] Logged in.
+[2026-09-24 00:34:13] [*] Searching: 'SDET'
+[2026-09-24 00:34:19]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 00:34:22]     21 jobs on page.
+[2026-09-24 00:34:45]   [+] Applied (1/10): https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 00:35:10]   [+] Applied (2/10): https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 00:35:34]   [+] Applied (3/10): https://www.naukri.com/job-listings-sdet-billow-people-services-bengaluru-0-to-3-years-080926026484
+[2026-09-24 00:35:59]   [+] Applied (4/10): https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 00:36:24]   [+] Applied (5/10): https://www.naukri.com/job-listings-sdet-engineer-voice-club-bengaluru-1-to-3-years-040926026402
+[2026-09-24 00:36:48]   [+] Applied (6/10): https://www.naukri.com/job-listings-sdet-software-engineer-c-bean-hr-consulting-gurugram-bengaluru-2-to-6-years-030926012095
+[2026-09-24 00:37:13]   [+] Applied (7/10): https://www.naukri.com/job-listings-software-development-test-engineer-vlink-bengaluru-4-to-6-years-170926018078
+[2026-09-24 00:37:37]   [+] Applied (8/10): https://www.naukri.com/job-listings-sdet-java-cognizant-hyderabad-chennai-bengaluru-8-to-12-years-220926049978
+[2026-09-24 00:37:50]   [+] Applied (9/10): https://www.naukri.com/job-listings-automation-test-engineer-sdet-tata-consultancy-services-hyderabad-chennai-bengaluru-5-to-10-years-210926015266
+[2026-09-24 00:38:15]   [+] Applied (10/10): https://www.naukri.com/job-listings-automation-python-sdet-with-ai-epam-systems-hyderabad-pune-bengaluru-6-to-11-years-210926029065
+[2026-09-24 00:38:16]   [=] 'SDET': applied 10
+[2026-09-24 00:38:16] [*] Searching: 'Automation Testing'
+[2026-09-24 00:38:21]     URL: https://www.naukri.com/automation-testing-jobs-in-bengaluru
+[2026-09-24 00:38:25]     21 jobs on page.
+[2026-09-24 00:38:48]   [+] Applied (1/10): https://www.naukri.com/job-listings-quality-assurance-and-automation-engineer-rigbot-solutions-private-limited-bengaluru-0-to-4-years-110126006821
+[2026-09-24 00:39:13]   [+] Applied (2/10): https://www.naukri.com/job-listings-senior-automation-engineer-tech-mahindra-bengaluru-5-to-10-years-030926033285
+[2026-09-24 00:39:38]   [+] Applied (3/10): https://www.naukri.com/job-listings-automation-test-engineer-cirruslabs-hyderabad-mangaluru-bengaluru-4-to-8-years-170926018728
+[2026-09-24 00:40:02]   [+] Applied (4/10): https://www.naukri.com/job-listings-api-automation-tester-hexaware-technologies-chennai-bengaluru-4-to-9-years-230926030294
+[2026-09-24 00:40:27]   [+] Applied (5/10): https://www.naukri.com/job-listings-automation-test-engineer-hcltech-bengaluru-3-to-6-years-030926014457
+[2026-09-24 00:40:52]   [+] Applied (6/10): https://www.naukri.com/job-listings-automation-tester-python-robot-framework-itc-infotech-bengaluru-4-to-9-years-170926020937
+[2026-09-24 00:41:16]   [+] Applied (7/10): https://www.naukri.com/job-listings-automation-test-engineer-cgi-hyderabad-chennai-bengaluru-4-to-8-years-170926015326
+[2026-09-24 00:41:41]   [+] Applied (8/10): https://www.naukri.com/job-listings-mobile-test-automation-bangalor-f2f-interview-26-september-saturday-human-capital-consultancy-services-bengaluru-6-to-10-years-220926022005
+[2026-09-24 00:42:05]   [+] Applied (9/10): https://www.naukri.com/job-listings-playwright-automation-tester-hexaware-technologies-bangalore-rural-bengaluru-4-to-8-years-210926026769
+[2026-09-24 00:42:30]   [+] Applied (10/10): https://www.naukri.com/job-listings-senior-data-test-automation-engineer-alegeus-bengaluru-4-to-8-years-240926000038
+[2026-09-24 00:42:31]   [=] 'Automation Testing': applied 10
+[2026-09-24 00:42:31] [*] Searching: 'Test Automation Engineer'
+[2026-09-24 00:42:36]     URL: https://www.naukri.com/test-automation-engineer-jobs-in-bengaluru
+[2026-09-24 00:42:40]     21 jobs on page.
+[2026-09-24 00:43:03]   [+] Applied (1/10): https://www.naukri.com/job-listings-automation-test-engineer-2-to-5years-infosys-hyderabad-chennai-bengaluru-2-to-5-years-160926007350
+[2026-09-24 00:43:28]   [+] Applied (2/10): https://www.naukri.com/job-listings-automation-test-engineer-python-selenium-playwright-ai-testing-kezan-consulting-gurugram-bengaluru-4-to-8-years-220926021980
+[2026-09-24 00:43:41]     [!] No Apply button — skipping.
+[2026-09-24 00:43:41]   [-] Skipped: https://www.naukri.com/job-listings-playwright-automation-test-engineer-hexaware-technologies-chennai-bengaluru-4-to-9-years-230926022105
+[2026-09-24 00:44:05]   [+] Applied (3/10): https://www.naukri.com/job-listings-playwright-automation-test-engineer-sc-larsen-toubro-l-t-bengaluru-2-to-6-years-220926005681
+[2026-09-24 00:44:29]   [+] Applied (4/10): https://www.naukri.com/job-listings-automation-test-engineer-sunovaa-tech-bengaluru-4-to-8-years-210926001191
+[2026-09-24 00:44:54]   [+] Applied (5/10): https://www.naukri.com/job-listings-automation-test-engineer-cirruslabs-hyderabad-mangaluru-bengaluru-4-to-8-years-170926018728
+[2026-09-24 00:45:19]   [+] Applied (6/10): https://www.naukri.com/job-listings-automation-test-engineer-cgi-hyderabad-chennai-bengaluru-4-to-8-years-170926015326
+[2026-09-24 00:45:43]   [+] Applied (7/10): https://www.naukri.com/job-listings-automation-test-engineer-3-10-yrs-pan-india-infosys-hyderabad-chennai-bengaluru-3-to-8-years-230726032385
+[2026-09-24 00:46:08]   [+] Applied (8/10): https://www.naukri.com/job-listings-automation-test-engineer-trigent-software-bengaluru-3-to-5-years-180926011856
+[2026-09-24 00:46:32]   [+] Applied (9/10): https://www.naukri.com/job-listings-automation-test-engineer-2-to-3years-infosys-hyderabad-chennai-bengaluru-2-to-3-years-310826005978
+[2026-09-24 00:46:57]   [+] Applied (10/10): https://www.naukri.com/job-listings-automation-test-engineer-infy-2026-infosys-hyderabad-pune-bengaluru-3-to-8-years-180926036538
+[2026-09-24 00:46:58]   [=] 'Test Automation Engineer': applied 10
+[2026-09-24 00:46:58] [*] Searching: 'QA Automation'
+[2026-09-24 00:47:03]     URL: https://www.naukri.com/qa-automation-jobs-in-bengaluru
+[2026-09-24 00:47:06]     21 jobs on page.
+[2026-09-24 00:47:29]   [+] Applied (1/10): https://www.naukri.com/job-listings-ai-qa-automation-engineer-alegeus-bengaluru-2-to-6-years-240926000009
+[2026-09-24 00:47:54]   [+] Applied (2/10): https://www.naukri.com/job-listings-qa-automation-tester-virtusa-bengaluru-3-to-9-years-190926018469
+[2026-09-24 00:48:18]   [+] Applied (3/10): https://www.naukri.com/job-listings-qa-automation-testing-engineer-alegeus-technologies-bengaluru-2-to-5-years-230926926614
+[2026-09-24 00:48:43]   [+] Applied (4/10): https://www.naukri.com/job-listings-qa-automation-engineer-camera-testing-domain-larsen-toubro-l-t-bengaluru-3-to-8-years-070926002347
+[2026-09-24 00:49:07]   [+] Applied (5/10): https://www.naukri.com/job-listings-qa-automation-engineer-sdet-healthcare-payer-facets-qnxt-edi-ascendion-engineering-hyderabad-chennai-bengaluru-7-to-12-years-160926015176
+[2026-09-24 00:49:32]   [+] Applied (6/10): https://www.naukri.com/job-listings-urgent-hiring-for-qa-automation-engineer-at-impetus-technologies-impetus-technologies-gurugram-chennai-bengaluru-5-to-9-years-090926015514
+[2026-09-24 00:49:57]   [+] Applied (7/10): https://www.naukri.com/job-listings-urgent-hiring-for-qa-automation-engineer-at-impetus-technologies-impetus-technologies-gurugram-chennai-bengaluru-5-to-9-years-080926035334
+[2026-09-24 00:50:22]   [+] Applied (8/10): https://www.naukri.com/job-listings-qa-automation-engineer-sunovaa-tech-bengaluru-4-to-7-years-250826025193
+[2026-09-24 00:50:34]   [+] Applied (9/10): https://www.naukri.com/job-listings-qa-automation-engineer-e4-softwares-bengaluru-3-to-7-years-230726500310
+[2026-09-24 00:50:46]   [+] Applied (10/10): https://www.naukri.com/job-listings-openings-for-qa-automation-in-bangalore-ontime-global-bengaluru-3-to-8-years-020926011078
+[2026-09-24 00:50:47]   [=] 'QA Automation': applied 10
+[2026-09-24 00:50:47] [DONE] Total applied: 40
+[2026-09-24 11:35:03] ============================================================
+[2026-09-24 11:35:03] [START] Naukri Auto-Apply
+[2026-09-24 11:35:07] [*] Logging in...
+[2026-09-24 11:35:19] [+] Logged in.
+[2026-09-24 11:35:19] [*] Searching: 'SDET'
+[2026-09-24 11:35:24]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 11:35:28]     21 jobs on page.
+[2026-09-24 11:35:53]   [+] Applied (1/10): https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 11:36:17]   [+] Applied (2/10): https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 11:36:42]   [+] Applied (3/10): https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 11:37:07]   [+] Applied (4/10): https://www.naukri.com/job-listings-sdet-engineer-voice-club-bengaluru-1-to-3-years-040926026402
+[2026-09-24 11:37:31]   [+] Applied (5/10): https://www.naukri.com/job-listings-sdet-billow-people-services-bengaluru-0-to-3-years-080926026484
+[2026-09-24 11:37:56]   [+] Applied (6/10): https://www.naukri.com/job-listings-sdet-software-engineer-c-bean-hr-consulting-gurugram-bengaluru-2-to-6-years-030926012095
+[2026-09-24 11:38:20]   [+] Applied (7/10): https://www.naukri.com/job-listings-software-development-test-engineer-vlink-bengaluru-4-to-6-years-170926018078
+[2026-09-24 11:38:45]   [+] Applied (8/10): https://www.naukri.com/job-listings-sdet-java-cognizant-hyderabad-chennai-bengaluru-8-to-12-years-220926049978
+[2026-09-24 11:38:58]   [+] Applied (9/10): https://www.naukri.com/job-listings-software-development-engineer-in-test-stockx-bengaluru-4-to-9-years-170926501273
+[2026-09-24 11:39:23]   [+] Applied (10/10): https://www.naukri.com/job-listings-sdet-python-akshaya-business-it-solutions-bengaluru-6-to-11-years-170926024618
+[2026-09-24 11:39:24]   [=] 'SDET': applied 10
+[2026-09-24 11:39:24] [*] Searching: 'Automation Testing'
+[2026-09-24 11:39:29]     URL: https://www.naukri.com/automation-testing-jobs-in-bengaluru
+[2026-09-24 11:39:33]     21 jobs on page.
+[2026-09-24 11:39:56]   [+] Applied (1/10): https://www.naukri.com/job-listings-quality-assurance-and-automation-engineer-rigbot-solutions-private-limited-bengaluru-0-to-4-years-110126006821
+[2026-09-24 11:40:21]   [+] Applied (2/10): https://www.naukri.com/job-listings-senior-automation-engineer-tech-mahindra-bengaluru-5-to-10-years-030926033285
+[2026-09-24 11:40:45]   [+] Applied (3/10): https://www.naukri.com/job-listings-automation-test-engineer-cirruslabs-hyderabad-mangaluru-bengaluru-4-to-8-years-170926018728
+[2026-09-24 11:41:10]   [+] Applied (4/10): https://www.naukri.com/job-listings-automation-test-engineer-hcltech-bengaluru-3-to-6-years-030926014457
+[2026-09-24 11:41:34]   [+] Applied (5/10): https://www.naukri.com/job-listings-api-automation-tester-hexaware-technologies-chennai-bengaluru-4-to-9-years-230926030294
+[2026-09-24 11:41:59]   [+] Applied (6/10): https://www.naukri.com/job-listings-automation-tester-python-robot-framework-itc-infotech-bengaluru-4-to-9-years-170926020937
+[2026-09-24 11:42:24]   [+] Applied (7/10): https://www.naukri.com/job-listings-automation-test-engineer-cgi-hyderabad-chennai-bengaluru-4-to-8-years-170926015326
+[2026-09-24 11:42:48]   [+] Applied (8/10): https://www.naukri.com/job-listings-mobile-test-automation-bangalor-f2f-interview-26-september-saturday-human-capital-consultancy-services-bengaluru-6-to-10-years-220926022005
+[2026-09-24 11:43:01]   [+] Applied (9/10): https://www.naukri.com/job-listings-automation-test-engineer-erudio-technologies-hyderabad-chennai-bengaluru-4-to-9-years-280826008971
+[2026-09-24 11:43:26]   [+] Applied (10/10): https://www.naukri.com/job-listings-automation-test-analyst-2nd-3rd-april-virtual-interview-pan-india-tata-consultancy-services-bengaluru-delhi-ncr-india-4-to-9-years-260326037460
+[2026-09-24 11:43:27]   [=] 'Automation Testing': applied 10
+[2026-09-24 11:43:27] [*] Searching: 'Test Automation Engineer'
+[2026-09-24 11:43:32]     URL: https://www.naukri.com/test-automation-engineer-jobs-in-bengaluru
+[2026-09-24 11:43:36]     21 jobs on page.
+[2026-09-24 11:43:59]   [+] Applied (1/10): https://www.naukri.com/job-listings-automation-test-engineer-saraca-solutions-bengaluru-3-to-8-years-240926015308
+[2026-09-24 11:44:23]   [+] Applied (2/10): https://www.naukri.com/job-listings-automation-test-engineer-python-selenium-playwright-ai-testing-kezan-consulting-gurugram-bengaluru-4-to-8-years-220926021980
+[2026-09-24 11:44:36]     [!] No Apply button — skipping.
+[2026-09-24 11:44:36]   [-] Skipped: https://www.naukri.com/job-listings-playwright-automation-test-engineer-hexaware-technologies-chennai-bengaluru-4-to-9-years-230926022105
+[2026-09-24 11:45:00]   [+] Applied (3/10): https://www.naukri.com/job-listings-playwright-automation-test-engineer-sc-larsen-toubro-l-t-bengaluru-2-to-6-years-220926005681
+[2026-09-24 11:45:26]   [+] Applied (4/10): https://www.naukri.com/job-listings-automation-test-engineer-cirruslabs-hyderabad-mangaluru-bengaluru-4-to-8-years-170926018728
+[2026-09-24 11:45:50]   [+] Applied (5/10): https://www.naukri.com/job-listings-automation-test-engineer-cgi-hyderabad-chennai-bengaluru-4-to-8-years-170926015326
+[2026-09-24 11:46:15]   [+] Applied (6/10): https://www.naukri.com/job-listings-automation-test-engineer-3-10-yrs-pan-india-infosys-hyderabad-chennai-bengaluru-3-to-8-years-230726032385
+[2026-09-24 11:46:39]   [+] Applied (7/10): https://www.naukri.com/job-listings-automation-test-engineer-trigent-software-bengaluru-3-to-5-years-180926011856
+[2026-09-24 11:47:03]   [+] Applied (8/10): https://www.naukri.com/job-listings-automation-test-engineer-2-to-3years-infosys-hyderabad-chennai-bengaluru-2-to-3-years-310826005978
+[2026-09-24 11:47:27]   [+] Applied (9/10): https://www.naukri.com/job-listings-automation-test-engineer-infy-2026-infosys-hyderabad-pune-bengaluru-3-to-8-years-180926036538
+[2026-09-24 11:47:52]   [+] Applied (10/10): https://www.naukri.com/job-listings-automation-test-engineer-infy-26-infosys-noida-hyderabad-bengaluru-3-to-8-years-180926036343
+[2026-09-24 11:47:53]   [=] 'Test Automation Engineer': applied 10
+[2026-09-24 11:47:53] [*] Searching: 'QA Automation'
+[2026-09-24 11:47:58]     URL: https://www.naukri.com/qa-automation-jobs-in-bengaluru
+[2026-09-24 11:48:02]     21 jobs on page.
+[2026-09-24 11:48:25]   [+] Applied (1/10): https://www.naukri.com/job-listings-ai-qa-automation-engineer-alegeus-bengaluru-2-to-6-years-240926000009
+[2026-09-24 11:48:50]   [+] Applied (2/10): https://www.naukri.com/job-listings-qa-automation-tester-virtusa-bengaluru-3-to-9-years-190926018469
+[2026-09-24 11:49:14]   [+] Applied (3/10): https://www.naukri.com/job-listings-qa-automation-testing-engineer-alegeus-technologies-bengaluru-2-to-5-years-230926926614
+[2026-09-24 11:49:39]   [+] Applied (4/10): https://www.naukri.com/job-listings-qa-automation-engineer-camera-testing-domain-larsen-toubro-l-t-bengaluru-3-to-8-years-070926002347
+[2026-09-24 11:50:04]   [+] Applied (5/10): https://www.naukri.com/job-listings-qa-automation-engineer-sdet-healthcare-payer-facets-qnxt-edi-ascendion-engineering-hyderabad-chennai-bengaluru-7-to-12-years-160926015176
+[2026-09-24 11:50:29]   [+] Applied (6/10): https://www.naukri.com/job-listings-urgent-hiring-for-qa-automation-engineer-at-impetus-technologies-impetus-technologies-gurugram-chennai-bengaluru-5-to-9-years-090926015514
+[2026-09-24 11:50:53]   [+] Applied (7/10): https://www.naukri.com/job-listings-qa-automation-engineer-sunovaa-tech-bengaluru-4-to-7-years-250826025193
+[2026-09-24 11:51:05]   [+] Applied (8/10): https://www.naukri.com/job-listings-qa-automation-engineer-dentsu-inc-bengaluru-2-to-3-years-010926500575
+[2026-09-24 11:51:17]   [+] Applied (9/10): https://www.naukri.com/job-listings-qa-automation-professional-squircle-it-consulting-services-pvt-ltd-bengaluru-4-to-6-years-210126501040
+[2026-09-24 11:51:29]   [+] Applied (10/10): https://www.naukri.com/job-listings-qa-automation-with-ai-exp-mountrootz-consulting-private-limited-bengaluru-4-to-6-years-010426503551
+[2026-09-24 11:51:30]   [=] 'QA Automation': applied 10
+[2026-09-24 11:51:30] [DONE] Total applied: 40
+[2026-09-24 21:38:29]     [heal] could not find 'nonexistent' after 3s
+[2026-09-24 21:38:34]     [heal] attempt 1 failed for 'intercepted_btn': ElementClickInterceptedException
+[2026-09-24 21:38:34]     [screenshot] C:\python_study\New folder\naukri\screenshots\213834_heal_fail_intercepted_btn_1.png
+[2026-09-24 21:38:35]     [heal] 'intercepted_btn' clicked on attempt 2
+[2026-09-24 21:38:35] [*] Logging in...
+[2026-09-24 21:38:42] [+] Logged in.
+[2026-09-24 21:38:46]     [screenshot] C:\python_study\New folder\naukri\screenshots\213846_suite_error.png
+[2026-09-24 21:41:31]     [heal] could not find 'nonexistent' after 3s
+[2026-09-24 21:41:36]     [heal] attempt 1 failed for 'intercepted_btn': ElementClickInterceptedException
+[2026-09-24 21:41:36]     [screenshot] C:\python_study\New folder\naukri\screenshots\214136_heal_fail_intercepted_btn_1.png
+[2026-09-24 21:41:37]     [heal] 'intercepted_btn' clicked on attempt 2
+[2026-09-24 21:41:37] [*] Logging in...
+[2026-09-24 21:41:45] [+] Logged in.
+[2026-09-24 21:45:08] ============================================================
+[2026-09-24 21:45:08] [START] Naukri Auto-Apply
+[2026-09-24 21:45:09] [*] Logging in...
+[2026-09-24 21:45:19] [+] Logged in.
+[2026-09-24 21:45:19] [*] Searching: 'SDET'
+[2026-09-24 21:45:25]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 21:45:28]     21 jobs on page.
+[2026-09-24 21:46:00]     [screenshot] C:\python_study\New folder\naukri\screenshots\214600_verify_failed.png
+[2026-09-24 21:46:00]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:46:00]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 21:46:14]     [verify] Apply button gone, no errors — apply likely succeeded.
+[2026-09-24 21:46:14]   [+] Applied (1/10): https://www.naukri.com/job-listings-sdet-mobile-automation-moolya-bengaluru-3-to-5-years-240926501942
+[2026-09-24 21:46:25]     [verify] Apply button gone, no errors — apply likely succeeded.
+[2026-09-24 21:46:25]   [+] Applied (2/10): https://www.naukri.com/job-listings-sdet-coindcx-bengaluru-1-to-6-years-240926501292
+[2026-09-24 21:46:36]     [verify] Apply button gone, no errors — apply likely succeeded.
+[2026-09-24 21:46:36]   [+] Applied (3/10): https://www.naukri.com/job-listings-sdet-engineer-zapcom-bengaluru-2-to-6-years-240926017742
+[2026-09-24 21:47:10]     [screenshot] C:\python_study\New folder\naukri\screenshots\214709_verify_failed.png
+[2026-09-24 21:47:10]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:47:10]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 21:47:42]     [screenshot] C:\python_study\New folder\naukri\screenshots\214742_verify_failed.png
+[2026-09-24 21:47:42]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:47:42]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 21:48:15]     [screenshot] C:\python_study\New folder\naukri\screenshots\214815_verify_failed.png
+[2026-09-24 21:48:15]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:48:15]   [-] Skipped: https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 21:48:48]     [screenshot] C:\python_study\New folder\naukri\screenshots\214848_verify_failed.png
+[2026-09-24 21:48:48]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:48:48]   [-] Skipped: https://www.naukri.com/job-listings-sdet-engineer-voice-club-bengaluru-1-to-3-years-040926026402
+[2026-09-24 21:49:21]     [screenshot] C:\python_study\New folder\naukri\screenshots\214921_verify_failed.png
+[2026-09-24 21:49:21]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:49:21]   [-] Skipped: https://www.naukri.com/job-listings-sdet-billow-people-services-bengaluru-0-to-3-years-080926026484
+[2026-09-24 21:49:54]     [screenshot] C:\python_study\New folder\naukri\screenshots\214954_verify_failed.png
+[2026-09-24 21:49:54]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:49:54]   [-] Skipped: https://www.naukri.com/job-listings-sdet-software-engineer-c-bean-hr-consulting-gurugram-bengaluru-2-to-6-years-030926012095
+[2026-09-24 21:50:27]     [screenshot] C:\python_study\New folder\naukri\screenshots\215027_verify_failed.png
+[2026-09-24 21:50:27]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:50:27]   [-] Skipped: https://www.naukri.com/job-listings-software-development-test-engineer-vlink-bengaluru-4-to-6-years-170926018078
+[2026-09-24 21:51:52] ============================================================
+[2026-09-24 21:51:52] [START] Naukri Auto-Apply
+[2026-09-24 21:51:53] [*] Logging in...
+[2026-09-24 21:52:06] [+] Logged in.
+[2026-09-24 21:52:06] [*] Searching: 'SDET'
+[2026-09-24 21:52:12]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 21:52:15]     21 jobs on page.
+[2026-09-24 21:52:27]     [heal] No modal after attempt 1 — re-clicking Apply
+[2026-09-24 21:52:31]     [heal] No modal after attempt 2 — re-clicking Apply
+[2026-09-24 21:52:35]     [screenshot] C:\python_study\New folder\naukri\screenshots\215235_no_modal_after_click.png
+[2026-09-24 21:52:35]     [!] Apply clicked but no modal appeared — skipping.
+[2026-09-24 21:52:35]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 21:52:48]     [heal] No modal after attempt 1 — re-clicking Apply
+[2026-09-24 21:52:52]     [heal] No modal after attempt 2 — re-clicking Apply
+[2026-09-24 21:52:56]     [screenshot] C:\python_study\New folder\naukri\screenshots\215256_no_modal_after_click.png
+[2026-09-24 21:52:56]     [!] Apply clicked but no modal appeared — skipping.
+[2026-09-24 21:52:56]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 21:53:09]     [heal] No modal after attempt 1 — re-clicking Apply
+[2026-09-24 21:53:13]     [heal] No modal after attempt 2 — re-clicking Apply
+[2026-09-24 21:53:17]     [screenshot] C:\python_study\New folder\naukri\screenshots\215317_no_modal_after_click.png
+[2026-09-24 21:53:17]     [!] Apply clicked but no modal appeared — skipping.
+[2026-09-24 21:53:17]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 21:53:25]     [*] Modal opened on attempt 1
+[2026-09-24 21:53:52]     [screenshot] C:\python_study\New folder\naukri\screenshots\215352_verify_failed.png
+[2026-09-24 21:53:52]     [verify] Could not confirm application — marking as NOT applied.
+[2026-09-24 21:53:52]   [-] Skipped: https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 21:54:43] ============================================================
+[2026-09-24 21:54:43] [START] Naukri Auto-Apply
+[2026-09-24 21:54:44] [*] Logging in...
+[2026-09-24 21:54:53] [+] Logged in.
+[2026-09-24 21:54:53] [*] Searching: 'SDET'
+[2026-09-24 21:54:59]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 21:55:03]     21 jobs on page.
+[2026-09-24 21:55:16]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:55:21]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:55:27]     [*] No modal — checking page reload for direct-apply confirmation...
+[2026-09-24 21:55:32]     [screenshot] C:\python_study\New folder\naukri\screenshots\215531_no_modal_after_click.png
+[2026-09-24 21:55:32]     [!] No modal and no confirmation after reload — skipping.
+[2026-09-24 21:55:32]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 21:55:45]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:55:50]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:55:56]     [*] No modal — checking page reload for direct-apply confirmation...
+[2026-09-24 21:56:01]     [screenshot] C:\python_study\New folder\naukri\screenshots\215600_no_modal_after_click.png
+[2026-09-24 21:56:01]     [!] No modal and no confirmation after reload — skipping.
+[2026-09-24 21:56:01]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 21:56:14]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:56:19]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:56:25]     [*] No modal — checking page reload for direct-apply confirmation...
+[2026-09-24 21:56:30]     [screenshot] C:\python_study\New folder\naukri\screenshots\215630_no_modal_after_click.png
+[2026-09-24 21:56:30]     [!] No modal and no confirmation after reload — skipping.
+[2026-09-24 21:56:30]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 21:56:43]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:56:49]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:56:54]     [*] No modal — checking page reload for direct-apply confirmation...
+[2026-09-24 21:56:59]     [screenshot] C:\python_study\New folder\naukri\screenshots\215659_no_modal_after_click.png
+[2026-09-24 21:56:59]     [!] No modal and no confirmation after reload — skipping.
+[2026-09-24 21:56:59]   [-] Skipped: https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 21:58:12] ============================================================
+[2026-09-24 21:58:12] [START] Naukri Auto-Apply
+[2026-09-24 21:58:14] [*] Logging in...
+[2026-09-24 21:58:24] [+] Logged in.
+[2026-09-24 21:58:24] [*] Searching: 'SDET'
+[2026-09-24 21:58:31]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 21:58:34]     21 jobs on page.
+[2026-09-24 21:58:47]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:58:53]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:58:58]     [screenshot] C:\python_study\New folder\naukri\screenshots\215858_no_modal_after_click.png
+[2026-09-24 21:58:58]     [!] No modal/confirmation after clicking Apply — skipping.
+[2026-09-24 21:58:58]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 21:59:12]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:59:18]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:59:24]     [screenshot] C:\python_study\New folder\naukri\screenshots\215923_no_modal_after_click.png
+[2026-09-24 21:59:24]     [!] No modal/confirmation after clicking Apply — skipping.
+[2026-09-24 21:59:24]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 21:59:37]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 21:59:43]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 21:59:49]     [screenshot] C:\python_study\New folder\naukri\screenshots\215948_no_modal_after_click.png
+[2026-09-24 21:59:49]     [!] No modal/confirmation after clicking Apply — skipping.
+[2026-09-24 21:59:49]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 22:00:02]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 22:00:08]     [heal] No modal/confirmation after attempt 2 — re-clicking
+[2026-09-24 22:00:14]     [screenshot] C:\python_study\New folder\naukri\screenshots\220013_no_modal_after_click.png
+[2026-09-24 22:00:14]     [!] No modal/confirmation after clicking Apply — skipping.
+[2026-09-24 22:00:14]   [-] Skipped: https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231
+[2026-09-24 22:00:27]     [heal] No modal/confirmation after attempt 1 — re-clicking
+[2026-09-24 22:04:23] ============================================================
+[2026-09-24 22:04:23] [START] Naukri Auto-Apply
+[2026-09-24 22:04:25] [*] Logging in...
+[2026-09-24 22:04:35] [+] Logged in.
+[2026-09-24 22:04:35] [*] Searching: 'SDET'
+[2026-09-24 22:04:41]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 22:04:45]     21 jobs on page.
+[2026-09-24 22:04:58]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:05:05]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:05:12]     [screenshot] C:\python_study\New folder\naukri\screenshots\220512_no_confirmation_after_click.png
+[2026-09-24 22:05:12]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:05:12]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 22:05:26]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:05:33]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:05:40]     [screenshot] C:\python_study\New folder\naukri\screenshots\220539_no_confirmation_after_click.png
+[2026-09-24 22:05:40]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:05:40]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 22:05:54]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:06:01]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:06:08]     [screenshot] C:\python_study\New folder\naukri\screenshots\220607_no_confirmation_after_click.png
+[2026-09-24 22:06:08]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:06:08]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 22:06:22]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:07:03] ============================================================
+[2026-09-24 22:07:03] [START] Naukri Auto-Apply
+[2026-09-24 22:07:04] [*] Logging in...
+[2026-09-24 22:07:16] [+] Logged in.
+[2026-09-24 22:07:16] [*] Searching: 'SDET'
+[2026-09-24 22:07:22]     URL: https://www.naukri.com/sdet-jobs-in-bengaluru
+[2026-09-24 22:07:29]     21 jobs on page.
+[2026-09-24 22:07:42]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:07:49]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:07:57]     [screenshot] C:\python_study\New folder\naukri\screenshots\220756_no_confirmation_after_click.png
+[2026-09-24 22:07:57]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:07:57]   [-] Skipped: https://www.naukri.com/job-listings-senior-sdet-engineer-alegeus-technologies-bengaluru-3-to-6-years-240926932933
+[2026-09-24 22:08:11]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:08:18]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:08:25]     [screenshot] C:\python_study\New folder\naukri\screenshots\220825_no_confirmation_after_click.png
+[2026-09-24 22:08:25]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:08:25]   [-] Skipped: https://www.naukri.com/job-listings-sdet-vlink-bengaluru-4-to-6-years-170926019454
+[2026-09-24 22:08:39]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:08:46]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:08:53]     [screenshot] C:\python_study\New folder\naukri\screenshots\220853_no_confirmation_after_click.png
+[2026-09-24 22:08:53]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:08:53]   [-] Skipped: https://www.naukri.com/job-listings-c-sdet-naukri-assist-hyderabad-pune-bengaluru-3-to-9-years-170926025266
+[2026-09-24 22:09:07]     [heal] No confirmation after attempt 1 — re-clicking
+[2026-09-24 22:09:14]     [heal] No confirmation after attempt 2 — re-clicking
+[2026-09-24 22:09:21]     [screenshot] C:\python_study\New folder\naukri\screenshots\220921_no_confirmation_after_click.png
+[2026-09-24 22:09:21]     [!] No confirmation after clicking Apply — skipping.
+[2026-09-24 22:09:21]   [-] Skipped: https://www.naukri.com/job-listings-ai-testing-sdet-ey-kolkata-chennai-bengaluru-4-to-10-years-090926033231

@@ -1,0 +1,120 @@
+{   "common_desired_caps" : {
+        "appActivity": "com.hotstar.MainActivity",
+        "appPackage": "in.startv.hotstar",
+        "automationName": "UiAutomator2",
+        "platformName": "android",
+        "deviceName": "emulator-5554",
+        "newCommandTimeout": 90000,
+        "optionalIntentArguments": "--esn automation"
+    },
+    "devices" : {
+        "device_1" : {
+            "oem": "-",
+            "model": "-",
+            "port": 4723,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "port":"5300",
+                "privatelinenumber":"_",
+                "pstndisplay": "-",
+                "extension": "-"
+            } 
+        },
+        "device_2" : {
+            "oem": "-",
+            "model": "-",
+            "port": 5200,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "delegate_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+        },
+        "device_3" : {
+            "oem": "-",
+            "model": "-",
+            "port": 5300,
+            "admin_username": "admin",
+            "admin_password" : "admin",
+            "firmware" : "1.0",
+            "desired_caps" : {
+                "alias": "app1",
+                "udid": "-"
+            },
+            "user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            },
+            "pstn_user": {
+                "username": "-",
+                "password": "-",
+                "displayname": "-",
+                "phonenumber": "-",
+                "pstndisplay": "-",
+                "extension": "-"
+            }
+        }
+	},
+    "browsers": {
+        "web_site":"https://www.hotstar.com/in/home",
+        "device1user": {
+            "username": "-",
+            "password": "-",
+            "displayname": "-",
+            "phonenumber": "6363****75",
+            "pstndisplay": "-",
+            "extension": "-"
+            },
+        "device2user":{
+            "username": "-",
+            "password": "-",
+            "displayname": "-",
+            "phonenumber": "-",
+            "pstndisplay": "-",
+            "extension": "-",
+            "rtt_text_data":"welcome to automation"
+          } 
+        }
+}
+      
+    

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.13.7 on win32)" generated="20250902 23:21:26.773" rpa="false" schemaversion="4">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" library="common_api_key" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${alias}</arg>
+<arg>${Base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250902 23:21:27.541" level="INFO">Creating Session using : alias=new_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250902 23:21:27.541" endtime="20250902 23:21:27.541"/>
+</kw>
+<status status="PASS" starttime="20250902 23:21:27.540" endtime="20250902 23:21:27.541"/>
+</kw>
+<test id="s1-t1" name="Verify response contains bookingid and booking object" line="13">
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250902 23:21:27.542" level="INFO">the random price genrate is  359 zfsXov jcvziytd
+{'firstname': 'jcvziytd', 'lastname': 'zfsXov', 'totalprice': 359, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250902 23:21:27.542" level="INFO">${data} = {'firstname': 'jcvziytd', 'lastname': 'zfsXov', 'totalprice': 359, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250902 23:21:27.542" endtime="20250902 23:21:27.542"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250902 23:21:29.288" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
+ path_url=/booking 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '188', 'Content-Type': 'application/json'} 
+ body=b'{"firstname": "jcvziytd", "lastname": "zfsXov", "totalprice": 359, "depositpaid": true, "bookingdates": {"checkin": "2025-09-03", "checkout": "2025-09-05"}, "additionalneeds": "Breakfast"}' 
+ </msg>
+<msg timestamp="20250902 23:21:29.288" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
+ status=200, reason=OK 
+ headers={'Content-Length': '202', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Tue, 02 Sep 2025 17:51:28 GMT', 'Etag': 'W/"ca-bdLH9GpyKAPqPBvodf0LICETfyw"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=rkdok70B2baMhhkiQ9Ev9dbBz%2F5LOuR%2FlyyRu4DujKk%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1756835488"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=rkdok70B2baMhhkiQ9Ev9dbBz%2F5LOuR%2FlyyRu4DujKk%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1756835488"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body={"bookingid":191,"booking":{"firstname":"jcvziytd","lastname":"zfsXov","totalprice":359,"depositpaid":true,"bookingdates":{"checkin":"2025-09-03","checkout":"2025-09-05"},"additionalneeds":"Breakfast"}} 
+ </msg>
+<msg timestamp="20250902 23:21:29.288" level="INFO">C:\python_study\OTT\RestApi\venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20250902 23:21:29.301" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250902 23:21:27.542" endtime="20250902 23:21:29.302"/>
+</kw>
+<msg timestamp="20250902 23:21:29.302" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20250902 23:21:29.302" level="INFO">${python_random_genrated} = {'firstname': 'jcvziytd', 'lastname': 'zfsXov', 'totalprice': 359, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250902 23:21:27.542" endtime="20250902 23:21:29.302"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${complete_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250902 23:21:29.304" level="INFO">${complete_data} = {'bookingid': 191, 'booking': {'firstname': 'jcvziytd', 'lastname': 'zfsXov', 'totalprice': 359, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalne...</msg>
+<status status="PASS" starttime="20250902 23:21:29.303" endtime="20250902 23:21:29.304"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${complete_data}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20250902 23:21:29.305" endtime="20250902 23:21:29.305"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250902 23:21:29.306" level="INFO">191</msg>
+<status status="PASS" starttime="20250902 23:21:29.306" endtime="20250902 23:21:29.306"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20250902 23:21:29.307" endtime="20250902 23:21:29.308"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${complete_data["bookingid"]}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20250902 23:21:29.317" endtime="20250902 23:21:29.318"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${booking_object}</var>
+<arg>${complete_data["booking"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250902 23:21:29.322" level="INFO">${booking_object} = {'firstname': 'jcvziytd', 'lastname': 'zfsXov', 'totalprice': 359, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-03', 'checkout': '2025-09-05'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250902 23:21:29.319" endtime="20250902 23:21:29.322"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${booking_object['firstname']}</arg>
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20250902 23:21:29.325" endtime="20250902 23:21:29.326"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${python_random_genrated['firstname']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250902 23:21:29.327" level="INFO">jcvziytd</msg>
+<status status="PASS" starttime="20250902 23:21:29.326" endtime="20250902 23:21:29.327"/>
+</kw>
+<tag>134445</tag>
+<status status="PASS" starttime="20250902 23:21:27.541" endtime="20250902 23:21:29.327"/>
+</test>
+<status status="PASS" starttime="20250902 23:21:26.777" endtime="20250902 23:21:29.335"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">134445</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Restful-Booker API">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

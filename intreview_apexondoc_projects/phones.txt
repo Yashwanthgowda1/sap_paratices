@@ -1,0 +1,83 @@
+walkitoke 
+conceltic
+
+
+28/29/30  related suties
+hide meeting  
+ create some where is hidding some where is not hinding
+ 
+ 
+monday canery and check create group and edit getting the error message
+
+
+navigate to home page in comeback to home sreen 
+but here it is not proper it reamins in meeting pages
+
+
+ftp tage exculde :not touch 
+
+
+
+presence i need to add avialbe in suite tear down 
+resilence and actmodf
+
+
+
+: [People] To verify added contact appears in specific group's contacts list on people screen
+in new cannery app the issue is not reflacting
+
+
+413262 : used old code so failing occure
+cross check:
+SLA] Verify Add your speed dial numbers message should display with retry button when Favorites tab does not have any content
+like : we no need to add the deligatye but account which we used tjere is a delegate options
+
+favorte add :
+speed dial option not able to get to add the user
+
+after re run the favorate user in contact and related test cases are get passing [4]
+
+
+C30 : [People] Speed dial contacts from people tab should reflect under favorites section in calls tab
+adding group related contact_title not getting
+
+
+
+Auto dismiss
+related things  'dismiss_rate_toggle_btn'
+
+
+416820
+402700
+
+ Join Meeting    device=device_1,device_2,device_3     meeting=test_meeting1
+    Verify meeting state    device_list=device_1,device_2,device_3   state=connected
+    increase volume and verify    device=device_1    volume_stream=calling
+    decrease volume and verify    device=device_1    volume_stream=calling
+
+309804
+
+318782
+
+319074
+306933
+318782
+robot -d results/tests_3_tests_cases -i 306933 -i 318782 -i 319074 tests
+robot -d results/test_meetingincressanddescress -i 306933 -i 
+416820  "continue from tommarow on wards
+
+robot -d results/test_meeting_auto12  -i 318782 -i 306933 tests
+
+
+/following-sibling::android.widget.Button
+
+
+
+"call_participant_info_button": {
+    "xpath": "//android.view.ViewGroup[contains(@index,'1')]/android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/info_icon']",
+    "xpath1": "//android.widget.Button[@resource-id='com.microsoft.skype.teams.ipphone:id/call_item_container']/following-sibling::[@resource-id='com.microsoft.skype.teams.ipphone:id/info_icon']"
+  },
+  
+  
+  
+  powershell -Command "adb -s 10.50.10.95 shell dumpsys audio | Select-String -Pattern 'STREAM_VOICE_CALL' -Context 0,5 | Select-Object -First 1"

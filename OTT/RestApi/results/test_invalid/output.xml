@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.13.7 on win32)" generated="20250903 15:28:57.159" rpa="false" schemaversion="4">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" library="common_api_key" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${alias}</arg>
+<arg>${Base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250903 15:28:58.826" level="INFO">Creating Session using : alias=new_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250903 15:28:58.826" endtime="20250903 15:28:58.826"/>
+</kw>
+<status status="PASS" starttime="20250903 15:28:58.825" endtime="20250903 15:28:58.826"/>
+</kw>
+<test id="s1-t1" name="get booking details by invaild values" line="68">
+<kw name="post session so get the booking id">
+<var>${create_id}</var>
+<kw name="create a new booking" library="create_booking">
+<var>${response}</var>
+<var>${python_random_genrated}</var>
+<kw name="Crete A Booking Random" library="create_common_data">
+<var>${data}</var>
+<msg timestamp="20250903 15:28:58.828" level="INFO">the random price genrate is  478 ikfrBC tdsusyxk
+{'firstname': 'tdsusyxk', 'lastname': 'ikfrBC', 'totalprice': 478, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-04', 'checkout': '2025-09-06'}, 'additionalneeds': 'Breakfast'}</msg>
+<msg timestamp="20250903 15:28:58.828" level="INFO">${data} = {'firstname': 'tdsusyxk', 'lastname': 'ikfrBC', 'totalprice': 478, 'depositpaid': True, 'bookingdates': {'checkin': '2025-09-04', 'checkout': '2025-09-06'}, 'additionalneeds': 'Breakfast'}</msg>
+<status status="PASS" starttime="20250903 15:28:58.828" endtime="20250903 15:28:58.828"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/booking</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250903 15:30:25.626" level="FAIL">ReadTimeout: HTTPSConnectionPool(host='restful-booker.herokuapp.com', port=443): Read timed out. (read timeout=None)</msg>
+<status status="FAIL" starttime="20250903 15:28:58.828" endtime="20250903 15:30:25.996"/>
+</kw>
+<status status="FAIL" starttime="20250903 15:28:58.828" endtime="20250903 15:30:25.997"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>bookingid</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20250903 15:30:25.997" endtime="20250903 15:30:25.997"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.json()['bookingid']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" starttime="20250903 15:30:25.997" endtime="20250903 15:30:25.997"/>
+</kw>
+<status status="FAIL" starttime="20250903 15:28:58.827" endtime="20250903 15:30:25.997"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${invalid_id}</var>
+<arg>${create_id}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20250903 15:30:25.998" endtime="20250903 15:30:25.998"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${invalid_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20250903 15:30:25.998" endtime="20250903 15:30:25.998"/>
+</kw>
+<kw name="get the seesion" library="create_booking">
+<var>${response}</var>
+<arg>${invalid_id}</arg>
+<status status="NOT RUN" starttime="20250903 15:30:25.999" endtime="20250903 15:30:25.999"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20250903 15:30:25.999" endtime="20250903 15:30:25.999"/>
+</kw>
+<tag>45362</tag>
+<status status="FAIL" starttime="20250903 15:28:58.827" endtime="20250903 15:30:26.000">ReadTimeout: HTTPSConnectionPool(host='restful-booker.herokuapp.com', port=443): Read timed out. (read timeout=None)</status>
+</test>
+<status status="FAIL" starttime="20250903 15:28:57.162" endtime="20250903 15:30:26.001"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">45362</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Restful-Booker API">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

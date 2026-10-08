@@ -1,0 +1,6 @@
+hot desk : check the account for that enter suit is failed
+
+ 'get_user_signed_in_on_device' ("device_1:cap_search_enabled") failed:
+ 
+ intent:
+ same issue

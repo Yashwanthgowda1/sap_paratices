@@ -1,0 +1,185 @@
+ipphones :"
+
+
+
+
+461406
+320313
+
+
+def dail_phone_number_from_hard_keys(device, to_device, text=None):
+    phone_number = common.device_phonenumber(to_device)
+    common.dial_hardkeys(device, phone_number)
+    verify_daipad_text_box(device, text)
+    common.wait_for_element(device, calls_dict, "Hang_up_button")
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+swap call:
+fixes not happen
+
+
+blind transfer related to phone number 
+
+
+
+Verify Call State device_list=device_1,device_2, state=Disconnected 
+still connect after the disconnected
+
+
+
+. Verify Calls Tab When Signed In With Cap Account device=device_1
+
+Start / End / Elapsed:	20250107 08:24:03.794 / 20250107 08:24:43.426 / 00:00:39.632
+08:24:43.424	INFO	device_1: found 'calls_tab[id]' on attempt 1 of 30
+device_1: clicked on 'calls_tab'
+device_1: variable 'dump_on_wait_fail' is 'None'	
+08:24:43.426	FAIL	device_1: could not find 'lcp_dial_tab' after 30 attempts
+
+
+[Settings Consistency] Meeting settings should not be shown for LCP with CAP or advanced CAP  
+passwprd wrong
+admin_password_field_ac
+3 test cases realted tio cap
+
+[Call forward on home screen] :
+call fowrad toogle on home screen issue
+5 test cases
+
+
+
+C3: [Call Park] DUT user able to resume the call, when call is parked for second time.   
+isssue still connected 
+
+Verify Call State device_list=device_1,device_2, state=Disconnected
+Start / End / Elapsed:	20250107 09:15:37.497 / 20250107 09:16:10.620 / 00:00:33.123
+09:16:10.618	INFO	Devices : ['device_1', 'device_2'], State: Disconnected
+device :  device_1
+device_1: element is not present: 'call_bar'
+device_1: element is not present: 'hang_up_btn'
+device_1: 'loveland' is_norden: False
+device_1: element is not present: 'Close_Call_Rating'
+device_1: element is not present: 'Close_Call_Rating'
+device_1: element is not present: 'tool_bar'
+device_1: element is not present: 'user_profile_picture'
+device_1: element is present: 'home_bar_icon[id1]'
+device :  device_2
+device_2: element is not present: 'call_bar'
+device_2: element is present: 'hang_up_btn[id1]'	
+09:16:10.620	FAIL	device_2: User is still in call
+
+452527
+452501 :re run
+
+
+Advance Calling CAP accounts2 
+ could not find 'device_setting_scroll_view_ac' after 30 attempts
+ 
+ C1: [Calls] Adding contacts to favorites
+ not getting the username to add faviourt
+
+
+[Calls] DUT user's call log in the recent tab gets synced after receiving a missed call from TDC user
+excepted one username getting another
+
+
+
+favorites_more_options :not found
+
+
+in favort page deligate not found issue:
+2 test cases failed
+250107 12:20:22.335 / 20250107 12:21:45.073 / 00:01:22.738
+12:21:45.071	INFO	device_2: element is not present: 'favorites_without_contacts_grid'
+device_2: element is not present: 'people_you_support'
+device_2: variable 'dump_on_wait_fail' is 'None'	
+12:21:45.073	FAIL	device_2: could not find 'your_delegates' after 30 attempts
+
+some test case setup failed because refersh code not get
+
+
+[Calls] Verify Back button, tap to return to call and End button during P2P call. 
+child therad error 
+setup not done
+
+
+in voice mail afetr play pause button not getting
+device_1: element is not present: 'pause_voicemail'
+device_1: variable 'dump_on_wait_fail' is 'None'	
+13:55:23.354	FAIL	device_1: could not find 'voicemail_play_button
+
+
+device_1 entered text 023456789 in dialpad and expected text is 0123456789  "some contectd ecpected issue wrong
+
+call disconnectd also stiull in call
+
+7 Call Forward Delegate
+suite failed
+
+29 Privateline number
+suite failing because child thread error 
+
+simula ring suit failed
+child thread error
+
+hid (rediial buuton, speaker , ahnde set realted failure 
+8 test cases : 
+app crashed : child thread error
+
+
+
+call view and multipal banner
+ suit failed
+ 
+ ADB access to be disabled by default
+ 243655
+ key error ::adb_disabled_device
+ 
+ call merge failure 
+ like swap etc
+ 
+ 
+ auto dial edit phone number issue
+ 
+ 
+"I am working on it and once it's fixed will re-raise the PR ASAP
+
+
+
+ Emergency Location  "assing the emerrgency locations"
+ 
+ 
+ 
+ 
+ String= "aabacda"
+ k=3
+ ---
+ 
+ arr=[1,2,3,4,5,7,8,4,9]
+target=12
+def values(arr)
+list_index=[]
+map={}
+left=0
+right=len(arr)-1
+    if(len(arr)==0):
+        return None
+    while left>right:
+        sum=arr[left]+arr[right]
+        if sum==target:
+            return list_index[left, right]
+        elif sum>target:
+            right--
+        else:
+            left++
+    return 0
+	
+	
+gopi.sampath@tessolve.com

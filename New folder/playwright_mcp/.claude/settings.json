@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "cwd": "c:\\python_study\\New folder\\playwright_mcp"
+    }
+  }
+}

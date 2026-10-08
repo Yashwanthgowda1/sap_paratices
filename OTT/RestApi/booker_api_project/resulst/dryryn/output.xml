@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-02T23:45:28.429464" rpa="false" schemaversion="5">
+<suite id="s1" name="Restful-Booker API" source="C:\python_study\OTT\RestApi\booker_api_project\tests\Restful-Booker_API.robot">
+<kw name="create a session" owner="common_api_key" type="SETUP">
+<kw name="Create Session">
+<msg time="2025-09-02T23:45:28.498445" level="FAIL">No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</msg>
+<arg>${alias}</arg>
+<arg>${Base_url}</arg>
+<status status="FAIL" start="2025-09-02T23:45:28.498404" elapsed="0.000096">No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</kw>
+<status status="FAIL" start="2025-09-02T23:45:28.497340" elapsed="0.001255">No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</kw>
+<test id="s1-t1" name="Create Booking" line="7">
+<tag>132345</tag>
+<status status="FAIL" start="2025-09-02T23:45:28.498657" elapsed="0.000453">Parent suite setup failed:
+No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</test>
+<test id="s1-t2" name="Verify response contains bookingid and booking object" line="13">
+<tag>134445</tag>
+<status status="FAIL" start="2025-09-02T23:45:28.499772" elapsed="0.000500">Parent suite setup failed:
+No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</test>
+<test id="s1-t3" name="Validate of schema structure" line="29">
+<tag>653461</tag>
+<status status="FAIL" start="2025-09-02T23:45:28.500872" elapsed="0.000317">Parent suite setup failed:
+No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</test>
+<status status="FAIL" start="2025-09-02T23:45:28.430918" elapsed="0.071016">Suite setup failed:
+No keyword with name 'Create Session' found. Did you mean:
+    common_api_key.create a session</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">132345</stat>
+<stat pass="0" fail="1" skip="0">134445</stat>
+<stat pass="0" fail="1" skip="0">653461</stat>
+</tag>
+<suite>
+<stat name="Restful-Booker API" id="s1" pass="0" fail="3" skip="0">Restful-Booker API</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-09-02T23:45:28.456941" level="WARN">Error in file 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_booking.robot' on line 10: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-02T23:45:28.481836" level="ERROR">Error in file 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\common_api_key.robot' on line 3: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\python_study\OTT\Robot_frework_OTT
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+<msg time="2025-09-02T23:45:28.483146" level="ERROR">Error in file 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\common_api_key.robot' on line 4: Importing library 'JSONSchemaLibrary' failed: ModuleNotFoundError: No module named 'JSONSchemaLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\python_study\OTT\Robot_frework_OTT
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+<msg time="2025-09-02T23:45:28.487410" level="ERROR">Error in file 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\common_api_key.robot' on line 5: Importing library 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_common_data.py' failed: ModuleNotFoundError: No module named 'requests'
+Traceback (most recent call last):
+  File "C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_common_data.py", line 4, in &lt;module&gt;
+    import requests
+PYTHONPATH:
+  C:\python_study\OTT\RestApi\booker_api_project\resources\keywords
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\python_study\OTT\Robot_frework_OTT
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+<msg time="2025-09-02T23:45:28.490335" level="ERROR">Error in file 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_booking.robot' on line 3: Importing library 'C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_common_data.py' failed: ModuleNotFoundError: No module named 'requests'
+Traceback (most recent call last):
+  File "C:\python_study\OTT\RestApi\booker_api_project\resources\keywords\create_common_data.py", line 4, in &lt;module&gt;
+    import requests
+PYTHONPATH:
+  C:\python_study\OTT\RestApi\booker_api_project\resources\keywords
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\python_study\OTT\Robot_frework_OTT
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313
+  C:\Users\C5403671\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+</errors>
+</robot>

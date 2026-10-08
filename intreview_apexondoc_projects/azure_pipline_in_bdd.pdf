@@ -1,0 +1,73 @@
+yml way of write the script
+
+trigger--> 	in which brach need to trigger-
+
+
+pool ---->   which acutal backend project runs , it is like virtual machine image (actual backend runnung will happen)
+
+setps:
+		1. task
+		2.input 
+		 a. verison
+		 etc
+ script  -----> which make upgrade and download the requiremnts for the project
+ 
+ 
+ 
+ classic verion of script 
+ ----------------------------------------------------------
+ 
+ create a yml less script 
+ 
+	1)  agent ---> which type of envrnamnet required can create
+	
+	
+	2) agentjob  --> option at left of window ---> craete a task
+	
+			a. in which the run the code ex. python or selenium etc
+			b. where need to run add the tsak by  ex. cmd or power shell etc
+					1. script option giv the file name for run the program
+
+
+copy the yml and import and export the yml file 
+---------------------------------------------------------
+1. ex  as job task created after g inside there is 2 dot option if click on that it will get the export yml or json. dowload it and copy paste for new piple line creation
+
+
+agent
+-------
+when  your build or deployment runs.  the syetm begin one or more job present the agent is computing the infrastructure with installed agent softwre that runs one job at a time
+ for ex: my job is run the 'ubunetu agent' which microsoft host
+ 
+  types of agent :
+   1. microsoft host agent : which host by microsoft and manged by them
+   2. self host agentt : selft host and manged on your vms
+   2. Azure vm scale set agent : same to self host agent but we can sacle the set or auto scale based on the deemend
+   
+ 
+under the task where add the agents :
+ there is a option called 'manage' where i can the enable and disable the agnet
+ 
+ 
+ approval
+ ----------
+ 
+ some set of validate are made before deployment to production envrnamnet
+ it is commony made by the manual approval 
+ 
+ 
+ artifact 
+ ---------
+ 
+ it is package or file which avialbe for susequent task 
+ ex: .net, python, maven , npm etc
+ 
+ 
+ deployment group :  option present in azure 
+ where agent are installed and another group of agent like agent pool
+ 
+ 
+ 
+ 
+ 419789
+ 308426

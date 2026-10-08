@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "type": {"type": "string"},
+          "thumbnail": {"type": "string"},
+          "description": {"type": "string"}
+        }
+      }
+    },
+    "total": {"type": "integer"},
+    "page": {"type": "integer"}
+  }
+}

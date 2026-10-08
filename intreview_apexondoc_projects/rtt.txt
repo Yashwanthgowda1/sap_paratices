@@ -1,0 +1,4 @@
+ common.wait_for_and_click(device, calendar_dict, "call_more_options")
+ 
+ turn_on_rtt_for_this_message_DUT\
+ enable_real_time_text_in

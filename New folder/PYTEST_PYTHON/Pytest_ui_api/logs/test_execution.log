@@ -1,0 +1,1014 @@
+2026-08-08 23:19:07 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-08-08 23:19:08 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;176bc917&#46;1786211348&#46;1e5fd55f
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;176bc917&#46;1786211348&#46;1e5fd55f</P>
+</BODY></HTML>
+
+2026-08-08 23:19:10 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-08-08 23:19:11 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;556bc917&#46;1786211350&#46;27f03e97
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;556bc917&#46;1786211350&#46;27f03e97</P>
+</BODY></HTML>
+
+2026-08-08 23:19:11 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'WrongPass999!'}
+2026-08-08 23:19:11 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;1c6bc917&#46;1786211351&#46;3ab4c952
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;1c6bc917&#46;1786211351&#46;3ab4c952</P>
+</BODY></HTML>
+
+2026-08-08 23:19:13 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'WrongPass999!'}
+2026-08-08 23:19:14 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2f6bc917&#46;1786211353&#46;39388c80
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2f6bc917&#46;1786211353&#46;39388c80</P>
+</BODY></HTML>
+
+2026-08-08 23:19:14 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'password': 'Test@1234'}
+2026-08-08 23:19:14 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3c6bc917&#46;1786211354&#46;4560fd28
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3c6bc917&#46;1786211354&#46;4560fd28</P>
+</BODY></HTML>
+
+2026-08-08 23:19:16 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'password': 'Test@1234'}
+2026-08-08 23:19:17 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;346bc917&#46;1786211356&#46;26b9d484
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;346bc917&#46;1786211356&#46;26b9d484</P>
+</BODY></HTML>
+
+2026-08-08 23:19:17 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-08-08 23:19:17 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;66bc917&#46;1786211357&#46;1f73d0b9
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;66bc917&#46;1786211357&#46;1f73d0b9</P>
+</BODY></HTML>
+
+2026-08-08 23:19:17 [INFO] utilities.api_client: GET https://api.hotstar.com/user/profile | params=None
+2026-08-08 23:19:18 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;4c6bc917&#46;1786211357&#46;39cb8625
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;4c6bc917&#46;1786211357&#46;39cb8625</P>
+</BODY></HTML>
+
+2026-08-08 23:19:20 [INFO] utilities.api_client: GET https://api.hotstar.com/user/profile | params=None
+2026-08-08 23:19:20 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;4c6bc917&#46;1786211360&#46;39cb862b
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;4c6bc917&#46;1786211360&#46;39cb862b</P>
+</BODY></HTML>
+
+2026-08-08 23:19:20 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': ''}
+2026-08-08 23:19:20 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;4c6bc917&#46;1786211360&#46;39cb8de7
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;4c6bc917&#46;1786211360&#46;39cb8de7</P>
+</BODY></HTML>
+
+2026-08-08 23:19:22 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': ''}
+2026-08-08 23:19:22 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;176bc917&#46;1786211362&#46;1e5ffedf
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;176bc917&#46;1786211362&#46;1e5ffedf</P>
+</BODY></HTML>
+
+2026-08-08 23:19:22 [INFO] utilities.api_client: POST https://api.hotstar.com/auth/login | payload={'email': 'testuser@example.com', 'password': 'Test@1234'}
+2026-08-08 23:19:23 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;4c6bc917&#46;1786211363&#46;39cb994b
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;4c6bc917&#46;1786211363&#46;39cb994b</P>
+</BODY></HTML>
+
+2026-08-08 23:19:23 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params=None
+2026-08-08 23:19:24 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211363&#46;3c5e03ff
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211363&#46;3c5e03ff</P>
+</BODY></HTML>
+
+2026-08-08 23:19:26 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params=None
+2026-08-08 23:19:26 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211365&#46;3c5e0408
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211365&#46;3c5e0408</P>
+</BODY></HTML>
+
+2026-08-08 23:19:26 [INFO] utilities.api_client: GET https://api.hotstar.com/content/1260006268 | params=None
+2026-08-08 23:19:26 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211365&#46;3c5e0c3b
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211365&#46;3c5e0c3b</P>
+</BODY></HTML>
+
+2026-08-08 23:19:28 [INFO] utilities.api_client: GET https://api.hotstar.com/content/1260006268 | params=None
+2026-08-08 23:19:28 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211368&#46;3c5e0c8d
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211368&#46;3c5e0c8d</P>
+</BODY></HTML>
+
+2026-08-08 23:19:28 [INFO] utilities.api_client: GET https://api.hotstar.com/content/NONEXISTENT_ID_9999 | params=None
+2026-08-08 23:19:28 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211368&#46;3c5e14ec
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211368&#46;3c5e14ec</P>
+</BODY></HTML>
+
+2026-08-08 23:19:30 [INFO] utilities.api_client: GET https://api.hotstar.com/content/NONEXISTENT_ID_9999 | params=None
+2026-08-08 23:19:30 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211370&#46;3c5e154c
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211370&#46;3c5e154c</P>
+</BODY></HTML>
+
+2026-08-08 23:19:30 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'cricket'}
+2026-08-08 23:19:30 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211370&#46;3c5e1e16
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211370&#46;3c5e1e16</P>
+</BODY></HTML>
+
+2026-08-08 23:19:32 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'cricket'}
+2026-08-08 23:19:32 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211372&#46;3c5e1e65
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211372&#46;3c5e1e65</P>
+</BODY></HTML>
+
+2026-08-08 23:19:32 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'genre': 'drama'}
+2026-08-08 23:19:32 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211372&#46;3c5e2701
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211372&#46;3c5e2701</P>
+</BODY></HTML>
+
+2026-08-08 23:19:34 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'genre': 'drama'}
+2026-08-08 23:19:34 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211374&#46;3c5e2746
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211374&#46;3c5e2746</P>
+</BODY></HTML>
+
+2026-08-08 23:19:34 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'language': 'hindi'}
+2026-08-08 23:19:34 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211374&#46;3c5e2f50
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211374&#46;3c5e2f50</P>
+</BODY></HTML>
+
+2026-08-08 23:19:36 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'language': 'hindi'}
+2026-08-08 23:19:37 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211376&#46;3c5e2f99
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211376&#46;3c5e2f99</P>
+</BODY></HTML>
+
+2026-08-08 23:19:37 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'page': 1, 'limit': 5}
+2026-08-08 23:19:37 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211376&#46;3c5e37d3
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211376&#46;3c5e37d3</P>
+</BODY></HTML>
+
+2026-08-08 23:19:39 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params={'page': 1, 'limit': 5}
+2026-08-08 23:19:39 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211378&#46;3c5e3814
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211378&#46;3c5e3814</P>
+</BODY></HTML>
+
+2026-08-08 23:19:39 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': ''}
+2026-08-08 23:19:39 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211378&#46;3c5e407b
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211378&#46;3c5e407b</P>
+</BODY></HTML>
+
+2026-08-08 23:19:41 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': ''}
+2026-08-08 23:19:41 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211381&#46;3c5e40d2
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211381&#46;3c5e40d2</P>
+</BODY></HTML>
+
+2026-08-08 23:19:41 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'cricket'}
+2026-08-08 23:19:41 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211381&#46;3c5e4854
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211381&#46;3c5e4854</P>
+</BODY></HTML>
+
+2026-08-08 23:19:43 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'cricket'}
+2026-08-08 23:19:43 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211383&#46;3c5e4899
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211383&#46;3c5e4899</P>
+</BODY></HTML>
+
+2026-08-08 23:19:43 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'avengers'}
+2026-08-08 23:19:43 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211383&#46;3c5e5011
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211383&#46;3c5e5011</P>
+</BODY></HTML>
+
+2026-08-08 23:19:45 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'avengers'}
+2026-08-08 23:19:45 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211385&#46;3c5e5069
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211385&#46;3c5e5069</P>
+</BODY></HTML>
+
+2026-08-08 23:19:45 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'family man'}
+2026-08-08 23:19:45 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211385&#46;3c5e5894
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211385&#46;3c5e5894</P>
+</BODY></HTML>
+
+2026-08-08 23:19:47 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'family man'}
+2026-08-08 23:19:47 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211387&#46;3c5e58e4
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211387&#46;3c5e58e4</P>
+</BODY></HTML>
+
+2026-08-08 23:19:47 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'ipl'}
+2026-08-08 23:19:47 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211387&#46;3c5e6100
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211387&#46;3c5e6100</P>
+</BODY></HTML>
+
+2026-08-08 23:19:49 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'ipl'}
+2026-08-08 23:19:49 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211389&#46;3c5e6150
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211389&#46;3c5e6150</P>
+</BODY></HTML>
+
+2026-08-08 23:19:49 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'kbc'}
+2026-08-08 23:19:50 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211389&#46;3c5e695c
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211389&#46;3c5e695c</P>
+</BODY></HTML>
+
+2026-08-08 23:19:52 [INFO] utilities.api_client: GET https://api.hotstar.com/search | params={'q': 'kbc'}
+2026-08-08 23:19:52 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211391&#46;3c5e69af
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211391&#46;3c5e69af</P>
+</BODY></HTML>
+
+2026-08-08 23:19:52 [INFO] utilities.api_client: GET https://api.hotstar.com/content | params=None
+2026-08-08 23:19:52 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211391&#46;3c5e721a
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211391&#46;3c5e721a</P>
+</BODY></HTML>
+
+2026-08-08 23:19:52 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params=None
+2026-08-08 23:19:52 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211391&#46;3c5e7267
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211391&#46;3c5e7267</P>
+</BODY></HTML>
+
+2026-08-08 23:19:54 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params=None
+2026-08-08 23:19:54 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211394&#46;3c5e72c1
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211394&#46;3c5e72c1</P>
+</BODY></HTML>
+
+2026-08-08 23:19:54 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params=None
+2026-08-08 23:19:54 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211394&#46;3c5e7abc
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211394&#46;3c5e7abc</P>
+</BODY></HTML>
+
+2026-08-08 23:19:56 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params=None
+2026-08-08 23:19:56 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211396&#46;3c5e7b12
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211396&#46;3c5e7b12</P>
+</BODY></HTML>
+
+2026-08-08 23:19:56 [INFO] utilities.api_client: POST https://api.hotstar.com/subscription/validate-coupon | payload={'code': 'FAKECOUPON999'}
+2026-08-08 23:19:56 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;3f6bc917&#46;1786211396&#46;3c5e8378
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;3f6bc917&#46;1786211396&#46;3c5e8378</P>
+</BODY></HTML>
+
+2026-08-08 23:19:58 [INFO] utilities.api_client: POST https://api.hotstar.com/subscription/validate-coupon | payload={'code': 'FAKECOUPON999'}
+2026-08-08 23:19:59 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;446bc917&#46;1786211398&#46;1d2a9b19
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;446bc917&#46;1786211398&#46;1d2a9b19</P>
+</BODY></HTML>
+
+2026-08-08 23:19:59 [INFO] utilities.api_client: GET https://api.hotstar.com/user/subscription | params=None
+2026-08-08 23:19:59 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211399&#46;38948697
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211399&#46;38948697</P>
+</BODY></HTML>
+
+2026-08-08 23:20:01 [INFO] utilities.api_client: GET https://api.hotstar.com/user/subscription | params=None
+2026-08-08 23:20:01 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211401&#46;389486a4
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211401&#46;389486a4</P>
+</BODY></HTML>
+
+2026-08-08 23:20:01 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params=None
+2026-08-08 23:20:01 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211401&#46;38948e05
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211401&#46;38948e05</P>
+</BODY></HTML>
+
+2026-08-08 23:20:01 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params={'country': 'IN'}
+2026-08-08 23:20:01 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211401&#46;38948e52
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211401&#46;38948e52</P>
+</BODY></HTML>
+
+2026-08-08 23:20:03 [INFO] utilities.api_client: GET https://api.hotstar.com/subscription/plans | params={'country': 'IN'}
+2026-08-08 23:20:04 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211403&#46;38948e94
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211403&#46;38948e94</P>
+</BODY></HTML>
+
+2026-08-08 23:20:04 [INFO] utilities.api_client: GET https://api.hotstar.com/user/watchlist | params=None
+2026-08-08 23:20:04 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211403&#46;38949592
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211403&#46;38949592</P>
+</BODY></HTML>
+
+2026-08-08 23:20:06 [INFO] utilities.api_client: GET https://api.hotstar.com/user/watchlist | params=None
+2026-08-08 23:20:06 [DEBUG] utilities.api_client: Response [403]: <HTML><HEAD><TITLE>Error</TITLE></HEAD><BODY>
+An error occurred while processing your request.<p>
+Reference&#32;&#35;199&#46;2e6bc917&#46;1786211405&#46;389495d2
+<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;199&#46;2e6bc917&#46;1786211405&#46;389495d2</P>
+</BODY></HTML>
+
+2026-08-08 23:21:44 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:21:44 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:21:53 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:21:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:21:55 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:21:55 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:00 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:00 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:02 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:07 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:07 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:09 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:13 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:13 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:16 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:16 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:21 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:23 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:23 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:28 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:30 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:35 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:37 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:37 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:42 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:44 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:44 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:49 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:51 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:51 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:56 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:22:58 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:22:58 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:03 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:03 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:05 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:05 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:10 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:10 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:12 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:17 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:17 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:19 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:24 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:24 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:26 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:31 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:31 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:33 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:33 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:38 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:38 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:40 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:40 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:45 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:45 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:47 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:52 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:52 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:54 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:54 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:23:58 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:23:58 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:01 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:01 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:05 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:05 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:07 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:07 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:12 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:15 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:15 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:19 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:21 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:26 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:28 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:32 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:32 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:35 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:39 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:42 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:47 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:49 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:54 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:54 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:24:57 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:24:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:02 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:04 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:09 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:11 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:11 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:17 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:17 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:19 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:24 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:24 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:27 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:27 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:31 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:31 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:34 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:34 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:39 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:42 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:47 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:49 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:54 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:54 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:25:57 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:25:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:01 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:01 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:04 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:09 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:12 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:16 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:16 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:19 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:23 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:23 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:25 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:25 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:30 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:32 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:32 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:36 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:36 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:39 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:44 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:44 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:46 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:51 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:51 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:53 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:26:58 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:26:58 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:01 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:01 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:05 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:05 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:07 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:07 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:12 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:14 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:14 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:19 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:46 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:50 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:53 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:27:57 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:27:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:00 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:00 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:04 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:06 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:06 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:11 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:11 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:14 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:14 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:18 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:18 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:21 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:26 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:28 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:33 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:33 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:35 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:40 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:40 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:43 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:43 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:47 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:50 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:55 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:55 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:28:57 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:28:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:02 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:04 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:09 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:12 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:17 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:17 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:20 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:20 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:24 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:24 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:27 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:27 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:31 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:31 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:34 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:34 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:29:39 [INFO] conftest: [SETUP] chrome | headless=false
+2026-08-08 23:29:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=false
+2026-08-08 23:32:22 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:22 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:27 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:27 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:30 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:34 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:34 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:37 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:37 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:42 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:44 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:44 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:49 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:52 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:52 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:32:59 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:32:59 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:03 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:03 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:06 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:06 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:11 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:11 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:13 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:13 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:18 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:18 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:21 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:26 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:29 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:29 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:33:33 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:33:33 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:36:57 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:36:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:01 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:01 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:04 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:08 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:08 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:11 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:11 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:15 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:15 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:17 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:17 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:21 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:24 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:24 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:28 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:30 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:35 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:37 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:37 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:41 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:41 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:44 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:44 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:48 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:48 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:50 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:55 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:55 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:37:57 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:37:57 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:02 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:42 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:47 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:49 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:53 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:38:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:38:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:00 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:00 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:02 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:07 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:07 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:09 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:13 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:13 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:16 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:16 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:22 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:22 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:25 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:25 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:31 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:31 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:34 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:34 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:39 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:42 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:47 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:47 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:50 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:39:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:39:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:15 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:15 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:21 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:24 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:24 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:35 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:37 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:37 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:42 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:45 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:45 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:49 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:52 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:52 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:41:58 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:41:58 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:03 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:03 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:05 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:05 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:09 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:12 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:16 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:16 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:19 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:23 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:23 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:25 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:42:30 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:42:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:22 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:22 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:25 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:25 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:26 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:28 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:29 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:29 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:32 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:32 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:33 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:33 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:36 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:36 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:36 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:36 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:39 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:40 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:40 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:45:59 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:45:59 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:02 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:02 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:02 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:05 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:05 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:06 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:06 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:08 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:08 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:09 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:09 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:12 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:13 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:13 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:15 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:15 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:16 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:16 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:19 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:19 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:22 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:22 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:23 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:23 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:26 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:26 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:29 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:29 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:30 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:30 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:46:32 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:46:32 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:26 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:26 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:28 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:28 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:29 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:29 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:32 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:32 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:33 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:33 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:35 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:35 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:36 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:36 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:39 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:39 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:39 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:42 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:42 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:43 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:43 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:46 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:46 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:49 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:49 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:50 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:52 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:53 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:53 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:56 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:56 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:47:59 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:47:59 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:51:21 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:51:21 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:51:26 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:51:32 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:51:50 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_valid_email_password_20260808_235149.png
+2026-08-08 23:51:50 [ERROR] conftest: FAILED: test_login_valid_email_password | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_valid_email_password_20260808_235149.png
+2026-08-08 23:51:50 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:51:54 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:51:54 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:51:56 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:51:59 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:52:17 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_valid_email_password_20260808_235216.png
+2026-08-08 23:52:17 [ERROR] conftest: FAILED: test_login_valid_email_password | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_valid_email_password_20260808_235216.png
+2026-08-08 23:52:17 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:52:19 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:52:19 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:52:21 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:52:25 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:52:42 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_password_20260808_235241.png
+2026-08-08 23:52:42 [ERROR] conftest: FAILED: test_login_invalid_password | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_password_20260808_235241.png
+2026-08-08 23:52:42 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:52:46 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:52:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:52:48 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:52:52 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:53:09 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_password_20260808_235309.png
+2026-08-08 23:53:09 [ERROR] conftest: FAILED: test_login_invalid_password | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_password_20260808_235309.png
+2026-08-08 23:53:09 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:53:12 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:53:12 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:53:14 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:53:17 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:53:34 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_unregistered_email_20260808_235334.png
+2026-08-08 23:53:34 [ERROR] conftest: FAILED: test_login_unregistered_email | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_unregistered_email_20260808_235334.png
+2026-08-08 23:53:34 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:53:38 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:53:38 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:53:40 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:53:45 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:54:02 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_unregistered_email_20260808_235401.png
+2026-08-08 23:54:02 [ERROR] conftest: FAILED: test_login_unregistered_email | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_unregistered_email_20260808_235401.png
+2026-08-08 23:54:02 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:54:04 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:54:04 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:54:06 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:54:10 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:54:48 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_empty_email_20260808_235447.png
+2026-08-08 23:54:48 [ERROR] conftest: FAILED: test_login_empty_email | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_empty_email_20260808_235447.png
+2026-08-08 23:54:48 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:54:52 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:54:52 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:54:54 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:54:58 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:55:15 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_empty_email_20260808_235515.png
+2026-08-08 23:55:15 [ERROR] conftest: FAILED: test_login_empty_email | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_empty_email_20260808_235515.png
+2026-08-08 23:55:15 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:55:18 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:55:18 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:55:20 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:55:23 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:55:40 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_forgot_password_link_20260808_235540.png
+2026-08-08 23:55:40 [ERROR] conftest: FAILED: test_forgot_password_link | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_forgot_password_link_20260808_235540.png
+2026-08-08 23:55:40 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:55:46 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:55:46 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:55:48 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:55:52 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:56:09 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_forgot_password_link_20260808_235608.png
+2026-08-08 23:56:09 [ERROR] conftest: FAILED: test_forgot_password_link | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_forgot_password_link_20260808_235608.png
+2026-08-08 23:56:09 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:56:11 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:56:11 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:56:13 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:56:17 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:56:34 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_signup_link_visible_20260808_235633.png
+2026-08-08 23:56:34 [ERROR] conftest: FAILED: test_signup_link_visible | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_signup_link_visible_20260808_235633.png
+2026-08-08 23:56:34 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:56:38 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:56:38 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:56:40 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:56:43 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:57:00 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_signup_link_visible_20260808_235700.png
+2026-08-08 23:57:00 [ERROR] conftest: FAILED: test_signup_link_visible | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_signup_link_visible_20260808_235700.png
+2026-08-08 23:57:00 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:57:03 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:57:03 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:57:05 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:57:08 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:57:45 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_modal_close_20260808_235745.png
+2026-08-08 23:57:45 [ERROR] conftest: FAILED: test_login_modal_close | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_modal_close_20260808_235745.png
+2026-08-08 23:57:45 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:57:50 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:57:50 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:57:52 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:57:56 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:58:25 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_modal_close_20260808_235824.png
+2026-08-08 23:58:25 [ERROR] conftest: FAILED: test_login_modal_close | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_modal_close_20260808_235824.png
+2026-08-08 23:58:25 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:58:27 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:58:27 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:58:29 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:58:33 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:58:49 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:58:54 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:58:54 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:58:56 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:58:59 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:59:16 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:59:18 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:59:18 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:59:20 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:59:24 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-08 23:59:41 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_and_home_loads_20260808_235940.png
+2026-08-08 23:59:41 [ERROR] conftest: FAILED: test_login_and_home_loads | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_and_home_loads_20260808_235940.png
+2026-08-08 23:59:41 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-08 23:59:45 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-08 23:59:45 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-08 23:59:47 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-08 23:59:50 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-09 00:00:07 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_and_home_loads_20260809_000007.png
+2026-08-09 00:00:07 [ERROR] conftest: FAILED: test_login_and_home_loads | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_and_home_loads_20260809_000007.png
+2026-08-09 00:00:07 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-09 00:00:10 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-09 00:00:10 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-09 00:00:12 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-09 00:00:15 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-09 00:00:32 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_email_format_20260809_000032.png
+2026-08-09 00:00:32 [ERROR] conftest: FAILED: test_login_invalid_email_format | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_email_format_20260809_000032.png
+2026-08-09 00:00:32 [INFO] conftest: [TEARDOWN] Closing browser
+2026-08-09 00:00:37 [INFO] conftest: [SETUP] chrome | headless=False
+2026-08-09 00:00:37 [INFO] utilities.driver_factory: Initialising chrome driver | headless=False
+2026-08-09 00:00:39 [INFO] pages.base_page: Navigate: https://www.hotstar.com
+2026-08-09 00:00:42 [INFO] pages.login_page: Clicking login button to open modal
+2026-08-09 00:01:20 [INFO] utilities.screenshot_util: Screenshot saved: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_email_format_20260809_000119.png
+2026-08-09 00:01:20 [ERROR] conftest: FAILED: test_login_invalid_email_format | screenshot: C:\python_study\New folder\Pytest_ui_api\reports\screenshots\FAIL_test_login_invalid_email_format_20260809_000119.png
+2026-08-09 00:01:20 [INFO] conftest: [TEARDOWN] Closing browser

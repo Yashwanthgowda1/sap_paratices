@@ -1,0 +1,4 @@
+it use for data valiadtion 
+In fast Api --> pydentic Model is used more
+
+the main advantages is validate the data which backend completly written in rust
